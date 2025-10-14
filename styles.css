@@ -461,3 +461,52 @@ h3 { font-size: 1.4rem; margin-bottom: 0.3em; }
     display: flex;
   }
 }
+/* ====== Fix CTA en móvil (hero) ====== */
+.cta-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  align-items:center;
+  justify-content:flex-start; /* se centrará en móvil abajo */
+  margin-top:16px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 18px;
+  line-height:1;
+  min-height:44px; /* objetivo táctil */
+}
+
+/* título del hero más cómodo */
+.hero h1{
+  font-size:clamp(1.6rem, 6.2vw, 3rem);
+  line-height:1.15;
+  margin:0 0 10px 0;
+}
+
+/* layout del hero en pantallas pequeñas */
+@media (max-width: 820px){
+  .hero-inner{
+    grid-template-columns: 1fr;   /* 1 columna */
+    gap:18px;
+    text-align:center;
+  }
+  .cta-row{
+    justify-content:center;       /* centra los botones */
+  }
+}
+
+@media (max-width: 640px){
+  .cta-row{
+    flex-direction:column;        /* en columna */
+    align-items:stretch;          /* que ocupen el ancho */
+  }
+  .cta-row .btn{
+    width:100%;
+    max-width:420px;              /* límite agradable */
+    margin:0 auto;                /* centrados */
+  }
+}
