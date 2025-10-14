@@ -1,109 +1,243 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Multidiagnósticos AS • Taller y Autopartes</title>
-<link rel="icon" href="assets/logo.svg"><link rel="stylesheet" href="styles.css"></head>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Multidiagnósticos AS • Taller y Autopartes</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon.ico" />
+  <link rel="shortcut icon" href="assets/favicon.ico" />
+  <meta name="theme-color" content="#0B3D91" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
 <body class="light">
-<header class="topbar"><div class="container flex between center-v">
-<a class="brand" href="#">
-  <img src="assets/logo.png" alt="Logo Multidiagnósticos AS">
-</a>  
-  <nav class="menu"><a href="#servicios">Servicios</a><a href="#catalogo">Tienda</a><a href="#agenda">Agendar</a><a href="#blog">Blog</a><a href="#contacto">Contacto</a>
-  <button id="btnCart" class="btn btn-outline">Carrito (<span id="cartCount">0</span>)</button></nav>
-</div></header>
-<main>
-<section class="hero"><div class="container hero-inner">
-  <div><h1>Servicio técnico y autopartes con garantía</h1>
-  <p>Diagnóstico computarizado, mecánica rápida y repuestos originales. Agenda online y recibe confirmación por WhatsApp.</p>
-  <div class="cta-row"><a href="#agenda" class="btn btn-primary">Agendar servicio</a> <a href="#catalogo" class="btn btn-outline">Comprar repuestos</a>
-  <a class="btn btn-outline" href="https://wa.me/573003651525" target="_blank">WhatsApp</a></div></div>
-<img class="mascota" src="assets/mascota.png" alt="Mascota Multidiagnósticos AS">
-</div></section>
 
-<section id="servicios" class="section"><div class="container"><h2>Servicios</h2>
-<div class="cards"><article class="card"><h3>Cambio de aceite</h3><p>Incluye filtro y revisión.</p></article>
-<article class="card"><h3>Frenos</h3><p>Pastillas, discos y líquido.</p></article>
-<article class="card"><h3>Suspensión</h3><p>Amortiguadores y alineación.</p></article>
-<article class="card"><h3>Diagnóstico OBD-II</h3><p>Scanner y pruebas.</p></article></div></div></section>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container flex between center-v">
+      <a class="brand" href="#">
+        <img src="assets/logo.png" alt="Logo Multidiagnósticos AS" />
+      </a>
 
-<section id="catalogo" class="section"><div class="container"><h2>Tienda de Autopartes</h2>
-<div class="filters"><input id="q" placeholder="Buscar…"> <select id="cat"><option value="">Todas</option><option>Aceites</option><option>Filtros</option><option>Frenos</option></select></div>
-<div id="productGrid" class="products"></div></div></section>
+      <!-- Botón menú móvil -->
+      <button id="btnMenu" class="btn-menu" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">☰</button>
 
-<section id="agenda" class="section"><div class="container"><h2>Agendar Servicio</h2>
-<form id="bookForm" class="card"><label>Servicio<select id="bService" required><option value="">Selecciona…</option><option>Cambio de aceite</option><option>Revisión de frenos</option></select></label>
-<div class="cards"><label>Fecha <input id="bDate" type="date" required></label><label>Hora <input id="bTime" type="time" required></label></div>
-<div class="cards"><label>Placa <input id="bPlate" required></label><label>Modelo <input id="bModel" required></label></div>
-<div class="cards"><label>Nombre <input id="bName" required></label><label>Teléfono <input id="bPhone" required></label></div>
-<label>Notas <textarea id="bNotes" rows="3"></textarea></label>
-<div class="cards"><button type="submit" class="btn btn-primary">Confirmar por WhatsApp</button><button type="button" id="btnICS" class="btn btn-outline">Descargar .ics</button></div>
-</form></div></section>
+      <!-- Menú -->
+      <nav class="menu" id="menu">
+        <a href="#servicios">Servicios</a>
+        <a href="#catalogo">Tienda</a>
+        <a href="#agenda">Agendar</a>
+        <a href="#blog">Blog</a>
+        <a href="#contacto">Contacto</a>
+        <button id="btnCart" class="btn btn-outline">Carrito (<span id="cartCount">0</span>)</button>
+      </nav>
+    </div>
+  </header>
 
-<section id="blog" class="section"><div class="container"><h2>Blog</h2>
-<div class="cards" id="blogList"></div></div></section>
-
-<section id="contacto" class="section"><div class="container"><h2>Contacto</h2>
-<p><strong>Multidiagnósticos AS</strong> — Sabanalarga, Atlántico • <a href="tel:+573003651525">(+57) 300 365 1525</a></p></div></section>
-</main>
-
-<aside id="cartDrawer" class="drawer"><div class="drawer-header"><h3>Tu Carrito</h3><button id="closeCart">×</button></div><div id="cartItems" class="drawer-body"></div><div class="drawer-footer"><div><span>Total:</span> <strong id="cartTotal">$0</strong></div><button id="btnWhatsApp" class="btn btn-primary">Finalizar por WhatsApp</button></div></aside>
-<footer class="footer">
-  <div class="footer-grid">
-    <div class="footer-col">
-      <h4>Acerca de Multidiagnósticos AS</h4>
-      <p>Somos expertos en diagnóstico computarizado, mantenimiento automotriz y autopartes originales.</p>
-      <div class="pay-badges">
-        <span class="pay">VISA</span>
-        <span class="pay">Mastercard</span>
-        <span class="pay">Stripe</span>
-        <span class="pay">PSE</span>
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <h1>Diagnóstico automotriz experto y repuestos originales con garantía</h1>
+          <p>Diagnóstico computarizado, mecánica rápida y repuestos originales. Agenda online y recibe confirmación por WhatsApp.</p>
+          <div class="cta-row">
+            <a href="#agenda" class="btn btn-primary">Agendar servicio</a>
+            <a href="#catalogo" class="btn btn-outline">Comprar repuestos</a>
+            <a class="btn btn-outline" href="https://wa.me/573003651525" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+        <img class="mascota" src="assets/mascota.png" alt="Mascota Multidiagnósticos AS" />
       </div>
-    </div>
+    </section>
 
-    <div class="footer-col">
-      <h4>Empresa</h4>
-      <ul>
-        <li><a href="#nosotros">Nuestra empresa</a></li>
-        <li><a href="#catalogo">Catálogo</a></li>
-        <li><a href="#servicios">Nuestros servicios</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Clientes</h4>
-      <ul>
-        <li><a href="#pagos">Paga tus facturas</a></li>
-        <li><a href="#contacto">Contáctenos</a></li>
-        <li><a href="#politicas">Políticas y Términos</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>Nuestros horarios de atención</h4>
-      <p>
-        Lunes a Viernes: 08:00 AM – 05:30 PM<br>
-        Sábado: 08:30 AM – 04:00 PM
-      </p>
-
-      <h4>Síguenos</h4>
-      <div class="socials">
-        <a href="#" aria-label="TikTok" title="TikTok">TikTok</a>
-        <a href="#" aria-label="Facebook" title="Facebook">Facebook</a>
-        <a href="#" aria-label="Instagram" title="Instagram">Instagram</a>
+    <!-- Servicios -->
+    <section id="servicios" class="section">
+      <div class="container">
+        <h2>Servicios</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Cambio de aceite</h3>
+            <p>Incluye filtro y revisión.</p>
+          </article>
+          <article class="card">
+            <h3>Frenos</h3>
+            <p>Pastillas, discos y líquido.</p>
+          </article>
+          <article class="card">
+            <h3>Suspensión</h3>
+            <p>Amortiguadores y alineación.</p>
+          </article>
+          <article class="card">
+            <h3>Diagnóstico OBD-II</h3>
+            <p>Scanner y pruebas.</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <hr class="footer-sep">
+    <!-- Tienda -->
+    <section id="catalogo" class="section">
+      <div class="container">
+        <h2>Tienda de Autopartes</h2>
+        <div class="filters">
+          <input id="q" placeholder="Buscar…" />
+          <select id="cat">
+            <option value="">Todas</option>
+            <option>Aceites</option>
+            <option>Filtros</option>
+            <option>Frenos</option>
+          </select>
+        </div>
+        <div id="productGrid" class="products"></div>
+      </div>
+    </section>
 
-  <div class="sucursales">
-    <div class="sede">
-      <span class="pin">📍</span>
-      <strong>Sede Sabanalarga</strong> — Cra. 27 #13-05, Sabanalarga – Atlántico
-      <!-- (Opcional) enlace a mapas:
-      <a href="https://maps.google.com/?q=Cra+27+%2313-05,+Sabanalarga,+Atl%C3%A1ntico" target="_blank" rel="noopener">Ver mapa</a>
-      -->
+    <!-- Agendar -->
+    <section id="agenda" class="section">
+      <div class="container">
+        <h2>Agendar Servicio</h2>
+        <form id="bookForm" class="card">
+          <label>Servicio
+            <select id="bService" required>
+              <option value="">Selecciona…</option>
+              <option>Cambio de aceite</option>
+              <option>Revisión de frenos</option>
+            </select>
+          </label>
+
+          <div class="cards">
+            <label>Fecha <input id="bDate" type="date" required /></label>
+            <label>Hora <input id="bTime" type="time" required /></label>
+          </div>
+
+          <div class="cards">
+            <label>Placa <input id="bPlate" required /></label>
+            <label>Modelo <input id="bModel" required /></label>
+          </div>
+
+          <div class="cards">
+            <label>Nombre <input id="bName" required /></label>
+            <label>Teléfono <input id="bPhone" required /></label>
+          </div>
+
+          <label>Notas
+            <textarea id="bNotes" rows="3"></textarea>
+          </label>
+
+          <div class="cards">
+            <button type="submit" class="btn btn-primary">Confirmar por WhatsApp</button>
+            <button type="button" id="btnICS" class="btn btn-outline">Descargar .ics</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Blog -->
+    <section id="blog" class="section">
+      <div class="container">
+        <h2>Blog</h2>
+        <div class="cards" id="blogList"></div>
+      </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section">
+      <div class="container">
+        <h2>Contacto</h2>
+        <p><strong>Multidiagnósticos AS</strong> — Sabanalarga, Atlántico •
+          <a href="tel:+573003651525">(+57) 300 365 1525</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Drawer / Carrito -->
+  <aside id="cartDrawer" class="drawer">
+    <div class="drawer-header">
+      <h3>Tu Carrito</h3>
+      <button id="closeCart" aria-label="Cerrar carrito">×</button>
     </div>
-  </div>
-</footer><div id="overlay"></div>
-<script src="script.js"></script>
-</body></html>
+    <div id="cartItems" class="drawer-body"></div>
+    <div class="drawer-footer">
+      <div><span>Total:</span> <strong id="cartTotal">$0</strong></div>
+      <button id="btnWhatsApp" class="btn btn-primary">Finalizar por WhatsApp</button>
+    </div>
+  </aside>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Acerca de Multidiagnósticos AS</h4>
+          <p>Somos expertos en diagnóstico computarizado, mantenimiento automotriz y autopartes originales.</p>
+          <div class="pay-badges">
+            <span class="pay">VISA</span>
+            <span class="pay">Mastercard</span>
+            <span class="pay">Stripe</span>
+            <span class="pay">PSE</span>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="#nosotros">Nuestra empresa</a></li>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#servicios">Nuestros servicios</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Clientes</h4>
+          <ul>
+            <li><a href="#pagos">Paga tus facturas</a></li>
+            <li><a href="#contacto">Contáctenos</a></li>
+            <li><a href="#politicas">Políticas y Términos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Nuestros horarios de atención</h4>
+          <p>
+            Lunes a Viernes: 08:00 AM – 05:30 PM<br />
+            Sábado: 08:30 AM – 04:00 PM
+          </p>
+
+          <h4>Síguenos</h4>
+          <div class="socials">
+            <a href="#" aria-label="TikTok" title="TikTok">TikTok</a>
+            <a href="#" aria-label="Facebook" title="Facebook">Facebook</a>
+            <a href="#" aria-label="Instagram" title="Instagram">Instagram</a>
+          </div>
+        </div>
+      </div>
+
+      <hr class="footer-sep" />
+
+      <div class="sucursales">
+        <div class="sede">
+          <span class="pin">📍</span>
+          <strong>Sede Sabanalarga</strong> — Cra. 27 #13-05, Sabanalarga – Atlántico
+          <!-- (Opcional) <a href="https://maps.google.com/?q=Cra+27+%2313-05,+Sabanalarga,+Atl%C3%A1ntico" target="_blank" rel="noopener">Ver mapa</a> -->
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="year"></span> <strong>Multidiagnósticos AS</strong>. Todos los derechos reservados.</p>
+        <p>Creado por <a href="#" target="_blank" rel="noopener">Juan</a></p>
+      </div>
+
+    </div>
+  </footer>
+
+  <div id="overlay"></div>
+  <script src="script.js"></script>
+</body>
+</html>
