@@ -1,14 +1,50 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Multidiagnósticos AS</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1>Bienvenido a Multidiagnósticos AS</h1>
-  <p>Sitio base listo para publicación en GitHub Pages o Vercel.</p>
-  <script src="script.js"></script>
-</body>
-</html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Multidiagnósticos AS • Taller y Autopartes</title>
+<link rel="icon" href="assets/logo.svg"><link rel="stylesheet" href="styles.css"></head>
+<body class="light">
+<header class="topbar"><div class="container flex between center-v">
+  <a class="brand" href="#"><img src="assets/logo.svg" alt="Multidiagnósticos AS"></a>
+  <nav class="menu"><a href="#servicios">Servicios</a><a href="#catalogo">Tienda</a><a href="#agenda">Agendar</a><a href="#blog">Blog</a><a href="#contacto">Contacto</a>
+  <button id="btnCart" class="btn btn-outline">Carrito (<span id="cartCount">0</span>)</button></nav>
+</div></header>
+<main>
+<section class="hero"><div class="container hero-inner">
+  <div><h1>Servicio técnico y autopartes con garantía</h1>
+  <p>Diagnóstico computarizado, mecánica rápida y repuestos originales. Agenda online y recibe confirmación por WhatsApp.</p>
+  <div class="cta-row"><a href="#agenda" class="btn btn-primary">Agendar servicio</a> <a href="#catalogo" class="btn btn-outline">Comprar repuestos</a>
+  <a class="btn btn-outline" href="https://wa.me/573003651525" target="_blank">WhatsApp</a></div></div>
+  <div><img class="mascota" src="assets/mascota.png" alt="Mascota Multidiagnósticos AS"></div>
+</div></section>
+
+<section id="servicios" class="section"><div class="container"><h2>Servicios</h2>
+<div class="cards"><article class="card"><h3>Cambio de aceite</h3><p>Incluye filtro y revisión.</p></article>
+<article class="card"><h3>Frenos</h3><p>Pastillas, discos y líquido.</p></article>
+<article class="card"><h3>Suspensión</h3><p>Amortiguadores y alineación.</p></article>
+<article class="card"><h3>Diagnóstico OBD-II</h3><p>Scanner y pruebas.</p></article></div></div></section>
+
+<section id="catalogo" class="section"><div class="container"><h2>Tienda de Autopartes</h2>
+<div class="filters"><input id="q" placeholder="Buscar…"> <select id="cat"><option value="">Todas</option><option>Aceites</option><option>Filtros</option><option>Frenos</option></select></div>
+<div id="productGrid" class="products"></div></div></section>
+
+<section id="agenda" class="section"><div class="container"><h2>Agendar Servicio</h2>
+<form id="bookForm" class="card"><label>Servicio<select id="bService" required><option value="">Selecciona…</option><option>Cambio de aceite</option><option>Revisión de frenos</option></select></label>
+<div class="cards"><label>Fecha <input id="bDate" type="date" required></label><label>Hora <input id="bTime" type="time" required></label></div>
+<div class="cards"><label>Placa <input id="bPlate" required></label><label>Modelo <input id="bModel" required></label></div>
+<div class="cards"><label>Nombre <input id="bName" required></label><label>Teléfono <input id="bPhone" required></label></div>
+<label>Notas <textarea id="bNotes" rows="3"></textarea></label>
+<div class="cards"><button type="submit" class="btn btn-primary">Confirmar por WhatsApp</button><button type="button" id="btnICS" class="btn btn-outline">Descargar .ics</button></div>
+</form></div></section>
+
+<section id="blog" class="section"><div class="container"><h2>Blog</h2>
+<div class="cards" id="blogList"></div></div></section>
+
+<section id="contacto" class="section"><div class="container"><h2>Contacto</h2>
+<p><strong>Multidiagnósticos AS</strong> — Sabanalarga, Atlántico • <a href="tel:+573003651525">(+57) 300 365 1525</a></p></div></section>
+</main>
+
+<aside id="cartDrawer" class="drawer"><div class="drawer-header"><h3>Tu Carrito</h3><button id="closeCart">×</button></div><div id="cartItems" class="drawer-body"></div><div class="drawer-footer"><div><span>Total:</span> <strong id="cartTotal">$0</strong></div><button id="btnWhatsApp" class="btn btn-primary">Finalizar por WhatsApp</button></div></aside>
+<footer class="footer"><div class="container">© <span id="year"></span> Multidiagnósticos AS</div></footer>
+<div id="overlay"></div>
+<script src="script.js"></script>
+</body></html>

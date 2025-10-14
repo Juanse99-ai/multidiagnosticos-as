@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "nombre": "Aceite 5W-30 Sintético",
+    "marca": "Mobil",
+    "codigo": "MOB-5W30",
+    "categoria": "Aceites",
+    "precio": 95000,
+    "img": "oil.png",
+    "sku": "OIL-5W30-MOB",
+    "stock": 12
+  },
+  {
+    "id": 2,
+    "nombre": "Filtro de aceite",
+    "marca": "MANN",
+    "codigo": "W712/95",
+    "categoria": "Filtros",
+    "precio": 45000,
+    "img": "filter.png",
+    "sku": "FLT-W71295-MANN",
+    "stock": 30
+  },
+  {
+    "id": 3,
+    "nombre": "Pastillas freno delanteras",
+    "marca": "Incolbest",
+    "codigo": "IB-1234",
+    "categoria": "Frenos",
+    "precio": 125000,
+    "img": "pads.png",
+    "sku": "PAD-IB1234-INC",
+    "stock": 8
+  }
+]
