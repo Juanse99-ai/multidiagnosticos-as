@@ -25,3 +25,11 @@
 .cart-item{display:grid;grid-template-columns:1fr auto;gap:6px;background:#fafbff;border:1px solid var(--stroke);padding:10px;border-radius:10px}
 .footer{border-top:1px solid var(--stroke);padding:18px 0;color:#5a667e;background:#fff}
 @media (max-width:900px){.hero-inner{grid-template-columns:1fr}}
+/* Mascota Multidiagnósticos */
+.mascota {
+  display: block;
+  margin: 40px auto;
+  max-width: 250px;
+  height: auto;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+}
