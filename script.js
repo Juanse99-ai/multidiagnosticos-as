@@ -1,0 +1,1 @@
+console.log('Multidiagnósticos AS - sitio regenerado listo');
