@@ -33,7 +33,9 @@
         <a href="#agenda">Agendar</a>
         <a href="#blog">Blog</a>
         <a href="#contacto">Contacto</a>
-        <button id="btnCart" class="btn btn-outline">Carrito (<span id="cartCount">0</span>)</button>
+        <button id="btnCart" class="btn btn-outline">
+          Carrito (<span id="cartCount">0</span>)
+        </button>
       </nav>
     </div>
   </header>
@@ -149,7 +151,8 @@
     <section id="contacto" class="section">
       <div class="container">
         <h2>Contacto</h2>
-        <p><strong>Multidiagnósticos AS</strong> — Sabanalarga, Atlántico •
+        <p>
+          <strong>Multidiagnósticos AS</strong> — Sabanalarga, Atlántico •
           <a href="tel:+573003651525">(+57) 300 365 1525</a>
         </p>
       </div>
@@ -157,7 +160,7 @@
   </main>
 
   <!-- Drawer / Carrito -->
-  <aside id="cartDrawer" class="drawer">
+  <aside id="cartDrawer" class="drawer" aria-hidden="true">
     <div class="drawer-header">
       <h3>Tu Carrito</h3>
       <button id="closeCart" aria-label="Cerrar carrito">×</button>
@@ -225,7 +228,6 @@
         <div class="sede">
           <span class="pin">📍</span>
           <strong>Sede Sabanalarga</strong> — Cra. 27 #13-05, Sabanalarga – Atlántico
-          <!-- (Opcional) <a href="https://maps.google.com/?q=Cra+27+%2313-05,+Sabanalarga,+Atl%C3%A1ntico" target="_blank" rel="noopener">Ver mapa</a> -->
         </div>
       </div>
 
@@ -237,7 +239,19 @@
     </div>
   </footer>
 
+  <!-- Overlay y scripts -->
   <div id="overlay"></div>
   <script src="script.js"></script>
+
+  <!-- BOTÓN FLOTANTE WHATSAPP (imagen completa) -->
+  <a
+    href="https://wa.me/573003651525?text=Hola%2C%20me%20gustar%C3%ADa%20recibir%20asesor%C3%ADa%20t%C3%A9cnica%20de%20Multidiagn%C3%B3sticos%20AS."
+    class="wa-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="WhatsApp Multidiagnósticos AS"
+  >
+    <img src="assets/asesor-whatsapp.webp" alt="Asesor WhatsApp Multidiagnósticos AS" class="wa-img" loading="lazy" />
+  </a>
 </body>
 </html>
