@@ -20,3 +20,16 @@ document.getElementById('btnICS').onclick=()=>{const s=document.getElementById('
 document.getElementById('bookForm').addEventListener('submit',(e)=>{e.preventDefault();const s=document.getElementById('bService').value,d=document.getElementById('bDate').value,t=document.getElementById('bTime').value,plate=document.getElementById('bPlate').value,model=document.getElementById('bModel').value,name=document.getElementById('bName').value,phone=document.getElementById('bPhone').value,notes=document.getElementById('bNotes').value;const text=`Hola, quiero agendar:%0A• Servicio: ${s}%0A• Fecha: ${d} ${t}%0A• Placa: ${plate}%0A• Modelo: ${model}%0A• Nombre: ${name}%0A• Tel: ${phone}%0A• Notas: ${notes}`;window.open(`https://wa.me/573003651525?text=${text}`,'_blank');});
 document.getElementById('year').textContent=new Date().getFullYear();
 loadProducts().then(()=>{renderProducts();persist();});
+// ===============================
+// MENÚ RESPONSIVE
+// ===============================
+const btnMenu = document.getElementById('btnMenu');
+const menu = document.getElementById('menu');
+
+if (btnMenu && menu) {
+  btnMenu.addEventListener('click', () => {
+    menu.classList.toggle('show');
+    const expanded = btnMenu.getAttribute('aria-expanded') === 'true';
+    btnMenu.setAttribute('aria-expanded', !expanded);
+  });
+}
