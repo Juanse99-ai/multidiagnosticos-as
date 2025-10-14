@@ -537,7 +537,7 @@ h3 { font-size: 1.4rem; margin-bottom: 0.3em; }
     width: 120px;
   }
 }
-/* ====== BOTÓN FLOTANTE WHATSAPP (imagen completa) ====== */
+/* ====== BOTÓN FLOTANTE WHATSAPP (imagen completa con animación) ====== */
 .wa-float {
   position: fixed;
   right: 20px;
@@ -546,6 +546,7 @@ h3 { font-size: 1.4rem; margin-bottom: 0.3em; }
   display: inline-block;
   text-decoration: none;
   transition: transform 0.25s ease, opacity 0.25s ease;
+  animation: pulse 2.5s infinite ease-in-out;
 }
 
 .wa-img {
@@ -557,6 +558,23 @@ h3 { font-size: 1.4rem; margin-bottom: 0.3em; }
 .wa-float:hover {
   transform: scale(1.05);
   opacity: 0.95;
+  animation: none; /* detiene la animación al pasar el mouse */
+}
+
+/* Animación de “latido” */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+  }
+  50% {
+    transform: scale(1.06);
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+  }
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+  }
 }
 
 @media (max-width: 600px) {
