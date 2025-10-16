@@ -1,3 +1,42 @@
+/* ===== PROMO RIBBON (marquesina) ===== */
+.promo-ribbon{
+  background: var(--brand-blue);
+  color:#fff;
+  font-weight:600;
+  font-size:14px;
+}
+
+.promo-track{
+  overflow:hidden;
+  white-space:nowrap;
+  height:36px;
+  line-height:36px;
+  position:relative;
+}
+
+.promo-inner{
+  display:flex;
+  gap:48px;
+  align-items:center;
+  padding-inline:24px;
+  will-change: transform;
+  animation: promo-marquee 28s linear infinite;
+}
+
+.promo-inner span{ display:inline-block; }
+
+.promo-inner:hover{ animation-play-state: paused; }
+
+/* Scroll continuo: desplazo la mitad porque duplicamos los spans */
+@keyframes promo-marquee{
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Accesibilidad: si el usuario pide menos movimiento */
+@media (prefers-reduced-motion: reduce){
+  .promo-inner{ animation: none; }
+}
 /* ========= FUENTES GAULTIER ========= */
 @font-face {
   font-family: 'Gaultier Mono';
