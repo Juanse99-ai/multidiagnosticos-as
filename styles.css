@@ -1,143 +1,135 @@
-@font-face {
-  font-family: 'Gaultier Mono';
-  src: url('assets/gaultier-mono-400.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
+/* =============================
+   FUENTES GAULTIER
+   ============================= */
+@font-face{
+  font-family:'Gaultier Mono';
+  src:url('assets/gaultier-mono-400.woff2') format('woff2');
+  font-weight:400; font-style:normal; font-display:swap;
 }
-@font-face {
-  font-family: 'Gaultier Display';
-  src: url('assets/gaultier-display-800.woff2') format('woff2');
-  font-weight: 800;
-  font-style: normal;
-}
-
-/* Variables */
-:root {
-  --brand-blue: #0B3D91;
-  --brand-red: #E1122A;
-  --bg: #fff;
-  --text: #00132c;
+@font-face{
+  font-family:'Gaultier Display';
+  src:url('assets/gaultier-display-800.woff2') format('woff2');
+  font-weight:800; font-style:normal; font-display:swap;
 }
 
-/* Base */
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: 'Gaultier Mono', system-ui, sans-serif;
-  color: var(--text);
-  background: var(--bg);
-}
-h1, h2, h3, h4 {
-  font-family: 'Gaultier Display', sans-serif;
-  color: var(--brand-blue);
-}
-.container { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
-
-/* Header */
-.site-header {
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid #e0e0e0;
-  background: #fff;
-}
-.header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1180px;
-  padding: 10px 20px;
-}
-.brand img {
-  height: 64px;
-  width: auto;
-  display: block;
-  image-rendering: optimizequality;
+/* =============================
+   VARIABLES
+   ============================= */
+:root{
+  --brand-blue:#0B3D91; --brand-red:#E1122A;
+  --bg:#fff; --text:#0D1320; --muted:#5A6376;
+  --card:#F6F8FC; --stroke:#E5E9F2; --whatsapp:#25D366;
+  --radius:14px;
 }
 
-/* Promo ribbon */
-.promo-ribbon {
-  background: var(--brand-blue);
-  color: #fff;
-  font-size: 14px;
-  overflow: hidden;
-  height: 36px;
-  line-height: 36px;
-}
-.promo-track { white-space: nowrap; }
-.promo-inner {
-  display: flex;
-  gap: 50px;
-  animation: promo-marquee 25s linear infinite;
-}
-@keyframes promo-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+/* =============================
+   BASE
+   ============================= */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text)}
+body{font-family:'Gaultier Mono', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; line-height:1.5}
+h1,h2,h3,h4,h5,h6,.brand{font-family:'Gaultier Display','Gaultier Mono',sans-serif; letter-spacing:.5px; color:var(--brand-blue)}
+.container{max-width:1180px;margin:0 auto;padding:0 18px}
+a{color:var(--brand-blue);text-decoration:none}
+
+/* =============================
+   RIBBON PROMO (marquesina)
+   ============================= */
+.promo-ribbon{background:var(--brand-blue); color:#fff; border-bottom:1px solid rgba(255,255,255,.25)}
+.promo-track{display:flex; gap:48px; white-space:nowrap; overflow:hidden; padding:8px 0}
+.promo-slide{flex:0 0 auto; opacity:.95}
+@keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.promo-track{animation:marquee 22s linear infinite}
+@media (max-width:700px){ .promo-track{animation-duration:28s; gap:32px} }
+
+/* =============================
+   HEADER
+   ============================= */
+.site-header{position:sticky; top:0; z-index:50; background:#fff; border-bottom:1px solid var(--stroke)}
+.header-row{display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:16px; padding:10px 0}
+.brand img{height:48px; width:auto; display:block}
+.header-search{display:flex; gap:8px}
+.header-search input{flex:1; padding:10px 12px; border:1px solid var(--stroke); border-radius:10px}
+.btn{padding:12px 16px; border:1px solid transparent; border-radius:10px; font-weight:600; cursor:pointer}
+.btn-primary{background:var(--brand-blue); color:#fff}
+.btn-outline{background:#fff; border:1px solid #CFD7E6; color:#364155}
+
+/* Menú */
+.menu{display:flex; gap:18px; padding:10px 18px; border-top:1px solid var(--stroke)}
+.btn-menu{display:none; position:absolute; right:12px; top:12px; background:#fff; border:1px solid var(--stroke); border-radius:10px; padding:6px 10px}
+@media (max-width:900px){
+  .header-row{grid-template-columns:auto auto 1fr; gap:10px}
+  .header-search{grid-column:1/-1; order:3}
+  .menu{display:none; flex-direction:column; gap:8px}
+  .menu.open{display:flex}
+  .btn-menu{display:block}
 }
 
-/* Hero */
-.hero {
-  background: #f6f8fc;
-  padding: 60px 0;
-}
-.hero-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-}
-.hero img.mascota { max-width: 350px; }
+/* =============================
+   HERO
+   ============================= */
+.hero{background:linear-gradient(120deg, rgba(11,61,145,.06), rgba(225,34,42,.05)), #fff; border-bottom:1px solid var(--stroke)}
+.hero-inner{display:grid; grid-template-columns:1.2fr .8fr; gap:10px; align-items:center; padding:72px 0}
+.mascota{display:block; margin:40px auto; max-width:320px; height:auto; filter:drop-shadow(0 6px 16px rgba(0,0,0,.18))}
+.cta-row{display:flex; flex-wrap:wrap; gap:12px; margin-top:16px}
+@media (max-width:900px){ .hero-inner{grid-template-columns:1fr; padding:40px 0} }
 
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 6px;
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn-primary { background: var(--brand-blue); color: #fff; }
-.btn-outline { border: 1px solid var(--brand-blue); color: var(--brand-blue); }
+/* =============================
+   PROMOS
+   ============================= */
+.promos{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; padding:18px 0}
+.promo-card{border:1px solid var(--stroke); background:#fff; border-radius:var(--radius); overflow:hidden; min-height:140px}
+.promo-card img{width:100%; height:100%; object-fit:cover}
+@media (max-width:900px){ .promos{grid-template-columns:1fr} }
 
-/* Categorías */
-.cat-grid {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px 0;
-  flex-wrap: wrap;
-}
-.cat-grid div {
-  text-align: center;
-  width: 150px;
-}
-.cat-grid img {
-  width: 100%;
-  border-radius: 10px;
-}
+/* =============================
+   CATEGORÍAS RÁPIDAS
+   ============================= */
+.quickcats{display:grid; grid-template-columns:repeat(5,1fr); gap:14px; padding:10px 0}
+.qcat{display:grid; place-items:center; padding:14px; border:1px solid var(--stroke); border-radius:var(--radius); background:#fff}
+@media (max-width:900px){ .quickcats{grid-template-columns:repeat(2,1fr)} }
 
-/* WhatsApp float */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  z-index: 999;
-}
-.whatsapp-bubble {
-  background: #25D366;
-  color: #fff;
-  border-radius: 50px;
-  padding: 8px 14px;
-  font-size: 14px;
-  margin-left: 10px;
-}
-.whatsapp-avatar img { width: 50px; border-radius: 50%; }
+/* =============================
+   SECCIONES
+   ============================= */
+.section{padding:56px 0; border-top:1px solid var(--stroke)}
+.cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px}
+.card{background:var(--card); border:1px solid var(--stroke); border-radius:var(--radius); padding:18px}
 
-/* Responsive */
-@media (max-width: 768px) {
-  .hero-inner { flex-direction: column; text-align: center; }
-  .brand img { height: 48px; }
-}
+/* =============================
+   TIENDA
+   ============================= */
+.filters{display:flex; gap:10px; margin-bottom:12px}
+.filters input,.filters select{border:1px solid var(--stroke); border-radius:10px; padding:10px 12px}
+.products{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px}
+.product{background:#fff; border:1px solid var(--stroke); border-radius:var(--radius); padding:14px; display:flex; flex-direction:column; gap:10px}
+.product img{width:100%; height:180px; object-fit:contain; background:#fff}
+
+/* =============================
+   DRAWER CARRITO
+   ============================= */
+.drawer{position:fixed; top:0; right:-420px; height:100vh; width:360px; background:#fff; border-left:1px solid var(--stroke); transition:right .25s ease; z-index:60; display:flex; flex-direction:column; box-shadow:-8px 0 24px rgba(0,0,0,.06)}
+.drawer.open{right:0}
+.drawer-header{display:flex; justify-content:space-between; align-items:center; padding:16px; border-bottom:1px solid var(--stroke)}
+.drawer-body{padding:12px; overflow:auto; flex:1; display:flex; flex-direction:column; gap:12px}
+.drawer-footer{padding:12px; border-top:1px solid var(--stroke); display:flex; justify-content:space-between; align-items:center}
+
+/* =============================
+   FOOTER
+   ============================= */
+.footer{border-top:1px solid var(--stroke); background:#fff}
+.footer-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; padding:24px 0}
+.footer-col ul{margin:0;padding-left:16px}
+.footer-sep{border:0;border-top:1px solid var(--stroke)}
+.sucursales{padding:10px 0}
+.footer-bottom{padding:12px 0; color:#5a667e}
+@media (max-width:900px){ .footer-grid{grid-template-columns:1fr 1fr} }
+
+/* =============================
+   WHATSAPP FLOTANTE
+   ============================= */
+.whatsapp-float{position:fixed; right:18px; bottom:18px; z-index:70; display:flex; align-items:center; gap:10px; text-decoration:none}
+.whatsapp-avatar{width:58px; height:58px; border-radius:50%; overflow:hidden; box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.whatsapp-avatar img{width:100%; height:100%; object-fit:cover}
+.whatsapp-bubble{display:flex; gap:10px; align-items:center; background:var(--whatsapp); color:#fff; padding:10px 12px; border-radius:999px; box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.whatsapp-bubble img{width:22px; height:22px}
