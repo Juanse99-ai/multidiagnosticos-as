@@ -175,10 +175,11 @@ h1, h2, h3, h4, h5, h6,
   letter-spacing: .4px;
 }
 
-/* Logo nítido, sin deformación */
+/* Logo nítido sin deformación */
+.site-header .brand img,
 .topbar .brand img,
 header .brand img {
-  height: 56px;           /* ajusta 48–64px a tu gusto */
+  height: 56px;
   width: auto;
   display: block;
   image-rendering: -webkit-optimize-contrast;
@@ -186,6 +187,7 @@ header .brand img {
 }
 
 @media (max-width: 640px) {
+  .site-header .brand img,
   .topbar .brand img,
   header .brand img {
     height: 48px;
