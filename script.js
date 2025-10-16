@@ -12,6 +12,14 @@ if (btnMenu && menu) {
 const y = document.getElementById('year');
 if (y) y.textContent = new Date().getFullYear();
 
+/* ===== IMAGEN AUTOMÁTICA SEGÚN MARCA ===== */
+function brandImageFromName(name = "") {
+  const n = name.toLowerCase();
+  if (n.includes("tudor")) return "assets/products/tudor.png";
+  if (n.includes("bosch")) return "assets/products/bosch.png";
+  return "assets/products/generic.png";
+}
+
 /* ===== CARRITO ===== */
 const cart = [];
 const cartCount = document.getElementById('cartCount');
@@ -85,11 +93,19 @@ function matches(p){
   const catOk = !c || (p.category===c);
   return hit && catOk;
 }
+/* ===== IMAGEN AUTOMÁTICA SEGÚN MARCA ===== */
+function brandImageFromName(name = "") {
+  const n = name.toLowerCase();
+  if (n.includes("tudor")) return "assets/products/tudor.png";
+  if (n.includes("bosch")) return "assets/products/bosch.png";
+  return "assets/products/generic.png";
+}
+
 function renderProducts(){
   if(!productGrid) return;
   productGrid.innerHTML = '';
   PRODUCTS.filter(matches).forEach(p=>{
-    const img = p.image || brandPlaceholder(p.name);
+    const img = (p.image && p.image.trim()) ? p.image : brandImageFromName(p.name || "");
     const card = document.createElement('div');
     card.className = 'product';
     card.innerHTML = `
