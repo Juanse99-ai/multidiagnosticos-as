@@ -5,229 +5,196 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Multidiagnósticos AS • Taller y Autopartes</title>
 
-  <!-- SEO básico -->
-  <meta name="description" content="Multidiagnósticos AS: taller automotriz en Sabanalarga y tienda de autopartes. Agenda tu servicio o compra baterías, aceites, filtros, bujías y bobinas con garantía." />
-  <link rel="canonical" href="https://multidiagnosticosas.com/" />
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.ico" />
   <meta name="theme-color" content="#0B3D91" />
 
-  <!-- Open Graph / Twitter (sustituye og-hero.jpg cuando lo subas) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://multidiagnosticosas.com/" />
-  <meta property="og:title" content="Multidiagnósticos AS • Taller y Autopartes" />
-  <meta property="og:description" content="Diagnóstico experto y repuestos originales con garantía." />
-  <meta property="og:image" content="https://multidiagnosticosas.com/assets/og-hero.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-
   <!-- Estilos -->
-<link rel="stylesheet" href="styles.css?v=5" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="light">
 
-  <!-- Ribbon con movimiento -->
-<div class="promo-ribbon" aria-label="Promociones y anuncios">
-  <div class="promo-track">
-    <div class="promo-inner">
-      <span>🚚 Envío GRATIS desde $149.000</span>
-      <span>🛠️ Instalación en taller (con cita)</span>
-      <span>💬 Asesor por WhatsApp</span>
-
-      <!-- Duplicado para scroll contínuo -->
-      <span aria-hidden="true">🚚 Envío GRATIS desde $149.000</span>
-      <span aria-hidden="true">🛠️ Instalación en taller (con cita)</span>
-      <span aria-hidden="true">💬 Asesor por WhatsApp</span>
+  <!-- RIBBON PROMOS (marquesina) -->
+  <div class="promo-ribbon" aria-label="Promociones y anuncios">
+    <div class="promo-track">
+      <div class="promo-slide">🚚 Envío GRATIS desde $149.000</div>
+      <div class="promo-slide">🛠️ Instalación en taller (con cita)</div>
+      <div class="promo-slide">💬 Asesor por WhatsApp</div>
+      <!-- duplicadas para scroll continuo -->
+      <div class="promo-slide">🚚 Envío GRATIS desde $149.000</div>
+      <div class="promo-slide">🛠️ Instalación en taller (con cita)</div>
+      <div class="promo-slide">💬 Asesor por WhatsApp</div>
     </div>
   </div>
-</div>
-  
-  <!-- Header -->
-  <a class="brand" href="/">
-  <img
-    src="assets/logo.png"
-    srcset="assets/logo.png 1x, assets/logo@2x.png 2x"
-    alt="Multidiagnósticos AS"
-    width="240" height="64"
-    decoding="async"
-    fetchpriority="high"
-    style="height:auto;width:auto"
-  />
-</a>
+
+  <!-- HEADER -->
+  <header class="topbar site-header">
+    <div class="container header-row">
+      <a class="brand" href="#">
+        <!-- Usa SVG para máxima nitidez -->
+        <img src="assets/logo.svg" alt="Multidiagnósticos AS" />
+      </a>
 
       <!-- Buscador grande -->
-      <form class="header-search" id="headerSearch" role="search">
+      <form class="header-search" id="header-search" role="search">
         <input type="search" name="query" placeholder="Busca repuestos o servicios…" aria-label="Buscar" />
         <button type="submit" class="btn btn-primary">Buscar</button>
       </form>
 
-      <!-- Menú -->
-      <nav class="menu" id="menu" aria-label="Menú principal">
-        <a href="#servicios">Taller</a>
-        <a href="#catalogo">Autopartes</a>
-        <a href="#agenda">Agendar</a>
-        <a href="#blog">Blog</a>
-        <a href="#contacto">Contacto</a>
-        <button id="btnCart" class="btn btn-outline">Carrito (<span id="cartCount">0</span>)</button>
-      </nav>
-
-      <!-- Botón menú móvil -->
-      <button id="btnMenu" class="btn-menu" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">☰</button>
+      <!-- Botón carrito -->
+      <button id="btnCart" class="btn btn-outline">Carrito (<span id="cartCount">0</span>)</button>
     </div>
+
+    <!-- Menú principal -->
+    <nav class="menu" id="menu" aria-label="Menú principal">
+      <a href="#taller">Taller</a>
+      <a href="#catalogo">Autopartes</a>
+      <a href="#agenda">Agendar</a>
+      <a href="#blog">Blog</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- Botón menú móvil -->
+    <button id="btnMenu" class="btn-menu" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">☰</button>
   </header>
 
-  <!-- Hero -->
-  <section class="hero" aria-label="Destacados">
-    <div class="container hero-inner">
-      <div>
-        <h1>Diagnóstico experto y repuestos originales con garantía</h1>
-        <p>Agenda en línea o compra tus autopartes. Confirmación y asesoría por WhatsApp.</p>
-        <div class="cta-row">
-          <a href="#agenda" class="btn btn-primary">Agendar servicio</a>
-          <a href="#catalogo" class="btn btn-outline">Comprar repuestos</a>
-          <a class="btn btn-outline" href="https://wa.me/573003651525" target="_blank" rel="noopener">WhatsApp</a>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <h1>Diagnóstico experto y repuestos originales con garantía</h1>
+          <p>Agenda en línea o compra tus autopartes. Confirmación y asesoría por WhatsApp.</p>
+          <div class="cta-row">
+            <a href="#agenda" class="btn btn-primary">Agendar servicio</a>
+            <a href="#catalogo" class="btn btn-outline">Comprar repuestos</a>
+            <a class="btn btn-outline" href="https://wa.me/573003651525" target="_blank" rel="noopener">WhatsApp</a>
+          </div>
+        </div>
+        <img class="mascota" src="assets/mascota.png" alt="Mascota Multidiagnósticos AS" />
+      </div>
+    </section>
+
+    <!-- PROMOS (banners) -->
+    <section class="promos container">
+      <div class="promo-card"><img src="assets/banners/promo1.webp" alt="Promo 1" /></div>
+      <div class="promo-card"><img src="assets/banners/promo2.webp" alt="Promo 2" /></div>
+      <div class="promo-card"><img src="assets/banners/promo3.webp" alt="Promo 3" /></div>
+    </section>
+
+    <!-- CATEGORÍAS RÁPIDAS -->
+    <section class="quickcats container" id="taller">
+      <a class="qcat" href="#catalogo" data-cat="Baterías">Baterías</a>
+      <a class="qcat" href="#catalogo" data-cat="Aceites">Aceites</a>
+      <a class="qcat" href="#catalogo" data-cat="Filtros">Filtros</a>
+      <a class="qcat" href="#catalogo" data-cat="Bujías">Bujías</a>
+      <a class="qcat" href="#catalogo" data-cat="Bobinas">Bobinas</a>
+    </section>
+
+    <!-- SERVICIOS -->
+    <section id="servicios" class="section">
+      <div class="container">
+        <h2>Servicios de taller</h2>
+        <div class="cards">
+          <article class="card">
+            <h3>Cambio de aceite</h3>
+            <p>Incluye filtro y revisión.</p>
+          </article>
+          <article class="card">
+            <h3>Frenos</h3>
+            <p>Pastillas, discos y líquido.</p>
+          </article>
+          <article class="card">
+            <h3>Suspensión</h3>
+            <p>Amortiguadores y alineación.</p>
+          </article>
+          <article class="card">
+            <h3>Diagnóstico OBD-II</h3>
+            <p>Scanner y pruebas.</p>
+          </article>
         </div>
       </div>
-      <img class="mascota" src="assets/mascota.png" alt="Mascota Multidiagnósticos AS" />
-    </div>
+    </section>
 
-    <!-- 3 banners (cámbialos luego) -->
-    <div class="hero-banners">
-      <img src="assets/hero-1.jpg" alt="Promo 1">
-      <img src="assets/hero-2.jpg" alt="Promo 2">
-      <img src="assets/hero-3.jpg" alt="Promo 3">
-    </div>
-  </section>
-
-  <!-- Categorías rápidas -->
-  <section class="quick-cats" aria-label="Categorías destacadas">
-    <div class="container quick-cats-row">
-      <a class="qcat" href="#catalogo" data-cat="Baterías"><img src="assets/cat-bateria.svg" alt=""><span>Baterías</span></a>
-      <a class="qcat" href="#catalogo" data-cat="Aceites"><img src="assets/cat-aceite.svg" alt=""><span>Aceites</span></a>
-      <a class="qcat" href="#catalogo" data-cat="Filtros"><img src="assets/cat-filtro.svg" alt=""><span>Filtros</span></a>
-      <a class="qcat" href="#catalogo" data-cat="Bujías"><img src="assets/cat-bujia.svg" alt=""><span>Bujías</span></a>
-      <a class="qcat" href="#catalogo" data-cat="Bobinas"><img src="assets/cat-bobina.svg" alt=""><span>Bobinas</span></a>
-    </div>
-  </section>
-
-  <!-- Servicios -->
-  <section id="servicios" class="section">
-    <div class="container">
-      <h2>Servicios de taller</h2>
-      <div class="cards">
-        <article class="card"><h3>Cambio de aceite</h3><p>Incluye filtro y revisión.</p></article>
-        <article class="card"><h3>Frenos</h3><p>Pastillas, discos y líquido.</p></article>
-        <article class="card"><h3>Suspensión</h3><p>Amortiguadores y alineación.</p></article>
-        <article class="card"><h3>Diagnóstico OBD-II</h3><p>Scanner y pruebas.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- Wizard 3 pasos -->
-  <section class="wizard">
-    <div class="container wizard-row">
-      <div class="w-step"><span class="w-num">1</span><h4>Elige el servicio</h4><p>Aceite, frenos, suspensión o diagnóstico.</p></div>
-      <div class="w-step"><span class="w-num">2</span><h4>Selecciona fecha y hora</h4><p>Nos ajustamos a tu disponibilidad.</p></div>
-      <div class="w-step"><span class="w-num">3</span><h4>Confirmación por WhatsApp</h4><p>Recibe tu cita al instante.</p></div>
-      <a class="btn btn-primary" href="#agenda">Agendar ahora</a>
-    </div>
-  </section>
-
-  <!-- Tienda -->
-  <section id="catalogo" class="section">
-    <div class="container">
-      <h2>Tienda de Autopartes</h2>
-
-      <div class="filters">
-        <input id="q" placeholder="Buscar…" aria-label="Buscar en catálogo" />
-        <select id="cat" aria-label="Filtrar por categoría">
-          <option value="">Todas</option>
-          <option>Baterías</option>
-          <option>Aceites</option>
-          <option>Filtros</option>
-          <option>Bujías</option>
-          <option>Bobinas</option>
-        </select>
-      </div>
-
-      <div id="productGrid" class="products" role="list"></div>
-    </div>
-  </section>
-
-  <!-- Ofertas (promos dinámicas) -->
-  <section class="section" id="ofertas" aria-label="Ofertas">
-    <div class="container">
-      <h2>Ofertas</h2>
-      <div id="dealsGrid" class="products" role="list"></div>
-    </div>
-  </section>
-
-  <!-- Banda de marcas -->
-  <section class="brands" aria-label="Marcas que trabajamos">
-    <div class="container brands-row">
-      <img src="assets/brand-mobil.svg" alt="Mobil">
-      <img src="assets/brand-goodyear.svg" alt="Goodyear">
-      <img src="assets/brand-bosch.svg" alt="Bosch">
-      <img src="assets/brand-ngk.svg" alt="NGK">
-      <img src="assets/brand-acdelco.svg" alt="ACDelco">
-    </div>
-  </section>
-
-  <!-- Agendar -->
-  <section id="agenda" class="section">
-    <div class="container">
-      <h2>Agendar Servicio</h2>
-      <form id="bookForm" class="card">
-        <label>Servicio
-          <select id="bService" required>
-            <option value="">Selecciona…</option>
-            <option>Cambio de aceite</option>
-            <option>Revisión de frenos</option>
-            <option>Diagnóstico OBD-II</option>
+    <!-- TIENDA -->
+    <section id="catalogo" class="section">
+      <div class="container">
+        <h2>Tienda de Autopartes</h2>
+        <div class="filters">
+          <input id="q" placeholder="Buscar…" />
+          <select id="cat">
+            <option value="">Todas</option>
+            <option value="Baterías">Baterías</option>
+            <option value="Aceites">Aceites</option>
+            <option value="Filtros">Filtros</option>
+            <option value="Bujías">Bujías</option>
+            <option value="Bobinas">Bobinas</option>
           </select>
-        </label>
-
-        <div class="cards">
-          <label>Fecha <input id="bDate" type="date" required /></label>
-          <label>Hora <input id="bTime" type="time" required /></label>
         </div>
+        <div id="productGrid" class="products"></div>
+      </div>
+    </section>
 
-        <div class="cards">
-          <label>Placa <input id="bPlate" required /></label>
-          <label>Modelo <input id="bModel" required /></label>
-        </div>
+    <!-- AGENDA -->
+    <section id="agenda" class="section">
+      <div class="container">
+        <h2>Agendar Servicio</h2>
+        <form id="bookForm" class="card">
+          <label>Servicio
+            <select id="bService" required>
+              <option value="">Selecciona…</option>
+              <option>Cambio de aceite</option>
+              <option>Revisión de frenos</option>
+            </select>
+          </label>
 
-        <div class="cards">
-          <label>Nombre <input id="bName" required /></label>
-          <label>Teléfono <input id="bPhone" required /></label>
-        </div>
+          <div class="cards">
+            <label>Fecha <input id="bDate" type="date" required /></label>
+            <label>Hora <input id="bTime" type="time" required /></label>
+          </div>
 
-        <label>Notas <textarea id="bNotes" rows="3"></textarea></label>
+          <div class="cards">
+            <label>Placa <input id="bPlate" required /></label>
+            <label>Modelo <input id="bModel" required /></label>
+          </div>
 
-        <div class="cards">
-          <button type="submit" class="btn btn-primary">Confirmar por WhatsApp</button>
-          <button type="button" id="btnICS" class="btn btn-outline">Descargar .ics</button>
-        </div>
-      </form>
-    </div>
-  </section>
+          <div class="cards">
+            <label>Nombre <input id="bName" required /></label>
+            <label>Teléfono <input id="bPhone" required /></label>
+          </div>
 
-  <!-- Blog -->
-  <section id="blog" class="section">
-    <div class="container">
-      <h2>Blog</h2>
-      <div class="cards" id="blogList"></div>
-    </div>
-  </section>
+          <label>Notas
+            <textarea id="bNotes" rows="3"></textarea>
+          </label>
 
-  <!-- Contacto -->
-  <section id="contacto" class="section">
-    <div class="container">
-      <h2>Contacto</h2>
-      <p><strong>Multidiagnósticos AS</strong> — Sabanalarga, Atlántico •
-        <a href="tel:+573003651525">(+57) 300 365 1525</a>
-      </p>
-    </div>
-  </section>
+          <div class="cards">
+            <button type="submit" class="btn btn-primary">Confirmar por WhatsApp</button>
+            <button type="button" id="btnICS" class="btn btn-outline">Descargar .ics</button>
+          </div>
+        </form>
+      </div>
+    </section>
 
-  <!-- Drawer / Carrito -->
+    <!-- BLOG -->
+    <section id="blog" class="section">
+      <div class="container">
+        <h2>Blog</h2>
+        <div class="cards" id="blogList"></div>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+      <div class="container">
+        <h2>Contacto</h2>
+        <p><strong>Multidiagnósticos AS</strong> — Sabanalarga, Atlántico •
+          <a href="tel:+573003651525">(+57) 300 365 1525</a>
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <!-- CARRITO -->
   <aside id="cartDrawer" class="drawer" aria-hidden="true">
     <div class="drawer-header">
       <h3>Tu Carrito</h3>
@@ -240,16 +207,18 @@
     </div>
   </aside>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-
       <div class="footer-grid">
         <div class="footer-col">
           <h4>Acerca de Multidiagnósticos AS</h4>
           <p>Somos expertos en diagnóstico computarizado, mantenimiento automotriz y autopartes originales.</p>
           <div class="pay-badges">
-            <span class="pay">VISA</span><span class="pay">Mastercard</span><span class="pay">Stripe</span><span class="pay">PSE</span>
+            <span class="pay">VISA</span>
+            <span class="pay">Mastercard</span>
+            <span class="pay">Stripe</span>
+            <span class="pay">PSE</span>
           </div>
         </div>
 
@@ -265,7 +234,6 @@
         <div class="footer-col">
           <h4>Clientes</h4>
           <ul>
-            <li><a href="#pagos">Paga tus facturas</a></li>
             <li><a href="#contacto">Contáctenos</a></li>
             <li><a href="#politicas">Políticas y Términos</a></li>
           </ul>
@@ -274,7 +242,6 @@
         <div class="footer-col">
           <h4>Nuestros horarios de atención</h4>
           <p>Lunes a Viernes: 08:00 AM – 05:30 PM<br/>Sábado: 08:30 AM – 04:00 PM</p>
-
           <h4>Síguenos</h4>
           <div class="socials">
             <a href="#" aria-label="TikTok" title="TikTok">TikTok</a>
@@ -285,7 +252,6 @@
       </div>
 
       <hr class="footer-sep" />
-
       <div class="sucursales">
         <div class="sede">
           <span class="pin">📍</span>
@@ -295,38 +261,23 @@
 
       <div class="footer-bottom">
         <p>© <span id="year"></span> <strong>Multidiagnósticos AS</strong>. Todos los derechos reservados.</p>
-        <p>Creado por <a href="#" target="_blank" rel="noopener">Juan</a></p>
       </div>
-
     </div>
   </footer>
 
-  <!-- WhatsApp flotante (imagen completa) -->
-  <a
-    href="https://wa.me/573003651525?text=Hola%2C%20quisiera%20asesor%C3%ADa%20t%C3%A9cnica%20de%20Multidiagn%C3%B3sticos%20AS."
-    class="wa-float"
-    target="_blank"
-    rel="noopener"
-    aria-label="Asesor por WhatsApp"
-  >
-    <img src="assets/asesor-whatsapp.webp" alt="Recibe asesoría de un experto" class="wa-img" />
+  <!-- BOTÓN WHATSAPP FLOTANTE -->
+  <a href="https://wa.me/573003651525?text=Hola,%20quisiera%20recibir%20asesoría%20técnica%20de%20Multidiagnósticos%20AS."
+     class="whatsapp-float" target="_blank" rel="noopener">
+    <div class="whatsapp-avatar">
+      <img src="assets/asesor-whatsapp.webp" alt="Asesor Multidiagnósticos AS">
+    </div>
+    <div class="whatsapp-bubble">
+      <img src="assets/whatsapp-icon.svg" alt="WhatsApp">
+      <span>Recibe asesoría<br>de un experto</span>
+    </div>
   </a>
-
-  <!-- Barra fija móvil -->
-  <div class="sticky-cta" aria-label="Accesos rápidos en móvil">
-    <a href="#agenda">Agendar</a>
-    <a href="#catalogo">Autopartes</a>
-    <a href="https://wa.me/573003651525" target="_blank" rel="noopener">WhatsApp</a>
-  </div>
 
   <div id="overlay"></div>
   <script src="script.js"></script>
-
-  <!-- GA4 y Meta Pixel (opcional: agrega tus IDs) -->
-  <!--
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);} gtag('js',new Date()); gtag('config','G-XXXXXXXXXX');</script>
-  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','XXXXXXXXXXXX');fbq('track','PageView');</script>
-  -->
 </body>
 </html>
