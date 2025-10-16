@@ -1,8 +1,10 @@
-/* ====== FUENTES (opcional si ya lo tienes) ====== */
+/* ========= FUENTES (opcional) ========= */
+/*
 @font-face{font-family:'Gaultier Mono';src:url('assets/gaultier-mono-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:'Gaultier Display';src:url('assets/gaultier-display-800.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
+*/
 
-/* ====== VARIABLES ====== */
+/* ========= VARIABLES ========= */
 :root{
   --brand-blue:#0B3D91;
   --brand-red:#E1122A;
@@ -14,41 +16,52 @@
   --whatsapp:#25D366;
 }
 
-/* ====== BASE ====== */
+/* ========= BASE ========= */
 *{box-sizing:border-box}
-html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Gaultier Mono',system-ui,Arial,sans-serif;line-height:1.5}
-h1,h2,h3,h4,h5,h6,.brand{font-family:'Gaultier Display','Gaultier Mono',sans-serif;font-weight:800;letter-spacing:.5px;color:var(--brand-blue)}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;line-height:1.5}
+h1,h2,h3,h4,h5,h6,.brand{font-weight:800;letter-spacing:.3px;color:var(--brand-blue)}
 .container{max-width:1180px;margin:0 auto;padding:0 18px}
 a{text-decoration:none;color:var(--brand-blue)}
+img{max-width:100%;display:block}
 
-/* ====== RIBBON ====== */
-.promo-ribbon{background:var(--brand-blue);color:#fff}
-.promo-row{display:flex;gap:16px;justify-content:center;align-items:center;padding:6px 0;flex-wrap:wrap}
-.promo-row a{color:#fff;text-decoration:underline}
+/* ========= RIBBON con movimiento ========= */
+.promo-ribbon{background:var(--brand-blue);color:#fff;border-bottom:1px solid rgba(255,255,255,.25)}
+.promo-track{position:relative;overflow:hidden;white-space:nowrap}
+.promo-slide{display:inline-block;padding:8px 0;min-width:100%;will-change:transform}
+@keyframes slideX{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-100%)}
+}
+.promo-track .promo-slide{animation:slideX 18s linear infinite}
+.promo-track .promo-slide:nth-child(2){animation-delay:9s}
+@media (prefers-reduced-motion: reduce){
+  .promo-track .promo-slide{animation:none}
+}
 
-/* ====== HEADER ====== */
-.topbar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--stroke)}
-.topbar .brand img{height:52px}
-.menu{display:flex;gap:14px;align-items:center}
-.btn-menu{display:none;margin-left:8px;border:1px solid var(--stroke);border-radius:10px;background:#fff;padding:8px 10px}
-.header-search{display:flex;gap:8px;align-items:center;max-width:600px;width:100%}
+/* ========= HEADER ========= */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--stroke)}
+.header-row{display:flex;align-items:center;gap:12px;padding:10px 0}
+.brand img{height:52px}
+.menu{display:flex;gap:12px;align-items:center}
+.menu a{padding:8px 10px;border-radius:10px;color:#2d3a57;font-weight:700}
+.menu a:hover{background:#f3f6ff}
+.btn-menu{display:none;margin-left:auto;border:1px solid var(--stroke);border-radius:10px;background:#fff;padding:8px 10px}
+.header-search{display:flex;gap:8px;align-items:center;max-width:560px;width:100%}
 .header-search input{flex:1;padding:12px 14px;border:1px solid var(--stroke);border-radius:12px}
-.header-search button{padding:12px 16px;border:0;border-radius:12px;background:var(--brand-blue);color:#fff;font-weight:800}
-
-/* ====== BOTONES ====== */
 .btn{padding:12px 16px;border:1px solid transparent;border-radius:12px;font-weight:800;cursor:pointer}
 .btn-primary{background:var(--brand-blue);color:#fff}
 .btn-outline{background:#fff;border-color:#CFD7E6;color:#23314f}
-.btn-primary:hover{filter:brightness(.95)}
+.btn-primary:hover{filter:brightness(.96)}
 
-/* ====== HERO ====== */
+/* ========= HERO ========= */
 .hero{background:linear-gradient(120deg, rgba(11,61,145,.06), rgba(225,34,42,.05)), #fff;border-bottom:1px solid var(--stroke)}
-.hero-inner{display:grid;grid-template-columns:1.2fr .8fr;gap:10px;align-items:center;padding:48px 0}
-.mascota{display:block;margin:0 auto;max-width:350px;width:100%;height:auto;filter:drop-shadow(0 4px 10px rgba(0,0,0,.2))}
-.hero-banners{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 18px 18px}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:10px;align-items:center;padding:42px 0}
+.mascota{margin:0 auto;max-width:340px;height:auto;filter:drop-shadow(0 6px 18px rgba(0,0,0,.18))}
+.cta-row{display:flex;gap:10px;flex-wrap:wrap}
+.hero-banners{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:10px 0 16px}
 .hero-banners img{width:100%;height:180px;object-fit:cover;border-radius:12px}
 
-/* ====== QUICK CATS ====== */
+/* ========= QUICK CATS ========= */
 .quick-cats{border-bottom:1px solid var(--stroke);background:#fff}
 .quick-cats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;padding:18px 0}
 .qcat{display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px;border:1px solid var(--stroke);border-radius:14px;background:#fff}
@@ -56,57 +69,65 @@ a{text-decoration:none;color:var(--brand-blue)}
 .qcat img{height:44px;width:auto}
 .qcat span{font-weight:800;color:#23314f}
 
-/* ====== SECCIONES ====== */
+/* ========= SECCIONES ========= */
 .section{padding:56px 0;border-top:1px solid var(--stroke)}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .card{background:var(--card);border:1px solid var(--stroke);border-radius:14px;padding:18px}
 
-/* ====== WIZARD ====== */
+/* ========= WIZARD ========= */
 .wizard{background:#f9fbff;border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke)}
 .wizard-row{display:grid;grid-template-columns:repeat(3,1fr) auto;gap:16px;align-items:center}
 .w-step{display:flex;flex-direction:column;gap:4px}
 .w-num{width:28px;height:28px;border-radius:999px;background:var(--brand-blue);color:#fff;display:grid;place-items:center;font-weight:800;margin-bottom:4px}
 
-/* ====== TIENDA ====== */
-.filters{display:flex;gap:8px;margin:8px 0 16px}
+/* ========= TIENDA ========= */
+.filters{display:flex;gap:8px;margin:8px 0 16px;flex-wrap:wrap}
 .filters input,.filters select{padding:10px 12px;border:1px solid var(--stroke);border-radius:10px}
 .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
 .product{background:#fff;border:1px solid var(--stroke);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
 .product img{width:100%;height:220px;object-fit:contain;border:1px dashed #e5e9f2;border-radius:10px;background:#fafbff}
 .price{font-weight:800}
 .qty{display:inline-flex;gap:8px;align-items:center;border:1px solid var(--stroke);padding:4px 8px;border-radius:8px}
+.is-sale{border-color:#FFD6D6}
+.badge-sale{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:#fff0f0;border:1px solid #ffc9c9;color:#c11010;font-weight:800;font-size:12px}
 
-/* ====== MARCAS ====== */
+/* ========= MARCAS ========= */
 .brands{border-top:1px solid var(--stroke);border-bottom:1px solid var(--stroke);background:#fff}
 .brands-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;align-items:center;justify-items:center;padding:18px 0}
 .brands-row img{max-height:28px;width:auto;filter:grayscale(100%) contrast(1.05)}
 
-/* ====== DRAWER (carrito) ====== */
+/* ========= DRAWER (carrito) ========= */
 .drawer{position:fixed;top:0;right:-420px;height:100vh;width:360px;background:#fff;border-left:1px solid var(--stroke);transition:right .25s ease;z-index:60;display:flex;flex-direction:column;box-shadow:-8px 0 24px rgba(0,0,0,.06)}
 .drawer.open{right:0}
 .drawer-header{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-bottom:1px solid var(--stroke)}
 .drawer-body{padding:12px;overflow:auto;flex:1;display:flex;flex-direction:column;gap:12px}
 .drawer-footer{padding:12px;border-top:1px solid var(--stroke);display:flex;justify-content:space-between;align-items:center}
+.cart-item{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;border:1px solid var(--stroke);border-radius:10px;padding:10px}
 
-/* ====== FOOTER ====== */
+/* ========= FOOTER ========= */
 .footer{border-top:1px solid var(--stroke);padding:24px 0;background:#fff}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
 .footer-sep{border:0;border-top:1px solid var(--stroke);margin:16px 0}
 .pay{display:inline-block;background:#f0f3ff;border:1px solid #dfe7ff;border-radius:8px;padding:6px 10px;margin:3px;font-weight:700}
 .footer-bottom{display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap}
 
-/* ====== WhatsApp flotante ====== */
-.whatsapp-float{position:fixed;right:16px;bottom:88px;z-index:75;display:block}
-.whatsapp-float img{height:84px;width:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.2))}
+/* ========= WhatsApp flotante ========= */
+.wa-float{position:fixed;right:16px;bottom:88px;z-index:75;display:block;animation:pulse 2.5s ease-in-out infinite}
+.wa-img{height:84px;width:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.2))}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
 
-/* ====== Sticky CTA móvil ====== */
+/* ========= Sticky CTA móvil ========= */
 .sticky-cta{display:none}
-@media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr;padding:28px 0}
-  .hero-banners{grid-template-columns:1fr;height:auto}
+
+/* ========= RESPONSIVE (Mobile-first) ========= */
+@media (max-width: 980px){
   .menu{display:none}
   .btn-menu{display:inline-block}
-  .header-search{order:3;margin:8px 0}
+  .header-search{order:3;width:100%;margin:8px 0}
+  .hero-inner{grid-template-columns:1fr;padding:28px 0;text-align:center}
+  .hero-banners{grid-template-columns:1fr}
+  .mascota{max-width:260px}
+
   .sticky-cta{
     position:fixed;left:0;right:0;bottom:0;z-index:70;background:#fff;border-top:1px solid var(--stroke);
     display:grid;grid-template-columns:repeat(3,1fr)
@@ -114,4 +135,5 @@ a{text-decoration:none;color:var(--brand-blue)}
   .sticky-cta a{padding:12px 0;text-align:center;font-weight:800;color:#23314f}
   .sticky-cta a:nth-child(1){background:#eef3ff}
   .sticky-cta a:nth-child(2){background:#eef8ff}
+  .wa-float{bottom:120px}
 }
