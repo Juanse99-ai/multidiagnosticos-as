@@ -15,9 +15,9 @@ if (y) y.textContent = new Date().getFullYear();
 /* ===== IMAGEN AUTOMÁTICA SEGÚN MARCA ===== */
 function brandImageFromName(name = "") {
   const n = name.toLowerCase();
-  if (n.includes("tudor")) return "assets/products/tudor.png";
-  if (n.includes("bosch")) return "assets/products/bosch.png";
-  return "assets/products/generic.png";
+  if (n.includes("tudor")) return "assets/products/tudor.png?v=4";
+  if (n.includes("bosch")) return "assets/products/bosch.png?v=4";
+  return "assets/products/generic.png?v=4";
 }
 
 /* ===== CARRITO ===== */
