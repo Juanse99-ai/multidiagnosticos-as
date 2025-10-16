@@ -5,39 +5,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Multidiagnósticos AS • Taller y Autopartes</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <!-- SEO básico -->
+  <meta name="description" content="Multidiagnósticos AS: taller automotriz en Sabanalarga y tienda de autopartes. Agenda tu servicio o compra baterías, aceites, filtros, bujías y bobinas con garantía." />
+  <link rel="canonical" href="https://multidiagnosticosas.com/" />
   <meta name="theme-color" content="#0B3D91" />
+
+  <!-- Open Graph / Twitter (sustituye og-hero.jpg cuando lo subas) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://multidiagnosticosas.com/" />
+  <meta property="og:title" content="Multidiagnósticos AS • Taller y Autopartes" />
+  <meta property="og:description" content="Diagnóstico experto y repuestos originales con garantía." />
+  <meta property="og:image" content="https://multidiagnosticosas.com/assets/og-hero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Estilos -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="light">
 
-  <!-- Cinta de promos -->
-  <div class="promo-ribbon">
-    <div class="container promo-row">
-      <span>🚚 Envío GRATIS desde $149.000</span>
-      <span>🛠️ Instalación en taller (con cita)</span>
-      <a href="https://wa.me/573003651525" target="_blank" rel="noopener">💬 Asesor por WhatsApp</a>
+  <!-- Ribbon con movimiento -->
+  <div class="promo-ribbon" aria-label="Promociones y anuncios">
+    <div class="promo-track">
+      <div class="promo-slide">
+        🚚 Envío GRATIS desde $149.000 &nbsp; • &nbsp; 🛠️ Instalación en taller (con cita) &nbsp; • &nbsp; 💬 Asesor por WhatsApp
+      </div>
+      <div class="promo-slide" aria-hidden="true">
+        🚚 Envío GRATIS desde $149.000 &nbsp; • &nbsp; 🛠️ Instalación en taller (con cita) &nbsp; • &nbsp; 💬 Asesor por WhatsApp
+      </div>
     </div>
   </div>
 
   <!-- Header -->
   <header class="topbar site-header">
-    <div class="container flex between center-v">
+    <div class="container header-row">
       <a class="brand" href="#">
         <img src="assets/logo.png" alt="Multidiagnósticos AS" />
       </a>
 
       <!-- Buscador grande -->
-      <form class="header-search" id="headerSearch">
+      <form class="header-search" id="headerSearch" role="search">
         <input type="search" name="query" placeholder="Busca repuestos o servicios…" aria-label="Buscar" />
-        <button type="submit">Buscar</button>
+        <button type="submit" class="btn btn-primary">Buscar</button>
       </form>
 
       <!-- Menú -->
-      <nav class="menu" id="menu">
+      <nav class="menu" id="menu" aria-label="Menú principal">
         <a href="#servicios">Taller</a>
         <a href="#catalogo">Autopartes</a>
         <a href="#agenda">Agendar</a>
@@ -51,11 +63,11 @@
     </div>
   </header>
 
-  <!-- Hero / Banner rotativo (puedes cambiar las 3 imágenes luego) -->
-  <section class="hero">
+  <!-- Hero -->
+  <section class="hero" aria-label="Destacados">
     <div class="container hero-inner">
       <div>
-        <h1>Diagnóstico automotriz experto y repuestos originales con garantía</h1>
+        <h1>Diagnóstico experto y repuestos originales con garantía</h1>
         <p>Agenda en línea o compra tus autopartes. Confirmación y asesoría por WhatsApp.</p>
         <div class="cta-row">
           <a href="#agenda" class="btn btn-primary">Agendar servicio</a>
@@ -66,6 +78,7 @@
       <img class="mascota" src="assets/mascota.png" alt="Mascota Multidiagnósticos AS" />
     </div>
 
+    <!-- 3 banners (cámbialos luego) -->
     <div class="hero-banners">
       <img src="assets/hero-1.jpg" alt="Promo 1">
       <img src="assets/hero-2.jpg" alt="Promo 2">
@@ -74,7 +87,7 @@
   </section>
 
   <!-- Categorías rápidas -->
-  <section class="quick-cats">
+  <section class="quick-cats" aria-label="Categorías destacadas">
     <div class="container quick-cats-row">
       <a class="qcat" href="#catalogo" data-cat="Baterías"><img src="assets/cat-bateria.svg" alt=""><span>Baterías</span></a>
       <a class="qcat" href="#catalogo" data-cat="Aceites"><img src="assets/cat-aceite.svg" alt=""><span>Aceites</span></a>
@@ -113,8 +126,8 @@
       <h2>Tienda de Autopartes</h2>
 
       <div class="filters">
-        <input id="q" placeholder="Buscar…" />
-        <select id="cat">
+        <input id="q" placeholder="Buscar…" aria-label="Buscar en catálogo" />
+        <select id="cat" aria-label="Filtrar por categoría">
           <option value="">Todas</option>
           <option>Baterías</option>
           <option>Aceites</option>
@@ -124,12 +137,20 @@
         </select>
       </div>
 
-      <div id="productGrid" class="products"></div>
+      <div id="productGrid" class="products" role="list"></div>
+    </div>
+  </section>
+
+  <!-- Ofertas (promos dinámicas) -->
+  <section class="section" id="ofertas" aria-label="Ofertas">
+    <div class="container">
+      <h2>Ofertas</h2>
+      <div id="dealsGrid" class="products" role="list"></div>
     </div>
   </section>
 
   <!-- Banda de marcas -->
-  <section class="brands">
+  <section class="brands" aria-label="Marcas que trabajamos">
     <div class="container brands-row">
       <img src="assets/brand-mobil.svg" alt="Mobil">
       <img src="assets/brand-goodyear.svg" alt="Goodyear">
@@ -197,7 +218,7 @@
   </section>
 
   <!-- Drawer / Carrito -->
-  <aside id="cartDrawer" class="drawer">
+  <aside id="cartDrawer" class="drawer" aria-hidden="true">
     <div class="drawer-header">
       <h3>Tu Carrito</h3>
       <button id="closeCart" aria-label="Cerrar carrito">×</button>
@@ -270,14 +291,19 @@
     </div>
   </footer>
 
-  <!-- WhatsApp flotante (asesor-badge.png) -->
-  <a href="https://wa.me/573003651525?text=Hola,%20quisiera%20asesoría%20técnica%20de%20Multidiagnósticos%20AS."
-     class="whatsapp-float" target="_blank" rel="noopener" aria-label="Asesor por WhatsApp">
-    <img src="assets/asesor-badge.png" alt="Recibe asesoría de un experto" />
+  <!-- WhatsApp flotante (imagen completa) -->
+  <a
+    href="https://wa.me/573003651525?text=Hola%2C%20quisiera%20asesor%C3%ADa%20t%C3%A9cnica%20de%20Multidiagn%C3%B3sticos%20AS."
+    class="wa-float"
+    target="_blank"
+    rel="noopener"
+    aria-label="Asesor por WhatsApp"
+  >
+    <img src="assets/asesor-whatsapp.webp" alt="Recibe asesoría de un experto" class="wa-img" />
   </a>
 
   <!-- Barra fija móvil -->
-  <div class="sticky-cta">
+  <div class="sticky-cta" aria-label="Accesos rápidos en móvil">
     <a href="#agenda">Agendar</a>
     <a href="#catalogo">Autopartes</a>
     <a href="https://wa.me/573003651525" target="_blank" rel="noopener">WhatsApp</a>
@@ -285,5 +311,12 @@
 
   <div id="overlay"></div>
   <script src="script.js"></script>
+
+  <!-- GA4 y Meta Pixel (opcional: agrega tus IDs) -->
+  <!--
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);} gtag('js',new Date()); gtag('config','G-XXXXXXXXXX');</script>
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','XXXXXXXXXXXX');fbq('track','PageView');</script>
+  -->
 </body>
 </html>
