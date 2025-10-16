@@ -14,7 +14,7 @@
   font-display: swap;
 }
 
-/* Variables para usar en cualquier sitio */
+/* Variables para tipografías */
 :root{
   --font-sans: 'Gaultier Mono', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
   --font-display: 'Gaultier Display', 'Gaultier Mono', Arial, sans-serif;
@@ -161,4 +161,25 @@ img{max-width:100%;display:block}
   .sticky-cta a:nth-child(1){background:#eef3ff}
   .sticky-cta a:nth-child(2){background:#eef8ff}
   .wa-float{bottom:120px}
+}
+
+/* ====== FORZAR TIPOGRAFÍAS ====== */
+html, body {
+  font-family: var(--font-sans) !important;
+}
+
+h1, h2, h3, h4, h5, h6,
+.brand, .hero h1, .section h2 {
+  font-family: var(--font-display) !important;
+  font-weight: 800 !important;
+  letter-spacing: .4px;
+}
+
+/* Logo con PNG, sin deformación */
+header .brand img,
+.topbar .brand img {
+  height: 56px;     /* ajusta 48–64px a tu gusto */
+  width: auto;
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
 }
