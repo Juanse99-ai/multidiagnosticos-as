@@ -1,18 +1,18 @@
-/* UTILIDAD: formato moneda */
+/* ===== Utilidades ===== */
 const money = n => n.toLocaleString('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0});
 
-/* MENÚ MÓVIL */
+/* ===== Menú móvil ===== */
 const btnMenu = document.getElementById('btnMenu');
 const menu = document.getElementById('menu');
 if (btnMenu && menu){
   btnMenu.addEventListener('click', ()=>{
-    const open = menu.style.display === 'flex';
+    const open = getComputedStyle(menu).display !== 'none';
     menu.style.display = open ? 'none' : 'flex';
-    btnMenu.setAttribute('aria-expanded', !open);
+    btnMenu.setAttribute('aria-expanded', String(!open));
   });
 }
 
-/* BUSCADOR HEADER sincroniza con tienda */
+/* ===== Buscador header → sincroniza con tienda ===== */
 const headerSearch = document.getElementById('headerSearch');
 if (headerSearch){
   headerSearch.addEventListener('submit', e=>{
@@ -25,7 +25,7 @@ if (headerSearch){
   });
 }
 
-/* CATEGORÍAS RÁPIDAS */
+/* ===== Quick categories ===== */
 document.querySelectorAll('.qcat').forEach(a=>{
   a.addEventListener('click', ()=>{
     const cat = a.getAttribute('data-cat');
@@ -34,23 +34,34 @@ document.querySelectorAll('.qcat').forEach(a=>{
   });
 });
 
-/* TIENDA: cargamos JSON */
+/* ===== Tienda desde JSON ===== */
 const grid = document.getElementById('productGrid');
+const dealsGrid = document.getElementById('dealsGrid');
 let PRODUCTS = [];
 let CART = [];
+
+function isOnSale(p){
+  if(!p.sale || !p.salePrice) return false;
+  const now = new Date();
+  const start = p.saleStart ? new Date(p.saleStart) : null;
+  const end   = p.saleEnd   ? new Date(p.saleEnd)   : null;
+  if(start && now < start) return false;
+  if(end && now > end) return false;
+  return true;
+}
 
 async function loadProducts(){
   try{
     const res = await fetch('products.json',{cache:'no-store'});
     PRODUCTS = await res.json();
     renderProducts();
+    renderDeals();
   }catch(e){
-    console.error('Error cargando productos.json', e);
+    console.error('Error cargando products.json', e);
     if (grid) grid.innerHTML = '<p>No se pudieron cargar los productos.</p>';
   }
 }
 
-/* RENDER DE PRODUCTOS con filtros */
 function renderProducts(){
   if (!grid) return;
   const q = (document.getElementById('q')?.value || '').toLowerCase();
@@ -62,22 +73,32 @@ function renderProducts(){
     return hitQ && hitC;
   });
 
-  grid.innerHTML = filtered.map(p=>`
-    <article class="product" data-id="${p.id}">
-      <strong>${p.name}</strong>
-      <img src="${p.image}" alt="${p.name}" onerror="this.src='assets/placeholder.png'">
-      <small>${p.desc || ''}</small>
-      <div><span class="price">${money(p.price)}</span></div>
-      <div class="qty">
-        <button type="button" data-step="-1">-</button>
-        <input type="number" value="1" min="1" style="width:54px">
-        <button type="button" data-step="1">+</button>
-      </div>
-      <button class="btn btn-primary add">Agregar al carrito</button>
-    </article>
-  `).join('');
+  grid.innerHTML = filtered.map(p=>{
+    const sale = isOnSale(p);
+    const priceHtml = sale
+      ? `<div><span class="price" style="color:#E1122A">${money(p.salePrice)}</span> 
+           <del style="color:#8A94A6;margin-left:6px">${money(p.price)}</del>
+           ${p.promoText ? `<span class="badge-sale">${p.promoText}</span>`:''}
+         </div>`
+      : `<div><span class="price">${money(p.price)}</span></div>`;
 
-  // qty handlers y add-to-cart
+    return `
+      <article class="product ${sale ? 'is-sale':''}" role="listitem" data-id="${p.id}">
+        <strong>${p.name}</strong>
+        <img src="${p.image}" alt="${p.name}" onerror="this.src='assets/placeholder.png'">
+        <small>${p.desc || ''}</small>
+        ${priceHtml}
+        <div class="qty">
+          <button type="button" data-step="-1" aria-label="Menos">-</button>
+          <input type="number" value="1" min="1" style="width:54px" aria-label="Cantidad">
+          <button type="button" data-step="1" aria-label="Más">+</button>
+        </div>
+        <button class="btn btn-primary add">Agregar al carrito</button>
+      </article>
+    `;
+  }).join('');
+
+  // qty + add
   grid.querySelectorAll('.product').forEach(card=>{
     const input = card.querySelector('input[type="number"]');
     card.querySelectorAll('button[data-step]').forEach(b=>{
@@ -95,11 +116,36 @@ function renderProducts(){
   });
 }
 
-/* EVENTOS FILTROS */
+function renderDeals(){
+  if (!dealsGrid) return;
+  const deals = PRODUCTS.filter(p=>isOnSale(p));
+  dealsGrid.innerHTML = deals.length ? deals.map(p=>`
+    <article class="product is-sale" role="listitem" data-id="${p.id}">
+      <strong>${p.name}</strong>
+      <img src="${p.image}" alt="${p.name}" onerror="this.src='assets/placeholder.png'">
+      <small>${p.desc||''}</small>
+      <div><span class="price" style="color:#E1122A">${money(p.salePrice)}</span>
+        <del style="color:#8A94A6;margin-left:6px">${money(p.price)}</del>
+        ${p.promoText?`<span class="badge-sale">${p.promoText}</span>`:''}
+      </div>
+      <button class="btn btn-primary add" data-id="${p.id}">Agregar al carrito</button>
+    </article>
+  `).join('') : '<p>Por ahora no hay ofertas activas.</p>';
+
+  // botones de deals agregan al carrito
+  dealsGrid.querySelectorAll('.add').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const id = btn.getAttribute('data-id');
+      addToCart(id, 1);
+    });
+  });
+}
+
+/* Filtros */
 document.getElementById('q')?.addEventListener('input', renderProducts);
 document.getElementById('cat')?.addEventListener('change', renderProducts);
 
-/* CARRITO */
+/* ===== Carrito ===== */
 const drawer = document.getElementById('cartDrawer');
 const btnCart = document.getElementById('btnCart');
 const closeCart = document.getElementById('closeCart');
@@ -127,7 +173,7 @@ function renderCart(){
       <div class="cart-item">
         <div><strong>${p.name}</strong><br><small>${money(p.price)} × ${i.qty}</small></div>
         <div>${money(subtotal)}</div>
-        <button data-id="${i.id}" class="btn btn-outline">✕</button>
+        <button data-id="${i.id}" class="btn btn-outline" aria-label="Eliminar">✕</button>
       </div>
     `;
   }).join('');
@@ -150,7 +196,7 @@ function renderCart(){
 
 /* WhatsApp checkout del carrito */
 document.getElementById('btnWhatsApp')?.addEventListener('click', ()=>{
-  if(!CART.length) return;
+  if(!CART.length) return alert('Tu carrito está vacío.');
   const lines = CART.map(i=>{
     const p = PRODUCTS.find(x=>x.id===i.id);
     return `• ${p.name} x${i.qty} = ${money(p.price*i.qty)}`;
@@ -160,16 +206,16 @@ document.getElementById('btnWhatsApp')?.addEventListener('click', ()=>{
   window.open(`https://wa.me/573003651525?text=${msg}`,'_blank');
 });
 
-/* FORM AGENDA -> WhatsApp */
+/* ===== Form agenda → WhatsApp ===== */
 document.getElementById('bookForm')?.addEventListener('submit', e=>{
   e.preventDefault();
-  const s = id=>document.getElementById(id).value;
-  const msg = `Hola, quiero agendar:%0A• Servicio: ${s('bService')}%0A• Fecha: ${s('bDate')}%0A• Hora: ${s('bTime')}%0A• Placa: ${s('bPlate')}%0A• Modelo: ${s('bModel')}%0A• Nombre: ${s('bName')}%0A• Teléfono: ${s('bPhone')}%0A• Notas: ${s('bNotes')||'-'}`;
+  const v = id => document.getElementById(id).value;
+  const msg = `Hola, quiero agendar:%0A• Servicio: ${v('bService')}%0A• Fecha: ${v('bDate')}%0A• Hora: ${v('bTime')}%0A• Placa: ${v('bPlate')}%0A• Modelo: ${v('bModel')}%0A• Nombre: ${v('bName')}%0A• Teléfono: ${v('bPhone')}%0A• Notas: ${v('bNotes')||'-'}`;
   window.open(`https://wa.me/573003651525?text=${msg}`,'_blank');
 });
 
-/* Año footer */
+/* ===== Año footer ===== */
 document.getElementById('year')?.append(new Date().getFullYear());
 
-/* Carga inicial */
+/* ===== Carga inicial ===== */
 loadProducts();
