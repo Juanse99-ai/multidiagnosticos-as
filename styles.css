@@ -175,11 +175,19 @@ h1, h2, h3, h4, h5, h6,
   letter-spacing: .4px;
 }
 
-/* Logo con PNG, sin deformación */
-header .brand img,
-.topbar .brand img {
-  height: 56px;     /* ajusta 48–64px a tu gusto */
+/* Logo nítido, sin deformación */
+.topbar .brand img,
+header .brand img {
+  height: 56px;           /* ajusta 48–64px a tu gusto */
   width: auto;
   display: block;
   image-rendering: -webkit-optimize-contrast;
+  image-rendering: optimizequality;
+}
+
+@media (max-width: 640px) {
+  .topbar .brand img,
+  header .brand img {
+    height: 48px;
+  }
 }
