@@ -6,60 +6,50 @@
   <title>Multidiagnósticos AS • Taller y Autopartes</title>
 
   <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="icon" href="/assets/logo.png" />
   <meta name="theme-color" content="#0B3D91" />
 
   <!-- Estilos -->
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/styles.css?v=7" />
 </head>
 <body class="light">
 
-  <!-- RIBBON PROMOS (marquesina) -->
-  <div class="promo-ribbon" aria-label="Promociones y anuncios">
+  <!-- Ribbon con movimiento -->
+  <div class="promo-ribbon" role="region" aria-label="Promociones y anuncios">
     <div class="promo-track">
-      <div class="promo-slide">🚚 Envío GRATIS desde $149.000</div>
-      <div class="promo-slide">🛠️ Instalación en taller (con cita)</div>
-      <div class="promo-slide">💬 Asesor por WhatsApp</div>
-      <!-- duplicadas para scroll continuo -->
       <div class="promo-slide">🚚 Envío GRATIS desde $149.000</div>
       <div class="promo-slide">🛠️ Instalación en taller (con cita)</div>
       <div class="promo-slide">💬 Asesor por WhatsApp</div>
     </div>
   </div>
 
-  <!-- HEADER -->
+  <!-- Header -->
   <header class="topbar site-header">
     <div class="container header-row">
-      <a class="brand" href="#">
-        <!-- Usa SVG para máxima nitidez -->
-        <img src="assets/logo.svg" alt="Multidiagnósticos AS" />
+      <a class="brand" href="/">
+        <img src="/assets/logo.png" alt="Multidiagnósticos AS" />
       </a>
 
-      <!-- Buscador grande -->
-      <form class="header-search" id="header-search" role="search">
-        <input type="search" name="query" placeholder="Busca repuestos o servicios…" aria-label="Buscar" />
-        <button type="submit" class="btn btn-primary">Buscar</button>
+      <form class="header-search" id="header-search" role="search" onsubmit="return false;">
+        <input type="search" id="q" name="query" placeholder="Busca repuestos o servicios…" aria-label="Buscar" />
+        <button type="button" id="searchBtn" class="btn btn-outline">Buscar</button>
       </form>
 
-      <!-- Botón carrito -->
-      <button id="btnCart" class="btn btn-outline">Carrito (<span id="cartCount">0</span>)</button>
+      <nav class="menu" id="menu" aria-label="Menú principal">
+        <a href="#servicios">Taller</a>
+        <a href="#catalogo">Autopartes</a>
+        <a href="#agenda">Agendar</a>
+        <a href="#blog">Blog</a>
+        <a href="#contacto">Contacto</a>
+        <button id="btnCart" class="btn btn-outline">Carrito (<span id="cartCount">0</span>)</button>
+      </nav>
+
+      <button id="btnMenu" class="btn-menu" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">☰</button>
     </div>
-
-    <!-- Menú principal -->
-    <nav class="menu" id="menu" aria-label="Menú principal">
-      <a href="#taller">Taller</a>
-      <a href="#catalogo">Autopartes</a>
-      <a href="#agenda">Agendar</a>
-      <a href="#blog">Blog</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-
-    <!-- Botón menú móvil -->
-    <button id="btnMenu" class="btn-menu" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">☰</button>
   </header>
 
   <main>
-    <!-- HERO -->
+    <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
         <div>
@@ -71,27 +61,31 @@
             <a class="btn btn-outline" href="https://wa.me/573003651525" target="_blank" rel="noopener">WhatsApp</a>
           </div>
         </div>
-        <img class="mascota" src="assets/mascota.png" alt="Mascota Multidiagnósticos AS" />
+        <img class="mascota" src="/assets/mascota.png" alt="Mascota Multidiagnósticos AS" />
       </div>
     </section>
 
-    <!-- PROMOS (banners) -->
-    <section class="promos container">
-      <div class="promo-card"><img src="assets/banners/promo1.webp" alt="Promo 1" /></div>
-      <div class="promo-card"><img src="assets/banners/promo2.webp" alt="Promo 2" /></div>
-      <div class="promo-card"><img src="assets/banners/promo3.webp" alt="Promo 3" /></div>
+    <!-- Promos (3 banners) -->
+    <section class="section">
+      <div class="container promo-cards">
+        <article class="promo-card"><h3>Promo 1</h3><img src="/assets/fondo-taller.webp" alt="" /></article>
+        <article class="promo-card"><h3>Promo 2</h3><img src="/assets/fondo-taller.webp" alt="" /></article>
+        <article class="promo-card"><h3>Promo 3</h3><img src="/assets/fondo-taller.webp" alt="" /></article>
+      </div>
     </section>
 
-    <!-- CATEGORÍAS RÁPIDAS -->
-    <section class="quickcats container" id="taller">
-      <a class="qcat" href="#catalogo" data-cat="Baterías">Baterías</a>
-      <a class="qcat" href="#catalogo" data-cat="Aceites">Aceites</a>
-      <a class="qcat" href="#catalogo" data-cat="Filtros">Filtros</a>
-      <a class="qcat" href="#catalogo" data-cat="Bujías">Bujías</a>
-      <a class="qcat" href="#catalogo" data-cat="Bobinas">Bobinas</a>
+    <!-- Accesos rápidos por categoría -->
+    <section class="section">
+      <div class="container quickcats">
+        <a class="quickcat" href="#catalogo" data-cat="Baterías">Baterías</a>
+        <a class="quickcat" href="#catalogo" data-cat="Aceites">Aceites</a>
+        <a class="quickcat" href="#catalogo" data-cat="Filtros">Filtros</a>
+        <a class="quickcat" href="#catalogo" data-cat="Bujías">Bujías</a>
+        <a class="quickcat" href="#catalogo" data-cat="Bobinas">Bobinas</a>
+      </div>
     </section>
 
-    <!-- SERVICIOS -->
+    <!-- Servicios -->
     <section id="servicios" class="section">
       <div class="container">
         <h2>Servicios de taller</h2>
@@ -116,12 +110,12 @@
       </div>
     </section>
 
-    <!-- TIENDA -->
+    <!-- Catálogo -->
     <section id="catalogo" class="section">
       <div class="container">
         <h2>Tienda de Autopartes</h2>
         <div class="filters">
-          <input id="q" placeholder="Buscar…" />
+          <input id="q2" placeholder="Buscar…" />
           <select id="cat">
             <option value="">Todas</option>
             <option value="Baterías">Baterías</option>
@@ -135,7 +129,7 @@
       </div>
     </section>
 
-    <!-- AGENDA -->
+    <!-- Agendar -->
     <section id="agenda" class="section">
       <div class="container">
         <h2>Agendar Servicio</h2>
@@ -148,17 +142,17 @@
             </select>
           </label>
 
-          <div class="cards">
+          <div class="cards two">
             <label>Fecha <input id="bDate" type="date" required /></label>
             <label>Hora <input id="bTime" type="time" required /></label>
           </div>
 
-          <div class="cards">
+          <div class="cards two">
             <label>Placa <input id="bPlate" required /></label>
             <label>Modelo <input id="bModel" required /></label>
           </div>
 
-          <div class="cards">
+          <div class="cards two">
             <label>Nombre <input id="bName" required /></label>
             <label>Teléfono <input id="bPhone" required /></label>
           </div>
@@ -167,7 +161,7 @@
             <textarea id="bNotes" rows="3"></textarea>
           </label>
 
-          <div class="cards">
+          <div class="cards two">
             <button type="submit" class="btn btn-primary">Confirmar por WhatsApp</button>
             <button type="button" id="btnICS" class="btn btn-outline">Descargar .ics</button>
           </div>
@@ -175,26 +169,18 @@
       </div>
     </section>
 
-    <!-- BLOG -->
-    <section id="blog" class="section">
-      <div class="container">
-        <h2>Blog</h2>
-        <div class="cards" id="blogList"></div>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
+    <!-- Contacto -->
     <section id="contacto" class="section">
       <div class="container">
         <h2>Contacto</h2>
-        <p><strong>Multidiagnósticos AS</strong> — Sabanalarga, Atlántico •
+        <p><strong>Multidiagnósticos AS</strong> — Cra. 27 #13-05, Sabanalarga – Atlántico •
           <a href="tel:+573003651525">(+57) 300 365 1525</a>
         </p>
       </div>
     </section>
   </main>
 
-  <!-- CARRITO -->
+  <!-- Drawer / Carrito -->
   <aside id="cartDrawer" class="drawer" aria-hidden="true">
     <div class="drawer-header">
       <h3>Tu Carrito</h3>
@@ -207,9 +193,10 @@
     </div>
   </aside>
 
-  <!-- FOOTER -->
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
+
       <div class="footer-grid">
         <div class="footer-col">
           <h4>Acerca de Multidiagnósticos AS</h4>
@@ -241,7 +228,11 @@
 
         <div class="footer-col">
           <h4>Nuestros horarios de atención</h4>
-          <p>Lunes a Viernes: 08:00 AM – 05:30 PM<br/>Sábado: 08:30 AM – 04:00 PM</p>
+          <p>
+            Lunes a Viernes: 08:00 AM – 05:30 PM<br />
+            Sábado: 08:30 AM – 04:00 PM
+          </p>
+
           <h4>Síguenos</h4>
           <div class="socials">
             <a href="#" aria-label="TikTok" title="TikTok">TikTok</a>
@@ -252,6 +243,7 @@
       </div>
 
       <hr class="footer-sep" />
+
       <div class="sucursales">
         <div class="sede">
           <span class="pin">📍</span>
@@ -265,19 +257,19 @@
     </div>
   </footer>
 
-  <!-- BOTÓN WHATSAPP FLOTANTE -->
-  <a href="https://wa.me/573003651525?text=Hola,%20quisiera%20recibir%20asesoría%20técnica%20de%20Multidiagnósticos%20AS."
-     class="whatsapp-float" target="_blank" rel="noopener">
+  <!-- Botón flotante WhatsApp (icono inline, sin archivo) -->
+  <a href="https://wa.me/573003651525?text=Hola,%20quisiera%20asesoría%20de%20Multidiagnósticos%20AS."
+     class="whatsapp-float" target="_blank" rel="noopener" aria-label="Recibe asesoría de un experto por WhatsApp">
     <div class="whatsapp-avatar">
-      <img src="assets/asesor-whatsapp.webp" alt="Asesor Multidiagnósticos AS">
+      <img src="/assets/asesor-whatsapp.webp" alt="Asesor" />
     </div>
     <div class="whatsapp-bubble">
-      <img src="assets/whatsapp-icon.svg" alt="WhatsApp">
+      <svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 2a10 10 0 0 0-8.94 14.5L2 22l5.64-1.48A10 10 0 1 0 12 2m0 2a8 8 0 0 1 6.92 12.08l-.3.49.18 1.03.29 1.64-1.67-.44-1.01-.27-.49.29A8 8 0 1 1 12 4m-3.12 3.5.5.01c.14 0 .34.01.53.4.21.4.68 1.32.73 1.41.06.1.1.22.02.36-.08.13-.12.21-.24.33-.12.12-.26.27-.37.36-.12.1-.25.21-.11.42.14.2.62 1.02 1.34 1.65.92.8 1.7 1.05 1.93 1.16.24.1.39.08.53-.05.15-.14.63-.59.8-.8.17-.21.34-.17.56-.1.23.08 1.44.68 1.69.8.25.13.42.19.48.29.06.1.06.59-.14 1.16-.19.56-1.12 1.05-1.54 1.09-.37.04-.83.05-1.34-.09-.31-.09-.68-.22-1.21-.44-2.14-.93-3.52-3.1-3.8-3.47-.28-.37-.9-1.2-.9-2.28 0-1.08.56-1.61.76-1.84.2-.23.45-.33.59-.33"/></svg>
       <span>Recibe asesoría<br>de un experto</span>
     </div>
   </a>
 
   <div id="overlay"></div>
-  <script src="script.js"></script>
+  <script src="/script.js?v=7" defer></script>
 </body>
 </html>
