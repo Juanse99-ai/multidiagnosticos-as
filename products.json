@@ -1,182 +1,20 @@
 [
-  {
-    "id": "bat-tudor-34rst950t",
-    "name": "BATERÍA TUDOR 34RST950T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "14188",
-    "price": 530000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 12V 34RST950T con alto rendimiento y libre de mantenimiento."
-  },
-  {
-    "id": "bat-bosch-aveo-captiva-mazda3",
-    "name": "BATERÍA BOSCH AVEO / CAPTIVA / MAZDA 3",
-    "category": "Baterías",
-    "brand": "BOSCH",
-    "model": "S4 62E-42-B-BSH",
-    "price": 430000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería BOSCH S4 compatible con Aveo, Captiva y Mazda 3."
-  },
-  {
-    "id": "bat-bosch-s4-duster-logan-gol",
-    "name": "BATERÍA BOSCH S4 DUSTER / LOGAN / GOL",
-    "category": "Baterías",
-    "brand": "BOSCH",
-    "model": "S4 62D-42-B-BSH",
-    "price": 450000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería BOSCH S4 diseñada para Duster, Logan y Gol."
-  },
-  {
-    "id": "bat-tudor-271150t",
-    "name": "BATERÍA TUDOR 271150T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "19645",
-    "price": 550000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 271150T con excelente potencia de arranque."
-  },
-  {
-    "id": "bat-tudor-27r1150t",
-    "name": "BATERÍA TUDOR 27R1150T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "27R1150T",
-    "price": 620000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 27R1150T para vehículos de alto consumo eléctrico."
-  },
-  {
-    "id": "bat-tudor-34rst1100t",
-    "name": "BATERÍA TUDOR 34RST1100T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "34RST1100T",
-    "price": 590000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 34RST1100T, confiable y duradera."
-  },
-  {
-    "id": "bat-tudor-34st950t",
-    "name": "BATERÍA TUDOR 34ST950T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "14178",
-    "price": 525000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 34ST950T libre de mantenimiento."
-  },
-  {
-    "id": "bat-tudor-35800t",
-    "name": "BATERÍA TUDOR 35800T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "17675",
-    "price": 490000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 35800T con excelente relación calidad-precio."
-  },
-  {
-    "id": "bat-tudor-36ist750t",
-    "name": "BATERÍA TUDOR 36IST750T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "17565",
-    "price": 360000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 36IST750T de gran rendimiento para autos medianos."
-  },
-  {
-    "id": "bat-tudor-42ist750t",
-    "name": "BATERÍA TUDOR 42IST750T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "42IST750T",
-    "price": 400000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 42IST750T ideal para uso urbano."
-  },
-  {
-    "id": "bat-tudor-42ist850t",
-    "name": "BATERÍA TUDOR 42IST850T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "19045",
-    "price": 470000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 42IST850T con potencia y durabilidad superior."
-  },
-  {
-    "id": "bat-tudor-47850t",
-    "name": "BATERÍA TUDOR 47850T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "47850T",
-    "price": 405000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 47850T libre de mantenimiento."
-  },
-  {
-    "id": "bat-tudor-48ist950t-polo",
-    "name": "BATERÍA TUDOR 48IST950T POLO D",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "17455",
-    "price": 490000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 48IST950T especial para VW Polo Diesel."
-  },
-  {
-    "id": "bat-tudor-48st950t",
-    "name": "BATERÍA TUDOR 48ST950T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "17465",
-    "price": 490000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor 48ST950T para autos con alta demanda eléctrica."
-  },
-  {
-    "id": "bat-tudor-ns40hdl670t",
-    "name": "BATERÍA TUDOR NS40HDL670T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "NS40HDL670T",
-    "price": 330000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor NS40HDL670T compacta y eficiente."
-  },
-  {
-    "id": "bat-tudor-ns40l670t",
-    "name": "BATERÍA TUDOR NS40L670T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "NS40L670T",
-    "price": 345000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor NS40L670T ideal para autos compactos."
-  },
-  {
-    "id": "bat-tudor-ns60700t",
-    "name": "BATERÍA TUDOR NS60700T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "NS60700T",
-    "price": 400000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor NS60700T de larga duración."
-  },
-  {
-    "id": "bat-tudor-ns60l700t",
-    "name": "BATERÍA TUDOR NS60L700T",
-    "category": "Baterías",
-    "brand": "TUDOR",
-    "model": "NS60L700T",
-    "price": 350000,
-    "image": "assets/placeholder.png",
-    "desc": "Batería Tudor NS60L700T con excelente arranque en frío."
-  }
+  {"sku":"14188","name":"BATERIA 34RST950T TUDOR","ref":"14188","price":530000,"category":"Baterías"},
+  {"sku":"S4-62E-42-B-BSH","name":"Bateria BOSCH AVEO CAPTIVA MAZDA 3 A","ref":"S4 62E-42-B-BSH","price":430000,"category":"Baterías"},
+  {"sku":"S4-62D-42-B-BSH","name":"BATERIA BOSCH S4 DUSTER-LOGAN-GOL-J","ref":"S4 62D-42-B-BSH","price":450000,"category":"Baterías"},
+  {"sku":"19645","name":"BATERIA TUDOR 271150T","ref":"19645","price":550000,"category":"Baterías"},
+  {"sku":"27R1150T","name":"BATERIA TUDOR 27R1150T","ref":"27R1150T","price":620000,"category":"Baterías"},
+  {"sku":"34RST1100T","name":"BATERIA TUDOR 34RST1100T","ref":"34RST1100T","price":590000,"category":"Baterías"},
+  {"sku":"14178","name":"BATERIA TUDOR 34ST950T TUDOR","ref":"14178","price":525000,"category":"Baterías"},
+  {"sku":"17675","name":"BATERIA TUDOR 35800T","ref":"17675","price":490000,"category":"Baterías"},
+  {"sku":"17565","name":"BATERIA TUDOR 36IST750T","ref":"17565","price":360000,"category":"Baterías"},
+  {"sku":"42IST750T","name":"BATERIA TUDOR 42IST750T","ref":"42IST750T","price":400000,"category":"Baterías"},
+  {"sku":"19045","name":"BATERIA TUDOR 42IST850T","ref":"19045","price":470000,"category":"Baterías"},
+  {"sku":"47850T","name":"BATERIA TUDOR 47850T","ref":"47850T","price":405000,"category":"Baterías"},
+  {"sku":"17455","name":"BATERIA TUDOR 48IST950T POLO D","ref":"17455","price":490000,"category":"Baterías"},
+  {"sku":"17465","name":"BATERIA TUDOR 48ST950T","ref":"17465","price":490000,"category":"Baterías"},
+  {"sku":"NS40HDL670T","name":"BATERIA TUDOR NS40HDL670T","ref":"NS40HDL670T","price":330000,"category":"Baterías"},
+  {"sku":"NS40L670T","name":"BATERIA TUDOR NS40L670T","ref":"NS40L670T","price":345000,"category":"Baterías"},
+  {"sku":"NS60700T","name":"BATERIA TUDOR NS60700T","ref":"NS60700T","price":400000,"category":"Baterías"},
+  {"sku":"NS60L700T","name":"BATERIA TUDOR NS60L700T","ref":"NS60L700T","price":350000,"category":"Baterías"}
 ]
