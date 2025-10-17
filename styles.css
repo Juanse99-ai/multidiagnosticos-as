@@ -126,67 +126,117 @@ img{max-width:100%;display:block}
   .header-search input[type=search]{max-width:100%}
 }
 
-/* ===== Footer nuevo tipo Energiteca ===== */
-.md-footer{
-  background:#0B3D91;
-  color:#fff;
-  margin-top:32px;
+/* ===== FOOTER MULTIDIAGNÓSTICOS AS ===== */
+.footer { 
+  background: #0B3D91;  /* Azul institucional */
+  color: #fff;
+  font-size: 14px;
 }
-.md-footer a{ color:#fff; text-decoration:none; }
-.md-footer a:hover{ text-decoration:underline; }
+.footer a { color: #fff; text-decoration: none; }
+.footer a:hover { text-decoration: underline; }
 
-.md-footer__inner{
-  display:grid;
+.md-footer__inner {
+  display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap:28px;
-  padding:36px 0 20px;
-  align-items:start;
+  gap: 32px;
+  padding: 36px 0 20px;
+  align-items: start;
 }
 
-/* Marca */
-.md-footer__logo{
-  height:42px; width:auto; display:block; margin-bottom:12px;
+.md-footer h4 {
+  font-size: 16px;
+  margin: 0 0 10px;
+  font-weight: 700;
+  letter-spacing: .3px;
+}
+
+.md-footer__logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  margin-bottom: 12px;
   filter: drop-shadow(0 2px 8px rgba(0,0,0,.22));
 }
-.md-footer__about{ margin:8px 0 12px; color: rgba(255,255,255,.9); }
 
-/* Medios de pago */
-.md-footer__payments{ display:flex; gap:8px; flex-wrap:wrap; margin:8px 0; }
-.md-footer__payments .pay{
-  background:#0e3ea8; color:#fff; border-radius:8px;
-  padding:6px 10px; font-size:.85rem; letter-spacing:.3px;
+.md-footer__about {
+  margin: 8px 0 14px;
+  color: rgba(255,255,255,.9);
+  line-height: 1.5;
 }
 
-/* Columnas */
-.md-footer__col h4.md-footer__title{ margin:0 0 12px; opacity:.92; }
-.md-footer__links{ list-style:none; padding:0; margin:0; display:grid; gap:8px; }
-.md-footer__links a{ opacity:.95; }
-.md-footer__links a:hover{ opacity:1; }
-
-/* Redes (íconos SVG) */
-.md-socials{ display:flex; gap:10px; align-items:center; margin-top:10px; }
-.md-socials__icon{
-  width:38px; height:38px; border-radius:999px;
-  display:grid; place-items:center;
-  background:rgba(255,255,255,.08);
-  box-shadow:0 3px 8px rgba(0,0,0,.12);
-  transition:transform .12s ease, background .2s ease;
+.pay-badges .pay {
+  display: inline-block;
+  background: #001b5e;
+  color: #fff;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin-right: 6px;
+  font-size: .85rem;
 }
-.md-socials__icon img{ width:22px; height:22px; filter: invert(1); }
-.md-socials__icon:hover{ transform:translateY(-2px); background:rgba(255,255,255,.12); }
 
-/* Separador y bottom */
-.md-footer__sep{ border:none; height:1px; background:rgba(255,255,255,.25); }
-.md-footer__bottom{
-  display:flex; align-items:center; justify-content:center;
-  padding:14px 0 22px; color: rgba(255,255,255,.75);
+/* Enlaces en columnas */
+.md-footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+.md-footer__links a {
+  opacity: .95;
+}
+.md-footer__links a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* Texto pequeño (dirección y horarios) */
+.md-footer__mini {
+  margin: 0 0 12px;
+  color: rgba(255,255,255,.9);
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+/* Redes sociales */
+.md-socials {
+  list-style: none;
+  display: flex;
+  gap: 12px;
+  padding: 0;
+  margin: 10px 0 0;
+}
+.md-socials__icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  filter: brightness(0) invert(1); /* Asegura que se vean blancos */
+}
+
+/* Separador y base */
+.footer-sep {
+  border: none;
+  height: 1px;
+  background: rgba(255,255,255,.25);
+  margin: 16px 0;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 0;
+}
+.footer-bottom p {
+  margin: 0;
+  color: rgba(255,255,255,.9);
 }
 
 /* Responsive */
-@media (max-width:980px){
-  .md-footer__inner{ grid-template-columns: 1fr 1fr; gap:22px; }
+@media (max-width: 980px) {
+  .md-footer__inner { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width:640px){
-  .md-footer__inner{ grid-template-columns: 1fr; }
-  .md-footer__bottom{ justify-content:center; text-align:center; }
+@media (max-width: 600px) {
+  .md-footer__inner { grid-template-columns: 1fr; }
+  .md-footer__brand { text-align: center; }
 }
