@@ -212,8 +212,6 @@ img{max-width:100%;display:block}
   width: 24px;
   height: 24px;
   display: block;
-  /* si el svg es negro, esto lo pinta blanco */
-  filter: brightness(0) invert(1);
 }
 
 /* Separador y base */
