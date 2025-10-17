@@ -32,17 +32,43 @@ a{text-decoration:none;color:var(--brand-blue)}
 img{max-width:100%;display:block}
 
 /* ============ RIBBON ============ */
-.promo-ribbon{background:var(--brand-blue);color:#fff}
-.promo-track{position:relative;overflow:hidden;white-space:nowrap}
-.promo-slide{display:inline-block;padding:8px 28px;min-width:100%;will-change:transform;animation:slidex 18s linear infinite}
-.promo-slide:nth-child(2){animation-delay:9s}
-@keyframes slidex{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-@media (prefers-reduced-motion:reduce){.promo-slide{animation:none}}
+.promo-ribbon{
+  background: var(--brand-blue);
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.25);
+  overflow: hidden;
+}
+.promo-track{
+  display:flex;
+  gap:48px;
+  white-space:nowrap;
+  align-items:center;
+  will-change: transform;
+  animation: promoMarquee 22s linear infinite;
+}
+.promo-slide{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:8px 0;
+}
+@keyframes promoMarquee{
+  0%{ transform: translateX(0); }
+  100%{ transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion:reduce){ .promo-track{ animation:none } }
 
 /* ============ HEADER ============ */
 .topbar{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--stroke)}
 .header-row{display:grid;grid-template-columns:auto 1fr auto auto;gap:12px;align-items:center;padding:10px 0}
-.brand img{height:46px;width:auto}
+.brand img{
+  height:64px; /* más grande */
+  width:auto;
+  transition: transform .25s ease, filter .25s ease;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.25));
+}
+.brand:hover img{ transform:scale(1.05); filter:drop-shadow(0 4px 4px rgba(0,0,0,.25)); }
 .btn-menu{display:none}
 
 .header-search{display:flex;gap:8px;align-items:center}
@@ -84,7 +110,15 @@ img{max-width:100%;display:block}
 .filters input, .filters select{padding:10px;border:1px solid var(--stroke);border-radius:10px}
 .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
 .product{background:#fff;border:1px solid var(--stroke);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px}
-.product img{width:100%;aspect-ratio:1.2/1;object-fit:contain;background:#f9fbff;border:1px dashed #e8eef7;border-radius:12px}
+.product img{
+  width:100%;
+  height:220px;          /* fijo, sin duplicados */
+  object-fit:contain;
+  background:#fff;
+  border:1px dashed #e8eef7;
+  border-radius:12px;
+}
+.product small{ color:#666 }
 
 /* ============ DRAWER ============ */
 .drawer{position:fixed;top:0;right:-420px;height:100vh;width:360px;background:#fff;border-left:1px solid var(--stroke);transition:right .25s ease;z-index:60;display:flex;flex-direction:column;box-shadow:-8px 0 24px rgba(0,0,0,.06)}
@@ -93,17 +127,34 @@ img{max-width:100%;display:block}
 .drawer-body{padding:12px;overflow:auto;flex:1;display:flex;flex-direction:column;gap:12px}
 .drawer-footer{padding:12px;border-top:1px solid var(--stroke);display:flex;justify-content:space-between;align-items:center}
 
-/* ============ FOOTER ============ */
-.footer{border-top:1px solid var(--stroke);padding:18px 0;color:#5a667e;background:#fff;margin-top:24px}
+/* ============ FOOTER (AZUL) ============ */
+.footer{
+  background: var(--brand-blue);
+  color:#fff;
+  border-top:1px solid rgba(255,255,255,.25);
+  padding:24px 0;
+  margin-top:24px;
+}
+.footer a{ color:#fff; text-decoration:underline; }
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:14px}
-.footer-sep{border:none;border-top:1px solid var(--stroke);margin:12px 0}
-.pay-badges .pay{display:inline-block;background:#111;color:#fff;padding:6px 10px;border-radius:8px;margin-right:6px;font-size:.85rem}
+.footer-sep{border:none;height:1px;background:rgba(255,255,255,.25);margin:12px 0}
+.pay-badges .pay{display:inline-block;background:#001b5e;color:#fff;padding:6px 10px;border-radius:8px;margin-right:6px;font-size:.85rem}
 
-/* ============ WHATSAPP FLOAT ============ */
-.whatsapp-float{position:fixed;right:18px;bottom:18px;z-index:70;display:flex;align-items:center;gap:10px;text-decoration:none}
-.whatsapp-avatar{width:56px;height:56px;border-radius:999px;overflow:hidden;box-shadow:0 6px 18px rgba(0,0,0,.15)}
-.whatsapp-bubble{display:flex;align-items:center;gap:10px;background:var(--whatsapp);color:#fff;padding:12px 16px;border-radius:999px;box-shadow:0 10px 24px rgba(0,0,0,.15)}
-.whatsapp-bubble span{font-weight:700}
+/* ============ WHATSAPP FLOAT (solo avatar) ============ */
+.whatsapp-float{
+  position:fixed; right:20px; bottom:20px;
+  display:flex; align-items:center; gap:12px;
+  z-index:70;
+  background: radial-gradient(circle at center, rgba(11,33,145,0.35), rgba(11,33,145,0.6));
+  border-radius:50%; padding:6px;
+  box-shadow:0 10px 24px rgba(0,0,0,.25);
+}
+.whatsapp-avatar{
+  width:72px; height:72px;
+  border-radius:999px; overflow:hidden;
+}
+.whatsapp-avatar img{ width:100%; height:100%; object-fit:cover; }
+.whatsapp-bubble{ display:none; } /* ocultamos globo verde */
 
 /* ============ RESPONSIVE ============ */
 @media (max-width:980px){
@@ -121,77 +172,4 @@ img{max-width:100%;display:block}
   .cards{grid-template-columns:1fr}
   .quickcats{grid-template-columns:1fr 1fr}
   .header-search input[type=search]{max-width:100%}
-}
-
-/* =========================
-   PROMO RIBBON (sin saltos)
-   ========================= */
-.promo-ribbon{
-  background: var(--brand-blue);
-  color:#fff;
-  border-bottom:1px solid rgba(255,255,255,.25);
-  overflow: hidden;
-}
-.promo-track{
-  display:flex;
-  gap:48px;
-  white-space:nowrap;
-  align-items:center;
-  will-change: transform;
-  animation: promoMarquee 22s linear infinite;
-}
-.promo-slide{
-  flex:0 0 auto;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding:8px 0;
-}
-@keyframes promoMarquee{
-  0%{ transform: translateX(0); }
-  100%{ transform: translateX(-50%); }
-}
-
-/* =========================
-   FOOTER AZUL
-   ========================= */
-.footer{
-  background: var(--brand-blue);
-  color:#fff;
-}
-.footer a{ color:#fff; }
-.footer .footer-sep{ border:none; height:1px; background:rgba(255,255,255,.25); }
-.footer .pay{ background:#001b5e; color:#fff; border:0; }
-
-/* =========================
-   LOGO EN HEADER
-   ========================= */
-.site-header .brand img{ height:48px; width:auto; display:block; }
-
-/* =========================
-   WHATSAPP FLOTANTE
-   (solo avatar, sin globo verde)
-   ========================= */
-.whatsapp-float{
-  position:fixed; right:20px; bottom:20px;
-  display:flex; align-items:center; gap:12px;
-  z-index:60;
-}
-.whatsapp-avatar{
-  width:64px; height:64px;
-  border-radius:999px; overflow:hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,.15);
-}
-.whatsapp-avatar img{ width:100%; height:100%; object-fit:cover; }
-.whatsapp-bubble{ display:none; } /* ← ocultamos el globo verde */
-
-/* =========================
-   TARJETAS DE PRODUCTO
-   ========================= */
-.products img{
-  width:100%; height:160px;
-  object-fit:contain;
-  background:#fff;
-  border:1px solid var(--stroke);
-  border-radius:8px;
 }
