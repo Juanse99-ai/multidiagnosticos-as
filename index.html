@@ -5,18 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Multidiagnósticos AS • Taller y Autopartes</title>
 
-  <!-- Favicon -->
+  <!-- Favicon / PWA color -->
   <link rel="icon" href="/assets/logo.png" />
   <meta name="theme-color" content="#0B3D91" />
 
+  <!-- SEO básico -->
+  <meta name="description" content="Diagnóstico automotriz, mantenimiento y autopartes. Compra por WhatsApp o agenda tu servicio en Multidiagnósticos AS." />
+  <link rel="canonical" href="https://multidiagnosticos-as.vercel.app/" />
+
   <!-- Estilos -->
-  <link rel="stylesheet" href="/styles.css?v=7" />
+  <link rel="stylesheet" href="/styles.css?v=8" />
 </head>
 <body class="light">
 
   <!-- Ribbon con movimiento -->
   <div class="promo-ribbon" role="region" aria-label="Promociones y anuncios">
     <div class="promo-track">
+      <div class="promo-slide">🚚 Envío GRATIS desde $149.000</div>
+      <div class="promo-slide">🛠️ Instalación en taller (con cita)</div>
+      <div class="promo-slide">💬 Asesor por WhatsApp</div>
+      <!-- duplicadas para loop continuo -->
       <div class="promo-slide">🚚 Envío GRATIS desde $149.000</div>
       <div class="promo-slide">🛠️ Instalación en taller (con cita)</div>
       <div class="promo-slide">💬 Asesor por WhatsApp</div>
@@ -74,7 +82,7 @@
       </div>
     </section>
 
-    <!-- Accesos rápidos por categoría -->
+    <!-- Accesos rápidos -->
     <section class="section">
       <div class="container quickcats">
         <a class="quickcat" href="#catalogo" data-cat="Baterías">Baterías</a>
@@ -196,7 +204,6 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-
       <div class="footer-grid">
         <div class="footer-col">
           <h4>Acerca de Multidiagnósticos AS</h4>
@@ -228,44 +235,31 @@
 
         <div class="footer-col">
           <h4>Nuestros horarios de atención</h4>
-          <p>
-            Lunes a Viernes: 08:00 AM – 05:30 PM<br />
-            Sábado: 08:30 AM – 04:00 PM
-          </p>
-
+          <p>Lunes a Viernes: 08:00 AM – 05:30 PM<br />Sábado: 08:30 AM – 04:00 PM</p>
           <h4>Síguenos</h4>
           <div class="socials">
-            <a href="#" aria-label="TikTok" title="TikTok">TikTok</a>
-            <a href="#" aria-label="Facebook" title="Facebook">Facebook</a>
-            <a href="#" aria-label="Instagram" title="Instagram">Instagram</a>
+            <a href="#" title="TikTok">TikTok</a>
+            <a href="#" title="Facebook">Facebook</a>
+            <a href="#" title="Instagram">Instagram</a>
           </div>
         </div>
       </div>
 
       <hr class="footer-sep" />
-
-      <div class="sucursales">
-        <div class="sede">
-          <span class="pin">📍</span>
-          <strong>Sede Sabanalarga</strong> — Cra. 27 #13-05, Sabanalarga – Atlántico
-        </div>
-      </div>
-
       <div class="footer-bottom">
         <p>© <span id="year"></span> <strong>Multidiagnósticos AS</strong>. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
 
- <!-- BOTÓN FLOTANTE WHATSAPP (solo avatar) -->
-<a href="https://wa.me/573003651525?text=Hola,%20quisiera%20asesoría%20técnica"
-   class="whatsapp-float" target="_blank" rel="noopener">
-  <div class="whatsapp-avatar">
-    <img src="assets/asesor-whatsapp.webp" alt="Asesor Multidiagnósticos AS">
-  </div>
-</a>
+  <!-- BOTÓN FLOTANTE WHATSAPP (solo avatar, glow azul) -->
+  <a href="https://wa.me/573003651525?text=Hola,%20quisiera%20asesoría%20técnica"
+     class="whatsapp-float" target="_blank" rel="noopener">
+    <div class="whatsapp-avatar">
+      <img src="/assets/asesor-whatsapp.webp" alt="Asesor Multidiagnósticos AS">
+    </div>
+  </a>
 
-  <div id="overlay"></div>
-  <script src="/script.js?v=7" defer></script>
+  <script src="/script.js?v=8" defer></script>
 </body>
 </html>
