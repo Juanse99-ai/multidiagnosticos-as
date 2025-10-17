@@ -20,8 +20,8 @@ const productGrid = document.getElementById('productGrid');
 const q2 = document.getElementById('q2');     // input buscar…
 const catSel = document.getElementById('cat'); // select categorías
 
-// cache-buster para que Vercel no sirva el viejo
-const IMG_VER = 'v5';
+// cache-buster para imágenes (rompe caché CDN)
+const IMG_VER = 'v7';
 
 /* Normaliza rutas de imagen (admite absolutas o relativas) */
 function normImgUrl(u = '') {
@@ -34,7 +34,7 @@ function normImgUrl(u = '') {
   return '/' + u.replace(/^\.?\//, '') + (u.includes('?') ? '&' : '?') + IMG_VER;
 }
 
-/* Imagen automática por marca */
+/* Imagen automática por marca (y por si en el name viene la marca) */
 function brandImageFromName(name = '') {
   const n = (name || '').toLowerCase();
   if (n.includes('tudor')) return normImgUrl('assets/products/tudor.png');
@@ -88,6 +88,7 @@ function renderProducts() {
 async function loadProducts() {
   try {
     const res = await fetch('/products.json?' + IMG_VER, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     PRODUCTS = await res.json();
     renderProducts();
   } catch (e) {
@@ -99,11 +100,24 @@ async function loadProducts() {
 q2?.addEventListener('input', renderProducts);
 catSel?.addEventListener('change', renderProducts);
 
+// “accesos rápidos” arriba (Baterías, Aceites…) para filtrar directo
+document.querySelectorAll('.quickcat').forEach(a=>{
+  a.addEventListener('click', (ev)=>{
+    const cat = a.dataset.cat || '';
+    if (catSel) catSel.value = cat;
+    renderProducts();
+    // scroll suave a la tienda
+    document.getElementById('catalogo')?.scrollIntoView({behavior:'smooth', block:'start'});
+  });
+});
+
 // al cargar DOM, trae productos (si existe el grid)
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadProducts);
-} else {
-  loadProducts();
+if (productGrid) {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadProducts);
+  } else {
+    loadProducts();
+  }
 }
 
 /* =========================
