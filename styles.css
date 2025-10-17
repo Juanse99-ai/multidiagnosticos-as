@@ -240,3 +240,38 @@ img{max-width:100%;display:block}
   .md-footer__inner { grid-template-columns: 1fr; }
   .md-footer__brand { text-align: center; }
 }
+
+/* ===== Fix: colores y estilo en footer ===== */
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6 { 
+  color:#fff !important;
+}
+
+.footer a { 
+  color:#fff !important; 
+  text-decoration:none;
+}
+.footer a:hover { 
+  text-decoration:underline; 
+}
+
+/* Evita “pastillas” o fondos raros en los links del footer */
+.footer .md-footer__links a {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  display: inline;      /* no botón */
+}
+
+/* Iconos sociales */
+.md-socials__icon {
+  width: 24px;
+  height: 24px;
+  display: block;
+  filter: brightness(0) invert(1); /* blancos */
+}
