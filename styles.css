@@ -126,11 +126,11 @@ img{max-width:100%;display:block}
   .header-search input[type=search]{max-width:100%}
 }
 
-/* ===== Footer nuevo tipo Energiteca (estilo MD) ===== */
+/* ===== Footer nuevo tipo Energiteca ===== */
 .md-footer{
-  background:#0B3D91; /* azul marca */
+  background:#0B3D91;
   color:#fff;
-  margin-top: 32px;
+  margin-top:32px;
 }
 .md-footer a{ color:#fff; text-decoration:none; }
 .md-footer a:hover{ text-decoration:underline; }
@@ -138,71 +138,55 @@ img{max-width:100%;display:block}
 .md-footer__inner{
   display:grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 28px;
-  padding: 36px 0 20px;
-    align-items: start;
+  gap:28px;
+  padding:36px 0 20px;
+  align-items:start;
 }
 
-.md-footer__brand{}
+/* Marca */
 .md-footer__logo{
-  height: 42px; width:auto; display:block; margin-bottom:12px;
-  filter: drop-shadow(0 2px 8px rgba(0,0,0,.2));
+  height:42px; width:auto; display:block; margin-bottom:12px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,.22));
 }
-.md-footer__about{
-  margin: 8px 0 12px;
-  color: rgba(255,255,255,.9);
-}
+.md-footer__about{ margin:8px 0 12px; color: rgba(255,255,255,.9); }
 
-.md-footer__payments{
-  list-style:none; padding:0; margin:10px 0 0; display:flex; gap:8px; flex-wrap:wrap;
-}
+/* Medios de pago */
+.md-footer__payments{ display:flex; gap:8px; flex-wrap:wrap; margin:8px 0; }
 .md-footer__payments .pay{
-  display:inline-block; background:#001b5e; color:#fff; border-radius:8px;
+  background:#0e3ea8; color:#fff; border-radius:8px;
   padding:6px 10px; font-size:.85rem; letter-spacing:.3px;
 }
 
-.md-footer__col h4{
-  margin: 0 0 10px;
-  font-weight:800;
-  letter-spacing:.3px;
-}
+/* Columnas */
+.md-footer__col h4.md-footer__title{ margin:0 0 12px; opacity:.92; }
 .md-footer__links{ list-style:none; padding:0; margin:0; display:grid; gap:8px; }
-.md-footer__muted{ color: rgba(255,255,255,.8); }
+.md-footer__links a{ opacity:.95; }
+.md-footer__links a:hover{ opacity:1; }
 
-.md-socials{ display:flex; gap:12px; align-items:center; margin-top:6px; }
-.md-socials__link{
-  display:inline-flex; width:36px; height:36px; border-radius:999px;
-  align-items:center; justify-content:center; background:rgba(255,255,255,.08);
-  transition: transform .15s ease, background .15s ease;
+/* Redes (íconos SVG) */
+.md-socials{ display:flex; gap:10px; align-items:center; margin-top:10px; }
+.md-socials__icon{
+  width:38px; height:38px; border-radius:999px;
+  display:grid; place-items:center;
+  background:rgba(255,255,255,.08);
+  box-shadow:0 3px 8px rgba(0,0,0,.12);
+  transition:transform .12s ease, background .2s ease;
 }
-.md-socials__link:hover{ transform: translateY(-2px); background:rgba(255,255,255,.18); }
-.md-socials__icon{ width:20px; height:20px; display:block; }
+.md-socials__icon img{ width:22px; height:22px; filter: invert(1); }
+.md-socials__icon:hover{ transform:translateY(-2px); background:rgba(255,255,255,.12); }
 
-.md-footer__contact{ margin-top:14px; font-style:normal; }
-.md-footer__contact a{ text-decoration:underline; }
-
+/* Separador y bottom */
+.md-footer__sep{ border:none; height:1px; background:rgba(255,255,255,.25); }
 .md-footer__bottom{
-  border-top:1px solid rgba(255,255,255,.25);
-  margin-top: 18px;
-  background: rgba(0,0,0,.06);
-}
-.md-footer__bottom-inner{
-  padding:12px 0;
   display:flex; align-items:center; justify-content:center;
-  text-align:center;
+  padding:14px 0 22px; color: rgba(255,255,255,.75);
 }
 
 /* Responsive */
-@media (max-width: 980px){
-  .md-footer__inner{
-    grid-template-columns: 1fr 1fr;
-  }
+@media (max-width:980px){
+  .md-footer__inner{ grid-template-columns: 1fr 1fr; gap:22px; }
 }
-@media (max-width: 640px){
-  .md-footer__inner{
-    grid-template-columns: 1fr;
-  }
-  .md-footer__bottom-inner{
-    text-align:center; justify-content:center;
-  }
+@media (max-width:640px){
+  .md-footer__inner{ grid-template-columns: 1fr; }
+  .md-footer__bottom{ justify-content:center; text-align:center; }
 }
