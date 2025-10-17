@@ -18,12 +18,28 @@ const productGrid = document.getElementById('productGrid');
 const q2 = document.getElementById('q2');
 const catSel = document.getElementById('cat');
 
-/* Rutas de imagen automáticas por marca (usar rutas absolutas) */
+/* ---- Utilidades de imágenes ---- */
+const IMG_VER = 'v=4'; // cache-buster (sube el número si no ves cambios)
+
+/** Asegura ruta válida (absoluta) y agrega cache-buster */
+function normImgUrl(u = '') {
+  if (!u) return '';
+  // si es absoluta (http/https) o ya empieza en /
+  if (/^https?:\/\//i.test(u) || u.startsWith('/')) {
+    return u + (u.includes('?') ? '&' : '?') + IMG_VER;
+  }
+  // relativa -> a raíz del sitio
+  return '/' + u.replace(/^\.?\//, '') + (u.includes('?') ? '&' : '?') + IMG_VER;
+}
+
+/** Mapea imagen por marca (nombre + referencia) */
 function brandImageFromName(name = "") {
   const n = (name || "").toLowerCase();
-  if (n.includes("tudor")) return "/assets/products/tudor.png";
-  if (n.includes("bosch")) return "/assets/products/bosch.png";
-  return "/assets/products/generic.png";
+
+  if (/\btudor\b/.test(n))  return normImgUrl('assets/products/tudor.png');
+  if (/\bbosch\b/.test(n))  return normImgUrl('assets/products/bosch.png');
+
+  return normImgUrl('assets/products/generic.png');
 }
 
 /* Filtro de búsqueda/categoría */
@@ -39,16 +55,25 @@ function matches(p){
 function renderProducts(){
   if(!productGrid) return;
   productGrid.innerHTML = '';
+
   PRODUCTS.filter(matches).forEach(p=>{
-    const img = (p.image && p.image.trim()) ? p.image : brandImageFromName(p.name || "");
+    // Decide imagen: 1) p.image válida 2) marca por nombre/ref 3) genérica
+    const candidate = (p.image && String(p.image).trim())
+      ? normImgUrl(p.image.trim())
+      : brandImageFromName(`${p.name||''} ${p.ref||''}`);
+
     const card = document.createElement('div');
     card.className = 'product';
+
+    // Construimos el contenido
     card.innerHTML = `
-      <img src="${img}" alt="${p.name}" onerror="this.onerror=null;this.src='/assets/products/generic.png'">
+      <img src="${candidate}" alt="${p.name}"
+           onerror="this.onerror=null;this.src='/assets/products/generic.png?${IMG_VER}'">
       <div><strong>${p.name}</strong><br><small>${p.ref||""}</small></div>
       <div><strong>${fmt(p.price)}</strong></div>
       <button class="btn btn-primary">Agregar al carrito</button>
     `;
+
     // carrito
     card.querySelector('button').addEventListener('click',()=>{
       const found = cart.find(x=>x.sku===p.ref);
@@ -56,6 +81,7 @@ function renderProducts(){
       refreshCart();
       cartDrawer?.classList.add('open');
     });
+
     productGrid.appendChild(card);
   });
 }
@@ -70,7 +96,13 @@ async function loadProducts(){
 }
 q2?.addEventListener('input', renderProducts);
 catSel?.addEventListener('change', renderProducts);
-loadProducts();
+
+// Carga cuando el DOM está listo (por si el script carga en <head>)
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadProducts);
+} else {
+  loadProducts();
+}
 
 /* ====== CARRITO ====== */
 const cart = [];
