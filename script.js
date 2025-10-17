@@ -18,6 +18,44 @@ const productGrid = document.getElementById('productGrid');
 const q2 = document.getElementById('q2');
 const catSel = document.getElementById('cat');
 
+/* cache-buster para evitar caché del navegador */
+const IMG_VER = 'v6';
+
+/* Normaliza rutas de imagen:
+   - Reescribe '/assets/products/...png' -> '/assets/...png'
+   - Asegura slash inicial
+   - Agrega ?v= para romper caché */
+function normImgUrl(u = '') {
+  if (!u) return '';
+  let out = u.trim();
+
+  // si venía SIN slash inicial
+  if (!out.startsWith('/')) out = '/' + out;
+
+  // si apunta a la carpeta vieja, la reescribimos
+  out = out.replace('/assets/products/', '/assets/');
+
+  // agrega cache-buster
+  return out.includes('?') ? `${out}&${IMG_VER}` : `${out}?${IMG_VER}`;
+}
+
+/* Imagen automática por marca (Tudor/Bosch) */
+function brandImageFromName(name = '') {
+  const n = (name || '').toLowerCase();
+  if (n.includes('tudor')) return `/assets/tudor.png?${IMG_VER}`;
+  if (n.includes('bosch')) return `/assets/bosch.png?${IMG_VER}`;
+  return `/assets/generic.png?${IMG_VER}`;
+}
+
+/* Filtro de búsqueda/categoría */
+function matches(p){
+  const text = (q2?.value||'').toLowerCase();
+  const c = (catSel?.value||'');
+  const hit = !text || (p.name.toLowerCase().includes(text) || (p.ref||'').toLowerCase().includes(text));
+  const catOk = !c || (p.category===c);
+  return hit && catOk;
+}
+
 /* ---- Utilidades de imágenes ---- */
 const IMG_VER = 'v=4'; // cache-buster (sube el número si no ves cambios)
 
@@ -57,51 +95,34 @@ function renderProducts(){
   productGrid.innerHTML = '';
 
   PRODUCTS.filter(matches).forEach(p=>{
-    // Decide imagen: 1) p.image válida 2) marca por nombre/ref 3) genérica
-    const candidate = (p.image && String(p.image).trim())
-      ? normImgUrl(p.image.trim())
-      : brandImageFromName(`${p.name||''} ${p.ref||''}`);
+    // Imagen: usa la del producto o la de marca (Tudor/Bosch) ya normalizada
+    const img = (p.image && p.image.trim())
+      ? normImgUrl(p.image)
+      : brandImageFromName(p.name || "");
 
     const card = document.createElement('div');
     card.className = 'product';
-
-    // Construimos el contenido
     card.innerHTML = `
-      <img src="${candidate}" alt="${p.name}"
+      <img src="${img}" alt="${p.name}"
            onerror="this.onerror=null;this.src='/assets/products/generic.png?${IMG_VER}'">
-      <div><strong>${p.name}</strong><br><small>${p.ref||""}</small></div>
+      <div class="product-title">
+        <strong>${p.name}</strong><br><small>${p.ref || ''}</small>
+      </div>
       <div><strong>${fmt(p.price)}</strong></div>
       <button class="btn btn-primary">Agregar al carrito</button>
     `;
 
-    // carrito
-    card.querySelector('button').addEventListener('click',()=>{
-      const found = cart.find(x=>x.sku===p.ref);
-      if(found) found.qty++; else cart.push({sku:p.ref,name:p.name,ref:p.ref,price:p.price,qty:1});
+    // Carrito (solo 1 bloque, SIN duplicados)
+    card.querySelector('button').addEventListener('click', ()=>{
+      const found = cart.find(x => x.sku === p.ref);
+      if (found) found.qty++;
+      else cart.push({ sku:p.ref, name:p.name, ref:p.ref, price:p.price, qty:1 });
       refreshCart();
       cartDrawer?.classList.add('open');
     });
 
     productGrid.appendChild(card);
   });
-}
-
-/* Cargar JSON */
-async function loadProducts(){
-  try{
-    const res = await fetch('/products.json',{cache:'no-store'});
-    PRODUCTS = await res.json();
-    renderProducts();
-  }catch(e){ console.error('Error cargando productos', e); }
-}
-q2?.addEventListener('input', renderProducts);
-catSel?.addEventListener('change', renderProducts);
-
-// Carga cuando el DOM está listo (por si el script carga en <head>)
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', loadProducts);
-} else {
-  loadProducts();
 }
 
 /* ====== CARRITO ====== */
