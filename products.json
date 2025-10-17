@@ -1,7 +1,7 @@
 [
   {"sku":"14188","name":"BATERIA 34RST950T TUDOR","ref":"14188","price":530000,"category":"Baterías"},
-  {"sku":"S4-62E-42-B-BSH","name":"Bateria BOSCH AVEO CAPTIVA MAZDA 3 A","ref":"S4 62E-42-B-BSH","price":430000,"category":"Baterías"},
-  {"sku":"S4-62D-42-B-BSH","name":"BATERIA BOSCH S4 DUSTER-LOGAN-GOL-J","ref":"S4 62D-42-B-BSH","price":450000,"category":"Baterías"},
+  {"sku":"S4 62E-42-B-BSH","name":"Bateria BOSCH AVEO CAPTIVA MAZDA 3 A","ref":"S4 62E-42-B-BSH","price":430000,"category":"Baterías"},
+  {"sku":"S4 62D-42-B-BSH","name":"BATERIA BOSCH S4 DUSTER-LOGAN-GOL-J","ref":"S4 62D-42-B-BSH","price":450000,"category":"Baterías"},
   {"sku":"19645","name":"BATERIA TUDOR 271150T","ref":"19645","price":550000,"category":"Baterías"},
   {"sku":"27R1150T","name":"BATERIA TUDOR 27R1150T","ref":"27R1150T","price":620000,"category":"Baterías"},
   {"sku":"34RST1100T","name":"BATERIA TUDOR 34RST1100T","ref":"34RST1100T","price":590000,"category":"Baterías"},
