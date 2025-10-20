@@ -14,7 +14,24 @@
   <link rel="canonical" href="https://multidiagnosticos-as.vercel.app/" />
 
   <!-- Estilos -->
+</head>
   <link rel="stylesheet" href="/styles.css?v=8" />
+  <style>
+/* ===== Banner de Promos (único slider) ===== */
+.hero-slider{padding:16px 0 0}
+.hs{position:relative;overflow:hidden;border-radius:14px;background:#0b3d9110;border:1px solid #e5e9f2}
+.hs__track{position:relative;height:clamp(180px,28vw,420px)}
+.hs__slide{position:absolute;inset:0;opacity:0;transform:scale(1.02);transition:opacity .4s ease,transform .5s ease}
+.hs__slide.is-active{opacity:1;transform:scale(1)}
+.hs__slide img{width:100%;height:100%;object-fit:cover;display:block}
+.hs__arrow{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:999px;border:1px solid rgba(255,255,255,.6);background:rgba(0,0,0,.25);color:#fff;display:grid;place-items:center;cursor:pointer}
+.hs__arrow:hover{background:rgba(0,0,0,.35)}
+.hs__arrow.prev{left:10px}
+.hs__arrow.next{right:10px}
+.hs__dots{position:absolute;left:0;right:0;bottom:10px;display:flex;gap:8px;justify-content:center}
+.hs__dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.6);border:none;cursor:pointer}
+.hs__dot.is-active{width:22px;background:#fff}
+  </style>
 </head>
 <body class="light">
 
@@ -73,34 +90,15 @@
       </div>
     </section>
 
-    </section>
-
-<!-- ===== Banner Promocional ===== -->
-<section class="promo-banner">
-  <div class="promo-container container">
-    <div class="promo-text">
-      <h2>Promoción de la semana 🔧</h2>
-      <p>Descuentos en frenos, baterías y cambios de aceite. ¡Agenda o compra hoy!</p>
-      <div class="promo-buttons">
-        <a href="#catalogo" class="btn-promo">Ver repuestos</a>
-        <a href="#agenda" class="btn-promo-secondary">Agendar cita</a>
-      </div>
-    </div>
-    <div class="promo-image">
-      <img src="/assets/banner-autopartes.webp" alt="Promoción Multidiagnósticos AS">
-    </div>
-  </div>
-</section>
-
-<!-- Promos (3 banners) -->
-<section class="section">
-
-    <!-- Promos (3 banners) -->
-    <section class="section">
-      <div class="container promo-cards">
-        <article class="promo-card"><h3>Promo 1</h3><img src="/assets/fondo-taller.webp" alt="" /></article>
-        <article class="promo-card"><h3>Promo 2</h3><img src="/assets/fondo-taller.webp" alt="" /></article>
-        <article class="promo-card"><h3>Promo 3</h3><img src="/assets/fondo-taller.webp" alt="" /></article>
+    <!-- === Slider principal (único banner de promociones) === -->
+    <section class="hero-slider">
+      <div class="container">
+        <div class="hs" id="hs" aria-label="Promociones destacadas">
+          <button class="hs__arrow prev" aria-label="Anterior">‹</button>
+          <div class="hs__track" id="hsTrack"></div>
+          <button class="hs__arrow next" aria-label="Siguiente">›</button>
+          <div class="hs__dots" id="hsDots" role="tablist" aria-label="Paginación de promociones"></div>
+        </div>
       </div>
     </section>
 
@@ -325,6 +323,82 @@
     </div>
   </a>
 
+  <script>
+/* ===== Banner de Promos (único slider) ===== */
+(function(){
+  const IMGS = [
+    '/assets/banners/promo1.webp',
+    '/assets/banners/promo2.webp',
+    '/assets/banners/promo3.webp'
+  ];
+  const FALLBACK = '/assets/fondo-taller.webp';
+
+  const track = document.getElementById('hsTrack');
+  const dotsWrap = document.getElementById('hsDots');
+  const prev = document.querySelector('.hs__arrow.prev');
+  const next = document.querySelector('.hs__arrow.next');
+  if(!track) return;
+
+  const sources = IMGS.length ? IMGS : [FALLBACK];
+  sources.forEach((src, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'hs__slide';
+    const img = new Image();
+    img.src = src;
+    img.alt = 'Promoción ' + (i + 1);
+    img.loading = 'lazy';
+    slide.appendChild(img);
+    track.appendChild(slide);
+
+    const dot = document.createElement('button');
+    dot.className = 'hs__dot';
+    dot.setAttribute('aria-label', 'Ir a promoción ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i, true));
+    dotsWrap.appendChild(dot);
+  });
+
+  const slides = Array.from(track.children);
+  const dots = Array.from(dotsWrap.children);
+
+  let idx = 0;
+  let timer = null;
+  const DURATION = 4500;
+
+  function paint(){
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+  }
+  function goTo(n, stopAuto){
+    idx = (n + slides.length) % slides.length;
+    paint();
+    if(stopAuto) restart();
+  }
+  function nextSlide(){ goTo(idx + 1); }
+  function prevSlide(){ goTo(idx - 1); }
+
+  prev && prev.addEventListener('click', () => goTo(idx - 1, true));
+  next && next.addEventListener('click', () => goTo(idx + 1, true));
+
+  const slider = document.getElementById('hs');
+  function start(){ timer = setInterval(nextSlide, DURATION); }
+  function stop(){ clearInterval(timer); timer = null; }
+  function restart(){ stop(); start(); }
+
+  slider && slider.addEventListener('mouseenter', stop);
+  slider && slider.addEventListener('mouseleave', start);
+
+  // Gestos táctiles
+  let sx = 0;
+  slider && slider.addEventListener('touchstart', e => { sx = e.touches[0].clientX; stop(); }, {passive: true});
+  slider && slider.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 40) (dx < 0 ? nextSlide() : prevSlide());
+    start();
+  }, {passive: true});
+
+  paint(); start();
+})();
+  </script>
   <script src="/script.js?v=8" defer></script>
 </body>
 </html>
