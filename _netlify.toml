@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "http://www.multidiagnosticosas.com/*"
+  to = "https://multidiagnosticosas.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://multidiagnosticosas.com/*"
+  to = "https://multidiagnosticosas.com/:splat"
+  status = 301
+  force = true
