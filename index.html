@@ -6,8 +6,13 @@
     <title>Multidiagnósticos AS | Taller automotriz y Autopartes en Sabanalarga</title>
 
     <!-- Favicon / PWA color -->
-    <link rel="icon" href="/assets/logo.png" />
-    <meta name="theme-color" content="#0B3D91" />
+<!-- Favicon & app icons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<link rel="mask-icon" href="/assets/safari-pinned-tab.svg" color="#0B3D91">
+<!-- Fallback temporal -->
+<link rel="icon" href="/assets/logo.png">    <meta name="theme-color" content="#0B3D91" />
 
     <!-- SEO básico -->
     <meta name="description" content="Diagnóstico computarizado, mantenimiento automotriz y autopartes originales. Agenda tu servicio o compra online en Multidiagnósticos AS, Sabanalarga - Atlántico." />
@@ -19,13 +24,13 @@
     <meta property="og:title" content="Taller automotriz y Autopartes | Multidiagnósticos AS" />
     <meta property="og:description" content="Diagnóstico computarizado, mantenimiento y autopartes originales. Agenda o compra online." />
     <meta property="og:url" content="https://multidiagnosticosas.com/" />
-    <meta property="og:image" content="https://multidiagnosticosas.com/assets/og-cover.jpg" />
+    <meta property="og:image" content="https://multidiagnosticosas.com/assets/mascota.png" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Taller automotriz y Autopartes | Multidiagnósticos AS" />
     <meta name="twitter:description" content="Diagnóstico computarizado, mantenimiento y autopartes originales." />
-    <meta name="twitter:image" content="https://multidiagnosticosas.com/assets/og-cover.jpg" />
+    <meta name="twitter:image" content="https://multidiagnosticosas.com/assets/mascota.png" />
 
     <!-- Preload fuentes si existen -->
     <link rel="preload" href="/assets/gaultier-display-800.woff2" as="font" type="font/woff2" crossorigin>
@@ -69,9 +74,10 @@
       "@context": "https://schema.org",
       "@type": ["AutoRepair", "AutomotiveBusiness", "Store"],
       "name": "Multidiagnósticos AS",
-      "image": "https://multidiagnosticosas.com/assets/logo.png",
+      "image": "https://multidiagnosticosas.com/assets/mascota.png",
       "url": "https://multidiagnosticosas.com/",
       "telephone": "+57 300 365 1525",
+      "email": "mailto:contacto@multidiagnosticosas.com",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Cra. 27 #13-05",
@@ -108,12 +114,25 @@
       "@type": "Organization",
       "name": "Multidiagnósticos AS",
       "url": "https://multidiagnosticosas.com/",
-      "logo": "https://multidiagnosticosas.com/assets/logo.png",
+      "logo": "https://multidiagnosticosas.com/assets/mascota.png",
+      "email": "mailto:contacto@multidiagnosticosas.com",
       "sameAs": [
         "https://www.facebook.com/multidiagnosticosas",
         "https://www.instagram.com/multidiagnosticosas",
         "https://www.tiktok.com/@multidiagnosticosas"
       ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "Multidiagnósticos AS | Taller automotriz y Autopartes",
+      "url": "https://multidiagnosticosas.com/",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://multidiagnosticosas.com/assets/mascota.png"
+      }
     }
     </script>
   </head>
@@ -329,16 +348,41 @@
       </div>
     </section>
 
-    <!-- Contacto -->
-    <section id="contacto" class="section">
+    <!-- Marcas que vendemos (marquee) -->
+<section class="section brands">
   <div class="container">
-    <h2>Contacto</h2>
-    <p><strong>Multidiagnósticos AS</strong> — Cra. 27 #13-05, Sabanalarga – Atlántico</p>
-    <p>Tel: <a href="tel:+573003651525">(+57) 300 365 1525</a></p>
-    <p>Email: <a href="mailto:multidiagnosticosas@gmail.com">multidiagnosticosas@gmail.com</a></p>
+    <h2 class="visually-hidden">Marcas que vendemos</h2>
+    <div class="brands-marquee" aria-label="Marcas que vendemos">
+      <ul class="brands-track">
+        <li><img src="/assets/bosch.png" alt="Bosch"></li>
+        <li><img src="/assets/tudor.png" alt="Tudor"></li>
+        <li><img src="/assets/oil.png" alt="Lubricantes / Mobil"></li>
+        <li><img src="/assets/pads.png" alt="Frenos"></li>
+        <li><img src="/assets/generic.png" alt="Marca aliada"></li>
+        <!-- duplicados para loop continuo -->
+        <li aria-hidden="true"><img src="/assets/bosch.png" alt=""></li>
+        <li aria-hidden="true"><img src="/assets/tudor.png" alt=""></li>
+        <li aria-hidden="true"><img src="/assets/oil.png" alt=""></li>
+        <li aria-hidden="true"><img src="/assets/pads.png" alt=""></li>
+        <li aria-hidden="true"><img src="/assets/generic.png" alt=""></li>
+      </ul>
+    </div>
   </div>
 </section>
-  </main>
+
+<!-- Bloque SEO local -->
+<section class="section seo-text">
+  <div class="container">
+    <h2>Taller en Sabanalarga – diagnóstico y autopartes</h2>
+    <p>
+      En <strong>Multidiagnósticos AS</strong> ofrecemos servicio de <strong>taller en Sabanalarga</strong> con
+      diagnóstico computarizado, <strong>mantenimiento automotriz</strong>, cambio de aceite, frenos, suspensión
+      y escáner OBD-II. También vendemos <strong>autopartes originales</strong> con garantía: filtros, baterías, aceites,
+      bujías y bobinas. Visítanos en Cra. 27 #13-05, Sabanalarga – Atlántico o escríbenos a
+      <a href="mailto:contacto@multidiagnosticosas.com">contacto@multidiagnosticosas.com</a>.
+    </p>
+  </div>
+</section>
 
   <!-- Drawer / Carrito -->
   <aside id="cartDrawer" class="drawer" aria-hidden="true">
@@ -389,7 +433,7 @@
         <ul class="md-footer__links">
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#agenda">Agendar cita</a></li>
-          <li><a href="#contacto">Contáctenos</a></li>
+          <li><a href="mailto:contacto@multidiagnosticosas.com">Contáctenos</a></li>
           <li><a href="#politicas">Políticas y Términos</a></li>
           <li><a href="#blog">Blog</a></li>
         </ul>
@@ -398,14 +442,8 @@
       <!-- Columna 4 -->
       <div>
         <h4>Servicio y contacto</h4>
-        <p class="md-footer__mini">
-          Cra. 27 #13-05, Sabanalarga – Atlántico<br>
-          <a href="tel:+573003651525">(+57) 300 365 1525</a>
-        </p>
-        <p class="md-footer__mini">
-          Lunes a Viernes: 08:00 AM – 05:30 PM<br>
-          Sábado: 08:30 AM – 04:00 PM
-        </p>
+        <p class="md-footer__mini">Cra. 27 #13-05, Sabanalarga – Atlántico · <a href="tel:+573003651525">(+57) 300 365 1525</a></p>
+        <p class="md-footer__mini">Lunes a Viernes: 08:00 AM – 05:30 PM · Sábado: 08:30 AM – 04:00 PM</p>
 
 <h4>Síguenos</h4>
 <ul class="md-socials">
