@@ -83,6 +83,101 @@
       .footer .md-footer__mini{ margin: 4px 0; line-height: 1.45; }
       .footer .md-hours{ margin-top: 10px; }
     </style>
+    <style>
+      /* ===== Footer + grid 4 columnas (estilo AutoXpert) ===== */
+      .container {
+        max-width: 1200px;
+        margin-inline: auto;
+        padding-inline: 24px;
+      }
+
+      .footer {
+        background: #0B3D91;
+        color: #fff;
+      }
+
+      .md-footer {
+        padding-top: 36px; /* baja visualmente el bloque */
+      }
+
+      .md-footer__inner {
+        display: grid;
+        grid-template-columns: 1.25fr 1fr 1fr 1.25fr;
+        gap: 40px 32px;
+        align-items: start;
+      }
+
+      .md-footer__logo {
+        height: 48px;
+        width: auto;
+        margin: 0 0 12px;
+      }
+
+      .md-footer__about {
+        margin: 0 0 16px;
+        opacity: .95;
+      }
+
+      .md-footer__links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      .md-footer__links a {
+        color: #ffffff;
+        text-decoration: none;
+        opacity: .95;
+      }
+      .md-footer__links a:hover { text-decoration: underline; }
+
+      .md-footer__mini {
+        margin: 0;
+        line-height: 1.45;
+      }
+
+      .md-hours { margin-top: 10px; }
+
+      /* Redes sociales más grandes */
+      .md-socials {
+        list-style: none;
+        margin: 8px 0 0;
+        padding: 0;
+        display: flex;
+        gap: 14px;
+      }
+      .md-socials__icon {
+        width: 24px;
+        height: 24px;
+        display: block;
+        filter: brightness(1) saturate(1.1);
+      }
+
+      /* Separador y parte inferior */
+      .footer-sep {
+        border: 0;
+        border-top: 1px solid rgba(255,255,255,0.15);
+        margin: 28px 0 0;
+      }
+      .footer-bottom {
+        text-align: center;
+        padding: 16px 0 24px;
+        opacity: .95;
+        font-size: .95rem;
+        color: #fff;
+      }
+
+      /* Responsivo */
+      @media (max-width: 1024px) {
+        .md-footer__inner { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 640px) {
+        .md-footer__inner { grid-template-columns: 1fr; }
+        .brands-track { gap: 24px; justify-content: center; }
+      }
+    </style>
 
     <!-- JSON-LD: Negocio local -->
     <script type="application/ld+json">
