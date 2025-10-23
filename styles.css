@@ -193,26 +193,33 @@ img{max-width:100%;display:block}
 .md-footer__links a:hover { opacity: 1; }
 
 /* Texto pequeño (dirección y horarios) */
+/* Texto pequeño (dirección y horarios) */
 .md-footer__mini {
-  margin: 0 0 12px;
+  margin: 0 0 8px;                 /* compacidad consistente */
   color: rgba(255,255,255,.9);
-  line-height: 1.5;
-  font-size: 14px;
+  line-height: 1.55;
+  font-size: 15px;
+  display: block;                   /* asegura salto de línea por elemento */
 }
+.md-footer__mini + .md-footer__mini { margin-top: 4px; }  /* separa líneas seguidas */
 
+/* Redes sociales */
 /* Redes sociales */
 .md-socials {
   list-style: none;
   display: flex;
-  gap: 12px;
+  gap: 14px;
   padding: 0;
   margin: 10px 0 0;
 }
 .md-socials__icon {
-  width: 28px;
-  height: 28px;
+  width: 32px;   /* + tamaño de iconos */
+  height: 32px;
   display: block;
+  opacity: .95;
+  transition: transform .15s ease, opacity .15s ease;
 }
+.md-socials__icon:hover { transform: scale(1.06); opacity: 1; }
 
 /* Separador y base */
 .footer-sep {
@@ -313,13 +320,25 @@ img{max-width:100%;display:block}
   .promo-image img{ max-height:240px; }
 }
 /* ====== Carrusel de marcas (marquee) ====== */
-.brands-marquee{overflow:hidden;border:1px solid #e5e9f2;border-radius:12px;background:#0b3d910a;padding:10px}
+.brands-marquee{
+  overflow:hidden;
+  border:1px solid #e5e9f2;
+  border-radius:12px;
+  background:#0b3d910a;
+  padding:10px;
+  margin-bottom:24px; /* espacio entre marcas y footer */
+}
 .brands-track{display:flex;gap:48px;align-items:center;list-style:none;margin:0;padding:0;animation:brands-scroll 28s linear infinite}
 .brands-track li{flex:0 0 auto;filter:grayscale(20%);opacity:.9}
 .brands-track img{height:48px;width:auto;display:block}
 @keyframes brands-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .brands .container{overflow:hidden}
+.brands{ margin-bottom:24px; }
 .md-footer__mini{white-space:normal;}
+/* === Footer tune-ups (MD-AS) === */
+.md-footer__inner{ grid-template-columns: 2fr 1fr 1fr 1.2fr; } /* da más ancho a 'Servicio y contacto' */
+.footer .md-contact p, 
+.footer .md-hours p { margin: 0 0 6px; }
 @media (max-width:640px){.brands-track img{height:36px}.brands-track{gap:32px;animation-duration:24s}}
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;clip-path:inset(50%)}
 .seo-text h2{margin-bottom:8px}
