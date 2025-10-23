@@ -1,13 +1,5 @@
 {
   "version": 2,
-  "redirects": [
-    {
-      "source": "/",
-      "has": [{ "type": "host", "value": "www.multidiagnosticosas.com" }],
-      "destination": "https://multidiagnosticosas.com",
-      "permanent": true
-    }
-  ],
   "headers": [
     {
       "source": "/(.*)\\.(png|jpg|jpeg|webp|svg|gif|css|js|woff2)$",
