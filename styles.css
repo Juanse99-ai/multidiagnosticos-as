@@ -209,8 +209,8 @@ img{max-width:100%;display:block}
   margin: 10px 0 0;
 }
 .md-socials__icon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   display: block;
 }
 
@@ -235,6 +235,11 @@ img{max-width:100%;display:block}
 /* Forzar colores correctos en footer */
 .footer h1,.footer h2,.footer h3,.footer h4,.footer h5,.footer h6{color:#fff!important;}
 .footer a{color:#fff!important}
+
+/* === Footer tune-ups (MD-AS) === */
+.footer .container{max-width:1280px;}
+.md-footer{padding:40px 20px;}
+.md-hours .md-footer__mini{white-space:nowrap;}
 
 /* Responsive */
 @media (max-width: 980px) {
@@ -319,4 +324,4 @@ img{max-width:100%;display:block}
 .visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;clip-path:inset(50%)}
 .seo-text h2{margin-bottom:8px}
 .seo-text p{max-width:72ch;line-height:1.6}
-}
+
