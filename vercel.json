@@ -1,13 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Document</title>
-  <link rel="stylesheet" href="styles.css?v=20251023">
-</head>
-<body>
-  <h1>Hello World</h1>
-  <script src="script.js?v=20251023" defer></script>
-</body>
-</html>
+{
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        { "type": "host", "value": "multidiagnosticosas.com" }
+      ],
+      "destination": "https://www.multidiagnosticosas.com",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)\\.(?:png|jpg|jpeg|webp|svg|gif|css|js|woff2)$",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ]
+}
