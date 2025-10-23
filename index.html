@@ -67,6 +67,16 @@
     .hs__dot{width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.6);border:none;cursor:pointer}
     .hs__dot.is-active{width:22px;background:#fff}
     </style>
+    <!-- CSS inline: tira de marcas full‑width -->
+    <style>
+      .brands{padding:0;background:#0B3D91}
+      .brands .container{max-width:none;padding:0}
+      .brands-marquee{overflow:hidden}
+      .brands-track{display:flex;gap:64px;align-items:center;padding:18px 32px;animation:brands-scroll 25s linear infinite}
+      .brands-track li{list-style:none;flex:0 0 auto}
+      .brands-track img{height:42px;width:auto;display:block}
+      @keyframes brands-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    </style>
 
     <!-- JSON-LD: Negocio local -->
     <script type="application/ld+json">
@@ -348,41 +358,30 @@
       </div>
     </section>
 
-    <!-- Marcas que vendemos (marquee) -->
-<section class="section brands">
-  <div class="container">
-    <h2 class="visually-hidden">Marcas que vendemos</h2>
-    <div class="brands-marquee" aria-label="Marcas que vendemos">
-      <ul class="brands-track">
-        <li><img src="/assets/bosch.png" alt="Bosch"></li>
-        <li><img src="/assets/tudor.png" alt="Tudor"></li>
-        <li><img src="/assets/oil.png" alt="Lubricantes / Mobil"></li>
-        <li><img src="/assets/pads.png" alt="Frenos"></li>
-        <li><img src="/assets/generic.png" alt="Marca aliada"></li>
-        <!-- duplicados para loop continuo -->
-        <li aria-hidden="true"><img src="/assets/bosch.png" alt=""></li>
-        <li aria-hidden="true"><img src="/assets/tudor.png" alt=""></li>
-        <li aria-hidden="true"><img src="/assets/oil.png" alt=""></li>
-        <li aria-hidden="true"><img src="/assets/pads.png" alt=""></li>
-        <li aria-hidden="true"><img src="/assets/generic.png" alt=""></li>
-      </ul>
-    </div>
-  </div>
-</section>
+    <!-- Marcas que vendemos (full‑width strip) -->
+    <section class="brands" aria-label="Marcas que vendemos">
+      <div class="brands-marquee">
+        <ul class="brands-track">
+          <li><img src="/assets/bosch.png" alt="Bosch"></li>
+          <li><img src="/assets/tudor.png" alt="Tudor"></li>
+          <li><img src="/assets/oil.png" alt="Lubricantes / Mobil"></li>
+          <li><img src="/assets/pads.png" alt="Frenos"></li>
+          <li><img src="/assets/generic.png" alt="Marca aliada"></li>
+          <!-- duplicados para loop continuo -->
+          <li aria-hidden="true"><img src="/assets/bosch.png" alt=""></li>
+          <li aria-hidden="true"><img src="/assets/tudor.png" alt=""></li>
+          <li aria-hidden="true"><img src="/assets/oil.png" alt=""></li>
+          <li aria-hidden="true"><img src="/assets/pads.png" alt=""></li>
+          <li aria-hidden="true"><img src="/assets/generic.png" alt=""></li>
+          <li aria-hidden="true"><img src="/assets/bosch.png" alt=""></li>
+          <li aria-hidden="true"><img src="/assets/tudor.png" alt=""></li>
+          <li aria-hidden="true"><img src="/assets/oil.png" alt=""></li>
+          <li aria-hidden="true"><img src="/assets/pads.png" alt=""></li>
+          <li aria-hidden="true"><img src="/assets/generic.png" alt=""></li>
+        </ul>
+      </div>
+    </section>
 
-<!-- Bloque SEO local -->
-<section class="section seo-text">
-  <div class="container">
-    <h2>Taller en Sabanalarga – diagnóstico y autopartes</h2>
-    <p>
-      En <strong>Multidiagnósticos AS</strong> ofrecemos servicio de <strong>taller en Sabanalarga</strong> con
-      diagnóstico computarizado, <strong>mantenimiento automotriz</strong>, cambio de aceite, frenos, suspensión
-      y escáner OBD-II. También vendemos <strong>autopartes originales</strong> con garantía: filtros, baterías, aceites,
-      bujías y bobinas. Visítanos en Cra. 27 #13-05, Sabanalarga – Atlántico o escríbenos a
-      <a href="mailto:contacto@multidiagnosticosas.com">contacto@multidiagnosticosas.com</a>.
-    </p>
-  </div>
-</section>
 
   <!-- Drawer / Carrito -->
   <aside id="cartDrawer" class="drawer" aria-hidden="true">
@@ -443,7 +442,7 @@
       <div>
         <h4>Servicio y contacto</h4>
         <p class="md-footer__mini">Cra. 27 #13-05, Sabanalarga – Atlántico · <a href="tel:+573003651525">(+57) 300 365 1525</a></p>
-        <p class="md-footer__mini">Lunes a Viernes: 08:00 AM – 05:30 PM · Sábado: 08:30 AM – 04:00 PM</p>
+        <p class="md-footer__mini">Lunes a Viernes 08:00 AM – 05:30 PM · Sábado 08:30 AM – 04:00 PM</p>
 
 <h4>Síguenos</h4>
 <ul class="md-socials">
