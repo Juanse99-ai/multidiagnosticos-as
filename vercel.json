@@ -3,16 +3,14 @@
   "redirects": [
     {
       "source": "/",
-      "has": [
-        { "type": "host", "value": "multidiagnosticosas.com" }
-      ],
-      "destination": "https://www.multidiagnosticosas.com",
+      "has": [{ "type": "host", "value": "www.multidiagnosticosas.com" }],
+      "destination": "https://multidiagnosticosas.com",
       "permanent": true
     }
   ],
   "headers": [
     {
-      "source": "/(.*)\\.(?:png|jpg|jpeg|webp|svg|gif|css|js|woff2)$",
+      "source": "/(.*)\\.(?:png|jpe?g|webp|svg|gif|css|js|woff2)$",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
       ]
