@@ -345,3 +345,50 @@ img{max-width:100%;display:block}
 .seo-text p{max-width:72ch;line-height:1.6}
 
 /* bump: v11 */
+
+/* ===== Header transparente tipo Midas ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: transparent;                 /* al inicio, sobre el banner */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: background .25s ease, box-shadow .25s ease, backdrop-filter .25s ease;
+}
+
+/* Fondo sólido y sombra cuando se hace scroll */
+body.header-scrolled .site-header {
+  background: rgba(5, 19, 60, 0.97);       /* azul corporativo casi sólido */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Suavizar tarjetas y accesos rápidos (más “premium”) */
+.quickcat,
+.cards .card {
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+
+.quickcat:hover,
+.cards .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(9, 30, 66, 0.16);
+}
+
+.btn-primary {
+  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(0, 63, 180, 0.35);
+}
+
+#servicios {
+  background: radial-gradient(circle at top left, #e8f1ff 0, #f7f9fc 45%, #ffffff 100%);
+}
+
+html {
+  scroll-behavior: smooth;
+}
