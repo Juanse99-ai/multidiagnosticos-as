@@ -130,16 +130,16 @@ img{max-width:100%;display:block}
 .footer { 
   background: #0B3D91;  /* Azul institucional */
   color: #fff;
-  font-size: 14px;
+  font-size: 15px;
 }
 .footer a { color: #fff; text-decoration: none; }
 .footer a:hover { text-decoration: underline; }
 
 .md-footer__inner {
   display: grid;
-  grid-template-columns: 1.8fr 1.1fr 1.1fr 1.3fr; /* reparte mejor el ancho entre columnas */
-  gap: 24px;
-  padding: 32px 0 24px;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1.6fr; /* columnas un poco más anchas y llenas */
+  gap: 20px;                                    /* menos espacio vacío entre columnas */
+  padding: 36px 0 28px;                         /* un poco más de alto de contenido */
   align-items: start;
 }
 
@@ -199,7 +199,7 @@ img{max-width:100%;display:block}
   margin: 0 0 8px;                 /* compacidad consistente */
   color: rgba(255,255,255,.9);
   line-height: 1.55;
-  font-size: 15px;
+  font-size: 16px;
   display: block;                   /* asegura salto de línea por elemento */
 }
 .md-footer__mini + .md-footer__mini { margin-top: 4px; }  /* separa líneas seguidas */
