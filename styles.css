@@ -137,9 +137,9 @@ img{max-width:100%;display:block}
 
 .md-footer__inner {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr; /* marca + 3 columnas */
-  gap: 32px;
-  padding: 36px 0 20px;
+  grid-template-columns: 1.8fr 1.1fr 1.1fr 1.3fr; /* reparte mejor el ancho entre columnas */
+  gap: 24px;
+  padding: 32px 0 24px;
   align-items: start;
 }
 
@@ -162,6 +162,7 @@ img{max-width:100%;display:block}
   margin: 8px 0 14px;
   color: rgba(255,255,255,.9);
   line-height: 1.5;
+  max-width: 36rem;
 }
 
 .pay-badges .pay {
@@ -244,7 +245,7 @@ img{max-width:100%;display:block}
 .footer a{color:#fff!important}
 
 /* === Footer tune-ups (MD-AS) === */
-.footer .container{max-width:1280px;}
+.footer .container{max-width:1320px;}
 .md-footer{padding:40px 20px;}
 .md-hours .md-footer__mini{white-space:nowrap;}
 
@@ -335,8 +336,7 @@ img{max-width:100%;display:block}
 .brands .container{overflow:hidden}
 .brands{ margin-bottom:32px; }
 .md-footer__mini{white-space:normal;}
-/* === Footer tune-ups (MD-AS) === */
-.md-footer__inner{ grid-template-columns: 2fr 1fr 1fr 1.2fr; } /* da más ancho a 'Servicio y contacto' */
+.md-footer__mini{white-space:normal;}
 .footer .md-contact p, 
 .footer .md-hours p { margin: 0 0 6px; }
 @media (max-width:640px){.brands-track img{height:36px}.brands-track{gap:32px;animation-duration:24s}}
