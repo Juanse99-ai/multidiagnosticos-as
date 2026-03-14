@@ -1,3 +1,10 @@
+/* ===== UTILIDADES ===== */
+function escapeHTML(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
 /* ===== MENÚ MÓVIL ===== */
 const btnMenu = document.getElementById('btnMenu');
 const menu = document.getElementById('menu');
@@ -19,9 +26,8 @@ const q2 = document.getElementById('q2');
 const catSel = document.getElementById('cat');
 
 /* ---- utilidades de imágenes y cache-buster ---- */
-const IMG_VER = 'v8';
+const IMG_VER = 'v10';
 
-// normaliza URL (absoluta o relativa) y agrega cache-buster
 function norm(u=''){
   if(!u) return '';
   if (/^https?:\/\//i.test(u) || u.startsWith('/'))
@@ -29,7 +35,6 @@ function norm(u=''){
   return '/' + u.replace(/^\.?\//,'') + (u.includes('?') ? '&' : '?') + IMG_VER;
 }
 
-// mapea por marca
 function brandImageFromName(name=''){
   const n = (name||'').toLowerCase();
   if (n.includes('tudor')) return norm('assets/products/tudor.png');
@@ -37,11 +42,10 @@ function brandImageFromName(name=''){
   return norm('assets/products/generic.png');
 }
 
-// onerror inteligente: prueba rutas alternativas y termina en genérico
 function imgFallback(el){
   if (!el || el.__tried) return;
   el.__tried = true;
-  const src = (el.getAttribute('src')||'').replace(/\?.*$/,''); // sin query
+  const src = (el.getAttribute('src')||'').replace(/\?.*$/,'');
   const alts = [];
   if (src.startsWith('/assets/products/')) {
     alts.push(src.replace('/assets/products/','/assets/'));
@@ -76,19 +80,43 @@ function renderProducts(){
     const imgUrl = (p.image && p.image.trim()) ? norm(p.image) : brandImageFromName(p.name||'');
     const card = document.createElement('div');
     card.className = 'product';
-    card.innerHTML = `
-      <img src="${imgUrl}" alt="${p.name}" onerror="imgFallback(this)">
-      <div class="product-title"><strong>${p.name}</strong><br><small>${p.ref||""}</small></div>
-      <div><strong>${fmt(p.price)}</strong></div>
-      <button class="btn btn-primary">Agregar al carrito</button>
-    `;
-    // carrito
-    card.querySelector('button').addEventListener('click',()=>{
+
+    const img = document.createElement('img');
+    img.src = imgUrl;
+    img.alt = p.name;
+    img.onerror = function(){ imgFallback(this); };
+    card.appendChild(img);
+
+    const titleDiv = document.createElement('div');
+    titleDiv.className = 'product-title';
+    const strong = document.createElement('strong');
+    strong.textContent = p.name;
+    titleDiv.appendChild(strong);
+    if (p.ref) {
+      titleDiv.appendChild(document.createElement('br'));
+      const small = document.createElement('small');
+      small.textContent = p.ref;
+      titleDiv.appendChild(small);
+    }
+    card.appendChild(titleDiv);
+
+    const priceDiv = document.createElement('div');
+    const priceStrong = document.createElement('strong');
+    priceStrong.textContent = fmt(p.price);
+    priceDiv.appendChild(priceStrong);
+    card.appendChild(priceDiv);
+
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-primary';
+    btn.textContent = 'Agregar al carrito';
+    btn.addEventListener('click', ()=>{
       const found = cart.find(x=>x.sku===p.ref);
       if(found) found.qty++; else cart.push({sku:p.ref,name:p.name,ref:p.ref,price:p.price,qty:1});
       refreshCart();
-      cartDrawer?.classList.add('open');
+      openCart();
     });
+    card.appendChild(btn);
+
     productGrid.appendChild(card);
   });
 }
@@ -107,12 +135,13 @@ catSel?.addEventListener('change', renderProducts);
 /* ===== Quickcats (set categoría y baja al catálogo) ===== */
 document.querySelectorAll('.quickcat').forEach(a=>{
   a.addEventListener('click', (ev)=>{
+    ev.preventDefault();
     const c = a.getAttribute('data-cat') || '';
     const sel = document.getElementById('cat');
     if(sel){ sel.value = c; }
+    renderProducts();
     const el = document.getElementById('catalogo');
     if(el) el.scrollIntoView({behavior:'smooth'});
-    renderProducts();
   });
 });
 
@@ -127,6 +156,17 @@ const btnCart = document.getElementById('btnCart');
 
 function fmt(n){ return `$${n.toLocaleString('es-CO')}`; }
 
+function openCart(){
+  if(!cartDrawer) return;
+  cartDrawer.classList.add('open');
+  cartDrawer.setAttribute('aria-hidden', 'false');
+}
+function closeCartDrawer(){
+  if(!cartDrawer) return;
+  cartDrawer.classList.remove('open');
+  cartDrawer.setAttribute('aria-hidden', 'true');
+}
+
 function refreshCart(){
   if(!cartItems) return;
   cartItems.innerHTML = '';
@@ -135,30 +175,46 @@ function refreshCart(){
     total += it.price * it.qty;
     const row = document.createElement('div');
     row.className = 'cart-item';
-    row.innerHTML = `
-      <div><strong>${it.name}</strong><br><small>${it.ref||""}</small></div>
-      <div>${fmt(it.price)} × ${it.qty} <button data-i="${idx}">x</button></div>
-    `;
+
+    const info = document.createElement('div');
+    const nameStrong = document.createElement('strong');
+    nameStrong.textContent = it.name;
+    info.appendChild(nameStrong);
+    if (it.ref) {
+      info.appendChild(document.createElement('br'));
+      const small = document.createElement('small');
+      small.textContent = it.ref;
+      info.appendChild(small);
+    }
+    row.appendChild(info);
+
+    const actions = document.createElement('div');
+    actions.textContent = `${fmt(it.price)} × ${it.qty} `;
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'x';
+    removeBtn.dataset.i = idx;
+    removeBtn.addEventListener('click', ()=>{
+      cart.splice(idx, 1);
+      refreshCart();
+    });
+    actions.appendChild(removeBtn);
+    row.appendChild(actions);
+
     cartItems.appendChild(row);
   });
   if(cartCount) cartCount.textContent = cart.reduce((a,b)=>a+b.qty,0);
   if(cartTotal) cartTotal.textContent = fmt(total);
-  cartItems.querySelectorAll('button').forEach(b=>{
-    b.addEventListener('click',()=>{
-      cart.splice(+b.dataset.i,1);
-      refreshCart();
-    });
-  });
 }
-btnCart?.addEventListener('click',()=>cartDrawer?.classList.add('open'));
-closeCart?.addEventListener('click',()=>cartDrawer?.classList.remove('open'));
+btnCart?.addEventListener('click', openCart);
+closeCart?.addEventListener('click', closeCartDrawer);
 
 /* Finalizar por WhatsApp */
 document.getElementById('btnWhatsApp')?.addEventListener('click', ()=>{
   if(cart.length===0) return;
-  const lines = cart.map(it=>`• ${it.name} (${it.ref||""}) × ${it.qty} – ${fmt(it.price)}`).join('%0A');
-  const url = `https://wa.me/573003651525?text=Hola,%20quiero%20comprar:%0A${lines}%0ATotal:%20${encodeURIComponent(cartTotal.textContent||'')}`;
-  window.open(url,'_blank','noopener');
+  const lines = cart.map(it=>`• ${it.name} (${it.ref||""}) × ${it.qty} – ${fmt(it.price)}`).join('\n');
+  const totalText = cartTotal?.textContent || '';
+  const msg = `Hola, quiero comprar:\n${lines}\nTotal: ${totalText}`;
+  window.open(`https://wa.me/573003651525?text=${encodeURIComponent(msg)}`,'_blank','noopener');
 });
 
 /* ====== Agenda a WhatsApp ====== */
@@ -172,10 +228,102 @@ document.getElementById('bookForm')?.addEventListener('submit', (e)=>{
   const name = document.getElementById('bName').value;
   const phone= document.getElementById('bPhone').value;
   const notes= document.getElementById('bNotes').value || '';
-  const text = `Hola, quiero agendar: ${svc}%0AFecha: ${date}%0AHora: ${time}%0APlaca: ${plate}%0AModelo: ${model}%0ANombre: ${name}%0ATeléfono: ${phone}%0ANotas: ${notes}`;
-  window.open(`https://wa.me/573003651525?text=${text}`,'_blank','noopener');
+  const msg = `Hola, quiero agendar: ${svc}\nFecha: ${date}\nHora: ${time}\nPlaca: ${plate}\nModelo: ${model}\nNombre: ${name}\nTeléfono: ${phone}\nNotas: ${notes}`;
+  window.open(`https://wa.me/573003651525?text=${encodeURIComponent(msg)}`,'_blank','noopener');
 });
 
-/* Carga inicial de productos (después de DOM ready si el script va en <head>) */
+/* Carga inicial de productos */
 if (document.readyState !== 'loading') loadProducts();
 else document.addEventListener('DOMContentLoaded', loadProducts);
+
+/* ===== Header: cambiar a fondo sólido al hacer scroll ===== */
+(function () {
+  const THRESHOLD = 40;
+  function handleScroll() {
+    if (window.scrollY > THRESHOLD) {
+      document.body.classList.add('header-scrolled');
+    } else {
+      document.body.classList.remove('header-scrolled');
+    }
+  }
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  handleScroll();
+})();
+
+/* ===== Banner de Promos (slider) ===== */
+(function(){
+  const IMGS = [
+    '/assets/banner-aceite.webp',
+    '/assets/banner-baterias.webp',
+    '/assets/banner-frenos.webp'
+  ];
+  const FALLBACK = '/assets/fondo-taller.webp';
+
+  const track = document.getElementById('hsTrack');
+  const dotsWrap = document.getElementById('hsDots');
+  const prev = document.querySelector('.hs__arrow.prev');
+  const next = document.querySelector('.hs__arrow.next');
+  if(!track) return;
+
+  const sources = IMGS.length ? IMGS : [FALLBACK];
+  sources.forEach((src, i) => {
+    const slide = document.createElement('div');
+    slide.className = 'hs__slide';
+    const img = new Image();
+    img.src = src;
+    img.alt = 'Promoción ' + (i + 1);
+    img.loading = i === 0 ? 'eager' : 'lazy';
+    img.decoding = 'async';
+    img.style.transition = 'opacity .5s ease';
+    img.style.opacity = '0';
+    img.addEventListener('load', () => { img.style.opacity = '1'; });
+    slide.appendChild(img);
+    track.appendChild(slide);
+
+    const dot = document.createElement('button');
+    dot.className = 'hs__dot';
+    dot.setAttribute('aria-label', 'Ir a promoción ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i, true));
+    dotsWrap.appendChild(dot);
+  });
+
+  const slides = Array.from(track.children);
+  const dots = Array.from(dotsWrap.children);
+
+  let idx = 0;
+  let timer = null;
+  const DURATION = 4500;
+
+  function paint(){
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+    dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+  }
+  function goTo(n, stopAuto){
+    idx = (n + slides.length) % slides.length;
+    paint();
+    if(stopAuto) restart();
+  }
+  function nextSlide(){ goTo(idx + 1); }
+  function prevSlide(){ goTo(idx - 1); }
+
+  prev && prev.addEventListener('click', () => goTo(idx - 1, true));
+  next && next.addEventListener('click', () => goTo(idx + 1, true));
+
+  const slider = document.getElementById('hs');
+  function start(){ timer = setInterval(nextSlide, DURATION); }
+  function stop(){ clearInterval(timer); timer = null; }
+  function restart(){ stop(); start(); }
+
+  slider && slider.addEventListener('mouseenter', stop);
+  slider && slider.addEventListener('mouseleave', start);
+
+  let sx = 0;
+  slider && slider.addEventListener('touchstart', e => { sx = e.touches[0].clientX; stop(); }, {passive: true});
+  slider && slider.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - sx;
+    if (Math.abs(dx) > 40) (dx < 0 ? nextSlide() : prevSlide());
+    start();
+  }, {passive: true});
+
+  paint(); start();
+})();
