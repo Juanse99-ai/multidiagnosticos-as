@@ -24,6 +24,8 @@ let PRODUCTS = [];
 const productGrid = document.getElementById('productGrid');
 const q2 = document.getElementById('q2');
 const catSel = document.getElementById('cat');
+const qHeader = document.getElementById('q');
+const searchBtn = document.getElementById('searchBtn');
 
 /* ---- utilidades de imágenes y cache-buster ---- */
 const IMG_VER = 'v10';
@@ -132,6 +134,25 @@ async function loadProducts(){
 q2?.addEventListener('input', renderProducts);
 catSel?.addEventListener('change', renderProducts);
 
+/* ===== Buscador del header -> catálogo ===== */
+function syncHeaderSearch(scroll){
+  if(!qHeader || !q2) return;
+  q2.value = qHeader.value || '';
+  renderProducts();
+  if(scroll){
+    const el = document.getElementById('catalogo');
+    el && el.scrollIntoView({behavior:'smooth'});
+  }
+}
+qHeader?.addEventListener('input', () => syncHeaderSearch(false));
+qHeader?.addEventListener('keydown', (e)=>{
+  if(e.key === 'Enter'){
+    e.preventDefault();
+    syncHeaderSearch(true);
+  }
+});
+searchBtn?.addEventListener('click', () => syncHeaderSearch(true));
+
 /* ===== Quickcats (set categoría y baja al catálogo) ===== */
 document.querySelectorAll('.quickcat').forEach(a=>{
   a.addEventListener('click', (ev)=>{
@@ -230,6 +251,74 @@ document.getElementById('bookForm')?.addEventListener('submit', (e)=>{
   const notes= document.getElementById('bNotes').value || '';
   const msg = `Hola, quiero agendar: ${svc}\nFecha: ${date}\nHora: ${time}\nPlaca: ${plate}\nModelo: ${model}\nNombre: ${name}\nTeléfono: ${phone}\nNotas: ${notes}`;
   window.open(`https://wa.me/573003651525?text=${encodeURIComponent(msg)}`,'_blank','noopener');
+});
+
+/* ===== .ICS para agregar a calendario ===== */
+function fmtICSDate(dateStr, timeStr){
+  if(!dateStr) return null;
+  const dt = new Date(`${dateStr}T${timeStr || '08:00'}`);
+  if(isNaN(dt)) return null;
+  const pad = n => String(n).padStart(2,'0');
+  return `${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}${pad(dt.getSeconds())}`;
+}
+
+function fmtICSFromDate(dt){
+  if(!dt || isNaN(dt)) return null;
+  const pad = n => String(n).padStart(2,'0');
+  return `${dt.getFullYear()}${pad(dt.getMonth()+1)}${pad(dt.getDate())}T${pad(dt.getHours())}${pad(dt.getMinutes())}${pad(dt.getSeconds())}`;
+}
+
+function icsEscape(str=''){
+  return str.replace(/[\\;,]/g,'\\$&').replace(/\n/g,'\\n');
+}
+
+document.getElementById('btnICS')?.addEventListener('click', ()=>{
+  const svc = document.getElementById('bService').value;
+  const date = document.getElementById('bDate').value;
+  const time = document.getElementById('bTime').value || '08:00';
+  const plate= document.getElementById('bPlate').value;
+  const model= document.getElementById('bModel').value;
+  const name = document.getElementById('bName').value;
+  if(!svc || !date || !time || !plate || !model || !name){
+    alert('Completa servicio, fecha, hora, placa, modelo y nombre antes de descargar.');
+    return;
+  }
+
+  const start = fmtICSDate(date, time);
+  if(!start){ alert('Fecha u hora inválida'); return; }
+  const endDt = new Date(`${date}T${time}`);
+  if(!isNaN(endDt)) endDt.setHours(endDt.getHours()+1);
+  const end = fmtICSFromDate(endDt) || start;
+
+  const now = fmtICSFromDate(new Date());
+  const details = `Placa: ${plate}\\nModelo: ${model}\\nCliente: ${name}`;
+
+  const ics = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Multidiagnosticos AS//Agenda//ES',
+    'CALSCALE:GREGORIAN',
+    'BEGIN:VEVENT',
+    `UID:${Date.now()}@multidiagnosticosas.com`,
+    `DTSTAMP:${now}`,
+    `DTSTART;TZID=America/Bogota:${start}`,
+    `DTEND;TZID=America/Bogota:${end}`,
+    `SUMMARY:${icsEscape('Cita taller: ' + svc)}`,
+    `DESCRIPTION:${icsEscape(details)}`,
+    'LOCATION:Cra. 27 #13-05, Sabanalarga',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+
+  const blob = new Blob([ics], {type:'text/calendar;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `cita-${date}.ics`;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url), 4000);
 });
 
 /* Carga inicial de productos */
