@@ -8,7 +8,7 @@ export function WhatsAppFloat() {
       href="https://wa.me/573003651525?text=Hola,%20quisiera%20asesoría%20técnica"
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed right-5 bottom-5 z-40 transition-transform duration-300 hover:scale-105 drop-shadow-lg"
+      className="fixed right-5 bottom-20 z-40 transition-transform duration-300 hover:scale-105 drop-shadow-lg"
     >
       <Image
         src="/asesor-whatsapp.webp"
