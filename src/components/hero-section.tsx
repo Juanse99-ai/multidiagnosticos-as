@@ -110,7 +110,7 @@ export function HeroSection() {
                 <Wrench className="w-4 h-4 mr-2" />
                 Agendar servicio
               </Link>
-              <Link href="#catalogo" className={cn(buttonVariants({ size: "lg", variant: "outline" }), "text-white border-white/30 hover:bg-white/10")}>
+              <Link href="#catalogo" className={cn(buttonVariants({ size: "lg", variant: "outline" }), "bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white")}>
                 <ShoppingBag className="w-4 h-4 mr-2" />
                 Ver autopartes
               </Link>
@@ -118,7 +118,7 @@ export function HeroSection() {
                 href="https://wa.me/573003651525?text=Hola,%20quisiera%20información"
                 target="_blank"
                 rel="noopener"
-                className={cn(buttonVariants({ size: "lg", variant: "outline" }), "text-white border-white/30 hover:bg-white/10")}
+                className={cn(buttonVariants({ size: "lg", variant: "outline" }), "bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white")}
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp

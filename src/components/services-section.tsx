@@ -1,25 +1,30 @@
+import Image from "next/image";
 import { Wrench, Disc3, CarFront, Cpu } from "lucide-react";
 
 const services = [
   {
     title: "Cambio de aceite",
-    desc: "Incluye filtro y revisión.",
+    desc: "Incluye filtro y revisión multipunto.",
     icon: Wrench,
+    img: "/services/cambio-aceite.jpg",
   },
   {
     title: "Frenos",
     desc: "Pastillas, discos y líquido.",
     icon: Disc3,
+    img: "/services/frenos.jpg",
   },
   {
     title: "Suspensión",
     desc: "Amortiguadores y alineación.",
     icon: CarFront,
+    img: "/services/suspension.jpg",
   },
   {
     title: "Diagnóstico OBD-II",
-    desc: "Scanner y pruebas.",
+    desc: "Scanner y pruebas electrónicas.",
     icon: Cpu,
+    img: "/services/diagnostico.jpg",
   },
 ];
 
@@ -37,13 +42,28 @@ export function ServicesSection() {
           {services.map((svc) => (
             <article
               key={svc.title}
-              className="bg-card border border-border rounded-2xl p-5 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 group"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
             >
-              <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center mb-3 group-hover:bg-brand-blue/20 transition-colors">
-                <svc.icon className="w-5 h-5 text-brand-blue" />
+              {/* Image */}
+              <div className="relative h-44 overflow-hidden">
+                <Image
+                  src={svc.img}
+                  alt={svc.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/30 to-transparent" />
+                <div className="absolute bottom-3 left-3">
+                  <div className="w-9 h-9 rounded-lg bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/20">
+                    <svc.icon className="w-4.5 h-4.5 text-white" />
+                  </div>
+                </div>
               </div>
-              <h3 className="font-bold text-lg mb-1">{svc.title}</h3>
-              <p className="text-muted-foreground text-sm">{svc.desc}</p>
+              {/* Content */}
+              <div className="p-4">
+                <h3 className="font-bold text-lg mb-1">{svc.title}</h3>
+                <p className="text-muted-foreground text-sm">{svc.desc}</p>
+              </div>
             </article>
           ))}
         </div>

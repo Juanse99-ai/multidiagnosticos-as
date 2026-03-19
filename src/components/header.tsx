@@ -33,7 +33,7 @@ export function Header() {
   return (
     <>
       {/* Promo Ribbon */}
-      <div className="bg-brand-blue text-white border-b border-white/25 overflow-hidden">
+      <div className="bg-brand-dark text-white border-b border-white/10 overflow-hidden">
         <div className="flex gap-12 whitespace-nowrap items-center animate-marquee">
           {[...Array(2)].flatMap((_, i) => [
             <span

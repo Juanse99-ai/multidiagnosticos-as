@@ -39,14 +39,15 @@ const DockIconButton = React.forwardRef<HTMLButtonElement, DockIconButtonProps>(
   ({ icon: Icon, label, onClick, href, className }, ref) => {
     const content = (
       <>
-        <Icon className="w-5 h-5 text-foreground" />
+        <Icon className="w-5 h-5 text-white drop-shadow-sm" />
         <span
           className={cn(
             "absolute -top-8 left-1/2 -translate-x-1/2",
-            "px-2 py-1 rounded text-xs",
-            "bg-popover text-popover-foreground",
+            "px-2 py-1 rounded text-xs font-medium",
+            "bg-brand-dark/90 text-white backdrop-blur-sm",
             "opacity-0 group-hover:opacity-100",
-            "transition-opacity whitespace-nowrap pointer-events-none"
+            "transition-opacity whitespace-nowrap pointer-events-none",
+            "shadow-lg"
           )}
         >
           {label}
@@ -61,8 +62,8 @@ const DockIconButton = React.forwardRef<HTMLButtonElement, DockIconButtonProps>(
           whileHover={{ scale: 1.1, y: -2 }}
           whileTap={{ scale: 0.95 }}
           className={cn(
-            "relative group p-3 rounded-lg",
-            "hover:bg-secondary transition-colors",
+            "relative group p-3 rounded-xl",
+            "hover:bg-white/20 transition-colors",
             className
           )}
         >
@@ -78,8 +79,8 @@ const DockIconButton = React.forwardRef<HTMLButtonElement, DockIconButtonProps>(
         whileTap={{ scale: 0.95 }}
         onClick={onClick}
         className={cn(
-          "relative group p-3 rounded-lg",
-          "hover:bg-secondary transition-colors",
+          "relative group p-3 rounded-xl",
+          "hover:bg-white/20 transition-colors",
           className
         )}
       >
@@ -103,9 +104,10 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
           variants={floatingAnimation}
           className={cn(
             "flex items-center gap-1 p-2 rounded-2xl",
-            "backdrop-blur-lg border shadow-lg",
-            "bg-background/90 border-border",
-            "hover:shadow-xl transition-shadow duration-300"
+            "backdrop-blur-xl border shadow-2xl",
+            "bg-white/10 border-white/20",
+            "shadow-black/20",
+            "hover:shadow-xl hover:bg-white/15 transition-all duration-300"
           )}
         >
           {items.map((item) => (
