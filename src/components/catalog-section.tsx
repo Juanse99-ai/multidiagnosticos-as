@@ -23,6 +23,7 @@ export function CatalogSection() {
   const [products, setProducts] = useState<Product[]>([]);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
+  const [showAll, setShowAll] = useState(false);
   const { addItem } = useCart();
 
   useEffect(() => {
@@ -60,12 +61,19 @@ export function CatalogSection() {
     return textMatch && catMatch;
   });
 
+  const FEATURED_LIMIT = 8;
+  const isFiltering = query !== "" || category !== "";
+  const displayed = isFiltering || showAll ? filtered : filtered.slice(0, FEATURED_LIMIT);
+  const hasMore = !isFiltering && !showAll && filtered.length > FEATURED_LIMIT;
+
   return (
     <section id="catalogo" className="py-14 border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-6">
-          Tienda de Autopartes
-        </h2>
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue">
+            Productos Destacados
+          </h2>
+        </div>
 
         <div className="flex flex-wrap gap-3 items-center mb-6">
           <div className="relative flex-1 min-w-[200px] max-w-md">
@@ -92,7 +100,7 @@ export function CatalogSection() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filtered.map((p) => (
+          {displayed.map((p) => (
             <div
               key={p.sku}
               className="bg-white border border-border rounded-2xl p-4 flex flex-col gap-2 hover:shadow-lg hover:-translate-y-1 transition-all duration-200"
@@ -141,6 +149,17 @@ export function CatalogSection() {
           <p className="text-center text-muted-foreground py-12">
             No se encontraron productos con ese filtro.
           </p>
+        )}
+
+        {hasMore && (
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-brand-blue text-brand-blue font-medium text-sm hover:bg-brand-blue hover:text-white transition-colors duration-200"
+            >
+              Ver todos los productos ({filtered.length})
+            </button>
+          </div>
         )}
       </div>
     </section>

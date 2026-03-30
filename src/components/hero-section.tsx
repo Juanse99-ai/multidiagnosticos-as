@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 import Link from "next/link";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { buttonVariants } from "@/lib/button-variants";
@@ -89,23 +91,63 @@ function OBDCard() {
 }
 
 export function HeroSection() {
+  const badgeRef = useRef<HTMLSpanElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+  const ctaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        [badgeRef.current, titleRef.current, subtitleRef.current, ctaRef.current],
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          stagger: 0.18,
+          ease: "power3.out",
+          clearProps: "transform",
+        }
+      );
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   return (
     <section className="bg-brand-dark overflow-hidden">
       <ContainerScroll
         titleComponent={
           <div className="space-y-6">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white/80 text-sm">
+            <span
+              ref={badgeRef}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white/80 text-sm"
+              style={{ opacity: 0 }}
+            >
               Taller en Sabanalarga · Diagnóstico computarizado
             </span>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-display text-white leading-tight">
+            <h1
+              ref={titleRef}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold font-display text-white leading-tight"
+              style={{ opacity: 0 }}
+            >
               Tu vehículo en{" "}
               <span className="text-brand-blue-light">manos expertas</span>
             </h1>
-            <p className="text-white/70 text-lg max-w-2xl mx-auto">
+            <p
+              ref={subtitleRef}
+              className="text-white/70 text-lg max-w-2xl mx-auto"
+              style={{ opacity: 0 }}
+            >
               Revisión, cambio de aceite, frenos, suspensión y más. Repuestos
               originales con asesoría personalizada por WhatsApp.
             </p>
-            <div className="flex flex-wrap gap-3 justify-center pt-2">
+            <div
+              ref={ctaRef}
+              className="flex flex-wrap gap-3 justify-center pt-2"
+              style={{ opacity: 0 }}
+            >
               <Link href="#agenda" className={cn(buttonVariants({ size: "lg" }))}>
                 <Wrench className="w-4 h-4 mr-2" />
                 Agendar servicio
