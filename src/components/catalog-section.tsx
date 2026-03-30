@@ -1,10 +1,15 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart-context";
 import { Search } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface Product {
   sku: string;
@@ -25,6 +30,8 @@ export function CatalogSection() {
   const [category, setCategory] = useState("");
   const [showAll, setShowAll] = useState(false);
   const { addItem } = useCart();
+  const sectionRef = useRef<HTMLElement>(null);
+  const cardsGridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     fetch("/products.json")
@@ -66,8 +73,33 @@ export function CatalogSection() {
   const displayed = isFiltering || showAll ? filtered : filtered.slice(0, FEATURED_LIMIT);
   const hasMore = !isFiltering && !showAll && filtered.length > FEATURED_LIMIT;
 
+  useGSAP(() => {
+    if (!products.length || !cardsGridRef.current) return;
+
+    const cards = Array.from(cardsGridRef.current.children);
+    if (!cards.length) return;
+
+    gsap.fromTo(
+      cards,
+      { opacity: 0, y: 30 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        stagger: 0.08,
+        ease: "power3.out",
+        clearProps: "transform",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      }
+    );
+  }, { dependencies: [products.length], revertOnUpdate: true });
+
   return (
-    <section id="catalogo" className="py-14 border-t border-border">
+    <section ref={sectionRef} id="catalogo" className="py-14 border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue">
@@ -99,7 +131,7 @@ export function CatalogSection() {
           </select>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div ref={cardsGridRef} className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {displayed.map((p) => (
             <div
               key={p.sku}

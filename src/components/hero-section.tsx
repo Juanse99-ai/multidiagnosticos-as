@@ -1,7 +1,9 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { buttonVariants } from "@/lib/button-variants";
@@ -16,6 +18,8 @@ import {
   Battery,
   Zap,
 } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function OBDCard() {
   return (
@@ -91,32 +95,48 @@ function OBDCard() {
 }
 
 export function HeroSection() {
+  const sectionRef = useRef<HTMLElement>(null);
   const badgeRef = useRef<HTMLSpanElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        [badgeRef.current, titleRef.current, subtitleRef.current, ctaRef.current],
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.18,
-          ease: "power3.out",
-          clearProps: "transform",
-        }
-      );
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        once: true,
+      },
     });
 
-    return () => ctx.revert();
-  }, []);
+    tl.fromTo(
+      badgeRef.current,
+      { opacity: 0, y: 40 },
+      { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", clearProps: "transform" }
+    )
+      .fromTo(
+        titleRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", clearProps: "transform" },
+        "-=0.45"
+      )
+      .fromTo(
+        subtitleRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", clearProps: "transform" },
+        "-=0.45"
+      )
+      .fromTo(
+        ctaRef.current,
+        { opacity: 0, y: 40 },
+        { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", clearProps: "transform" },
+        "-=0.45"
+      );
+  });
 
   return (
-    <section className="bg-brand-dark overflow-hidden">
+    <section ref={sectionRef} className="bg-brand-dark overflow-hidden">
       <ContainerScroll
         titleComponent={
           <div className="space-y-6">
@@ -152,7 +172,13 @@ export function HeroSection() {
                 <Wrench className="w-4 h-4 mr-2" />
                 Agendar servicio
               </Link>
-              <Link href="#catalogo" className={cn(buttonVariants({ size: "lg", variant: "outline" }), "bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white")}>
+              <Link
+                href="#catalogo"
+                className={cn(
+                  buttonVariants({ size: "lg", variant: "outline" }),
+                  "bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white"
+                )}
+              >
                 <ShoppingBag className="w-4 h-4 mr-2" />
                 Ver autopartes
               </Link>
@@ -160,7 +186,10 @@ export function HeroSection() {
                 href="https://wa.me/573003651525?text=Hola,%20quisiera%20información"
                 target="_blank"
                 rel="noopener"
-                className={cn(buttonVariants({ size: "lg", variant: "outline" }), "bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white")}
+                className={cn(
+                  buttonVariants({ size: "lg", variant: "outline" }),
+                  "bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white"
+                )}
               >
                 <MessageCircle className="w-4 h-4 mr-2" />
                 WhatsApp

@@ -1,16 +1,53 @@
+"use client";
+
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { MapPin, Phone, Mail, MessageCircle } from "lucide-react";
 import { buttonVariants } from "@/lib/button-variants";
 import { cn } from "@/lib/utils";
 
+gsap.registerPlugin(ScrollTrigger);
+
 export function ContactSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const cards = gridRef.current?.children;
+    if (!cards?.length) return;
+
+    gsap.fromTo(
+      Array.from(cards),
+      { opacity: 0, y: 40 },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power3.out",
+        clearProps: "transform",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          once: true,
+        },
+      }
+    );
+  });
+
   return (
-    <section id="contacto" className="py-14 border-t border-border">
+    <section ref={sectionRef} id="contacto" className="py-14 border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-8">
           Contacto
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-card border border-border rounded-2xl p-6 space-y-3">
+        <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div
+            style={{ opacity: 0 }}
+            className="bg-card border border-border rounded-2xl p-6 space-y-3"
+          >
             <h3 className="font-bold text-lg flex items-center gap-2">
               <MapPin className="w-5 h-5 text-brand-blue" />
               Visítanos
@@ -24,7 +61,10 @@ export function ContactSection() {
             </p>
           </div>
 
-          <div className="bg-card border border-border rounded-2xl p-6 space-y-3">
+          <div
+            style={{ opacity: 0 }}
+            className="bg-card border border-border rounded-2xl p-6 space-y-3"
+          >
             <h3 className="font-bold text-lg flex items-center gap-2">
               <Phone className="w-5 h-5 text-brand-blue" />
               Escríbenos
