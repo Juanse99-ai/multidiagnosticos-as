@@ -21,26 +21,24 @@ export function BrandsSection() {
   const listRef = useRef<HTMLUListElement>(null);
 
   useGSAP(() => {
-    const items = listRef.current?.querySelectorAll("li");
-    if (!items?.length) return;
+    const items = Array.from(listRef.current?.querySelectorAll("li") ?? []);
+    if (!items.length) return;
 
-    gsap.fromTo(
-      Array.from(items),
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.5,
-        stagger: 0.08,
-        ease: "power3.out",
-        clearProps: "transform",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          once: true,
-        },
-      }
-    );
+    gsap.set(items, { opacity: 0 });
+
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        gsap.to(items, {
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.08,
+          ease: "power2.out",
+        });
+      },
+    });
   });
 
   return (
@@ -51,7 +49,7 @@ export function BrandsSection() {
           className="flex gap-16 items-center py-5 px-8 list-none m-0 animate-brands-scroll"
         >
           {[...brands, ...brands, ...brands].map((brand, i) => (
-            <li key={i} className="flex-none" style={{ opacity: 0 }}>
+            <li key={i} className="flex-none">
               <Image
                 src={brand.src}
                 alt={i < brands.length ? brand.alt : ""}

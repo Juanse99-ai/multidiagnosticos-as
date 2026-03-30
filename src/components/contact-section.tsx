@@ -15,26 +15,25 @@ export function ContactSection() {
   const gridRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const cards = gridRef.current?.children;
-    if (!cards?.length) return;
+    const cards = Array.from(gridRef.current?.children ?? []);
+    if (!cards.length) return;
 
-    gsap.fromTo(
-      Array.from(cards),
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-        clearProps: "transform",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          once: true,
-        },
-      }
-    );
+    gsap.set(cards, { opacity: 0, y: 50 });
+
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        gsap.to(cards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          stagger: 0.2,
+          ease: "power3.out",
+        });
+      },
+    });
   });
 
   return (
@@ -44,10 +43,7 @@ export function ContactSection() {
           Contacto
         </h2>
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div
-            style={{ opacity: 0 }}
-            className="bg-card border border-border rounded-2xl p-6 space-y-3"
-          >
+          <div className="bg-card border border-border rounded-2xl p-6 space-y-3">
             <h3 className="font-bold text-lg flex items-center gap-2">
               <MapPin className="w-5 h-5 text-brand-blue" />
               Visítanos
@@ -61,10 +57,7 @@ export function ContactSection() {
             </p>
           </div>
 
-          <div
-            style={{ opacity: 0 }}
-            className="bg-card border border-border rounded-2xl p-6 space-y-3"
-          >
+          <div className="bg-card border border-border rounded-2xl p-6 space-y-3">
             <h3 className="font-bold text-lg flex items-center gap-2">
               <Phone className="w-5 h-5 text-brand-blue" />
               Escríbenos

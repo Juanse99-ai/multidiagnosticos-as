@@ -79,23 +79,22 @@ export function CatalogSection() {
     const cards = Array.from(cardsGridRef.current.children);
     if (!cards.length) return;
 
-    gsap.fromTo(
-      cards,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        stagger: 0.08,
-        ease: "power3.out",
-        clearProps: "transform",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          once: true,
-        },
-      }
-    );
+    gsap.set(cards, { opacity: 0, y: 40 });
+
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        gsap.to(cards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.08,
+          ease: "power3.out",
+        });
+      },
+    });
   }, { dependencies: [products.length], revertOnUpdate: true });
 
   return (

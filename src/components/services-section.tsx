@@ -41,26 +41,25 @@ export function ServicesSection() {
   const gridRef = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
-    const cards = gridRef.current?.querySelectorAll("article");
-    if (!cards?.length) return;
+    const cards = Array.from(gridRef.current?.querySelectorAll("article") ?? []);
+    if (!cards.length) return;
 
-    gsap.fromTo(
-      Array.from(cards),
-      { opacity: 0, y: 50 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.15,
-        ease: "power3.out",
-        clearProps: "transform",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          once: true,
-        },
-      }
-    );
+    gsap.set(cards, { opacity: 0, y: 60 });
+
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        gsap.to(cards, {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          stagger: 0.15,
+          ease: "power3.out",
+        });
+      },
+    });
   });
 
   return (
@@ -77,7 +76,6 @@ export function ServicesSection() {
           {services.map((svc) => (
             <article
               key={svc.title}
-              style={{ opacity: 0 }}
               className="group relative overflow-hidden rounded-2xl border border-border bg-card hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
             >
               <div className="relative h-44 overflow-hidden">
