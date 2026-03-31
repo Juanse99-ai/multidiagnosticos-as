@@ -33,30 +33,12 @@ export function NavigationDock() {
     {
       icon: ShoppingBag,
       label: "Autopartes",
-      href: "/#catalogo",
-      onClick: () => {
-        if (pathname === "/") {
-          const el = document.getElementById("catalogo");
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
-            return;
-          }
-        }
-      },
+      href: "/autopartes",
     },
     {
       icon: CalendarDays,
       label: "Agendar",
-      href: "/#agenda",
-      onClick: () => {
-        if (pathname === "/") {
-          const el = document.getElementById("agenda");
-          if (el) {
-            el.scrollIntoView({ behavior: "smooth" });
-            return;
-          }
-        }
-      },
+      href: "/agendar",
     },
     {
       icon: Phone,

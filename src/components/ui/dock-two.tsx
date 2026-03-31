@@ -105,8 +105,8 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
           className={cn(
             "flex items-center gap-1 p-2 rounded-2xl",
             "backdrop-blur-xl border shadow-2xl",
-            "bg-white/10 border-white/20",
-            "shadow-black/20",
+            "bg-[#0b1221]/85 border-white/15",
+            "shadow-black/50",
             "hover:shadow-xl hover:bg-white/15 transition-all duration-300"
           )}
         >

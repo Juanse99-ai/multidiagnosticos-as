@@ -24,11 +24,11 @@ function fmt(n: number) {
   return `$${n.toLocaleString("es-CO")}`;
 }
 
-export function CatalogSection() {
+export function CatalogSection({ forceShowAll = false }: { forceShowAll?: boolean }) {
   const [products, setProducts] = useState<Product[]>([]);
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("");
-  const [showAll, setShowAll] = useState(false);
+  const [showAll, setShowAll] = useState(forceShowAll);
   const { addItem } = useCart();
   const sectionRef = useRef<HTMLElement>(null);
   const cardsGridRef = useRef<HTMLDivElement>(null);

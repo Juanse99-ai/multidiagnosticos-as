@@ -8,76 +8,88 @@ import Link from "next/link";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
 import { buttonVariants } from "@/lib/button-variants";
 import { cn } from "@/lib/utils";
-import {
-  Wrench,
-  ShoppingBag,
-  MessageCircle,
-  Activity,
-  Gauge,
-  Thermometer,
-  Battery,
-  Zap,
-} from "lucide-react";
+import { Wrench, ShoppingBag, MessageCircle } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function OBDCard() {
+const PROMOS = [
+  { icon: "🔍", label: "Diagnóstico Computarizado", price: "$35.000", old: "$60k", color: "#1d4ed8", bg: "#dbeafe" },
+  { icon: "🛢️", label: "Aceite + Filtro Sintético",  price: "$75.000", old: "$110k", color: "#065f46", bg: "#d1fae5" },
+  { icon: "✅", label: "Check-Up 30 puntos",          price: "$55.000", old: "$90k",  color: "#5b21b6", bg: "#ede9fe" },
+  { icon: "🛑", label: "Revisión Frenos ABS",          price: "$45.000", old: "$75k",  color: "#9f1239", bg: "#ffe4e6" },
+  { icon: "⚙️", label: "Kit de Distribución",          price: "Desde $280k", old: null, color: "#78350f", bg: "#fef3c7" },
+  { icon: "📅", label: "Agendar cita ahora",           price: "Gratis →",    old: null, color: "#1e40af", bg: "#bfdbfe" },
+];
+
+function ScannerCard() {
   return (
-    <div className="w-full h-full bg-gradient-to-br from-brand-dark to-[#1a2744] text-white p-6 md:p-10 flex flex-col justify-center">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="w-10 h-10 rounded-full bg-brand-blue/20 flex items-center justify-center">
-          <Activity className="w-5 h-5 text-brand-blue-light" />
+    <div className="w-full h-full flex flex-col bg-[#e8eaf0] overflow-hidden select-none">
+      {/* Status bar — LAUNCH style */}
+      <div className="bg-[#2563eb] text-white px-3 py-1 flex items-center justify-between shrink-0">
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] font-mono font-bold tracking-wider opacity-90">X-431 PAD IX Max</span>
+          <span className="text-[10px] text-white/50">V8.00.007</span>
         </div>
-        <div>
-          <p className="text-xs text-white/60 uppercase tracking-wider">
-            Diagnóstico en vivo
-          </p>
-          <p className="font-bold font-display text-lg">Scanner OBD-II</p>
+        <div className="flex items-center gap-3 text-[10px]">
+          <span className="opacity-70">10:07</span>
+          <span className="text-white/40">🔋</span>
+          <span className="bg-white/20 px-2 py-0.5 rounded text-[9px] font-semibold">Login</span>
+          <span className="bg-white/20 w-6 h-4 rounded-sm flex items-center justify-center text-[8px]">💬</span>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4 mb-6">
-        {[
-          { icon: Gauge, label: "RPM", value: "850", unit: "rpm", color: "text-green-400" },
-          { icon: Thermometer, label: "Temperatura", value: "92", unit: "°C", color: "text-yellow-400" },
-          { icon: Battery, label: "Voltaje", value: "14.2", unit: "V", color: "text-blue-400" },
-          { icon: Zap, label: "Estado", value: "OK", unit: "", color: "text-green-400" },
-        ].map((metric) => (
-          <div key={metric.label} className="bg-white/5 rounded-xl p-4 border border-white/10">
-            <div className="flex items-center gap-2 mb-2">
-              <metric.icon className="w-4 h-4 text-white/50" />
-              <span className="text-xs text-white/50">{metric.label}</span>
-            </div>
-            <p className={`text-2xl font-bold ${metric.color}`}>
-              {metric.value}
-              <span className="text-sm font-normal text-white/40 ml-1">{metric.unit}</span>
+      {/* Promo grid — styled like LAUNCH app tiles */}
+      <div className="flex-1 grid grid-cols-3 gap-1.5 p-2.5 overflow-hidden">
+        {PROMOS.map((promo, i) => (
+          <div
+            key={i}
+            className="flex flex-col items-center justify-center gap-1 rounded-lg p-2 cursor-pointer transition-all duration-150 active:scale-95 hover:brightness-95"
+            style={{ backgroundColor: promo.bg }}
+          >
+            <span className="text-xl md:text-2xl leading-none">{promo.icon}</span>
+            <p
+              className="text-[8px] md:text-[10px] font-bold text-center leading-tight"
+              style={{ color: promo.color }}
+            >
+              {promo.label}
             </p>
+            <p className="text-[9px] md:text-[11px] font-extrabold leading-none" style={{ color: promo.color }}>
+              {promo.price}
+            </p>
+            {promo.old && (
+              <p className="text-[7px] line-through opacity-40" style={{ color: promo.color }}>
+                {promo.old}
+              </p>
+            )}
           </div>
         ))}
       </div>
 
-      <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-3 text-center">
-        <p className="text-green-400 text-sm font-medium">✓ Sin códigos de falla activos</p>
+      {/* Android navigation bar */}
+      <div className="bg-[#111] shrink-0 flex items-center justify-center gap-8 py-1.5">
+        <div className="w-4 h-4 rounded-full border border-white/30" />
+        <div className="w-3.5 h-3.5 border border-white/30" />
+        <div className="w-3.5 h-3.5 rounded-sm border border-white/30" />
       </div>
     </div>
   );
 }
 
 export function HeroSection() {
-  const badgeRef = useRef<HTMLSpanElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
+  const badgeRef    = useRef<HTMLSpanElement>(null);
+  const titleRef    = useRef<HTMLHeadingElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
+  const ctaRef      = useRef<HTMLDivElement>(null);
 
   useGSAP(() => {
     const els = [badgeRef.current, titleRef.current, subtitleRef.current, ctaRef.current];
     gsap.set(els, { opacity: 0, y: 60 });
 
     const tl = gsap.timeline({ delay: 0.3 });
-    tl.to(badgeRef.current, { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
-      .to(titleRef.current, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.65")
+    tl.to(badgeRef.current,    { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
+      .to(titleRef.current,    { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.65")
       .to(subtitleRef.current, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.65")
-      .to(ctaRef.current, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.65");
+      .to(ctaRef.current,      { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.65");
   });
 
   return (
@@ -89,7 +101,7 @@ export function HeroSection() {
               ref={badgeRef}
               className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white/80 text-sm"
             >
-              Taller en Sabanalarga · Diagnóstico computarizado
+              Multidiagnósticos AS · Sabanalarga, Colombia
             </span>
             <h1
               ref={titleRef}
@@ -105,16 +117,13 @@ export function HeroSection() {
               Revisión, cambio de aceite, frenos, suspensión y más. Repuestos
               originales con asesoría personalizada por WhatsApp.
             </p>
-            <div
-              ref={ctaRef}
-              className="flex flex-wrap gap-3 justify-center pt-2"
-            >
-              <Link href="#agenda" className={cn(buttonVariants({ size: "lg" }))}>
+            <div ref={ctaRef} className="flex flex-wrap gap-3 justify-center pt-2">
+              <Link href="/agendar" className={cn(buttonVariants({ size: "lg" }))}>
                 <Wrench className="w-4 h-4 mr-2" />
                 Agendar servicio
               </Link>
               <Link
-                href="#catalogo"
+                href="/autopartes"
                 className={cn(
                   buttonVariants({ size: "lg", variant: "outline" }),
                   "bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white"
@@ -139,7 +148,7 @@ export function HeroSection() {
           </div>
         }
       >
-        <OBDCard />
+        <ScannerCard />
       </ContainerScroll>
     </section>
   );

@@ -72,9 +72,6 @@ export function EngineSection() {
               Tu motor{" "}
               <span className="text-brand-blue-light">por dentro</span>
             </h2>
-            <p className="text-white/35 mt-3 text-xs tracking-widest uppercase">
-              Scroll para explorar cada componente
-            </p>
           </div>
 
           {/* ── Left: component list ── */}
