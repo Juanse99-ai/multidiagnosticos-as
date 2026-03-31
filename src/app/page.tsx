@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/hero-section";
 import { QuickCats } from "@/components/quick-cats";
 import { EngineSection } from "@/components/engine-section";
+import { PromotionsSection } from "@/components/promotions-section";
 import { ServicesSection } from "@/components/services-section";
 import { CatalogSection } from "@/components/catalog-section";
 import { BookingSection } from "@/components/booking-section";
@@ -13,6 +14,7 @@ export default function Home() {
       <HeroSection />
       <QuickCats />
       <EngineSection />
+      <PromotionsSection />
       <ServicesSection />
       <CatalogSection />
       <BookingSection />
