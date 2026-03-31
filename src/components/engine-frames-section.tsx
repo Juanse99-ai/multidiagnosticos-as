@@ -19,7 +19,7 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 // ← Update this after running ffmpeg
-const TOTAL_FRAMES = 120;
+const TOTAL_FRAMES = 121;
 const FRAME_PATH   = (n: number) =>
   `/engine-frames/frame_${String(n).padStart(4, "0")}.jpg`;
 
@@ -116,8 +116,8 @@ export function EngineFramesSection() {
           {/* Canvas — full bleed */}
           <canvas
             ref={canvasRef}
-            width={1920}
-            height={1080}
+            width={1280}
+            height={720}
             className="absolute inset-0 w-full h-full object-contain"
           />
 
