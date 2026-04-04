@@ -111,7 +111,7 @@ export default function TallerPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-brand-dark via-blue-950 to-brand-dark text-white py-20 px-6 overflow-hidden relative">
+      <section className="bg-gradient-to-br from-brand-dark via-brand-blue/20 to-brand-dark text-white py-20 px-6 overflow-hidden relative">
         <div className="absolute inset-0 opacity-5 pointer-events-none"
           style={{ backgroundImage: "radial-gradient(circle at 70% 50%, #2563eb 0%, transparent 60%)" }} />
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10">
@@ -274,7 +274,7 @@ export default function TallerPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-14 border-t border-border bg-gradient-to-r from-brand-blue to-blue-700">
+      <section className="py-14 border-t border-border bg-gradient-to-r from-brand-blue to-brand-dark">
         <div className="max-w-3xl mx-auto px-6 text-center">
           <h2 className="text-2xl md:text-3xl font-bold font-display text-white mb-3">
             ¿Listo para agendar tu servicio?

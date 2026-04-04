@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -60,9 +60,104 @@ const PROMOS = [
   },
 ];
 
+function PromoCard({
+  p,
+  i,
+  imgSrc,
+}: {
+  p: (typeof PROMOS)[0];
+  i: number;
+  imgSrc: string | null;
+}) {
+  return (
+    <div
+      className={`shrink-0 w-[320px] md:w-[380px] h-[480px] rounded-3xl bg-gradient-to-br ${p.color} flex flex-col justify-between relative overflow-hidden shadow-2xl`}
+    >
+      {/* Glow */}
+      <div
+        className="absolute -top-16 -right-16 w-52 h-52 rounded-full opacity-20 blur-3xl pointer-events-none"
+        style={{ backgroundColor: p.accent }}
+      />
+
+      {/* Image or icon */}
+      {imgSrc ? (
+        <div className="relative w-full h-44 shrink-0 overflow-hidden">
+          <img
+            src={imgSrc}
+            alt={p.title.replace("\n", " ")}
+            className="w-full h-full object-cover"
+          />
+          {/* gradient overlay so text below is readable */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
+          <span
+            className="absolute bottom-3 left-4 inline-block px-3 py-1 rounded-full text-xs font-semibold"
+            style={{
+              backgroundColor: `${p.accent}22`,
+              color: p.accent,
+              border: `1px solid ${p.accent}44`,
+            }}
+          >
+            {p.tag}
+          </span>
+        </div>
+      ) : (
+        <div className="p-8 pb-0">
+          <span
+            className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4"
+            style={{
+              backgroundColor: `${p.accent}22`,
+              color: p.accent,
+              border: `1px solid ${p.accent}44`,
+            }}
+          >
+            {p.tag}
+          </span>
+          <div className="text-5xl mb-4">{p.icon}</div>
+        </div>
+      )}
+
+      {/* Text body */}
+      <div className="flex flex-col flex-1 justify-between p-8 pt-4">
+        <div>
+          <h3 className="text-2xl md:text-3xl font-bold font-display text-white leading-tight whitespace-pre-line mb-3">
+            {p.title}
+          </h3>
+          <p className="text-white/55 text-sm leading-relaxed">{p.desc}</p>
+        </div>
+
+        {/* Bottom */}
+        <div className="flex items-end justify-between pt-6 border-t border-white/10 mt-4">
+          <div>
+            <p className="text-white font-bold text-2xl leading-none">{p.price}</p>
+            {p.old && (
+              <p className="text-white/30 text-sm line-through mt-1">{p.old}</p>
+            )}
+          </div>
+          <a
+            href="#reservar"
+            className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95"
+            style={{ backgroundColor: p.accent, color: "#080f1e" }}
+          >
+            Reservar
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export function PromotionsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const trackRef   = useRef<HTMLDivElement>(null);
+  const [images, setImages] = useState<Record<string, string>>({});
+
+  // Load manifest once on mount
+  useEffect(() => {
+    fetch("/promotions/manifest.json")
+      .then((r) => r.json())
+      .then((data: Record<string, string>) => setImages(data))
+      .catch(() => {});
+  }, []);
 
   useGSAP(() => {
     const section = sectionRef.current;
@@ -109,54 +204,7 @@ export function PromotionsSection() {
         style={{ width: "max-content", paddingLeft: "12vw", paddingRight: "12vw", gap: "2rem" }}
       >
         {PROMOS.map((p, i) => (
-          <div
-            key={i}
-            className={`shrink-0 w-[320px] md:w-[380px] h-[440px] rounded-3xl bg-gradient-to-br ${p.color} p-8 flex flex-col justify-between relative overflow-hidden shadow-2xl`}
-          >
-            {/* Glow */}
-            <div
-              className="absolute -top-16 -right-16 w-52 h-52 rounded-full opacity-20 blur-3xl pointer-events-none"
-              style={{ backgroundColor: p.accent }}
-            />
-
-            {/* Top */}
-            <div>
-              <span
-                className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4"
-                style={{
-                  backgroundColor: `${p.accent}22`,
-                  color: p.accent,
-                  border: `1px solid ${p.accent}44`,
-                }}
-              >
-                {p.tag}
-              </span>
-              <div className="text-5xl mb-4">{p.icon}</div>
-              <h3 className="text-2xl md:text-3xl font-bold font-display text-white leading-tight whitespace-pre-line">
-                {p.title}
-              </h3>
-            </div>
-
-            {/* Description */}
-            <p className="text-white/55 text-sm leading-relaxed">{p.desc}</p>
-
-            {/* Bottom */}
-            <div className="flex items-end justify-between pt-6 border-t border-white/10">
-              <div>
-                <p className="text-white font-bold text-2xl leading-none">{p.price}</p>
-                {p.old && (
-                  <p className="text-white/30 text-sm line-through mt-1">{p.old}</p>
-                )}
-              </div>
-              <a
-                href="#reservar"
-                className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95"
-                style={{ backgroundColor: p.accent, color: "#080f1e" }}
-              >
-                Reservar
-              </a>
-            </div>
-          </div>
+          <PromoCard key={i} p={p} i={i} imgSrc={images[String(i)] ?? null} />
         ))}
       </div>
 
