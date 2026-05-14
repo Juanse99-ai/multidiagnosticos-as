@@ -1,7 +1,13 @@
 "use client";
 
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import { Filter, Battery, Droplets, Zap, CircuitBoard } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const categories = [
   {
@@ -37,6 +43,10 @@ const categories = [
 ];
 
 export function QuickCats() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
   const handleClick = (cat: string) => {
     window.dispatchEvent(
       new CustomEvent("set-category", { detail: cat })
@@ -45,13 +55,43 @@ export function QuickCats() {
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  useGSAP(() => {
+    const cards = Array.from(gridRef.current?.querySelectorAll("button") ?? []);
+    gsap.set([titleRef.current, ...cards], { opacity: 0, y: 60 });
+
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        const tl = gsap.timeline();
+        tl.to(titleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        }).to(
+          cards,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: "power3.out",
+          },
+          "-=0.4"
+        );
+      },
+    });
+  });
+
   return (
-    <section className="py-14 border-t border-border">
+    <section ref={sectionRef} className="py-14 border-t border-border">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-8">
+        <h2 ref={titleRef} className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-8">
           Categorías de autopartes
         </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div ref={gridRef} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {categories.map((cat) => (
             <button
               key={cat.name}

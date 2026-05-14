@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buttonVariants } from "@/lib/button-variants";
 import { cn } from "@/lib/utils";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import {
   Cpu,
   Key,
@@ -115,20 +116,20 @@ export default function TallerPage() {
         <div className="absolute inset-0 opacity-5 pointer-events-none"
           style={{ backgroundImage: "radial-gradient(circle at 70% 50%, #2563eb 0%, transparent 60%)" }} />
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10">
-          <div>
-            <span className="inline-block px-3 py-1 rounded-full bg-brand-blue/20 text-blue-300 text-xs uppercase tracking-widest mb-4 border border-brand-blue/30">
+          <ScrollReveal stagger="[data-reveal]" y={40} staggerAmount={0.15}>
+            <span data-reveal className="inline-block px-3 py-1 rounded-full bg-brand-blue/20 text-blue-300 text-xs uppercase tracking-widest mb-4 border border-brand-blue/30">
               Taller automotriz especializado
             </span>
-            <h1 className="text-3xl md:text-5xl font-bold font-display leading-tight mb-4">
+            <h1 data-reveal className="text-3xl md:text-5xl font-bold font-display leading-tight mb-4">
               Diagnóstico y reparación{" "}
               <span className="text-brand-blue-light">en Sabanalarga</span>
             </h1>
-            <p className="text-white/70 text-lg mb-8 max-w-xl">
+            <p data-reveal className="text-white/70 text-lg mb-8 max-w-xl">
               Más de 10 años de experiencia en escáner automotriz, reparación de
               motor, frenos, suspensión y programación de llaves. Repuestos
               originales garantizados.
             </p>
-            <div className="flex flex-wrap gap-3">
+            <div data-reveal className="flex flex-wrap gap-3">
               <Link href="/agendar" className={cn(buttonVariants({ size: "lg" }))}>
                 <CalendarDays className="w-4 h-4 mr-2" />
                 Agendar servicio
@@ -146,13 +147,14 @@ export default function TallerPage() {
                 WhatsApp
               </a>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Stats */}
-          <div className="grid grid-cols-2 gap-4">
+          <ScrollReveal stagger="[data-stat]" className="grid grid-cols-2 gap-4" y={50} staggerAmount={0.12}>
             {stats.map((s) => (
               <div
                 key={s.label}
+                data-stat
                 className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors"
               >
                 <s.icon className="w-6 h-6 text-brand-blue-light mx-auto mb-2" />
@@ -160,14 +162,14 @@ export default function TallerPage() {
                 <p className="text-white/50 text-xs uppercase tracking-wider">{s.label}</p>
               </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Services */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-10">
+          <ScrollReveal className="mb-10" y={30}>
             <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-3">
               Servicios del taller
             </h2>
@@ -175,9 +177,9 @@ export default function TallerPage() {
               Si no encuentras el servicio que necesitas, escríbenos por WhatsApp
               y te orientamos.
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <ScrollReveal stagger="article" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" staggerAmount={0.1}>
             {services.map((svc) => (
               <article
                 key={svc.title}
@@ -191,17 +193,17 @@ export default function TallerPage() {
                 <p className="text-brand-blue font-bold text-sm">{svc.price}</p>
               </article>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Why us */}
       <section className="py-16 bg-muted/30 border-t border-border">
         <div className="max-w-7xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-10 text-center">
+          <ScrollReveal as="h2" className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-10 text-center" y={30}>
             ¿Por qué elegirnos?
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          </ScrollReveal>
+          <ScrollReveal stagger="[data-feature]" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerAmount={0.1}>
             {[
               {
                 icon: Cpu,
@@ -234,7 +236,7 @@ export default function TallerPage() {
                 desc: "Si no quedas conforme, lo solucionamos. Tu tranquilidad es nuestra prioridad.",
               },
             ].map((item) => (
-              <div key={item.title} className="flex gap-4">
+              <div key={item.title} data-feature className="flex gap-4">
                 <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center shrink-0 mt-0.5">
                   <item.icon className="w-5 h-5 text-brand-blue" />
                 </div>
@@ -244,17 +246,17 @@ export default function TallerPage() {
                 </div>
               </div>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* FAQ */}
       <section className="py-16 border-t border-border">
         <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-8 text-center">
+          <ScrollReveal as="h2" className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-8 text-center" y={30}>
             Preguntas frecuentes
-          </h2>
-          <div className="space-y-3">
+          </ScrollReveal>
+          <ScrollReveal stagger="details" className="space-y-3" staggerAmount={0.08}>
             {faqs.map((faq, i) => (
               <details
                 key={i}
@@ -269,20 +271,20 @@ export default function TallerPage() {
                 </p>
               </details>
             ))}
-          </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-14 border-t border-border bg-gradient-to-r from-brand-blue to-brand-dark">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold font-display text-white mb-3">
+        <ScrollReveal className="max-w-3xl mx-auto px-6 text-center" stagger="[data-cta]" staggerAmount={0.15} y={40}>
+          <h2 data-cta className="text-2xl md:text-3xl font-bold font-display text-white mb-3">
             ¿Listo para agendar tu servicio?
           </h2>
-          <p className="text-white/70 mb-8">
+          <p data-cta className="text-white/70 mb-8">
             Cuéntanos la placa, el servicio que necesitas y te confirmamos en minutos.
           </p>
-          <div className="flex flex-wrap gap-3 justify-center">
+          <div data-cta className="flex flex-wrap gap-3 justify-center">
             <Link
               href="/agendar"
               className={cn(buttonVariants({ size: "lg" }), "bg-white text-brand-blue hover:bg-white/90")}
@@ -303,7 +305,7 @@ export default function TallerPage() {
               Escribir por WhatsApp
             </a>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </>
   );

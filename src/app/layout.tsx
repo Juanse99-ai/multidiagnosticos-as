@@ -5,7 +5,6 @@ import { Providers } from "@/components/providers";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
-import { NavigationDock } from "@/components/navigation-dock";
 
 const barlow = Barlow({
   variable: "--font-barlow",
@@ -111,7 +110,6 @@ export default function RootLayout({
           <Header />
           <main className="flex-1">{children}</main>
           <Footer />
-          <NavigationDock />
           <WhatsAppFloat />
         </Providers>
       </body>

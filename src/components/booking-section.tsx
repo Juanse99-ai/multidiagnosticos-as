@@ -1,8 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 import { Button } from "@/components/ui/button";
 import { CalendarDays, Download } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function fmtICSDate(dateStr: string, timeStr: string): string | null {
   if (!dateStr) return null;
@@ -17,6 +22,51 @@ function icsEscape(str: string) {
 }
 
 export function BookingSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const titleRef = useRef<HTMLHeadingElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useGSAP(() => {
+    const fields = Array.from(
+      formRef.current?.querySelectorAll(":scope > div, :scope > .flex") ?? []
+    );
+    gsap.set([titleRef.current, formRef.current, ...fields], {
+      opacity: 0,
+      y: 40,
+    });
+
+    ScrollTrigger.create({
+      trigger: sectionRef.current,
+      start: "top 80%",
+      once: true,
+      onEnter: () => {
+        const tl = gsap.timeline();
+        tl.to(titleRef.current, {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        })
+          .to(
+            formRef.current,
+            { opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+            "-=0.4"
+          )
+          .to(
+            fields,
+            {
+              opacity: 1,
+              y: 0,
+              duration: 0.6,
+              stagger: 0.08,
+              ease: "power3.out",
+            },
+            "-=0.3"
+          );
+      },
+    });
+  });
+
   const [form, setForm] = useState({
     service: "",
     date: "",
@@ -108,13 +158,14 @@ export function BookingSection() {
     "w-full px-4 py-2.5 border border-border rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-blue/50";
 
   return (
-    <section id="agenda" className="py-14 border-t border-border">
+    <section ref={sectionRef} id="agenda" className="py-14 border-t border-border">
       <div className="max-w-3xl mx-auto px-6">
-        <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-6">
+        <h2 ref={titleRef} className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-6">
           Agendar Servicio
         </h2>
 
         <form
+          ref={formRef}
           onSubmit={handleSubmit}
           className="bg-card border border-border rounded-2xl p-6 space-y-4"
         >
