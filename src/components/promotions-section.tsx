@@ -190,7 +190,7 @@ export function PromotionsSection() {
         style={{ width: "max-content", paddingLeft: "12vw", paddingRight: "12vw", gap: "2rem" }}
       >
         {PROMOS.map((p, i) => (
-          <PromoCard key={i} p={p} i={i} imgSrc={images[String(i)] ?? null} />
+          <PromoCard key={i} p={p} imgSrc={images[String(i)] ?? null} />
         ))}
       </div>
 
