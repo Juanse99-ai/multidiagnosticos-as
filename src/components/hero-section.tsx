@@ -6,9 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import { buttonVariants } from "@/lib/button-variants";
-import { cn } from "@/lib/utils";
-import { Wrench, ShoppingBag, MessageCircle } from "lucide-react";
+import { Wrench, ShoppingBag, MessageCircle, ArrowUpRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -97,52 +95,67 @@ export function HeroSection() {
     <section className="bg-brand-dark overflow-hidden">
       <ContainerScroll
         titleComponent={
-          <div className="space-y-6">
+          <div className="space-y-8">
+            {/* Eyebrow tag — microscopic uppercase pill */}
             <span
               ref={badgeRef}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-white/80 text-sm"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 ring-1 ring-white/15 text-white/70 text-[10px] uppercase tracking-[0.25em] font-medium"
             >
-              Multidiagnósticos AS · Sabanalarga, Colombia
+              <span className="w-1.5 h-1.5 rounded-full bg-brand-blue-light animate-pulse" />
+              Sabanalarga · Atlántico · Colombia
             </span>
+
+            {/* Massive headline */}
             <h1
               ref={titleRef}
-              className="text-4xl md:text-6xl lg:text-7xl font-bold font-display text-white leading-tight"
+              className="text-5xl md:text-7xl lg:text-8xl font-bold font-display text-white leading-[0.95] tracking-tight"
             >
-              Tu vehículo en{" "}
-              <span className="text-brand-blue-light">manos expertas</span>
+              Tu vehículo
+              <br />
+              <span className="bg-gradient-to-r from-brand-blue-light via-white to-brand-blue-light bg-clip-text text-transparent">
+                en manos expertas.
+              </span>
             </h1>
+
             <p
               ref={subtitleRef}
-              className="text-white/70 text-lg max-w-2xl mx-auto"
+              className="text-white/65 text-lg md:text-xl max-w-xl mx-auto leading-relaxed"
             >
-              Revisión, cambio de aceite, frenos, suspensión y más. Repuestos
-              originales con asesoría personalizada por WhatsApp.
+              Diagnóstico computarizado, mantenimiento integral y autopartes
+              originales — con asesoría personalizada por WhatsApp.
             </p>
-            <div ref={ctaRef} className="flex flex-wrap gap-3 justify-center pt-2">
-              <Link href="/agendar" className={cn(buttonVariants({ size: "lg" }))}>
-                <Wrench className="w-4 h-4 mr-2" />
+
+            {/* Premium CTAs with nested icon circles */}
+            <div ref={ctaRef} className="flex flex-wrap gap-3 justify-center pt-4">
+              <Link
+                href="/agendar"
+                className="group/cta inline-flex items-center gap-2 pl-6 pr-2 py-2 rounded-full bg-white text-brand-dark text-sm font-semibold transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-white/95 active:scale-[0.97]"
+              >
+                <Wrench className="w-4 h-4" strokeWidth={1.75} />
                 Agendar servicio
+                <span className="ml-1 w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover/cta:-translate-y-0.5">
+                  <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
+                </span>
               </Link>
+
               <Link
                 href="/autopartes"
-                className={cn(
-                  buttonVariants({ size: "lg", variant: "outline" }),
-                  "bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white"
-                )}
+                className="group/cta inline-flex items-center gap-2 pl-6 pr-2 py-2 rounded-full bg-white/10 ring-1 ring-white/20 text-white text-sm font-semibold transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-white/15 active:scale-[0.97] backdrop-blur-sm"
               >
-                <ShoppingBag className="w-4 h-4 mr-2" />
+                <ShoppingBag className="w-4 h-4" strokeWidth={1.75} />
                 Ver autopartes
+                <span className="ml-1 w-8 h-8 rounded-full bg-white/15 text-white flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover/cta:-translate-y-0.5">
+                  <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
+                </span>
               </Link>
+
               <a
                 href="https://wa.me/573003651525?text=Hola,%20quisiera%20información"
                 target="_blank"
                 rel="noopener"
-                className={cn(
-                  buttonVariants({ size: "lg", variant: "outline" }),
-                  "bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white"
-                )}
+                className="group/cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white/80 text-sm font-medium transition-[color,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white hover:bg-white/5"
               >
-                <MessageCircle className="w-4 h-4 mr-2" />
+                <MessageCircle className="w-4 h-4" strokeWidth={1.75} />
                 WhatsApp
               </a>
             </div>
