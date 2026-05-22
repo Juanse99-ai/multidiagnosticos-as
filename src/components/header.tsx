@@ -60,7 +60,7 @@ export function Header() {
 
       {/* Header */}
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 border-b ${
+        className={`sticky top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] border-b ${
           scrolled
             ? "bg-brand-dark/97 shadow-lg shadow-black/25 backdrop-blur-lg"
             : "bg-transparent backdrop-blur-md border-border"
@@ -73,7 +73,7 @@ export function Header() {
               alt="Multidiagnósticos AS"
               width={180}
               height={52}
-              className="h-13 w-auto drop-shadow-md group-hover:scale-105 transition-transform"
+              className="h-13 w-auto drop-shadow-md transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:scale-105 group-active:scale-[0.97]"
               priority
             />
           </Link>
@@ -107,7 +107,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                className={`px-3 py-2 rounded-lg text-sm font-medium transition-[background-color,color] duration-150 ease-out ${
                   scrolled
                     ? "text-white hover:bg-white/10"
                     : "text-foreground hover:bg-muted"

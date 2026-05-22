@@ -11,6 +11,11 @@
   --font-display: var(--font-barlow-condensed);
   --font-mono: var(--font-geist-mono);
 
+  /* Custom easing curves (Emil Kowalski / animations.dev) */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
   /* Brand colors */
   --color-brand-blue: #2563EB;
   --color-brand-dark: #0B1221;
@@ -121,4 +126,20 @@
 
 .animate-brands-scroll {
   animation: brands-scroll 28s linear infinite;
+}
+
+/* Reduced motion: keep opacity/color transitions, remove movement */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.15s !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee,
+  .animate-brands-scroll {
+    animation: none !important;
+  }
 }

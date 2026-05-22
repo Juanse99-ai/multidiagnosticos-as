@@ -43,7 +43,7 @@ function ScannerCard() {
         {PROMOS.map((promo, i) => (
           <div
             key={i}
-            className="flex flex-col items-center justify-center gap-1 rounded-lg p-2 cursor-pointer transition-all duration-150 active:scale-95 hover:brightness-95"
+            className="flex flex-col items-center justify-center gap-1 rounded-lg p-2 cursor-pointer transition-[transform,filter] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] [@media(hover:hover)and(pointer:fine)]:hover:brightness-95"
             style={{ backgroundColor: promo.bg }}
           >
             <span className="text-xl md:text-2xl leading-none">{promo.icon}</span>
@@ -83,13 +83,14 @@ export function HeroSection() {
 
   useGSAP(() => {
     const els = [badgeRef.current, titleRef.current, subtitleRef.current, ctaRef.current];
-    gsap.set(els, { opacity: 0, y: 60 });
+    // Never animate from scale(0); start from a visible position
+    gsap.set(els, { opacity: 0, y: 24 });
 
-    const tl = gsap.timeline({ delay: 0.3 });
-    tl.to(badgeRef.current,    { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
-      .to(titleRef.current,    { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.65")
-      .to(subtitleRef.current, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.65")
-      .to(ctaRef.current,      { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.65");
+    const tl = gsap.timeline({ delay: 0.15 });
+    tl.to(badgeRef.current,    { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" })
+      .to(titleRef.current,    { opacity: 1, y: 0, duration: 0.8, ease: "expo.out" }, "-=0.55")
+      .to(subtitleRef.current, { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, "-=0.55")
+      .to(ctaRef.current,      { opacity: 1, y: 0, duration: 0.7, ease: "expo.out" }, "-=0.55");
   });
 
   return (

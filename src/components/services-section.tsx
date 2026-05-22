@@ -54,9 +54,9 @@ export function ServicesSection() {
         gsap.to(cards, {
           opacity: 1,
           y: 0,
-          duration: 0.9,
-          stagger: 0.15,
-          ease: "power3.out",
+          duration: 0.7,
+          stagger: 0.06,
+          ease: "expo.out",
         });
       },
     });
@@ -76,14 +76,14 @@ export function ServicesSection() {
           {services.map((svc) => (
             <article
               key={svc.title}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-[transform,box-shadow] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-1 [@media(hover:hover)and(pointer:fine)]:hover:shadow-xl"
             >
               <div className="relative h-44 overflow-hidden">
                 <Image
                   src={svc.img}
                   alt={svc.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="object-cover transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:scale-[1.06]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand-dark/30 to-transparent" />
                 <div className="absolute bottom-3 left-3">
