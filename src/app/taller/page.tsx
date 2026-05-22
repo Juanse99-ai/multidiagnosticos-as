@@ -19,6 +19,7 @@ import {
   Star,
   Users,
   ChevronDown,
+  ArrowUpRight,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -32,49 +33,41 @@ const services = [
     title: "Escáner y diagnóstico computarizado",
     desc: "Lectura de códigos, borrado de fallas, pruebas en vivo y diagnóstico eléctrico con equipo LAUNCH X-431.",
     icon: Cpu,
-    price: "Desde $35.000",
   },
   {
     title: "Programación de llaves y controles",
     desc: "Sincronización de llaves, mandos y programación de inmovilizadores para todas las marcas.",
     icon: Key,
-    price: "Desde $80.000",
   },
   {
     title: "Cambio de aceite y filtros",
     desc: "Aceite sintético, filtro de aceite y revisión de niveles. Aceites NGK, Castrol y Mobil 1.",
     icon: Droplets,
-    price: "Desde $75.000",
   },
   {
     title: "Sistema de frenos",
     desc: "Cambio de pastillas, discos, bandas y revisión de líquido de frenos ABS.",
     icon: Disc3,
-    price: "Desde $45.000",
   },
   {
     title: "Suspensión y dirección",
     desc: "Cambio de amortiguadores Monroe, rótulas, terminales y revisión completa de suspensión.",
     icon: CarFront,
-    price: "Consultar",
   },
   {
     title: "Mantenimiento preventivo",
     desc: "Chequeo general de 30 puntos, filtros, correas y revisión por kilometraje.",
     icon: Wrench,
-    price: "Desde $55.000",
   },
   {
     title: "Reparación de motor",
     desc: "Diagnóstico de consumo de aceite, fallas de potencia, fugas, juntas y ruidos anormales.",
     icon: Cog,
-    price: "Consultar",
   },
   {
     title: "Aire acondicionado y eléctrico",
     desc: "Carga de gas, revisión de compresor, alternador, batería y sistema de carga.",
     icon: Snowflake,
-    price: "Desde $60.000",
   },
 ];
 
@@ -189,8 +182,18 @@ export default function TallerPage() {
                   <svc.icon className="w-5 h-5 text-brand-blue" />
                 </div>
                 <h3 className="font-bold text-base mb-1 flex-1">{svc.title}</h3>
-                <p className="text-muted-foreground text-sm mb-3">{svc.desc}</p>
-                <p className="text-brand-blue font-bold text-sm">{svc.price}</p>
+                <p className="text-muted-foreground text-sm mb-4">{svc.desc}</p>
+                <a
+                  href={`https://wa.me/573003651525?text=${encodeURIComponent(
+                    `Hola, quisiera información sobre ${svc.title}`
+                  )}`}
+                  target="_blank"
+                  rel="noopener"
+                  className="inline-flex items-center justify-between gap-2 px-3 py-2 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold uppercase tracking-wider transition-colors duration-200 hover:bg-brand-blue hover:text-white mt-auto"
+                >
+                  Consultar
+                  <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
+                </a>
               </article>
             ))}
           </ScrollReveal>

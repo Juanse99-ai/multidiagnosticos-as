@@ -8,16 +8,56 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const brands = [
-  { text: "BOSCH",    color: "#d40000", sub: "Autopartes" },
-  { text: "TUDOR",    color: "#003366", sub: "Baterías" },
-  { text: "NGK",      color: "#cc0000", sub: "Bujías" },
-  { text: "Castrol",  color: "#007a33", sub: "Lubricantes" },
-  { text: "Mobil 1",  color: "#e60000", sub: "Aceites" },
-  { text: "AC·Delco", color: "#003087", sub: "Repuestos" },
-  { text: "Monroe",   color: "#ff6000", sub: "Suspensión" },
-  { text: "Varta",    color: "#0033a0", sub: "Baterías" },
-  { text: "WD-40",    color: "#005ca9", sub: "Mantenimiento" },
-  { text: "Denso",    color: "#c0392b", sub: "Filtros" },
+  {
+    name: "Bosch",
+    sub: "Autopartes",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Robert_Bosch_GmbH_logo.svg/320px-Robert_Bosch_GmbH_logo.svg.png",
+  },
+  {
+    name: "Tudor",
+    sub: "Baterías",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Tudor_batteries_logo.svg/320px-Tudor_batteries_logo.svg.png",
+  },
+  {
+    name: "NGK",
+    sub: "Bujías",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/NGK_logo.svg/320px-NGK_logo.svg.png",
+  },
+  {
+    name: "Castrol",
+    sub: "Lubricantes",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Castrol_logo.svg/320px-Castrol_logo.svg.png",
+  },
+  {
+    name: "Mobil 1",
+    sub: "Aceites",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Mobil_logo.svg/320px-Mobil_logo.svg.png",
+  },
+  {
+    name: "ACDelco",
+    sub: "Repuestos",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/ACDelco-logo.svg/320px-ACDelco-logo.svg.png",
+  },
+  {
+    name: "Monroe",
+    sub: "Suspensión",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Monroe_logo.svg/320px-Monroe_logo.svg.png",
+  },
+  {
+    name: "Varta",
+    sub: "Baterías",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Varta-logo.svg/320px-Varta-logo.svg.png",
+  },
+  {
+    name: "WD-40",
+    sub: "Mantenimiento",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/WD-40_logo.svg/320px-WD-40_logo.svg.png",
+  },
+  {
+    name: "Denso",
+    sub: "Filtros",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Denso-Logo.svg/320px-Denso-Logo.svg.png",
+  },
 ];
 
 export function BrandsSection() {
@@ -46,33 +86,40 @@ export function BrandsSection() {
   });
 
   return (
-    <section ref={sectionRef} className="bg-brand-dark py-5 overflow-hidden border-t border-white/5">
-      <p className="text-center text-white/25 text-[10px] tracking-[0.3em] uppercase mb-4">
+    <section
+      ref={sectionRef}
+      className="relative py-10 overflow-hidden bg-gradient-to-b from-white via-blue-50/30 to-white border-t border-black/[0.04]"
+    >
+      <p className="text-center text-brand-dark/40 text-[10px] tracking-[0.3em] uppercase mb-6 font-semibold">
         Marcas que comercializamos
       </p>
       <div className="overflow-hidden relative">
         {/* Gradient fade edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-brand-dark to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-brand-dark to-transparent pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
 
         <div
           ref={trackRef}
-          className="flex gap-5 items-center py-3 px-8 animate-brands-scroll"
+          className="flex gap-4 items-stretch py-3 px-8 animate-brands-scroll"
           style={{ width: "max-content" }}
         >
           {[...brands, ...brands, ...brands].map((brand, i) => (
             <div
               key={i}
-              className="flex-none flex flex-col items-center justify-center gap-0.5 bg-white rounded-xl px-5 py-3 min-w-[100px] shadow-sm"
+              className="flex-none flex flex-col items-center justify-center gap-2 bg-white rounded-2xl px-6 py-4 min-w-[140px] ring-1 ring-black/[0.04] shadow-[0_2px_8px_-2px_rgba(0,0,0,0.04)]"
               aria-hidden={i >= brands.length}
             >
-              <span
-                className="font-black text-sm md:text-base tracking-tight leading-none"
-                style={{ color: brand.color }}
-              >
-                {brand.text}
-              </span>
-              <span className="text-[9px] text-gray-400 uppercase tracking-wider">
+              <div className="h-9 flex items-center justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                  className="max-h-9 max-w-[110px] object-contain grayscale opacity-70 transition-[filter,opacity] duration-300 hover:grayscale-0 hover:opacity-100"
+                />
+              </div>
+              <span className="text-[9px] text-brand-dark/45 uppercase tracking-[0.18em] font-semibold">
                 {brand.sub}
               </span>
             </div>

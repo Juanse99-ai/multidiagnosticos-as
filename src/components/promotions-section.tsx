@@ -12,63 +12,67 @@ const PROMOS = [
     tag: "Oferta del mes",
     title: "Diagnóstico\nComputarizado",
     desc: "Escaneo completo con equipo de última tecnología. Detectamos fallas antes de que sean un problema mayor.",
-    price: "$35.000",
-    old: "$60.000",
     color: "from-brand-blue to-blue-900",
     accent: "#60a5fa",
     icon: "🔍",
+    fallbackImg:
+      "https://images.unsplash.com/photo-1632823471565-1ecdf5c6da77?w=800&q=80&auto=format&fit=crop",
+    waMsg: "Hola, quisiera información sobre el Diagnóstico Computarizado",
   },
   {
     tag: "Kit completo",
     title: "Cambio de\nAceite + Filtro",
     desc: "Aceite sintético 5W-30 + filtro de primera calidad incluido. Hasta 10.000 km de protección garantizada.",
-    price: "$75.000",
-    old: "$110.000",
     color: "from-emerald-900 to-emerald-700",
     accent: "#34d399",
     icon: "🛢️",
+    fallbackImg:
+      "https://images.unsplash.com/photo-1635770310629-3257a93b2c9d?w=800&q=80&auto=format&fit=crop",
+    waMsg: "Hola, quisiera información sobre el Cambio de Aceite + Filtro",
   },
   {
     tag: "Revisión técnica",
     title: "Check-Up\nCompleto",
     desc: "30 puntos de inspección: frenos, suspensión, dirección, luces, motor y más. Informe detallado incluido.",
-    price: "$55.000",
-    old: "$90.000",
     color: "from-violet-900 to-violet-700",
     accent: "#a78bfa",
     icon: "✅",
+    fallbackImg:
+      "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80&auto=format&fit=crop",
+    waMsg: "Hola, quisiera información sobre el Check-Up Completo",
   },
   {
     tag: "Seguridad vial",
     title: "Revisión\nFreno ABS",
     desc: "Diagnóstico del sistema ABS + pastillas + discos. Conducción segura garantizada en todo momento.",
-    price: "$45.000",
-    old: "$75.000",
     color: "from-rose-900 to-rose-700",
     accent: "#fb7185",
     icon: "🛑",
+    fallbackImg:
+      "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=800&q=80&auto=format&fit=crop",
+    waMsg: "Hola, quisiera información sobre la Revisión de Frenos ABS",
   },
   {
     tag: "Preventivo",
     title: "Kit de\nDistribución",
     desc: "Correa o cadena de distribución, tensor y bomba de agua. Evita daños catastróficos al motor.",
-    price: "Desde $280.000",
-    old: null,
     color: "from-amber-900 to-amber-700",
     accent: "#fbbf24",
     icon: "⚙️",
+    fallbackImg:
+      "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80&auto=format&fit=crop",
+    waMsg: "Hola, quisiera información sobre el Kit de Distribución",
   },
 ];
 
 function PromoCard({
   p,
-  i,
   imgSrc,
 }: {
   p: (typeof PROMOS)[0];
-  i: number;
   imgSrc: string | null;
 }) {
+  const resolvedImg = imgSrc ?? p.fallbackImg;
   return (
     <div
       className={`shrink-0 w-[320px] md:w-[380px] h-[480px] rounded-3xl bg-gradient-to-br ${p.color} flex flex-col justify-between relative overflow-hidden shadow-2xl`}
@@ -79,42 +83,27 @@ function PromoCard({
         style={{ backgroundColor: p.accent }}
       />
 
-      {/* Image or icon */}
-      {imgSrc ? (
-        <div className="relative w-full h-44 shrink-0 overflow-hidden">
-          <img
-            src={imgSrc}
-            alt={p.title.replace("\n", " ")}
-            className="w-full h-full object-cover"
-          />
-          {/* gradient overlay so text below is readable */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
-          <span
-            className="absolute bottom-3 left-4 inline-block px-3 py-1 rounded-full text-xs font-semibold"
-            style={{
-              backgroundColor: `${p.accent}22`,
-              color: p.accent,
-              border: `1px solid ${p.accent}44`,
-            }}
-          >
-            {p.tag}
-          </span>
-        </div>
-      ) : (
-        <div className="p-8 pb-0">
-          <span
-            className="inline-block px-3 py-1 rounded-full text-xs font-semibold mb-4"
-            style={{
-              backgroundColor: `${p.accent}22`,
-              color: p.accent,
-              border: `1px solid ${p.accent}44`,
-            }}
-          >
-            {p.tag}
-          </span>
-          <div className="text-5xl mb-4">{p.icon}</div>
-        </div>
-      )}
+      {/* Image */}
+      <div className="relative w-full h-44 shrink-0 overflow-hidden">
+        <img
+          src={resolvedImg}
+          alt={p.title.replace("\n", " ")}
+          className="w-full h-full object-cover"
+          loading="lazy"
+        />
+        {/* gradient overlay so text below is readable */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/60" />
+        <span
+          className="absolute bottom-3 left-4 inline-block px-3 py-1 rounded-full text-xs font-semibold"
+          style={{
+            backgroundColor: `${p.accent}22`,
+            color: p.accent,
+            border: `1px solid ${p.accent}44`,
+          }}
+        >
+          {p.tag}
+        </span>
+      </div>
 
       {/* Text body */}
       <div className="flex flex-col flex-1 justify-between p-8 pt-4">
@@ -125,20 +114,17 @@ function PromoCard({
           <p className="text-white/55 text-sm leading-relaxed">{p.desc}</p>
         </div>
 
-        {/* Bottom */}
-        <div className="flex items-end justify-between pt-6 border-t border-white/10 mt-4">
-          <div>
-            <p className="text-white font-bold text-2xl leading-none">{p.price}</p>
-            {p.old && (
-              <p className="text-white/30 text-sm line-through mt-1">{p.old}</p>
-            )}
-          </div>
+        {/* Bottom — CTA only, no prices */}
+        <div className="pt-6 border-t border-white/10 mt-4">
           <a
-            href="#reservar"
-            className="px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-105 active:scale-95"
+            href={`https://wa.me/573003651525?text=${encodeURIComponent(p.waMsg)}`}
+            target="_blank"
+            rel="noopener"
+            className="inline-flex items-center justify-between w-full px-5 py-3 rounded-xl text-sm font-semibold transition-all duration-200 hover:scale-[1.02] active:scale-95"
             style={{ backgroundColor: p.accent, color: "#080f1e" }}
           >
-            Reservar
+            Consultar por WhatsApp
+            <span aria-hidden>→</span>
           </a>
         </div>
       </div>

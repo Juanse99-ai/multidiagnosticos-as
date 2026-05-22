@@ -51,16 +51,16 @@ export function ContactSection() {
     <section
       ref={sectionRef}
       id="contacto"
-      className="relative py-24 md:py-32 bg-brand-dark text-white overflow-hidden"
+      className="relative py-24 md:py-32 bg-gradient-to-b from-white via-blue-50/30 to-white overflow-hidden"
     >
-      {/* Background glow */}
+      {/* Subtle background glow */}
       <div
         aria-hidden
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] rounded-full bg-brand-blue/20 blur-3xl pointer-events-none"
+        className="absolute top-1/4 -right-32 w-[480px] h-[480px] rounded-full bg-brand-blue/8 blur-3xl pointer-events-none"
       />
       <div
         aria-hidden
-        className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-brand-blue-light/10 blur-3xl pointer-events-none"
+        className="absolute bottom-0 -left-32 w-[420px] h-[420px] rounded-full bg-brand-blue-light/6 blur-3xl pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto px-6">
@@ -68,22 +68,20 @@ export function ContactSection() {
         <div className="text-center mb-14 md:mb-20 max-w-2xl mx-auto">
           <span
             ref={eyebrowRef}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 ring-1 ring-white/15 text-white/70 text-[10px] uppercase tracking-[0.25em] font-semibold"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 ring-1 ring-brand-blue/20 text-brand-blue text-[10px] uppercase tracking-[0.25em] font-semibold"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-blue-light animate-pulse" />
+            <span className="w-1.5 h-1.5 rounded-full bg-brand-blue" />
             Contacto
           </span>
           <h2
             ref={headingRef}
-            className="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold font-display leading-[1.05] tracking-tight"
+            className="mt-5 text-4xl md:text-5xl lg:text-6xl font-bold font-display text-brand-dark leading-[1.05] tracking-tight"
           >
             Estamos
             <br />
-            <span className="bg-gradient-to-r from-brand-blue-light via-white to-brand-blue-light bg-clip-text text-transparent">
-              a un mensaje.
-            </span>
+            <span className="text-brand-blue">a un mensaje.</span>
           </h2>
-          <p ref={subRef} className="mt-5 text-white/65 text-lg leading-relaxed">
+          <p ref={subRef} className="mt-5 text-muted-foreground text-lg leading-relaxed">
             Asesoría técnica gratuita por WhatsApp. Atendemos repuestos,
             diagnósticos y agendamiento de citas.
           </p>
@@ -92,34 +90,34 @@ export function ContactSection() {
         {/* Bento grid: 1 featured (visit) + stacked contact */}
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {/* Visit card - featured */}
-          <div className="md:col-span-3 rounded-[2rem] bg-white/[0.04] ring-1 ring-white/10 p-1.5 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-1">
-            <div className="relative h-full rounded-[calc(2rem-0.375rem)] bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-8 md:p-10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)] overflow-hidden">
+          <div className="md:col-span-3 rounded-[2rem] bg-white/40 backdrop-blur-sm ring-1 ring-black/[0.04] p-1.5 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-1 [@media(hover:hover)and(pointer:fine)]:hover:shadow-[0_24px_48px_-12px_rgba(37,99,235,0.18)]">
+            <div className="relative h-full rounded-[calc(2rem-0.375rem)] bg-white p-8 md:p-10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] overflow-hidden">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-2xl bg-brand-blue/20 ring-1 ring-brand-blue/30 flex items-center justify-center">
-                  <MapPin className="w-5 h-5 text-brand-blue-light" strokeWidth={1.5} />
+                <div className="w-10 h-10 rounded-2xl bg-brand-blue/10 ring-1 ring-brand-blue/20 flex items-center justify-center">
+                  <MapPin className="w-5 h-5 text-brand-blue" strokeWidth={1.5} />
                 </div>
-                <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-white/50">
+                <span className="text-[10px] uppercase tracking-[0.25em] font-semibold text-brand-blue">
                   Visítanos
                 </span>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-bold font-display tracking-tight leading-tight mb-3">
+              <h3 className="text-2xl md:text-3xl font-bold font-display tracking-tight leading-tight mb-3 text-brand-dark">
                 Cra. 27 #13-05
                 <br />
-                <span className="text-white/60">Sabanalarga · Atlántico</span>
+                <span className="text-muted-foreground">Sabanalarga · Atlántico</span>
               </h3>
 
-              <div className="mt-8 space-y-3 text-sm text-white/75">
+              <div className="mt-8 space-y-3 text-sm text-muted-foreground">
                 <div className="flex items-center gap-3">
-                  <Clock className="w-4 h-4 text-brand-blue-light shrink-0" strokeWidth={1.5} />
+                  <Clock className="w-4 h-4 text-brand-blue shrink-0" strokeWidth={1.5} />
                   <span>
-                    <strong className="text-white">Lun – Vie</strong> · 08:00 AM – 05:30 PM
+                    <strong className="text-brand-dark">Lun – Vie</strong> · 08:00 AM – 05:30 PM
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Clock className="w-4 h-4 text-brand-blue-light shrink-0" strokeWidth={1.5} />
+                  <Clock className="w-4 h-4 text-brand-blue shrink-0" strokeWidth={1.5} />
                   <span>
-                    <strong className="text-white">Sábado</strong> · 08:30 AM – 04:00 PM
+                    <strong className="text-brand-dark">Sábado</strong> · 08:30 AM – 04:00 PM
                   </span>
                 </div>
               </div>
@@ -128,7 +126,7 @@ export function ContactSection() {
                 href="https://www.google.com/maps/search/?api=1&query=Multidiagnosticos+AS+Sabanalarga"
                 target="_blank"
                 rel="noopener"
-                className="group/cta mt-8 inline-flex items-center gap-2 pl-5 pr-2 py-2 rounded-full bg-white/10 ring-1 ring-white/15 text-white text-sm font-semibold transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-white/15 active:scale-[0.97]"
+                className="group/cta mt-8 inline-flex items-center gap-2 pl-5 pr-2 py-2 rounded-full bg-brand-blue text-white text-sm font-semibold transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-brand-blue/90 active:scale-[0.97]"
               >
                 Cómo llegar
                 <span className="ml-1 w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover/cta:-translate-y-0.5">
@@ -143,22 +141,22 @@ export function ContactSection() {
             {/* Phone */}
             <a
               href="tel:+573003651525"
-              className="group rounded-[1.5rem] bg-white/[0.04] ring-1 ring-white/10 p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-0.5"
+              className="group rounded-[1.5rem] bg-white/40 backdrop-blur-sm ring-1 ring-black/[0.04] p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)and(pointer:fine)]:hover:shadow-[0_16px_32px_-12px_rgba(37,99,235,0.15)]"
             >
-              <div className="relative rounded-[calc(1.5rem-0.25rem)] bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)] flex items-center gap-4">
-                <div className="w-10 h-10 rounded-2xl bg-brand-blue/20 ring-1 ring-brand-blue/30 flex items-center justify-center shrink-0">
-                  <Phone className="w-[18px] h-[18px] text-brand-blue-light" strokeWidth={1.5} />
+              <div className="relative rounded-[calc(1.5rem-0.25rem)] bg-white p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] flex items-center gap-4">
+                <div className="w-10 h-10 rounded-2xl bg-brand-blue/10 ring-1 ring-brand-blue/20 flex items-center justify-center shrink-0">
+                  <Phone className="w-[18px] h-[18px] text-brand-blue" strokeWidth={1.5} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-[10px] uppercase tracking-[0.25em] font-semibold text-white/50 mb-0.5">
+                  <p className="text-[10px] uppercase tracking-[0.25em] font-semibold text-brand-blue mb-0.5">
                     Llámanos
                   </p>
-                  <p className="text-base font-semibold text-white truncate">
+                  <p className="text-base font-semibold text-brand-dark truncate">
                     (+57) 300 365 1525
                   </p>
                 </div>
                 <ArrowUpRight
-                  className="w-4 h-4 text-white/40 transition-[color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:text-white [@media(hover:hover)and(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover:-translate-y-0.5"
+                  className="w-4 h-4 text-muted-foreground transition-[color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:text-brand-blue [@media(hover:hover)and(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover:-translate-y-0.5"
                   strokeWidth={2}
                 />
               </div>
@@ -167,22 +165,22 @@ export function ContactSection() {
             {/* Email */}
             <a
               href="mailto:contacto@multidiagnosticosas.com"
-              className="group rounded-[1.5rem] bg-white/[0.04] ring-1 ring-white/10 p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-0.5"
+              className="group rounded-[1.5rem] bg-white/40 backdrop-blur-sm ring-1 ring-black/[0.04] p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)and(pointer:fine)]:hover:shadow-[0_16px_32px_-12px_rgba(37,99,235,0.15)]"
             >
-              <div className="relative rounded-[calc(1.5rem-0.25rem)] bg-gradient-to-br from-white/[0.06] to-white/[0.02] p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.08)] flex items-center gap-4">
-                <div className="w-10 h-10 rounded-2xl bg-brand-blue/20 ring-1 ring-brand-blue/30 flex items-center justify-center shrink-0">
-                  <Mail className="w-[18px] h-[18px] text-brand-blue-light" strokeWidth={1.5} />
+              <div className="relative rounded-[calc(1.5rem-0.25rem)] bg-white p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] flex items-center gap-4">
+                <div className="w-10 h-10 rounded-2xl bg-brand-blue/10 ring-1 ring-brand-blue/20 flex items-center justify-center shrink-0">
+                  <Mail className="w-[18px] h-[18px] text-brand-blue" strokeWidth={1.5} />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-[10px] uppercase tracking-[0.25em] font-semibold text-white/50 mb-0.5">
+                  <p className="text-[10px] uppercase tracking-[0.25em] font-semibold text-brand-blue mb-0.5">
                     Email
                   </p>
-                  <p className="text-sm font-semibold text-white truncate">
+                  <p className="text-sm font-semibold text-brand-dark truncate">
                     contacto@multidiagnosticosas.com
                   </p>
                 </div>
                 <ArrowUpRight
-                  className="w-4 h-4 text-white/40 transition-[color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:text-white [@media(hover:hover)and(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover:-translate-y-0.5"
+                  className="w-4 h-4 text-muted-foreground transition-[color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:text-brand-blue [@media(hover:hover)and(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover:-translate-y-0.5"
                   strokeWidth={2}
                 />
               </div>
@@ -195,7 +193,7 @@ export function ContactSection() {
               rel="noopener"
               className="group rounded-[1.5rem] bg-gradient-to-br from-brand-blue to-brand-blue-light p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)and(pointer:fine)]:hover:shadow-[0_20px_40px_-12px_rgba(37,99,235,0.5)]"
             >
-              <div className="relative rounded-[calc(1.5rem-0.25rem)] bg-gradient-to-br from-brand-blue to-brand-blue-light/90 p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] flex items-center gap-4">
+              <div className="relative rounded-[calc(1.5rem-0.25rem)] bg-gradient-to-br from-brand-blue to-brand-blue-light/95 p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] flex items-center gap-4">
                 <div className="w-10 h-10 rounded-2xl bg-white/15 ring-1 ring-white/25 flex items-center justify-center shrink-0">
                   <MessageCircle className="w-[18px] h-[18px] text-white" strokeWidth={1.5} />
                 </div>

@@ -96,14 +96,8 @@ export function HeroSection() {
       <ContainerScroll
         titleComponent={
           <div className="space-y-8">
-            {/* Eyebrow tag — microscopic uppercase pill */}
-            <span
-              ref={badgeRef}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 ring-1 ring-white/15 text-white/70 text-[10px] uppercase tracking-[0.25em] font-medium"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-brand-blue-light animate-pulse" />
-              Sabanalarga · Atlántico · Colombia
-            </span>
+            {/* Hidden anchor for GSAP timeline backwards compat */}
+            <span ref={badgeRef} className="hidden" aria-hidden />
 
             {/* Massive headline */}
             <h1
