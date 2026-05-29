@@ -16,11 +16,11 @@
   --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 
-  /* Brand colors */
-  --color-brand-blue: #2563EB;
+  /* Brand colors — alineados al logo (navy #002060 / rojo #C00020) */
+  --color-brand-blue: #002060;
   --color-brand-dark: #0B1221;
-  --color-brand-red: #E11D48;
-  --color-brand-blue-light: #3B82F6;
+  --color-brand-red: #C00020;
+  --color-brand-blue-light: #3F63C5;
 
   /* shadcn mappings */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -68,7 +68,7 @@
   --card-foreground: #0D1320;
   --popover: #ffffff;
   --popover-foreground: #0D1320;
-  --primary: #2563EB;
+  --primary: #002060;
   --primary-foreground: #ffffff;
   --secondary: #F1F5F9;
   --secondary-foreground: #0D1320;
@@ -76,11 +76,11 @@
   --muted-foreground: #5A6376;
   --accent: #F1F5F9;
   --accent-foreground: #0D1320;
-  --destructive: #E11D48;
+  --destructive: #C00020;
   --border: #E5E9F2;
   --input: #E5E9F2;
-  --ring: #2563EB;
-  --chart-1: #2563EB;
+  --ring: #002060;
+  --chart-1: #002060;
   --chart-2: #3B82F6;
   --chart-3: #60A5FA;
   --chart-4: #93C5FD;
@@ -117,6 +117,14 @@
 .animate-brands-scroll {
   animation: brands-scroll 28s linear infinite;
 }
+
+/* CSS-only entrance reveal — always completes to visible (no JS dependency) */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+.reveal-up   { animation: reveal-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.reveal-up-2 { animation-delay: 0.12s; }
 
 /* Reduced motion: keep opacity/color transitions, remove movement */
 @media (prefers-reduced-motion: reduce) {
