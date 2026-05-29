@@ -30,10 +30,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 px-3 md:px-6 pt-3 md:pt-4">
       <div
-        className={`max-w-7xl mx-auto rounded-2xl backdrop-blur-xl backdrop-saturate-150 ring-1 transition-[box-shadow,background-color,border-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
+        className={`max-w-7xl mx-auto rounded-2xl backdrop-blur-2xl backdrop-saturate-[180%] ring-1 transition-[box-shadow,background-color,border-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] ${
           scrolled
-            ? "bg-white/80 ring-black/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.65),0_16px_40px_-14px_rgba(11,18,33,0.32)]"
-            : "bg-white/55 ring-white/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_12px_32px_-16px_rgba(11,18,33,0.20)]"
+            ? "bg-white/90 ring-black/[0.08] shadow-[inset_0_1px_0_rgba(255,255,255,0.95),inset_0_-1px_0_rgba(11,18,33,0.04),0_18px_44px_-16px_rgba(11,18,33,0.34)]"
+            : "bg-white/80 ring-white/60 shadow-[inset_0_1px_0_rgba(255,255,255,0.9),0_14px_38px_-16px_rgba(11,18,33,0.24)]"
         }`}
       >
         <div className="flex items-center gap-4 px-4 md:px-5 py-2.5 md:py-3">
