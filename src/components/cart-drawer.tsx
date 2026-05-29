@@ -4,22 +4,15 @@ import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/lib/cart-context";
 
-function fmt(n: number) {
-  return `$${n.toLocaleString("es-CO")}`;
-}
-
 export function CartDrawer() {
-  const { cart, removeItem, total, isOpen, closeCart } = useCart();
+  const { cart, removeItem, isOpen, closeCart } = useCart();
 
   const handleWhatsApp = () => {
     if (cart.length === 0) return;
     const lines = cart
-      .map(
-        (it) =>
-          `• ${it.name} (${it.ref || ""}) × ${it.qty} – ${fmt(it.price)}`
-      )
+      .map((it) => `• ${it.name}${it.ref ? ` (${it.ref})` : ""} × ${it.qty}`)
       .join("\n");
-    const msg = `Hola, quiero comprar:\n${lines}\nTotal: ${fmt(total)}`;
+    const msg = `Hola, quiero cotizar estos productos:\n${lines}\n\n¿Me confirman precio y disponibilidad?`;
     window.open(
       `https://wa.me/573003651525?text=${encodeURIComponent(msg)}`,
       "_blank",
@@ -35,7 +28,7 @@ export function CartDrawer() {
       aria-hidden={!isOpen}
     >
       <div className="flex justify-between items-center p-4 border-b border-border">
-        <h3 className="font-bold text-lg">Tu Carrito</h3>
+        <h3 className="font-bold text-lg">Tu cotización</h3>
         <button onClick={closeCart} aria-label="Cerrar carrito">
           <X className="w-5 h-5" />
         </button>
@@ -44,7 +37,7 @@ export function CartDrawer() {
       <div className="flex-1 p-3 overflow-auto flex flex-col gap-3">
         {cart.length === 0 && (
           <p className="text-muted-foreground text-sm text-center py-8">
-            Tu carrito está vacío
+            Tu lista está vacía
           </p>
         )}
         {cart.map((item, idx) => (
@@ -58,10 +51,8 @@ export function CartDrawer() {
                 <p className="text-xs text-muted-foreground">{item.ref}</p>
               )}
             </div>
-            <div className="text-right text-sm">
-              <p>
-                {fmt(item.price)} × {item.qty}
-              </p>
+            <div className="text-right text-sm shrink-0 ml-3">
+              <p className="text-muted-foreground">× {item.qty}</p>
               <button
                 onClick={() => removeItem(idx)}
                 className="text-destructive text-xs hover:underline"
@@ -73,13 +64,16 @@ export function CartDrawer() {
         ))}
       </div>
 
-      <div className="p-4 border-t border-border flex justify-between items-center">
-        <div>
-          <span className="text-sm">Total:</span>{" "}
-          <strong className="text-lg">{fmt(total)}</strong>
-        </div>
-        <Button onClick={handleWhatsApp} disabled={cart.length === 0}>
-          Finalizar por WhatsApp
+      <div className="p-4 border-t border-border space-y-3">
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          Te confirmamos precio y disponibilidad por WhatsApp.
+        </p>
+        <Button
+          onClick={handleWhatsApp}
+          disabled={cart.length === 0}
+          className="w-full"
+        >
+          Cotizar por WhatsApp
         </Button>
       </div>
     </aside>

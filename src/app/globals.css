@@ -108,16 +108,6 @@
   }
 }
 
-/* Promo ribbon marquee animation */
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
-}
-
-.animate-marquee {
-  animation: marquee 22s linear infinite;
-}
-
 /* Brands marquee */
 @keyframes brands-scroll {
   0% { transform: translateX(0); }
@@ -138,7 +128,6 @@
     transition-duration: 0.15s !important;
     scroll-behavior: auto !important;
   }
-  .animate-marquee,
   .animate-brands-scroll {
     animation: none !important;
   }

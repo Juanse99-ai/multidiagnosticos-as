@@ -128,7 +128,7 @@ export function ServicesSection() {
                 className={[
                   // Double-bezel outer shell
                   "group relative rounded-[2rem] bg-white/40 backdrop-blur-sm ring-1 ring-black/[0.04] p-1.5 transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)]",
-                  "[@media(hover:hover)and(pointer:fine)]:hover:-translate-y-1 [@media(hover:hover)and(pointer:fine)]:hover:shadow-[0_24px_48px_-12px_rgba(37,99,235,0.18)]",
+                  "[@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_24px_48px_-12px_rgba(37,99,235,0.18)]",
                   isFeatured ? "md:col-span-2 lg:col-span-2 lg:row-span-2" : "",
                 ].join(" ")}
               >
@@ -145,7 +145,7 @@ export function ServicesSection() {
                       src={svc.img}
                       alt={svc.title}
                       fill
-                      className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:scale-[1.06]"
+                      className="object-cover transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-[1.06]"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/85 via-brand-dark/20 to-transparent" />
 
@@ -158,9 +158,9 @@ export function ServicesSection() {
 
                     {/* Arrow corner */}
                     <div className="absolute top-4 right-4">
-                      <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center ring-1 ring-white/15 transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:bg-white [@media(hover:hover)and(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover:-translate-y-0.5">
+                      <div className="w-9 h-9 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center ring-1 ring-white/15 transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:bg-white [@media(hover:hover)_and_(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)_and_(pointer:fine)]:group-hover:-translate-y-0.5">
                         <ArrowUpRight
-                          className="w-4 h-4 text-white transition-colors duration-200 [@media(hover:hover)and(pointer:fine)]:group-hover:text-brand-dark"
+                          className="w-4 h-4 text-white transition-colors duration-200 [@media(hover:hover)_and_(pointer:fine)]:group-hover:text-brand-dark"
                           strokeWidth={2}
                         />
                       </div>

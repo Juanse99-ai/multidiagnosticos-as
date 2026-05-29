@@ -20,10 +20,6 @@ interface Product {
   image?: string;
 }
 
-function fmt(n: number) {
-  return `$${n.toLocaleString("es-CO")}`;
-}
-
 export function CatalogSection({ forceShowAll = false }: { forceShowAll?: boolean }) {
   const [products, setProducts] = useState<Product[]>([]);
   const [query, setQuery] = useState("");
@@ -158,7 +154,6 @@ export function CatalogSection({ forceShowAll = false }: { forceShowAll?: boolea
                   <p className="text-xs text-muted-foreground">{p.ref}</p>
                 )}
               </div>
-              <p className="font-bold text-lg">{fmt(p.price)}</p>
               <Button
                 onClick={() =>
                   addItem({

@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import { ArrowRight } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,7 +15,6 @@ const PROMOS = [
     desc: "Escaneo completo con equipo de última tecnología. Detectamos fallas antes de que sean un problema mayor.",
     color: "from-brand-blue to-blue-900",
     accent: "#60a5fa",
-    icon: "🔍",
     fallbackImg:
       "https://images.unsplash.com/photo-1632823471565-1ecdf5c6da77?w=800&q=80&auto=format&fit=crop",
     waMsg: "Hola, quisiera información sobre el Diagnóstico Computarizado",
@@ -25,7 +25,6 @@ const PROMOS = [
     desc: "Aceite sintético 5W-30 + filtro de primera calidad incluido. Hasta 10.000 km de protección garantizada.",
     color: "from-emerald-900 to-emerald-700",
     accent: "#34d399",
-    icon: "🛢️",
     fallbackImg:
       "https://images.unsplash.com/photo-1635770310629-3257a93b2c9d?w=800&q=80&auto=format&fit=crop",
     waMsg: "Hola, quisiera información sobre el Cambio de Aceite + Filtro",
@@ -36,7 +35,6 @@ const PROMOS = [
     desc: "30 puntos de inspección: frenos, suspensión, dirección, luces, motor y más. Informe detallado incluido.",
     color: "from-violet-900 to-violet-700",
     accent: "#a78bfa",
-    icon: "✅",
     fallbackImg:
       "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=800&q=80&auto=format&fit=crop",
     waMsg: "Hola, quisiera información sobre el Check-Up Completo",
@@ -47,7 +45,6 @@ const PROMOS = [
     desc: "Diagnóstico del sistema ABS + pastillas + discos. Conducción segura garantizada en todo momento.",
     color: "from-rose-900 to-rose-700",
     accent: "#fb7185",
-    icon: "🛑",
     fallbackImg:
       "https://images.unsplash.com/photo-1486006920555-c77dcf18193c?w=800&q=80&auto=format&fit=crop",
     waMsg: "Hola, quisiera información sobre la Revisión de Frenos ABS",
@@ -58,7 +55,6 @@ const PROMOS = [
     desc: "Correa o cadena de distribución, tensor y bomba de agua. Evita daños catastróficos al motor.",
     color: "from-amber-900 to-amber-700",
     accent: "#fbbf24",
-    icon: "⚙️",
     fallbackImg:
       "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&q=80&auto=format&fit=crop",
     waMsg: "Hola, quisiera información sobre el Kit de Distribución",
@@ -124,7 +120,7 @@ function PromoCard({
             style={{ backgroundColor: p.accent, color: "#080f1e" }}
           >
             Consultar por WhatsApp
-            <span aria-hidden>→</span>
+            <ArrowRight className="w-4 h-4" strokeWidth={2} aria-hidden />
           </a>
         </div>
       </div>
@@ -178,8 +174,9 @@ export function PromotionsSection() {
           Ofertas que{" "}
           <span className="text-brand-blue-light">no puedes perder</span>
         </h2>
-        <p className="text-white/30 mt-3 text-xs tracking-widest uppercase">
-          Scroll para ver todas las promociones →
+        <p className="text-white/30 mt-3 text-xs tracking-widest uppercase inline-flex items-center gap-1.5">
+          Scroll para ver todas las promociones
+          <ArrowRight className="w-3.5 h-3.5" strokeWidth={2} aria-hidden />
         </p>
       </div>
 

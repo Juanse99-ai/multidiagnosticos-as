@@ -90,7 +90,7 @@ export function ContactSection() {
         {/* Bento grid: 1 featured (visit) + stacked contact */}
         <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {/* Visit card - featured */}
-          <div className="md:col-span-3 rounded-[2rem] bg-white/40 backdrop-blur-sm ring-1 ring-black/[0.04] p-1.5 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-1 [@media(hover:hover)and(pointer:fine)]:hover:shadow-[0_24px_48px_-12px_rgba(37,99,235,0.18)]">
+          <div className="md:col-span-3 rounded-[2rem] bg-white/40 backdrop-blur-sm ring-1 ring-black/[0.04] p-1.5 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_24px_48px_-12px_rgba(37,99,235,0.18)]">
             <div className="relative h-full rounded-[calc(2rem-0.375rem)] bg-white p-8 md:p-10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] overflow-hidden">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-2xl bg-brand-blue/10 ring-1 ring-brand-blue/20 flex items-center justify-center">
@@ -129,7 +129,7 @@ export function ContactSection() {
                 className="group/cta mt-8 inline-flex items-center gap-2 pl-5 pr-2 py-2 rounded-full bg-brand-blue text-white text-sm font-semibold transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-brand-blue/90 active:scale-[0.97]"
               >
                 Cómo llegar
-                <span className="ml-1 w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover/cta:-translate-y-0.5">
+                <span className="ml-1 w-7 h-7 rounded-full bg-white/15 flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:-translate-y-0.5">
                   <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
                 </span>
               </a>
@@ -141,7 +141,7 @@ export function ContactSection() {
             {/* Phone */}
             <a
               href="tel:+573003651525"
-              className="group rounded-[1.5rem] bg-white/40 backdrop-blur-sm ring-1 ring-black/[0.04] p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)and(pointer:fine)]:hover:shadow-[0_16px_32px_-12px_rgba(37,99,235,0.15)]"
+              className="group rounded-[1.5rem] bg-white/40 backdrop-blur-sm ring-1 ring-black/[0.04] p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_16px_32px_-12px_rgba(37,99,235,0.15)]"
             >
               <div className="relative rounded-[calc(1.5rem-0.25rem)] bg-white p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] flex items-center gap-4">
                 <div className="w-10 h-10 rounded-2xl bg-brand-blue/10 ring-1 ring-brand-blue/20 flex items-center justify-center shrink-0">
@@ -156,7 +156,7 @@ export function ContactSection() {
                   </p>
                 </div>
                 <ArrowUpRight
-                  className="w-4 h-4 text-muted-foreground transition-[color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:text-brand-blue [@media(hover:hover)and(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover:-translate-y-0.5"
+                  className="w-4 h-4 text-muted-foreground transition-[color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:text-brand-blue [@media(hover:hover)_and_(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)_and_(pointer:fine)]:group-hover:-translate-y-0.5"
                   strokeWidth={2}
                 />
               </div>
@@ -165,7 +165,7 @@ export function ContactSection() {
             {/* Email */}
             <a
               href="mailto:contacto@multidiagnosticosas.com"
-              className="group rounded-[1.5rem] bg-white/40 backdrop-blur-sm ring-1 ring-black/[0.04] p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)and(pointer:fine)]:hover:shadow-[0_16px_32px_-12px_rgba(37,99,235,0.15)]"
+              className="group rounded-[1.5rem] bg-white/40 backdrop-blur-sm ring-1 ring-black/[0.04] p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_16px_32px_-12px_rgba(37,99,235,0.15)]"
             >
               <div className="relative rounded-[calc(1.5rem-0.25rem)] bg-white p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.6)] flex items-center gap-4">
                 <div className="w-10 h-10 rounded-2xl bg-brand-blue/10 ring-1 ring-brand-blue/20 flex items-center justify-center shrink-0">
@@ -180,7 +180,7 @@ export function ContactSection() {
                   </p>
                 </div>
                 <ArrowUpRight
-                  className="w-4 h-4 text-muted-foreground transition-[color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:text-brand-blue [@media(hover:hover)and(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover:-translate-y-0.5"
+                  className="w-4 h-4 text-muted-foreground transition-[color,transform] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:text-brand-blue [@media(hover:hover)_and_(pointer:fine)]:group-hover:translate-x-0.5 [@media(hover:hover)_and_(pointer:fine)]:group-hover:-translate-y-0.5"
                   strokeWidth={2}
                 />
               </div>
@@ -191,7 +191,7 @@ export function ContactSection() {
               href="https://wa.me/573003651525?text=Hola,%20quisiera%20información"
               target="_blank"
               rel="noopener"
-              className="group rounded-[1.5rem] bg-gradient-to-br from-brand-blue to-brand-blue-light p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)and(pointer:fine)]:hover:shadow-[0_20px_40px_-12px_rgba(37,99,235,0.5)]"
+              className="group rounded-[1.5rem] bg-gradient-to-br from-brand-blue to-brand-blue-light p-1 transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-0.5 [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_20px_40px_-12px_rgba(37,99,235,0.5)]"
             >
               <div className="relative rounded-[calc(1.5rem-0.25rem)] bg-gradient-to-br from-brand-blue to-brand-blue-light/95 p-6 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] flex items-center gap-4">
                 <div className="w-10 h-10 rounded-2xl bg-white/15 ring-1 ring-white/25 flex items-center justify-center shrink-0">
@@ -202,11 +202,11 @@ export function ContactSection() {
                     WhatsApp
                   </p>
                   <p className="text-base font-semibold text-white">
-                    Chat con asesor →
+                    Chat con asesor
                   </p>
                 </div>
                 <ArrowUpRight
-                  className="w-5 h-5 text-white transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover:translate-x-1 [@media(hover:hover)and(pointer:fine)]:group-hover:-translate-y-0.5"
+                  className="w-5 h-5 text-white transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:translate-x-1 [@media(hover:hover)_and_(pointer:fine)]:group-hover:-translate-y-0.5"
                   strokeWidth={2}
                 />
               </div>

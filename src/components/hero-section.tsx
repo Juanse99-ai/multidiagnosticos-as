@@ -6,17 +6,31 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import Link from "next/link";
 import { ContainerScroll } from "@/components/ui/container-scroll-animation";
-import { Wrench, ShoppingBag, MessageCircle, ArrowUpRight } from "lucide-react";
+import {
+  Wrench,
+  ShoppingBag,
+  MessageCircle,
+  ArrowUpRight,
+  ScanSearch,
+  Droplets,
+  ClipboardCheck,
+  Disc3,
+  Cog,
+  CalendarCheck,
+  Wifi,
+  BatteryFull,
+  MessageSquare,
+} from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PROMOS = [
-  { icon: "🔍", label: "Diagnóstico Computarizado", price: "$35.000", old: "$60k", color: "#1d4ed8", bg: "#dbeafe" },
-  { icon: "🛢️", label: "Aceite + Filtro Sintético",  price: "$75.000", old: "$110k", color: "#065f46", bg: "#d1fae5" },
-  { icon: "✅", label: "Check-Up 30 puntos",          price: "$55.000", old: "$90k",  color: "#5b21b6", bg: "#ede9fe" },
-  { icon: "🛑", label: "Revisión Frenos ABS",          price: "$45.000", old: "$75k",  color: "#9f1239", bg: "#ffe4e6" },
-  { icon: "⚙️", label: "Kit de Distribución",          price: "Desde $280k", old: null, color: "#78350f", bg: "#fef3c7" },
-  { icon: "📅", label: "Agendar cita ahora",           price: "Gratis →",    old: null, color: "#1e40af", bg: "#bfdbfe" },
+  { icon: ScanSearch,     label: "Diagnóstico Computarizado", color: "#1d4ed8", bg: "#dbeafe" },
+  { icon: Droplets,       label: "Aceite + Filtro Sintético", color: "#065f46", bg: "#d1fae5" },
+  { icon: ClipboardCheck, label: "Check-Up 30 puntos",        color: "#5b21b6", bg: "#ede9fe" },
+  { icon: Disc3,          label: "Revisión Frenos ABS",       color: "#9f1239", bg: "#ffe4e6" },
+  { icon: Cog,            label: "Kit de Distribución",       color: "#78350f", bg: "#fef3c7" },
+  { icon: CalendarCheck,  label: "Agendar cita",              color: "#1e40af", bg: "#bfdbfe" },
 ];
 
 function ScannerCard() {
@@ -28,39 +42,37 @@ function ScannerCard() {
           <span className="text-[10px] font-mono font-bold tracking-wider opacity-90">X-431 PAD IX Max</span>
           <span className="text-[10px] text-white/50">V8.00.007</span>
         </div>
-        <div className="flex items-center gap-3 text-[10px]">
+        <div className="flex items-center gap-2.5 text-[10px]">
           <span className="opacity-70">10:07</span>
-          <span className="text-white/40">🔋</span>
+          <Wifi className="w-3.5 h-3.5 text-white/55" strokeWidth={2} />
+          <BatteryFull className="w-4 h-4 text-white/55" strokeWidth={2} />
           <span className="bg-white/20 px-2 py-0.5 rounded text-[9px] font-semibold">Login</span>
-          <span className="bg-white/20 w-6 h-4 rounded-sm flex items-center justify-center text-[8px]">💬</span>
+          <span className="bg-white/20 w-6 h-4 rounded-sm flex items-center justify-center">
+            <MessageSquare className="w-2.5 h-2.5 text-white/80" strokeWidth={2} />
+          </span>
         </div>
       </div>
 
       {/* Promo grid — styled like LAUNCH app tiles */}
       <div className="flex-1 grid grid-cols-3 gap-1.5 p-2.5 overflow-hidden">
-        {PROMOS.map((promo, i) => (
+        {PROMOS.map((promo, i) => {
+          const Icon = promo.icon;
+          return (
           <div
             key={i}
-            className="flex flex-col items-center justify-center gap-1 rounded-lg p-2 cursor-pointer transition-[transform,filter] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] [@media(hover:hover)and(pointer:fine)]:hover:brightness-95"
+            className="flex flex-col items-center justify-center gap-1 rounded-lg p-2 cursor-pointer transition-[transform,filter] duration-150 ease-[cubic-bezier(0.23,1,0.32,1)] active:scale-[0.97] [@media(hover:hover)_and_(pointer:fine)]:hover:brightness-95"
             style={{ backgroundColor: promo.bg }}
           >
-            <span className="text-xl md:text-2xl leading-none">{promo.icon}</span>
+            <Icon className="w-5 h-5 md:w-6 md:h-6" style={{ color: promo.color }} strokeWidth={2} />
             <p
               className="text-[8px] md:text-[10px] font-bold text-center leading-tight"
               style={{ color: promo.color }}
             >
               {promo.label}
             </p>
-            <p className="text-[9px] md:text-[11px] font-extrabold leading-none" style={{ color: promo.color }}>
-              {promo.price}
-            </p>
-            {promo.old && (
-              <p className="text-[7px] line-through opacity-40" style={{ color: promo.color }}>
-                {promo.old}
-              </p>
-            )}
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Android navigation bar */}
@@ -106,9 +118,7 @@ export function HeroSection() {
             >
               Tu vehículo
               <br />
-              <span className="bg-gradient-to-r from-brand-blue-light via-white to-brand-blue-light bg-clip-text text-transparent">
-                en manos expertas.
-              </span>
+              <span className="text-brand-blue-light">en manos expertas.</span>
             </h1>
 
             <p
@@ -127,7 +137,7 @@ export function HeroSection() {
               >
                 <Wrench className="w-4 h-4" strokeWidth={1.75} />
                 Agendar servicio
-                <span className="ml-1 w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover/cta:-translate-y-0.5">
+                <span className="ml-1 w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:-translate-y-0.5">
                   <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
                 </span>
               </Link>
@@ -138,7 +148,7 @@ export function HeroSection() {
               >
                 <ShoppingBag className="w-4 h-4" strokeWidth={1.75} />
                 Ver autopartes
-                <span className="ml-1 w-8 h-8 rounded-full bg-white/15 text-white flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)and(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)and(pointer:fine)]:group-hover/cta:-translate-y-0.5">
+                <span className="ml-1 w-8 h-8 rounded-full bg-white/15 text-white flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:-translate-y-0.5">
                   <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
                 </span>
               </Link>

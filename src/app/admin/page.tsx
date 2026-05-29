@@ -2,13 +2,22 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import {
+  ScanSearch,
+  Droplets,
+  ClipboardCheck,
+  Disc3,
+  Cog,
+  Check,
+  type LucideIcon,
+} from "lucide-react";
 
-const PROMOS = [
-  { title: "Diagnóstico Computarizado", icon: "🔍", color: "#60a5fa" },
-  { title: "Cambio de Aceite + Filtro",  icon: "🛢️", color: "#34d399" },
-  { title: "Check-Up Completo",          icon: "✅", color: "#a78bfa" },
-  { title: "Revisión Freno ABS",         icon: "🛑", color: "#fb7185" },
-  { title: "Kit de Distribución",        icon: "⚙️", color: "#fbbf24" },
+const PROMOS: { title: string; icon: LucideIcon; color: string }[] = [
+  { title: "Diagnóstico Computarizado", icon: ScanSearch,     color: "#60a5fa" },
+  { title: "Cambio de Aceite + Filtro", icon: Droplets,       color: "#34d399" },
+  { title: "Check-Up Completo",         icon: ClipboardCheck, color: "#a78bfa" },
+  { title: "Revisión Freno ABS",        icon: Disc3,          color: "#fb7185" },
+  { title: "Kit de Distribución",       icon: Cog,            color: "#fbbf24" },
 ];
 
 const ADMIN_PASS = "multidiag2024";
@@ -64,7 +73,7 @@ export default function AdminPage() {
       } else {
         // Add cache-busting param so the browser reloads the image
         setImages((prev) => ({ ...prev, [index]: data.path + "?t=" + Date.now() }));
-        setMsg((prev) => ({ ...prev, [index]: "✓ Imagen subida correctamente" }));
+        setMsg((prev) => ({ ...prev, [index]: "Imagen subida correctamente" }));
       }
     } catch {
       setMsg((prev) => ({ ...prev, [index]: "Error al subir la imagen" }));
@@ -131,7 +140,11 @@ export default function AdminPage() {
                     unoptimized
                   />
                 ) : (
-                  <span className="text-5xl">{promo.icon}</span>
+                  <promo.icon
+                    className="w-12 h-12"
+                    style={{ color: promo.color }}
+                    strokeWidth={1.5}
+                  />
                 )}
               </div>
 
@@ -166,10 +179,13 @@ export default function AdminPage() {
 
                 {msg[i] && (
                   <p
-                    className={`text-xs mt-2 ${
-                      msg[i].startsWith("✓") ? "text-emerald-400" : "text-rose-400"
+                    className={`text-xs mt-2 inline-flex items-center gap-1 ${
+                      msg[i].startsWith("Error") ? "text-rose-400" : "text-emerald-400"
                     }`}
                   >
+                    {!msg[i].startsWith("Error") && (
+                      <Check className="w-3.5 h-3.5" strokeWidth={2.5} />
+                    )}
                     {msg[i]}
                   </p>
                 )}
