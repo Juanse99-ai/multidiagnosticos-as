@@ -86,10 +86,13 @@ export function QuickCats() {
   });
 
   return (
-    <section ref={sectionRef} className="py-14 border-t border-border">
+    <section ref={sectionRef} className="py-20 md:py-28 border-t border-black/[0.06]">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 ref={titleRef} className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-8">
-          Categorías de autopartes
+        <h2
+          ref={titleRef}
+          className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark leading-[1.05] tracking-tight max-w-2xl mb-12"
+        >
+          Categorías de <span className="text-brand-blue">autopartes.</span>
         </h2>
         <div ref={gridRef} className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {categories.map((cat) => (

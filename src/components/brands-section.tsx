@@ -55,16 +55,11 @@ export function BrandsSection() {
       ref={sectionRef}
       className="relative py-16 md:py-20 overflow-hidden bg-white border-t border-black/[0.05]"
     >
-      {/* Section label — centered with thin rules, not a floating micro-tag */}
-      <div
-        ref={headRef}
-        className="mx-auto max-w-2xl px-6 mb-10 md:mb-12 flex items-center gap-4"
-      >
-        <span className="h-px flex-1 bg-gradient-to-r from-transparent to-border" />
-        <p className="shrink-0 text-center text-xs md:text-sm font-semibold uppercase tracking-[0.2em] text-brand-dark/55">
-          Marcas que comercializamos
-        </p>
-        <span className="h-px flex-1 bg-gradient-to-l from-transparent to-border" />
+      {/* Section header — editorial line, no eyebrow */}
+      <div ref={headRef} className="max-w-7xl mx-auto px-6 mb-12 md:mb-14">
+        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark leading-[1.05] tracking-tight max-w-2xl">
+          Marcas que <span className="text-brand-blue">comercializamos.</span>
+        </h2>
       </div>
 
       <div ref={trackRef} className="relative">
@@ -87,6 +82,7 @@ export function BrandsSection() {
                   alt={brand.name}
                   width={124}
                   height={44}
+                  style={{ width: "auto", height: "auto" }}
                   className="max-h-11 w-auto object-contain opacity-95 transition-opacity duration-300 [@media(hover:hover)_and_(pointer:fine)]:opacity-85 [@media(hover:hover)_and_(pointer:fine)]:group-hover:opacity-100"
                 />
               </div>

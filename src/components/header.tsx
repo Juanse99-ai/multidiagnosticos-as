@@ -45,6 +45,7 @@ export function Header() {
               width={176}
               height={44}
               priority
+              style={{ width: "auto", height: "auto" }}
               className="h-9 md:h-10 w-auto transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-active:scale-[0.98]"
             />
           </Link>

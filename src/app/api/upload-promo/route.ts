@@ -6,6 +6,19 @@ import path from "path";
 const ALLOWED_EXT = ["jpg", "jpeg", "png", "webp", "avif"];
 
 export async function POST(request: NextRequest) {
+  const expected = process.env.ADMIN_PASS;
+  if (!expected) {
+    return NextResponse.json(
+      { error: "Servidor no configurado" },
+      { status: 500 }
+    );
+  }
+
+  const auth = request.headers.get("x-admin-pass");
+  if (auth !== expected) {
+    return NextResponse.json({ error: "No autorizado" }, { status: 401 });
+  }
+
   const data = await request.formData();
   const file = data.get("file") as File | null;
   const indexRaw = data.get("index") as string | null;

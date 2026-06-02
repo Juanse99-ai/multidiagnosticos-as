@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { buttonVariants } from "@/lib/button-variants";
-import { cn } from "@/lib/utils";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import {
   Cpu,
@@ -16,10 +14,10 @@ import {
   MessageCircle,
   ShieldCheck,
   Clock,
-  Star,
   Users,
   ChevronDown,
   ArrowUpRight,
+  Star,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -71,13 +69,6 @@ const services = [
   },
 ];
 
-const stats = [
-  { icon: Star,       value: "+10",   label: "Años de experiencia" },
-  { icon: Users,      value: "+2.500", label: "Vehículos atendidos" },
-  { icon: Wrench,     value: "8",     label: "Servicios especializados" },
-  { icon: ShieldCheck, value: "100%", label: "Garantía en repuestos" },
-];
-
 const faqs = [
   {
     q: "¿Cuánto tiempo tarda un diagnóstico computarizado?",
@@ -104,94 +95,125 @@ const faqs = [
 export default function TallerPage() {
   return (
     <>
-      {/* Hero */}
-      <section className="bg-gradient-to-br from-brand-dark via-brand-blue/20 to-brand-dark text-white py-20 px-6 overflow-hidden relative">
-        <div className="absolute inset-0 opacity-5 pointer-events-none"
-          style={{ backgroundImage: "radial-gradient(circle at 70% 50%, #2563eb 0%, transparent 60%)" }} />
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-center relative z-10">
-          <ScrollReveal stagger="[data-reveal]" y={40} staggerAmount={0.15}>
-            <span data-reveal className="inline-block px-3 py-1 rounded-full bg-brand-blue/20 text-blue-300 text-xs uppercase tracking-widest mb-4 border border-brand-blue/30">
-              Taller automotriz especializado
-            </span>
-            <h1 data-reveal className="text-3xl md:text-5xl font-bold font-display leading-tight mb-4">
-              Diagnóstico y reparación{" "}
-              <span className="text-brand-blue-light">en Sabanalarga</span>
+      {/* Hero — dark slim, mismo lenguaje que home */}
+      <section className="relative bg-brand-dark overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+          <ScrollReveal stagger="[data-reveal]" y={24} staggerAmount={0.12}>
+            <p
+              data-reveal
+              className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-blue-light"
+            >
+              Taller automotriz
+            </p>
+            <h1
+              data-reveal
+              className="mt-5 font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] tracking-tight max-w-4xl"
+            >
+              Diagnóstico y reparación
+              <br />
+              <span className="text-brand-blue-light">en Sabanalarga.</span>
             </h1>
-            <p data-reveal className="text-white/70 text-lg mb-8 max-w-xl">
+            <p
+              data-reveal
+              className="mt-8 text-white/65 text-lg md:text-xl max-w-xl leading-relaxed"
+            >
               Más de 10 años de experiencia en escáner automotriz, reparación de
               motor, frenos, suspensión y programación de llaves. Repuestos
               originales garantizados.
             </p>
-            <div data-reveal className="flex flex-wrap gap-3">
-              <Link href="/agendar" className={cn(buttonVariants({ size: "lg" }))}>
-                <CalendarDays className="w-4 h-4 mr-2" />
+            <div data-reveal className="mt-10 flex flex-wrap gap-3">
+              <Link
+                href="/agendar"
+                className="group/cta inline-flex items-center gap-2 pl-6 pr-2 py-2 rounded-full bg-white text-brand-dark text-sm font-semibold transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-white/95 active:scale-[0.97]"
+              >
+                <CalendarDays className="w-4 h-4" strokeWidth={1.75} />
                 Agendar servicio
+                <span className="ml-1 w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:-translate-y-0.5">
+                  <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
+                </span>
               </Link>
               <a
                 href="https://wa.me/573003651525?text=Hola,%20quisiera%20información%20sobre%20los%20servicios%20del%20taller"
                 target="_blank"
                 rel="noopener"
-                className={cn(
-                  buttonVariants({ size: "lg", variant: "outline" }),
-                  "bg-transparent text-white border-white/30 hover:bg-white/10 hover:text-white"
-                )}
+                className="group/cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white/80 text-sm font-medium transition-[color,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white hover:bg-white/5"
               >
-                <MessageCircle className="w-4 h-4 mr-2" />
+                <MessageCircle className="w-4 h-4" strokeWidth={1.75} />
                 WhatsApp
               </a>
             </div>
-          </ScrollReveal>
 
-          {/* Stats */}
-          <ScrollReveal stagger="[data-stat]" className="grid grid-cols-2 gap-4" y={50} staggerAmount={0.12}>
-            {stats.map((s) => (
-              <div
-                key={s.label}
-                data-stat
-                className="bg-white/5 border border-white/10 rounded-2xl p-6 text-center hover:bg-white/10 transition-colors"
-              >
-                <s.icon className="w-6 h-6 text-brand-blue-light mx-auto mb-2" />
-                <p className="text-3xl font-black text-white font-display mb-1">{s.value}</p>
-                <p className="text-white/50 text-xs uppercase tracking-wider">{s.label}</p>
-              </div>
-            ))}
+            {/* Stats — línea editorial inline, sin tarjetas hero-metric */}
+            <div
+              data-reveal
+              className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-8 max-w-4xl border-t border-white/10 pt-10"
+            >
+              {[
+                { value: "+10", label: "Años de experiencia" },
+                { value: "+2.500", label: "Vehículos atendidos" },
+                { value: "8", label: "Servicios especializados" },
+                { value: "100%", label: "Garantía en repuestos" },
+              ].map((s) => (
+                <div key={s.label}>
+                  <p className="font-display text-3xl md:text-4xl font-black text-white leading-none tracking-tight">
+                    {s.value}
+                  </p>
+                  <p className="mt-2 text-white/50 text-xs uppercase tracking-[0.16em]">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Services */}
-      <section className="py-16">
+      {/* Services — editorial heading + flat cards */}
+      <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal className="mb-10" y={30}>
-            <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-3">
-              Servicios del taller
+          <ScrollReveal className="mb-14 max-w-2xl" y={24}>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark leading-[1.05] tracking-tight">
+              Mantenimiento integral,
+              <br />
+              <span className="text-brand-blue">sin sorpresas.</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl">
-              Si no encuentras el servicio que necesitas, escríbenos por WhatsApp
-              y te orientamos.
+            <p className="mt-6 text-muted-foreground leading-relaxed">
+              Si no encuentras el servicio que necesitas, escríbenos por
+              WhatsApp y te orientamos.
             </p>
           </ScrollReveal>
 
-          <ScrollReveal stagger="article" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" staggerAmount={0.1}>
+          <ScrollReveal
+            stagger="article"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            staggerAmount={0.1}
+          >
             {services.map((svc) => (
               <article
                 key={svc.title}
-                className="bg-card border border-border rounded-2xl p-5 hover:-translate-y-1 hover:shadow-lg transition-all duration-200 group flex flex-col"
+                className="group rounded-2xl border border-black/[0.08] bg-white p-6 transition-[transform,box-shadow,border-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:hover:-translate-y-1 [@media(hover:hover)_and_(pointer:fine)]:hover:border-black/[0.14] [@media(hover:hover)_and_(pointer:fine)]:hover:shadow-[0_18px_36px_-18px_rgba(0,32,96,0.18)] flex flex-col"
               >
-                <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center mb-3 group-hover:bg-brand-blue/20 transition-colors">
-                  <svc.icon className="w-5 h-5 text-brand-blue" />
+                <div className="w-10 h-10 rounded-lg bg-brand-blue/[0.08] flex items-center justify-center mb-4">
+                  <svc.icon
+                    className="w-5 h-5 text-brand-blue"
+                    strokeWidth={1.75}
+                  />
                 </div>
-                <h3 className="font-bold text-base mb-1 flex-1">{svc.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{svc.desc}</p>
+                <h3 className="font-bold text-base mb-1 flex-1 text-brand-dark">
+                  {svc.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-5">
+                  {svc.desc}
+                </p>
                 <a
                   href={`https://wa.me/573003651525?text=${encodeURIComponent(
                     `Hola, quisiera información sobre ${svc.title}`
                   )}`}
                   target="_blank"
                   rel="noopener"
-                  className="inline-flex items-center justify-between gap-2 px-3 py-2 rounded-full bg-brand-blue/10 text-brand-blue text-xs font-semibold uppercase tracking-wider transition-colors duration-200 hover:bg-brand-blue hover:text-white mt-auto"
+                  className="inline-flex items-center justify-between gap-2 text-xs font-semibold text-brand-blue mt-auto transition-colors duration-200 group-hover:text-brand-dark"
                 >
-                  Consultar
+                  <span className="uppercase tracking-[0.15em]">Consultar</span>
                   <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
                 </a>
               </article>
@@ -200,13 +222,17 @@ export default function TallerPage() {
         </div>
       </section>
 
-      {/* Why us */}
-      <section className="py-16 bg-muted/30 border-t border-border">
+      {/* Why us — editorial */}
+      <section className="py-24 md:py-32 bg-[#fbfbfa] border-t border-black/[0.06]">
         <div className="max-w-7xl mx-auto px-6">
-          <ScrollReveal as="h2" className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-10 text-center" y={30}>
-            ¿Por qué elegirnos?
+          <ScrollReveal as="h2" className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark leading-[1.05] tracking-tight max-w-2xl mb-14" y={24}>
+            ¿Por qué <span className="text-brand-blue">elegirnos?</span>
           </ScrollReveal>
-          <ScrollReveal stagger="[data-feature]" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" staggerAmount={0.1}>
+          <ScrollReveal
+            stagger="[data-feature]"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-12"
+            staggerAmount={0.1}
+          >
             {[
               {
                 icon: Cpu,
@@ -240,12 +266,19 @@ export default function TallerPage() {
               },
             ].map((item) => (
               <div key={item.title} data-feature className="flex gap-4">
-                <div className="w-10 h-10 rounded-lg bg-brand-blue/10 flex items-center justify-center shrink-0 mt-0.5">
-                  <item.icon className="w-5 h-5 text-brand-blue" />
+                <div className="w-10 h-10 rounded-lg bg-brand-blue/[0.08] flex items-center justify-center shrink-0 mt-0.5">
+                  <item.icon
+                    className="w-5 h-5 text-brand-blue"
+                    strokeWidth={1.75}
+                  />
                 </div>
                 <div>
-                  <h3 className="font-bold text-base mb-1">{item.title}</h3>
-                  <p className="text-muted-foreground text-sm">{item.desc}</p>
+                  <h3 className="font-bold text-base mb-1 text-brand-dark">
+                    {item.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {item.desc}
+                  </p>
                 </div>
               </div>
             ))}
@@ -254,22 +287,29 @@ export default function TallerPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 border-t border-border">
+      <section className="py-24 md:py-32 border-t border-black/[0.06]">
         <div className="max-w-3xl mx-auto px-6">
-          <ScrollReveal as="h2" className="text-2xl md:text-3xl font-bold font-display text-brand-blue mb-8 text-center" y={30}>
-            Preguntas frecuentes
+          <ScrollReveal
+            as="h2"
+            className="font-display text-4xl md:text-5xl font-bold text-brand-dark leading-[1.05] tracking-tight mb-12 text-center"
+            y={24}
+          >
+            Preguntas <span className="text-brand-blue">frecuentes.</span>
           </ScrollReveal>
           <ScrollReveal stagger="details" className="space-y-3" staggerAmount={0.08}>
             {faqs.map((faq, i) => (
               <details
                 key={i}
-                className="group bg-card border border-border rounded-2xl overflow-hidden"
+                className="group rounded-xl border border-black/[0.08] bg-white overflow-hidden transition-colors duration-200 hover:border-black/[0.14]"
               >
-                <summary className="flex items-center justify-between gap-3 px-6 py-4 cursor-pointer list-none font-semibold text-sm select-none">
+                <summary className="flex items-center justify-between gap-3 px-6 py-4 cursor-pointer list-none font-semibold text-sm select-none text-brand-dark">
                   {faq.q}
-                  <ChevronDown className="w-4 h-4 shrink-0 text-muted-foreground group-open:rotate-180 transition-transform duration-200" />
+                  <ChevronDown
+                    className="w-4 h-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180"
+                    strokeWidth={2}
+                  />
                 </summary>
-                <p className="px-6 pb-4 text-muted-foreground text-sm leading-relaxed">
+                <p className="px-6 pb-5 text-muted-foreground text-sm leading-relaxed">
                   {faq.a}
                 </p>
               </details>
@@ -279,33 +319,43 @@ export default function TallerPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-14 border-t border-border bg-gradient-to-r from-brand-blue to-brand-dark">
-        <ScrollReveal className="max-w-3xl mx-auto px-6 text-center" stagger="[data-cta]" staggerAmount={0.15} y={40}>
-          <h2 data-cta className="text-2xl md:text-3xl font-bold font-display text-white mb-3">
-            ¿Listo para agendar tu servicio?
+      <section className="py-20 md:py-24 bg-brand-dark">
+        <ScrollReveal
+          className="max-w-3xl mx-auto px-6 text-center"
+          stagger="[data-cta]"
+          staggerAmount={0.12}
+          y={24}
+        >
+          <h2
+            data-cta
+            className="font-display text-4xl md:text-5xl font-bold text-white leading-[1.05] tracking-tight"
+          >
+            ¿Listo para agendar
+            <br />
+            <span className="text-brand-blue-light">tu servicio?</span>
           </h2>
-          <p data-cta className="text-white/70 mb-8">
+          <p data-cta className="mt-6 text-white/65 text-base md:text-lg">
             Cuéntanos la placa, el servicio que necesitas y te confirmamos en minutos.
           </p>
-          <div data-cta className="flex flex-wrap gap-3 justify-center">
+          <div data-cta className="mt-10 flex flex-wrap gap-3 justify-center">
             <Link
               href="/agendar"
-              className={cn(buttonVariants({ size: "lg" }), "bg-white text-brand-blue hover:bg-white/90")}
+              className="group/cta inline-flex items-center gap-2 pl-6 pr-2 py-2 rounded-full bg-white text-brand-dark text-sm font-semibold transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-white/95 active:scale-[0.97]"
             >
-              <CalendarDays className="w-4 h-4 mr-2" />
+              <CalendarDays className="w-4 h-4" strokeWidth={1.75} />
               Agendar en línea
+              <span className="ml-1 w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:-translate-y-0.5">
+                <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
+              </span>
             </Link>
             <a
               href="https://wa.me/573003651525?text=Hola,%20quiero%20agendar%20un%20servicio%20en%20el%20taller"
               target="_blank"
               rel="noopener"
-              className={cn(
-                buttonVariants({ size: "lg", variant: "outline" }),
-                "border-white/40 text-white bg-transparent hover:bg-white/10 hover:text-white"
-              )}
+              className="group/cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white/80 text-sm font-medium transition-[color,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white hover:bg-white/5"
             >
-              <MessageCircle className="w-4 h-4 mr-2" />
-              Escribir por WhatsApp
+              <MessageCircle className="w-4 h-4" strokeWidth={1.75} />
+              WhatsApp
             </a>
           </div>
         </ScrollReveal>

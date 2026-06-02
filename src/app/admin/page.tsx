@@ -20,11 +20,10 @@ const PROMOS: { title: string; icon: LucideIcon; color: string }[] = [
   { title: "Kit de Distribución",       icon: Cog,            color: "#fbbf24" },
 ];
 
-const ADMIN_PASS = "multidiag2024";
-
 export default function AdminPage() {
   const [authed, setAuthed] = useState(false);
   const [pass, setPass]     = useState("");
+  const [authPass, setAuthPass] = useState("");
   const [error, setError]   = useState("");
   const [images, setImages] = useState<Record<number, string>>({});
   const [uploading, setUploading] = useState<number | null>(null);
@@ -46,13 +45,27 @@ export default function AdminPage() {
       .catch(() => {});
   }, [authed]);
 
-  function handleLogin(e: React.FormEvent) {
+  async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
-    if (pass === ADMIN_PASS) {
+    setError("");
+    try {
+      const res = await fetch("/api/admin-auth", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ password: pass }),
+      });
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as {
+          error?: string;
+        };
+        setError(data.error ?? "Contraseña incorrecta");
+        return;
+      }
+      setAuthPass(pass);
       setAuthed(true);
-      setError("");
-    } else {
-      setError("Contraseña incorrecta");
+      setPass("");
+    } catch {
+      setError("Error de conexión");
     }
   }
 
@@ -65,7 +78,11 @@ export default function AdminPage() {
     formData.append("index", String(index));
 
     try {
-      const res = await fetch("/api/upload-promo", { method: "POST", body: formData });
+      const res = await fetch("/api/upload-promo", {
+        method: "POST",
+        headers: { "x-admin-pass": authPass },
+        body: formData,
+      });
       const data = await res.json();
 
       if (!res.ok) {

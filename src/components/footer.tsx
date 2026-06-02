@@ -15,6 +15,7 @@ export function Footer() {
               alt="Multidiagnósticos AS"
               width={180}
               height={44}
+              style={{ width: "auto", height: "auto" }}
               className="h-11 w-auto drop-shadow-md mb-3"
             />
             <p className="text-white/90 text-sm leading-relaxed max-w-sm">
@@ -79,8 +80,8 @@ export function Footer() {
                   contacto@multidiagnosticosas.com
                 </a>
               </p>
-              <p>Lunes a Viernes: 08:00 AM – 05:30 PM</p>
-              <p>Sábado: 08:30 AM – 04:00 PM</p>
+              <p>Lun – Vie · 08:00 – 17:30</p>
+              <p>Sábado · 08:30 – 16:00</p>
             </div>
 
             <h4 className="font-bold text-base mt-4 mb-2">Síguenos</h4>

@@ -94,11 +94,11 @@ export function CatalogSection({ forceShowAll = false }: { forceShowAll?: boolea
   }, { dependencies: [products.length], revertOnUpdate: true });
 
   return (
-    <section ref={sectionRef} id="catalogo" className="py-14 border-t border-border">
+    <section ref={sectionRef} id="catalogo" className="py-20 md:py-28 border-t border-black/[0.06]">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold font-display text-brand-blue">
-            Productos Destacados
+        <div className="max-w-2xl mb-12">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-brand-dark leading-[1.05] tracking-tight">
+            Productos <span className="text-brand-blue">destacados.</span>
           </h2>
         </div>
 
@@ -145,6 +145,7 @@ export function CatalogSection({ forceShowAll = false }: { forceShowAll?: boolea
                   alt={p.name}
                   width={200}
                   height={200}
+                  style={{ width: "auto", height: "auto" }}
                   className="object-contain max-h-full"
                 />
               </div>

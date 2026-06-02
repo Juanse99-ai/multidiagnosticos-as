@@ -15,6 +15,7 @@ export function WhatsAppFloat() {
         alt="Asesor Multidiagnósticos AS"
         width={160}
         height={160}
+        style={{ width: "auto", height: "auto" }}
         className="w-40 h-auto max-md:w-28"
       />
     </a>
