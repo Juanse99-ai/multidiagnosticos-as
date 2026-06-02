@@ -153,6 +153,12 @@ export function Footer() {
           © {year} <strong>Multidiagnósticos AS</strong>. Todos los derechos
           reservados.
         </p>
+        <p className="mt-1.5 text-xs text-white/45">
+          Diseño y desarrollo ·{" "}
+          <strong className="font-bold text-brand-blue-light">
+            Veta Studio
+          </strong>
+        </p>
       </div>
     </footer>
   );
