@@ -93,8 +93,22 @@ const faqs = [
 ];
 
 export default function TallerPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       {/* Hero — dark slim, mismo lenguaje que home */}
       <section className="relative bg-brand-dark overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
