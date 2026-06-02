@@ -22,14 +22,17 @@ export const metadata: Metadata = {
   title: "Multidiagnósticos AS | Taller automotriz y Autopartes en Sabanalarga",
   description:
     "Diagnóstico computarizado, mantenimiento automotriz y autopartes originales. Agenda tu servicio o compra online en Multidiagnósticos AS, Sabanalarga - Atlántico.",
-  metadataBase: new URL("https://multidiagnosticosas.com"),
+  metadataBase: new URL("https://www.multidiagnosticosas.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     siteName: "Multidiagnósticos AS",
     title: "Taller automotriz y Autopartes | Multidiagnósticos AS",
     description:
       "Diagnóstico computarizado, mantenimiento y autopartes originales. Agenda o compra online.",
-    url: "https://multidiagnosticosas.com/",
+    url: "https://www.multidiagnosticosas.com/",
     images: ["/mascota.png"],
   },
   twitter: {
@@ -38,9 +41,6 @@ export const metadata: Metadata = {
     description:
       "Diagnóstico computarizado, mantenimiento y autopartes originales.",
     images: ["/mascota.png"],
-  },
-  icons: {
-    icon: "/favicon.svg",
   },
   other: {
     "theme-color": "#0B1221",
@@ -65,8 +65,8 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": ["AutoRepair", "AutomotiveBusiness", "Store"],
               name: "Multidiagnósticos AS",
-              image: "https://multidiagnosticosas.com/mascota.png",
-              url: "https://multidiagnosticosas.com/",
+              image: "https://www.multidiagnosticosas.com/mascota.png",
+              url: "https://www.multidiagnosticosas.com/",
               telephone: "+57 300 365 1525",
               email: "contacto@multidiagnosticosas.com",
               address: {
