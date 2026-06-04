@@ -70,9 +70,13 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind-btn:hover { background: var(--acc-d); }
 .ind-btn-ghost { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 15px; }
 .ind-tags { margin-top: 26px; border-top: 2px solid var(--ink); padding-top: 12px; display: flex; gap: 22px; flex-wrap: wrap; font-size: 12px; letter-spacing: 0.05em; color: var(--mut); text-transform: uppercase; }
-.ind-photo { position: relative; border: 2px solid var(--ink); border-radius: 6px; overflow: hidden; height: 460px; }
-.ind-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.ind-photo .ptag { position: absolute; left: 16px; bottom: 16px; background: var(--acc); color: #fff; font-family: ui-monospace, monospace; font-size: 12px; font-weight: 600; padding: 7px 13px; border-radius: 5px; }
+.ind-photo { position: relative; border: 2px solid var(--ink); border-radius: 6px; overflow: hidden; height: 560px; background: #141414; }
+.ind-slide { position: absolute; inset: 0; opacity: 0; animation: heroFade 20s infinite; }
+.ind-slide:first-child { opacity: 1; }
+.ind-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ind-slide .ptag { position: absolute; left: 16px; bottom: 16px; background: var(--acc); color: #fff; font-family: ui-monospace, monospace; font-size: 13px; font-weight: 700; padding: 8px 14px; border-radius: 5px; text-transform: uppercase; letter-spacing: 0.03em; }
+.ind-slide:nth-child(1) { animation-delay: 0s; } .ind-slide:nth-child(2) { animation-delay: -5s; } .ind-slide:nth-child(3) { animation-delay: -10s; } .ind-slide:nth-child(4) { animation-delay: -15s; }
+@keyframes heroFade { 0%, 25%, 100% { opacity: 0; } 4%, 21% { opacity: 1; } }
 
 .ind-cats { display: grid; grid-template-columns: repeat(5, 1fr); border-top: 2px solid var(--ink); border-left: 2px solid var(--ink); margin-top: 30px; }
 .ind-cat { border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); padding: 24px 18px; display: flex; flex-direction: column; gap: 10px; background: var(--bg); transition: background 0.15s; }
@@ -106,9 +110,12 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind-part .ph img { max-height: 120px; max-width: 80%; object-fit: contain; }
 .ind-part .nm { padding: 12px 14px; font-weight: 700; font-size: 0.92rem; }
 
-.ind-brands { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 2px solid var(--ink); border-left: 2px solid var(--ink); margin-top: 30px; }
-.ind-brand { border-right: 2px solid var(--ink); border-bottom: 2px solid var(--ink); height: 96px; display: grid; place-items: center; background: #fff; padding: 14px; }
-.ind-brand img { max-height: 42px; max-width: 80%; object-fit: contain; }
+.ind-marquee { margin-top: 30px; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); overflow: hidden; }
+.ind-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+.ind-bcell { flex: none; width: 200px; height: 112px; display: grid; place-items: center; border-right: 2px solid var(--ink); background: #fff; padding: 18px; }
+.ind-bcell img { max-height: 46px; max-width: 78%; object-fit: contain; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ind-track { animation: none; } .ind-slide { animation: none; } }
 
 .ind-book { background: var(--ink); color: #EDEDEA; }
 .ind-book .in { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; padding: 56px 24px; max-width: 1080px; margin: 0 auto; align-items: center; }
@@ -140,11 +147,11 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind-footer .bottom .veta b { color: #6E8BFF; }
 
 @media (max-width: 860px) {
-  .ind-hero .grid { grid-template-columns: 1fr; } .ind-photo { height: 300px; order: -1; }
+  .ind-hero .grid { grid-template-columns: 1fr; } .ind-photo { height: 360px; order: -1; }
   .ind-nav { display: none; }
   .ind-cats { grid-template-columns: repeat(2, 1fr); } .ind-promos { grid-template-columns: 1fr; }
   .ind-grid { grid-template-columns: repeat(2, 1fr); } .ind-parts { grid-template-columns: repeat(2, 1fr); }
-  .ind-brands { grid-template-columns: repeat(3, 1fr); } .ind-trust .grid2 { grid-template-columns: repeat(2, 1fr); }
+  .ind-trust .grid2 { grid-template-columns: repeat(2, 1fr); }
   .ind-book .in { grid-template-columns: 1fr; } .ind-contact { grid-template-columns: 1fr; } .ind-footer .top { grid-template-columns: 1fr; }
 }
 `;
@@ -183,8 +190,10 @@ export default function Home() {
             <div className="ind-tags mono"><span>+2.000 órdenes</span><span>Garantía</span><span>Mazda · Renault · Chevrolet · Ford</span></div>
           </div>
           <div className="ind-photo">
-            <img src="/services/diagnostico.jpg" alt="Diagnóstico computarizado en Multidiagnósticos AS, Sabanalarga" />
-            <span className="ptag">LAUNCH X-431 · OBD-II</span>
+            <div className="ind-slide"><img src="/services/diagnostico.jpg" alt="Diagnóstico computarizado" /><span className="ptag">Diagnóstico computarizado</span></div>
+            <div className="ind-slide"><img src="/services/cambio-aceite.jpg" alt="Cambio de aceite" /><span className="ptag">Cambio de aceite + filtro</span></div>
+            <div className="ind-slide"><img src="/cats/baterias-bg.jpg" alt="Mantenimiento y reparación" /><span className="ptag">Mantenimiento y reparación</span></div>
+            <div className="ind-slide"><img src="/services/suspension.jpg" alt="Suspensión" /><span className="ptag">Check-up de suspensión</span></div>
           </div>
         </div></div></section>
 
@@ -246,10 +255,12 @@ export default function Home() {
 
         <section className="ind-sec" style={{ paddingTop: 0 }}><div className="wrap">
           <SecHead k="Respaldo" a="Marcas que" b="vendemos." />
-          <div className="ind-brands">
-            {BRANDS.map((b) => (
-              <div className="ind-brand" key={b}><img src={`/brands/${b}.png`} alt={BRAND_NAMES[b]} /></div>
-            ))}
+          <div className="ind-marquee">
+            <div className="ind-track">
+              {[...BRANDS, ...BRANDS].map((b, i) => (
+                <div className="ind-bcell" key={b + i}><img src={`/brands/${b}.png`} alt={BRAND_NAMES[b]} /></div>
+              ))}
+            </div>
           </div>
         </div></section>
 
