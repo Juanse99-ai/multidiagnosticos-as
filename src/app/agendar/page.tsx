@@ -26,7 +26,6 @@ export default function AgendarPage() {
 
       <section className="ind-book"><div className="in">
         <div>
-          <span className="ind-kick2" style={{ color: "#6E8BFF" }}><span className="sq" style={{ background: "#6E8BFF" }} /> Agenda en línea</span>
           <h2>Tu cita, <span className="blue">sin filas.</span></h2>
           <p>Reserva tu diagnóstico o mantenimiento. Te confirmamos por WhatsApp en minutos. Desde 2021 y más de 2.000 órdenes de servicio.</p>
         </div>
@@ -44,7 +43,6 @@ export default function AgendarPage() {
 
       <section className="ind-sec"><div className="wrap">
         <div style={{ marginBottom: 4 }}>
-          <span className="ind-kick2"><span className="sq" /> Cómo funciona</span>
           <h2 className="ind-h2">Agendar es <span className="blue">así de fácil.</span></h2>
         </div>
         <div className="ind-promos">

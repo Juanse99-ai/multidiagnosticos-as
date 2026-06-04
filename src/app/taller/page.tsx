@@ -45,7 +45,6 @@ export default function TallerPage() {
         <div className="bg"><img src="/services/diagnostico.jpg" alt="Diagnóstico computarizado con Launch X-431" /></div>
         <div className="scrim" />
         <div className="hero-content"><div className="wrap" data-hero-content>
-          <span className="ind-kick mono"><span className="sq" /> Taller automotriz · Sabanalarga</span>
           <h1 className="ind-h1">Diagnóstico y reparación que <span className="blue">sí encuentra la falla.</span></h1>
           <p className="ind-sub">Escáner, motor, frenos, suspensión y programación de llaves. Desde 2021 y más de 2.000 órdenes de servicio. Repuestos originales garantizados.</p>
           <div className="ind-actions">
@@ -57,17 +56,16 @@ export default function TallerPage() {
 
       <section className="ind-sec" style={{ paddingTop: 24 }}><div className="wrap">
         <div style={{ marginBottom: 4 }}>
-          <span className="ind-kick2"><span className="sq" /> Servicios</span>
           <h2 className="ind-h2">Lo que hacemos <span className="blue">mejor que nadie.</span></h2>
         </div>
-        <div className="ind-grid">
+        <div className="ind-grid"><div className="ind-cells">
           {SERVICES.map((s) => (
             <div className="ind-cell" key={s.n}>
               <div className="top"><s.Icon size={22} color="#2D5BFF" strokeWidth={2} /><span className="num mono">{s.n}</span></div>
               <h3>{s.t}</h3><p>{s.d}</p>
             </div>
           ))}
-        </div>
+        </div></div>
       </div></section>
 
       <section className="ind-trust"><div className="grid2">
@@ -78,7 +76,6 @@ export default function TallerPage() {
 
       <section className="ind-sec"><div className="wrap">
         <div style={{ marginBottom: 4 }}>
-          <span className="ind-kick2"><span className="sq" /> Dudas</span>
           <h2 className="ind-h2">Preguntas <span className="blue">frecuentes.</span></h2>
         </div>
         <div className="ind-faq">
@@ -93,7 +90,6 @@ export default function TallerPage() {
 
       <section className="ind-book"><div className="in">
         <div>
-          <span className="ind-kick2" style={{ color: "#6E8BFF" }}><span className="sq" style={{ background: "#6E8BFF" }} /> Listo para atenderte</span>
           <h2>¿Listo para <span className="blue">agendar?</span></h2>
           <p>Cuéntanos la placa y el servicio que necesitas. Te confirmamos por WhatsApp en minutos.</p>
         </div>

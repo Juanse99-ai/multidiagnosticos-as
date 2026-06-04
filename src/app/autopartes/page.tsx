@@ -3,7 +3,7 @@ import { IndHeader } from "@/components/ind-header";
 import { IndFooter } from "@/components/ind-footer";
 import { IndMotion } from "@/components/ind-motion";
 import { IndCatalog } from "@/components/ind-catalog";
-import { ArrowUpRight, MessageCircle, Filter, Battery, Droplets, Zap, CircuitBoard } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Filter, Battery, Droplets, Zap, CircuitBoard, Disc3 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Autopartes y Repuestos | Multidiagnósticos AS",
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const WA = "https://wa.me/573003651525?text=Hola,%20quisiera%20información%20sobre%20repuestos";
 const CATS = [
   { t: "Filtros", Icon: Filter }, { t: "Baterías", Icon: Battery }, { t: "Lubricantes", Icon: Droplets },
-  { t: "Bujías", Icon: Zap }, { t: "Bobinas", Icon: CircuitBoard },
+  { t: "Bujías", Icon: Zap }, { t: "Bobinas", Icon: CircuitBoard }, { t: "Frenos", Icon: Disc3 },
 ];
 const BRANDS = ["bosch", "castrol", "mobil", "varta", "denso", "valvoline", "acdelco", "shell", "mahle", "wd40", "gates"];
 const BRAND_NAMES: Record<string, string> = { bosch: "Bosch", castrol: "Castrol", mobil: "Mobil", varta: "Varta", denso: "Denso", valvoline: "Valvoline", acdelco: "ACDelco", shell: "Shell", mahle: "MAHLE", wd40: "WD-40", gates: "Gates" };
@@ -29,7 +29,6 @@ export default function AutopartesPage() {
         <div className="bg"><img src="/cats/baterias-bg.jpg" alt="Autopartes Multidiagnósticos AS" /></div>
         <div className="scrim" />
         <div className="hero-content"><div className="wrap" data-hero-content>
-          <span className="ind-kick mono"><span className="sq" /> Tienda · Sabanalarga</span>
           <h1 className="ind-h1">Autopartes <span className="blue">originales.</span></h1>
           <p className="ind-sub">Baterías, aceites, filtros, bujías y bobinas de las mejores marcas. Cotiza por WhatsApp y recoge en el taller o te lo enviamos.</p>
           <div className="ind-actions">
@@ -41,10 +40,9 @@ export default function AutopartesPage() {
 
       <section className="ind-sec" style={{ paddingTop: 24 }}><div className="wrap">
         <div style={{ marginBottom: 4 }}>
-          <span className="ind-kick2"><span className="sq" /> Categorías</span>
           <h2 className="ind-h2">Encuentra tu <span className="blue">repuesto.</span></h2>
         </div>
-        <div className="ind-cats">
+        <div className="ind-cats"><div className="ind-cells">
           {CATS.map((c) => (
             <a className="ind-cat" href="#catalogo" key={c.t}>
               <c.Icon size={24} color="#2D5BFF" strokeWidth={2} />
@@ -52,12 +50,11 @@ export default function AutopartesPage() {
               <span className="go">Ver</span>
             </a>
           ))}
-        </div>
+        </div></div>
       </div></section>
 
       <section className="ind-sec" id="catalogo" style={{ paddingTop: 0 }}><div className="wrap">
         <div style={{ marginBottom: 4 }}>
-          <span className="ind-kick2"><span className="sq" /> Catálogo</span>
           <h2 className="ind-h2">Productos <span className="blue">destacados.</span></h2>
         </div>
         <IndCatalog />
@@ -65,7 +62,6 @@ export default function AutopartesPage() {
 
       <section className="ind-sec" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <span className="ind-kick2"><span className="sq" /> Respaldo</span>
           <h2 className="ind-h2">Marcas que <span className="blue">vendemos.</span></h2>
         </div>
         <div className="ind-marquee">

@@ -12,7 +12,7 @@ const WA_AGENDA = "https://wa.me/573003651525?text=Hola,%20quiero%20agendar%20un
 
 const CATS = [
   { t: "Filtros", Icon: Filter }, { t: "Baterías", Icon: Battery }, { t: "Lubricantes", Icon: Droplets },
-  { t: "Bujías", Icon: Zap }, { t: "Bobinas", Icon: CircuitBoard },
+  { t: "Bujías", Icon: Zap }, { t: "Bobinas", Icon: CircuitBoard }, { t: "Frenos", Icon: Disc3 },
 ];
 const PROMOS = [
   { t: "Diagnóstico computarizado", d: "Escaneo completo con equipo de última tecnología." },
@@ -36,10 +36,9 @@ const PARTS = [
 const BRANDS = ["bosch", "castrol", "mobil", "varta", "denso", "valvoline", "acdelco", "shell", "mahle", "wd40", "gates"];
 const BRAND_NAMES: Record<string, string> = { bosch: "Bosch", castrol: "Castrol", mobil: "Mobil", varta: "Varta", denso: "Denso", valvoline: "Valvoline", acdelco: "ACDelco", shell: "Shell", mahle: "MAHLE", wd40: "WD-40", gates: "Gates" };
 
-function SecHead({ k, a, b }: { k: string; a: string; b: string }) {
+function SecHead({ a, b }: { k?: string; a: string; b: string }) {
   return (
     <div style={{ marginBottom: 4 }}>
-      <span className="ind-kick2"><span className="sq" /> {k}</span>
       <h2 className="ind-h2">{a} <span className="blue">{b}</span></h2>
     </div>
   );
@@ -60,7 +59,6 @@ export default function Home() {
         </div>
         <div className="scrim" />
         <div className="hero-content"><div className="wrap" data-hero-content>
-          <span className="ind-kick mono"><span className="sq" /> Desde 2021 — Sabanalarga</span>
           <h1 className="ind-h1">Encontramos la falla que <span className="blue">otros no.</span></h1>
           <p className="ind-sub">Diagnóstico computarizado, mantenimiento y autopartes. Con los mejores equipos y más de 2.000 órdenes de servicio.</p>
           <div className="ind-actions">
@@ -72,7 +70,7 @@ export default function Home() {
 
       <section className="ind-sec"><div className="wrap">
         <SecHead k="Autopartes" a="Categorías de" b="repuestos." />
-        <div className="ind-cats">
+        <div className="ind-cats"><div className="ind-cells">
           {CATS.map((c) => (
             <a className="ind-cat" href="/autopartes" key={c.t}>
               <c.Icon size={24} color="#2D5BFF" strokeWidth={2} />
@@ -80,7 +78,7 @@ export default function Home() {
               <span className="go">Ver <ArrowRight size={13} /></span>
             </a>
           ))}
-        </div>
+        </div></div>
       </div></section>
 
       <section className="ind-sec" style={{ paddingTop: 0 }}><div className="wrap">
@@ -97,18 +95,18 @@ export default function Home() {
 
       <section className="ind-sec" id="servicios" style={{ paddingTop: 0 }}><div className="wrap">
         <SecHead k="Servicios" a="Lo que hacemos" b="mejor que nadie." />
-        <div className="ind-grid">
+        <div className="ind-grid"><div className="ind-cells">
           {SERVICES.map((s) => (
             <div className="ind-cell" key={s.n}>
               <div className="top"><s.Icon size={22} color="#2D5BFF" strokeWidth={2} /><span className="num mono">{s.n}</span></div>
               <h3>{s.t}</h3><p>{s.d}</p>
             </div>
           ))}
-        </div>
+        </div></div>
       </div></section>
 
       <section className="ind-trust"><div className="grid2">
-        {[["2021", "Desde el año"], ["+2.000", "Órdenes de servicio"], ["100%", "Garantía en repuestos"], ["1.º", "Taller con web en Sabanalarga"]].map(([n, l]) => (
+        {[["2021", "Desde el año"], ["+2.000", "Órdenes de servicio"], ["100%", "Garantía en repuestos"], ["#1", "Taller en Sabanalarga"]].map(([n, l]) => (
           <div key={l}><div className="n">{n}</div><div className="l">{l}</div></div>
         ))}
       </div></section>
@@ -139,7 +137,6 @@ export default function Home() {
 
       <section className="ind-book" id="agenda"><div className="in">
         <div>
-          <span className="ind-kick2" style={{ color: "#6E8BFF" }}><span className="sq" style={{ background: "#6E8BFF" }} /> Agenda en línea</span>
           <h2>Tu cita, <span className="blue">sin filas.</span></h2>
           <p>Reserva tu diagnóstico o mantenimiento. Te confirmamos por WhatsApp en minutos.</p>
         </div>
