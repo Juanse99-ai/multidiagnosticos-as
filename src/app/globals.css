@@ -158,8 +158,8 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind-h2 .blue { color: var(--acc); }
 
 .ind-header { position: sticky; top: 0; z-index: 20; background: rgba(250,250,247,0.92); backdrop-filter: blur(8px); border-bottom: 2px solid var(--ink); }
-.ind-header .bar { display: flex; align-items: center; gap: 20px; padding: 14px 24px; max-width: 1080px; margin: 0 auto; }
-.ind-logo { height: 30px; width: auto; }
+.ind-header .bar { display: flex; align-items: center; gap: 20px; padding: 16px 24px; max-width: 1080px; margin: 0 auto; }
+.ind-logo { height: 44px; width: auto; display: block; }
 .ind-nav { display: flex; gap: 22px; margin-left: auto; }
 .ind-nav a { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--mut); }
 .ind-nav a:hover { color: var(--ink); }
