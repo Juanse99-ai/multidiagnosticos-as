@@ -48,7 +48,6 @@ export default function TallerPage() {
             <a className="ind-btn" href="/agendar">Agendar servicio <ArrowUpRight size={18} /></a>
             <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
           </div>
-          <div className="ind-tags mono"><span>+2.000 órdenes</span><span>Garantía</span><span>+100 marcas compatibles</span></div>
         </div>
         <div className="ind-photo">
           <div className="ind-slide" style={{ animation: "none", opacity: 1 }}><img src="/services/diagnostico.jpg" alt="Diagnóstico computarizado con Launch X-431" /><span className="ptag">LAUNCH X-431 · OBD-II</span></div>

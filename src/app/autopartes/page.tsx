@@ -32,7 +32,6 @@ export default function AutopartesPage() {
             <a className="ind-btn" href="#catalogo">Ver catálogo <ArrowUpRight size={18} /></a>
             <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
           </div>
-          <div className="ind-tags mono"><span>Marcas reconocidas</span><span>Envío o retiro</span><span>Garantía</span></div>
         </div>
         <div className="ind-photo">
           <div className="ind-slide" style={{ animation: "none", opacity: 1 }}><img src="/cats/baterias-bg.jpg" alt="Autopartes Multidiagnósticos AS" /><span className="ptag">Repuestos originales</span></div>

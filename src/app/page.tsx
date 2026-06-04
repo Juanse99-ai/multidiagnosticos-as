@@ -58,7 +58,6 @@ export default function Home() {
             <a className="ind-btn" href="/agendar">Agendar diagnóstico <ArrowUpRight size={18} /></a>
             <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
           </div>
-          <div className="ind-tags mono"><span>+2.000 órdenes</span><span>Garantía</span><span>Mazda · Renault · Chevrolet · Ford</span></div>
         </div>
         <div className="ind-photo">
           <div className="ind-slide"><img src="/services/diagnostico.jpg" alt="Diagnóstico computarizado" /><span className="ptag">Diagnóstico computarizado</span></div>
