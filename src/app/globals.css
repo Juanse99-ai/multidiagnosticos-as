@@ -158,7 +158,7 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind-h2 { font-weight: 900; font-size: clamp(1.9rem, 4.6vw, 3.2rem); line-height: 0.96; letter-spacing: -0.02em; text-transform: uppercase; margin: 12px 0 0; }
 .ind-h2 .blue { color: var(--acc); }
 
-.ind-header { position: sticky; top: 0; z-index: 20; background: rgba(250,250,247,0.92); backdrop-filter: blur(8px); border-bottom: 2px solid var(--ink); }
+.ind-header { position: sticky; top: 0; z-index: 20; background: rgba(250,250,247,0.92); backdrop-filter: blur(8px); border-bottom: 2px solid var(--ink); transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease; }
 .ind-header .bar { display: flex; align-items: center; gap: 20px; padding: 16px 24px; max-width: 1080px; margin: 0 auto; }
 .ind-logo { height: 44px; width: auto; display: block; }
 .ind-nav { display: flex; gap: 22px; margin-left: auto; }
@@ -168,6 +168,14 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind-cta:hover { background: var(--acc-d); }
 .ind-burger { display: none; margin-left: auto; background: none; border: 0; padding: 9px; color: var(--ink); cursor: pointer; align-items: center; justify-content: center; }
 .ind-mobnav { display: none; }
+
+/* Header integrado con el banner: transparente sobre el hero, sólido al bajar */
+.ind-header.at-hero-top { background: transparent; backdrop-filter: none; border-bottom-color: transparent; }
+.ind-header.at-hero-top::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 170%; background: linear-gradient(to bottom, rgba(10,10,12,0.55), rgba(10,10,12,0)); z-index: -1; pointer-events: none; }
+.ind-header.at-hero-top .ind-nav a { color: rgba(255,255,255,0.88); }
+.ind-header.at-hero-top .ind-nav a:hover { color: #fff; }
+.ind-header.at-hero-top .ind-burger { color: #fff; }
+.ind-header.at-hero-top .ind-logo { filter: brightness(0) invert(1); }
 
 /* Hero a todo el ancho: foto de fondo + texto encima */
 .ind-hero { position: relative; min-height: 82vh; display: flex; align-items: center; overflow: hidden; background: #121214; border-bottom: 2px solid var(--ink); }
@@ -304,3 +312,9 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind-pcard .cot:hover { background: var(--acc-d); }
 .ind-empty { margin-top: 26px; color: var(--mut); font-size: 15px; }
 @media (max-width: 860px) { .ind-cgrid { grid-template-columns: repeat(2, 1fr); } }
+
+/* Botón flotante de WhatsApp (no usa la clase "fixed" para no caer en la regla que oculta el chrome viejo) */
+.ind-wa { position: fixed; right: 18px; bottom: 18px; z-index: 30; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 10px 26px rgba(0,0,0,0.22); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+.ind-wa:hover { transform: scale(1.07); box-shadow: 0 14px 30px rgba(0,0,0,0.28); }
+.ind-wa svg { width: 30px; height: 30px; display: block; }
+@media (max-width: 560px) { .ind-wa { width: 54px; height: 54px; right: 14px; bottom: 14px; } }

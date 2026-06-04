@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CalendarCheck, Menu, X } from "lucide-react";
 
 const LINKS = [
@@ -12,9 +12,29 @@ const LINKS = [
 
 export function IndHeader() {
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLDivElement>(null);
+
+  // El header es transparente mientras estás sobre el banner (hero) y se vuelve
+  // sólido al bajar o al abrir el menú. Si la página no tiene hero, queda sólido.
+  useEffect(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    const hero = document.querySelector(".ind-hero") as HTMLElement | null;
+    const update = () => {
+      const overHero = !!hero && window.scrollY < hero.offsetHeight - 72;
+      el.classList.toggle("at-hero-top", overHero && !open);
+    };
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [open]);
 
   return (
-    <div className="ind-header">
+    <div className="ind-header" ref={headerRef}>
       <div className="bar">
         <a href="/" aria-label="Multidiagnósticos AS — inicio">
           <img src="/logo.png" alt="Multidiagnósticos AS" className="ind-logo" />

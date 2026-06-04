@@ -154,7 +154,7 @@ export default function Home() {
         <SecHead k="Contacto" a="Estamos a un" b="mensaje." />
         <div className="ind-contact">
           <a className="ind-ccard" href="https://www.google.com/maps/search/?api=1&query=Multidiagnosticos+AS+Sabanalarga" target="_blank" rel="noopener"><MapPin className="ic" size={22} /><h4>Visítanos</h4><div className="v">Cra. 27 #13-05</div><div style={{ color: "#5C5C5A" }}>Sabanalarga · Atlántico</div></a>
-          <div className="ind-ccard"><Clock className="ic" size={22} /><h4>Horario</h4><div className="v">Lun–Vie 08:00–17:30</div><div style={{ color: "#5C5C5A" }}>Sábado 08:30–16:00</div></div>
+          <div className="ind-ccard"><Clock className="ic" size={22} /><h4>Horario</h4><div className="v">Lun–Vie 08:00–17:30</div><div className="v">Sábado 08:30–16:00</div></div>
           <a className="ind-ccard" href={WA} target="_blank" rel="noopener"><Phone className="ic" size={22} /><h4>Llámanos / WhatsApp</h4><div className="v">(+57) 300 365 1525</div><div style={{ color: "#5C5C5A" }}>contacto@multidiagnosticosas.com</div></a>
         </div>
       </div></section>
