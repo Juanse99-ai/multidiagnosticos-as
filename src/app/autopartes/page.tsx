@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IndHeader } from "@/components/ind-header";
 import { IndFooter } from "@/components/ind-footer";
+import { IndMotion } from "@/components/ind-motion";
 import { IndCatalog } from "@/components/ind-catalog";
 import { ArrowUpRight, MessageCircle, Filter, Battery, Droplets, Zap, CircuitBoard } from "lucide-react";
 
@@ -22,9 +23,12 @@ export default function AutopartesPage() {
   return (
     <div className="ind">
       <IndHeader />
+      <IndMotion />
 
-      <section className="ind-hero"><div className="wrap"><div className="grid">
-        <div>
+      <section className="ind-hero">
+        <div className="bg"><img src="/cats/baterias-bg.jpg" alt="Autopartes Multidiagnósticos AS" /></div>
+        <div className="scrim" />
+        <div className="hero-content"><div className="wrap" data-hero-content>
           <span className="ind-kick mono"><span className="sq" /> Tienda · Sabanalarga</span>
           <h1 className="ind-h1">Autopartes <span className="blue">originales.</span></h1>
           <p className="ind-sub">Baterías, aceites, filtros, bujías y bobinas de las mejores marcas. Cotiza por WhatsApp y recoge en el taller o te lo enviamos.</p>
@@ -32,11 +36,8 @@ export default function AutopartesPage() {
             <a className="ind-btn" href="#catalogo">Ver catálogo <ArrowUpRight size={18} /></a>
             <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
           </div>
-        </div>
-        <div className="ind-photo">
-          <div className="ind-slide" style={{ animation: "none", opacity: 1 }}><img src="/cats/baterias-bg.jpg" alt="Autopartes Multidiagnósticos AS" /><span className="ptag">Repuestos originales</span></div>
-        </div>
-      </div></div></section>
+        </div></div>
+      </section>
 
       <section className="ind-sec" style={{ paddingTop: 24 }}><div className="wrap">
         <div style={{ marginBottom: 4 }}>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IndHeader } from "@/components/ind-header";
 import { IndFooter } from "@/components/ind-footer";
+import { IndMotion } from "@/components/ind-motion";
 import { MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function AgendarPage() {
   return (
     <div className="ind">
       <IndHeader />
+      <IndMotion />
 
       <section className="ind-book"><div className="in">
         <div>

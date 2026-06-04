@@ -1,5 +1,6 @@
 import { IndHeader } from "@/components/ind-header";
 import { IndFooter } from "@/components/ind-footer";
+import { IndMotion } from "@/components/ind-motion";
 import {
   ArrowUpRight, ArrowRight, MessageCircle,
   Gauge, ScanSearch, Cpu, CarFront, Disc3, Droplets, Cog, Wrench,
@@ -48,9 +49,17 @@ export default function Home() {
   return (
     <div className="ind">
       <IndHeader />
+      <IndMotion />
 
-      <section className="ind-hero"><div className="wrap"><div className="grid">
-        <div>
+      <section className="ind-hero">
+        <div className="bg">
+          <div className="ind-slide"><img src="/services/diagnostico.jpg" alt="Diagnóstico computarizado" /></div>
+          <div className="ind-slide"><img src="/services/cambio-aceite.jpg" alt="Cambio de aceite" /></div>
+          <div className="ind-slide"><img src="/cats/baterias-bg.jpg" alt="Mantenimiento y reparación" /></div>
+          <div className="ind-slide"><img src="/services/suspension.jpg" alt="Suspensión" /></div>
+        </div>
+        <div className="scrim" />
+        <div className="hero-content"><div className="wrap" data-hero-content>
           <span className="ind-kick mono"><span className="sq" /> Desde 2021 — Sabanalarga</span>
           <h1 className="ind-h1">Encontramos la falla que <span className="blue">otros no.</span></h1>
           <p className="ind-sub">Diagnóstico computarizado, mantenimiento y autopartes. Con los mejores equipos y más de 2.000 órdenes de servicio.</p>
@@ -58,14 +67,8 @@ export default function Home() {
             <a className="ind-btn" href="/agendar">Agendar diagnóstico <ArrowUpRight size={18} /></a>
             <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
           </div>
-        </div>
-        <div className="ind-photo">
-          <div className="ind-slide"><img src="/services/diagnostico.jpg" alt="Diagnóstico computarizado" /><span className="ptag">Diagnóstico computarizado</span></div>
-          <div className="ind-slide"><img src="/services/cambio-aceite.jpg" alt="Cambio de aceite" /><span className="ptag">Cambio de aceite + filtro</span></div>
-          <div className="ind-slide"><img src="/cats/baterias-bg.jpg" alt="Mantenimiento y reparación" /><span className="ptag">Mantenimiento y reparación</span></div>
-          <div className="ind-slide"><img src="/services/suspension.jpg" alt="Suspensión" /><span className="ptag">Check-up de suspensión</span></div>
-        </div>
-      </div></div></section>
+        </div></div>
+      </section>
 
       <section className="ind-sec"><div className="wrap">
         <SecHead k="Autopartes" a="Categorías de" b="repuestos." />

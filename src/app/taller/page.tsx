@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { IndHeader } from "@/components/ind-header";
 import { IndFooter } from "@/components/ind-footer";
+import { IndMotion } from "@/components/ind-motion";
 import {
   ArrowUpRight, MessageCircle, ChevronDown,
   Gauge, ScanSearch, Cpu, CarFront, Disc3, Droplets, Cog, Wrench, Snowflake, Key,
@@ -38,9 +39,12 @@ export default function TallerPage() {
   return (
     <div className="ind">
       <IndHeader />
+      <IndMotion />
 
-      <section className="ind-hero"><div className="wrap"><div className="grid">
-        <div>
+      <section className="ind-hero">
+        <div className="bg"><img src="/services/diagnostico.jpg" alt="Diagnóstico computarizado con Launch X-431" /></div>
+        <div className="scrim" />
+        <div className="hero-content"><div className="wrap" data-hero-content>
           <span className="ind-kick mono"><span className="sq" /> Taller automotriz · Sabanalarga</span>
           <h1 className="ind-h1">Diagnóstico y reparación que <span className="blue">sí encuentra la falla.</span></h1>
           <p className="ind-sub">Escáner, motor, frenos, suspensión y programación de llaves. Desde 2021 y más de 2.000 órdenes de servicio. Repuestos originales garantizados.</p>
@@ -48,11 +52,8 @@ export default function TallerPage() {
             <a className="ind-btn" href="/agendar">Agendar servicio <ArrowUpRight size={18} /></a>
             <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
           </div>
-        </div>
-        <div className="ind-photo">
-          <div className="ind-slide" style={{ animation: "none", opacity: 1 }}><img src="/services/diagnostico.jpg" alt="Diagnóstico computarizado con Launch X-431" /><span className="ptag">LAUNCH X-431 · OBD-II</span></div>
-        </div>
-      </div></div></section>
+        </div></div>
+      </section>
 
       <section className="ind-sec" style={{ paddingTop: 24 }}><div className="wrap">
         <div style={{ marginBottom: 4 }}>
