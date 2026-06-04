@@ -1,70 +1,83 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { CatalogSection } from "@/components/catalog-section";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
-import { ShoppingBag, MessageCircle, ArrowUpRight } from "lucide-react";
+import { IndHeader } from "@/components/ind-header";
+import { IndFooter } from "@/components/ind-footer";
+import { IndCatalog } from "@/components/ind-catalog";
+import { ArrowUpRight, MessageCircle, Filter, Battery, Droplets, Zap, CircuitBoard } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Autopartes y Repuestos | Multidiagnósticos AS",
   description:
-    "Compra baterías, aceites, filtros, bujías y bobinas de las mejores marcas. Repuestos originales con envío o retiro en Sabanalarga, Atlántico.",
+    "Baterías, aceites, filtros, bujías y bobinas de las mejores marcas. Cotiza por WhatsApp y recoge en Sabanalarga o te lo enviamos.",
 };
+
+const WA = "https://wa.me/573003651525?text=Hola,%20quisiera%20información%20sobre%20repuestos";
+const CATS = [
+  { t: "Filtros", Icon: Filter }, { t: "Baterías", Icon: Battery }, { t: "Lubricantes", Icon: Droplets },
+  { t: "Bujías", Icon: Zap }, { t: "Bobinas", Icon: CircuitBoard },
+];
+const BRANDS = ["bosch", "castrol", "mobil", "varta", "denso", "valvoline", "acdelco", "shell", "mahle", "wd40", "gates"];
+const BRAND_NAMES: Record<string, string> = { bosch: "Bosch", castrol: "Castrol", mobil: "Mobil", varta: "Varta", denso: "Denso", valvoline: "Valvoline", acdelco: "ACDelco", shell: "Shell", mahle: "MAHLE", wd40: "WD-40", gates: "Gates" };
 
 export default function AutopartesPage() {
   return (
-    <>
-      {/* Hero — dark slim, mismo lenguaje que home y /taller */}
-      <section className="relative bg-brand-dark overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
-          <ScrollReveal stagger="[data-reveal]" y={24} staggerAmount={0.12}>
-            <p
-              data-reveal
-              className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-blue-light"
-            >
-              Tienda en línea
-            </p>
-            <h1
-              data-reveal
-              className="mt-5 font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-[0.95] tracking-tight max-w-4xl"
-            >
-              Autopartes
-              <br />
-              <span className="text-brand-blue-light">y repuestos.</span>
-            </h1>
-            <p
-              data-reveal
-              className="mt-8 text-white/65 text-lg md:text-xl max-w-xl leading-relaxed"
-            >
-              Baterías, aceites, filtros, bujías y bobinas de las mejores marcas.
-              Cotiza por WhatsApp y recoge en el taller o te lo enviamos.
-            </p>
-            <div data-reveal className="mt-10 flex flex-wrap gap-3">
-              <Link
-                href="#catalogo"
-                className="group/cta inline-flex items-center gap-2 pl-6 pr-2 py-2 rounded-full bg-white text-brand-dark text-sm font-semibold transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:bg-white/95 active:scale-[0.97]"
-              >
-                <ShoppingBag className="w-4 h-4" strokeWidth={1.75} />
-                Ver catálogo
-                <span className="ml-1 w-8 h-8 rounded-full bg-brand-dark text-white flex items-center justify-center transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:translate-x-0.5 [@media(hover:hover)_and_(pointer:fine)]:group-hover/cta:-translate-y-0.5">
-                  <ArrowUpRight className="w-3.5 h-3.5" strokeWidth={2} />
-                </span>
-              </Link>
-              <a
-                href="https://wa.me/573003651525?text=Hola,%20quisiera%20información%20sobre%20repuestos"
-                target="_blank"
-                rel="noopener"
-                className="group/cta inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white/80 text-sm font-medium transition-[color,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:text-white hover:bg-white/5"
-              >
-                <MessageCircle className="w-4 h-4" strokeWidth={1.75} />
-                WhatsApp
-              </a>
-            </div>
-          </ScrollReveal>
+    <div className="ind">
+      <IndHeader />
+
+      <section className="ind-hero"><div className="wrap"><div className="grid">
+        <div>
+          <span className="ind-kick mono"><span className="sq" /> Tienda · Sabanalarga</span>
+          <h1 className="ind-h1">Autopartes <span className="blue">originales.</span></h1>
+          <p className="ind-sub">Baterías, aceites, filtros, bujías y bobinas de las mejores marcas. Cotiza por WhatsApp y recoge en el taller o te lo enviamos.</p>
+          <div className="ind-actions">
+            <a className="ind-btn" href="#catalogo">Ver catálogo <ArrowUpRight size={18} /></a>
+            <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
+          </div>
+          <div className="ind-tags mono"><span>Marcas reconocidas</span><span>Envío o retiro</span><span>Garantía</span></div>
+        </div>
+        <div className="ind-photo">
+          <div className="ind-slide" style={{ animation: "none", opacity: 1 }}><img src="/cats/baterias-bg.jpg" alt="Autopartes Multidiagnósticos AS" /><span className="ptag">Repuestos originales</span></div>
+        </div>
+      </div></div></section>
+
+      <section className="ind-sec" style={{ paddingTop: 24 }}><div className="wrap">
+        <div style={{ marginBottom: 4 }}>
+          <span className="ind-kick2"><span className="sq" /> Categorías</span>
+          <h2 className="ind-h2">Encuentra tu <span className="blue">repuesto.</span></h2>
+        </div>
+        <div className="ind-cats">
+          {CATS.map((c) => (
+            <a className="ind-cat" href="#catalogo" key={c.t}>
+              <c.Icon size={24} color="#2D5BFF" strokeWidth={2} />
+              <span className="nm">{c.t}</span>
+              <span className="go">Ver</span>
+            </a>
+          ))}
+        </div>
+      </div></section>
+
+      <section className="ind-sec" id="catalogo" style={{ paddingTop: 0 }}><div className="wrap">
+        <div style={{ marginBottom: 4 }}>
+          <span className="ind-kick2"><span className="sq" /> Catálogo</span>
+          <h2 className="ind-h2">Productos <span className="blue">destacados.</span></h2>
+        </div>
+        <IndCatalog />
+      </div></section>
+
+      <section className="ind-sec" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <span className="ind-kick2"><span className="sq" /> Respaldo</span>
+          <h2 className="ind-h2">Marcas que <span className="blue">vendemos.</span></h2>
+        </div>
+        <div className="ind-marquee">
+          <div className="ind-track">
+            {[...BRANDS, ...BRANDS].map((b, i) => (
+              <div className="ind-bcell" key={b + i}><img src={`/brands/${b}.png`} alt={BRAND_NAMES[b]} /></div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* Catálogo completo */}
-      <CatalogSection forceShowAll />
-    </>
+      <IndFooter />
+    </div>
   );
 }

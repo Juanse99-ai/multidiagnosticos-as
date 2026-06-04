@@ -1,54 +1,62 @@
 import type { Metadata } from "next";
-import { BookingSection } from "@/components/booking-section";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import { IndHeader } from "@/components/ind-header";
+import { IndFooter } from "@/components/ind-footer";
+import { MessageCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Agendar Servicio | Multidiagnósticos AS",
   description:
-    "Agenda tu cita en el taller Multidiagnósticos AS de Sabanalarga. Cambio de aceite, frenos, diagnóstico OBD-II, suspensión y más. Confirmación por WhatsApp.",
+    "Agenda tu cita en Multidiagnósticos AS, Sabanalarga. Diagnóstico, cambio de aceite, frenos, suspensión y más. Confirmación por WhatsApp.",
 };
+
+const WA_AGENDA = "https://wa.me/573003651525?text=Hola,%20quiero%20agendar%20un%20servicio";
+
+const STEPS = [
+  { n: "01", t: "Llena el formulario", d: "Elige el servicio, la fecha y los datos de tu vehículo." },
+  { n: "02", t: "Confirmamos por WhatsApp", d: "Te escribimos para confirmar día y hora en minutos." },
+  { n: "03", t: "Llega al taller", d: "Preséntate a la hora acordada. Te atendemos sin filas." },
+];
 
 export default function AgendarPage() {
   return (
-    <>
-      {/* Booking form (incluye su propio encabezado editorial) */}
-      <BookingSection />
+    <div className="ind">
+      <IndHeader />
 
-      {/* What to expect */}
-      <section className="py-14 border-t border-border">
-        <div className="max-w-4xl mx-auto px-6">
-          <ScrollReveal as="h2" className="text-2xl font-bold font-display text-brand-blue mb-8 text-center" y={30}>
-            ¿Cómo funciona?
-          </ScrollReveal>
-          <ScrollReveal stagger="[data-step]" className="grid grid-cols-1 sm:grid-cols-3 gap-6" staggerAmount={0.15}>
-            {[
-              {
-                step: "01",
-                title: "Llena el formulario",
-                desc: "Selecciona el servicio, fecha, hora y datos de tu vehículo.",
-              },
-              {
-                step: "02",
-                title: "Confirmamos por WhatsApp",
-                desc: "Te llegará un mensaje de confirmación con los detalles de tu cita.",
-              },
-              {
-                step: "03",
-                title: "Llega al taller",
-                desc: "Preséntate en la hora acordada. Nuestro equipo estará listo para atenderte.",
-              },
-            ].map((item) => (
-              <div key={item.step} data-step className="text-center">
-                <div className="w-12 h-12 rounded-full bg-brand-blue/10 text-brand-blue font-black text-lg flex items-center justify-center mx-auto mb-3">
-                  {item.step}
-                </div>
-                <h3 className="font-bold text-base mb-1">{item.title}</h3>
-                <p className="text-muted-foreground text-sm">{item.desc}</p>
-              </div>
-            ))}
-          </ScrollReveal>
+      <section className="ind-book"><div className="in">
+        <div>
+          <span className="ind-kick2" style={{ color: "#6E8BFF" }}><span className="sq" style={{ background: "#6E8BFF" }} /> Agenda en línea</span>
+          <h2>Tu cita, <span className="blue">sin filas.</span></h2>
+          <p>Reserva tu diagnóstico o mantenimiento. Te confirmamos por WhatsApp en minutos. Desde 2021 y más de 2.000 órdenes de servicio.</p>
         </div>
-      </section>
-    </>
+        <form className="ind-form" action={WA_AGENDA}>
+          <div className="f full"><label>Servicio</label><select defaultValue=""><option value="" disabled>Selecciona…</option><option>Diagnóstico computarizado</option><option>Sincronización de motor</option><option>Cambio de aceite</option><option>Frenos</option><option>Suspensión</option><option>Limpieza de inyectores</option><option>Otro</option></select></div>
+          <div className="f"><label>Fecha</label><input type="date" /></div>
+          <div className="f"><label>Hora</label><input type="time" /></div>
+          <div className="f"><label>Placa</label><input placeholder="ABC123" /></div>
+          <div className="f"><label>Modelo</label><input placeholder="Ej. Mazda 3" /></div>
+          <div className="f"><label>Nombre</label><input placeholder="Tu nombre" /></div>
+          <div className="f"><label>Teléfono</label><input placeholder="300 000 0000" /></div>
+          <a className="submit" href={WA_AGENDA} target="_blank" rel="noopener"><MessageCircle size={16} /> Confirmar por WhatsApp</a>
+        </form>
+      </div></section>
+
+      <section className="ind-sec"><div className="wrap">
+        <div style={{ marginBottom: 4 }}>
+          <span className="ind-kick2"><span className="sq" /> Cómo funciona</span>
+          <h2 className="ind-h2">Agendar es <span className="blue">así de fácil.</span></h2>
+        </div>
+        <div className="ind-promos">
+          {STEPS.map((s) => (
+            <div className="ind-promo" key={s.n}>
+              <span className="pk">Paso {s.n}</span>
+              <h3>{s.t}</h3>
+              <p>{s.d}</p>
+            </div>
+          ))}
+        </div>
+      </div></section>
+
+      <IndFooter />
+    </div>
   );
 }
