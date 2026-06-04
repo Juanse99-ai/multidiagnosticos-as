@@ -131,9 +131,9 @@ export default function TallerPage() {
               data-reveal
               className="mt-8 text-white/65 text-lg md:text-xl max-w-xl leading-relaxed"
             >
-              Más de 10 años de experiencia en escáner automotriz, reparación de
-              motor, frenos, suspensión y programación de llaves. Repuestos
-              originales garantizados.
+              Desde 2021 y más de 2.000 órdenes de servicio en escáner
+              automotriz, reparación de motor, frenos, suspensión y programación
+              de llaves. Repuestos originales garantizados.
             </p>
             <div data-reveal className="mt-10 flex flex-wrap gap-3">
               <Link
@@ -163,8 +163,8 @@ export default function TallerPage() {
               className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-8 max-w-4xl border-t border-white/10 pt-10"
             >
               {[
-                { value: "+10", label: "Años de experiencia" },
-                { value: "+2.500", label: "Vehículos atendidos" },
+                { value: "2021", label: "Desde el año" },
+                { value: "+2.000", label: "Órdenes de servicio" },
                 { value: "8", label: "Servicios especializados" },
                 { value: "100%", label: "Garantía en repuestos" },
               ].map((s) => (
@@ -271,7 +271,7 @@ export default function TallerPage() {
               {
                 icon: Users,
                 title: "Equipo con experiencia",
-                desc: "Más de 10 años atendiendo vehículos en Sabanalarga y la región Caribe.",
+                desc: "Atendemos vehículos en Sabanalarga y la región Caribe desde 2021, con más de 2.000 órdenes de servicio.",
               },
               {
                 icon: Star,
