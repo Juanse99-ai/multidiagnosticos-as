@@ -52,8 +52,8 @@ export default function Home() {
       <IndHeader />
       <IndMotion />
 
-      <section className="ind-hero">
-        <div className="bg"><img src="/hero/banner.jpg" alt="Taller Multidiagnósticos AS: paredes ACDelco, LIQUI MOLY y DENSO, camioneta en el elevador LAUNCH" style={{ objectPosition: "center 50%" }} /></div>
+      <section className="ind-hero ind-hero-ai">
+        <div className="bg"><img src="/hero/portada.jpg" alt="Multidiagnósticos AS: taller multimarca, autopartes y servicio en Sabanalarga" style={{ objectPosition: "center 50%" }} /></div>
         <div className="scrim" />
         <div className="hero-content"><div className="wrap" data-hero-content>
           <h1 className="ind-h1">Encontramos la falla que <span className="blue">otros no.</span></h1>
