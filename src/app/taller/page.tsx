@@ -90,17 +90,6 @@ export default function TallerPage() {
         </div>
       </div></section>
 
-      <section className="ind-book"><div className="in">
-        <div>
-          <h2>¿Listo para <span className="blue">agendar?</span></h2>
-          <p>Cuéntanos la placa y el servicio que necesitas. Te confirmamos por WhatsApp en minutos.</p>
-        </div>
-        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
-          <a className="ind-btn" href="/agendar">Agendar en línea <ArrowUpRight size={18} /></a>
-          <a className="ind-btn-ghost" style={{ color: "#fff" }} href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
-        </div>
-      </div></section>
-
       <IndFooter />
     </div>
   );
