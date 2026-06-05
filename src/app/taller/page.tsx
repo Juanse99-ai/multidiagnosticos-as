@@ -4,7 +4,7 @@ import { IndFooter } from "@/components/ind-footer";
 import { IndMotion } from "@/components/ind-motion";
 import {
   ArrowUpRight, MessageCircle, ChevronDown,
-  Gauge, ScanSearch, Cpu, CarFront, Disc3, Droplets, Cog, Wrench, Snowflake, Key,
+  Gauge, ScanSearch, Cpu, CarFront, Disc3, Droplets, Cog, Wrench, Snowflake, Key, Wind, Activity,
 } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -26,6 +26,8 @@ const SERVICES = [
   { n: "08", Icon: Wrench, t: "Cambio de aceite", d: "Aceite, filtro y revisión multipunto." },
   { n: "09", Icon: Key, t: "Programación de llaves", d: "Llaves, mandos e inmovilizadores." },
   { n: "10", Icon: Snowflake, t: "Aire acondicionado", d: "Carga de gas y revisión del compresor." },
+  { n: "11", Icon: Wind, t: "Prueba de humo", d: "Detección de fugas de vacío y admisión." },
+  { n: "12", Icon: Activity, t: "Diagnóstico de precisión", d: "Osciloscopio y equipos especializados para sensores y señales." },
 ];
 
 const FAQS = [

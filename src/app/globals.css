@@ -193,7 +193,7 @@ html { scroll-padding-top: 80px; } /* los anclajes (#servicios, #contacto) no qu
 .ind-btn { display: inline-flex; align-items: center; gap: 9px; background: var(--acc); color: #fff !important; padding: 14px 24px; border-radius: 6px; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 0.02em; }
 .ind-btn:hover { background: var(--acc-d); }
 .ind-btn-ghost { display: inline-flex; align-items: center; gap: 9px; font-weight: 700; font-size: 15px; color: #fff; border: 2px solid currentColor; padding: 12px 22px; border-radius: 6px; }
-.ind-hero .ind-btn-ghost { background: rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.55); }
+.ind-hero .ind-btn-ghost { color: #fff; background: rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.55); }
 
 .ind-cats { margin-top: 30px; border: 2px solid var(--ink); border-radius: 8px; overflow: hidden; }
 .ind-cats .ind-cells { display: grid; grid-template-columns: repeat(6, 1fr); margin: 0 -2px -2px 0; }
