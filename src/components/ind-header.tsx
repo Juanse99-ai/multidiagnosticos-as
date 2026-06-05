@@ -21,27 +21,7 @@ const CLOSE_D = "M6 6L18 18M12 12L12 12M6 18L18 6";
 
 export function IndHeader() {
   const [open, setOpen] = useState(false);
-  const headerRef = useRef<HTMLDivElement>(null);
   const burgerRef = useRef<SVGPathElement>(null);
-
-  // El header es transparente mientras estás sobre el banner (hero) y se vuelve
-  // sólido al bajar o al abrir el menú. Si la página no tiene hero, queda sólido.
-  useEffect(() => {
-    const el = headerRef.current;
-    if (!el) return;
-    const hero = document.querySelector(".ind-hero") as HTMLElement | null;
-    const update = () => {
-      const overHero = !!hero && window.scrollY < hero.offsetHeight - 72;
-      el.classList.toggle("at-hero-top", overHero && !open);
-    };
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, [open]);
 
   // Morph hamburguesa <-> X al abrir/cerrar el menú.
   useEffect(() => {
@@ -55,7 +35,7 @@ export function IndHeader() {
   }, [open]);
 
   return (
-    <div className="ind-header" ref={headerRef}>
+    <div className="ind-header">
       <div className="bar">
         <a href="/" aria-label="Multidiagnósticos AS — inicio">
           <img src="/logo.png" alt="Multidiagnósticos AS" className="ind-logo" />

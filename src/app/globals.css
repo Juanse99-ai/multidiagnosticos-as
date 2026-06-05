@@ -169,13 +169,7 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind-burger { display: none; margin-left: auto; background: none; border: 0; padding: 9px; color: var(--ink); cursor: pointer; align-items: center; justify-content: center; }
 .ind-mobnav { display: none; }
 
-/* Header integrado con el banner: transparente sobre el hero, sólido al bajar.
-   El logo conserva sus colores reales (su texto ya es blanco sobre banner azul,
-   así que se lee solo). El menú va blanco con sombra suave para leerse sobre la foto. */
-.ind-header.at-hero-top { background: transparent; backdrop-filter: none; border-bottom-color: transparent; box-shadow: none; }
-.ind-header.at-hero-top .ind-nav a { color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,0.6); }
-.ind-header.at-hero-top .ind-nav a:hover { color: #fff; }
-.ind-header.at-hero-top .ind-burger { color: #fff; filter: drop-shadow(0 1px 6px rgba(0,0,0,0.6)); }
+/* Header: barra crema sólida siempre (el logo se ve nítido sobre fondo claro). */
 
 /* Hero a todo el ancho: foto de fondo + texto encima */
 .ind-hero { position: relative; min-height: 82vh; display: flex; align-items: center; overflow: hidden; background: #121214; border-bottom: 2px solid var(--ink); }
