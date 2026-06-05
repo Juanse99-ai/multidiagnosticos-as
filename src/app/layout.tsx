@@ -1,55 +1,38 @@
 import type { Metadata } from "next";
-import { Barlow, Barlow_Condensed, Archivo } from "next/font/google";
+import { Archivo } from "next/font/google";
 import "./globals.css";
-import { Providers } from "@/components/providers";
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
-import { WhatsAppFloat } from "@/components/whatsapp-float";
-
-const barlow = Barlow({
-  variable: "--font-barlow",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
-
-const barlowCondensed = Barlow_Condensed({
-  variable: "--font-barlow-condensed",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
 
 const archivo = Archivo({
   variable: "--f-archivo",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
+  weight: ["400", "700", "800", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Multidiagnósticos AS | Taller automotriz y Autopartes en Sabanalarga",
   description:
-    "Diagnóstico computarizado, mantenimiento automotriz y autopartes originales. Agenda tu servicio o compra online en Multidiagnósticos AS, Sabanalarga - Atlántico.",
+    "Taller automotriz en Sabanalarga: diagnóstico computarizado con escáner, mantenimiento, frenos, suspensión y autopartes originales. Desde 2021. Agenda por WhatsApp.",
   metadataBase: new URL("https://www.multidiagnosticosas.com"),
-  alternates: {
-    canonical: "/",
-  },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: "Multidiagnósticos AS",
+    locale: "es_CO",
     title: "Taller automotriz y Autopartes | Multidiagnósticos AS",
     description:
-      "Diagnóstico computarizado, mantenimiento y autopartes originales. Agenda o compra online.",
+      "Diagnóstico computarizado, mantenimiento y autopartes en Sabanalarga. Desde 2021, +2.000 órdenes de servicio.",
     url: "https://www.multidiagnosticosas.com/",
-    images: ["/mascota.png"],
+    images: ["/hero/banner.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Taller automotriz y Autopartes | Multidiagnósticos AS",
-    description:
-      "Diagnóstico computarizado, mantenimiento y autopartes originales.",
-    images: ["/mascota.png"],
+    description: "Diagnóstico computarizado, mantenimiento y autopartes en Sabanalarga.",
+    images: ["/hero/banner.jpg"],
   },
   other: {
-    "theme-color": "#0B1221",
+    "theme-color": "#FAFAF7",
   },
 };
 
@@ -59,22 +42,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="es"
-      className={`${barlow.variable} ${barlowCondensed.variable} ${archivo.variable} h-full antialiased`}
-    >
+    <html lang="es" className={`${archivo.variable} antialiased`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": ["AutoRepair", "AutomotiveBusiness", "Store"],
+              "@type": ["AutoRepair", "Store"],
               name: "Multidiagnósticos AS",
-              image: "https://www.multidiagnosticosas.com/mascota.png",
+              image: "https://www.multidiagnosticosas.com/hero/banner.jpg",
               url: "https://www.multidiagnosticosas.com/",
               telephone: "+57 300 365 1525",
               email: "contacto@multidiagnosticosas.com",
+              priceRange: "$$",
+              currenciesAccepted: "COP",
+              paymentAccepted: "Efectivo, Tarjeta, Transferencia",
+              areaServed: { "@type": "City", name: "Sabanalarga, Atlántico" },
               address: {
                 "@type": "PostalAddress",
                 streetAddress: "Cra. 27 #13-05",
@@ -85,13 +69,7 @@ export default function RootLayout({
               openingHoursSpecification: [
                 {
                   "@type": "OpeningHoursSpecification",
-                  dayOfWeek: [
-                    "Monday",
-                    "Tuesday",
-                    "Wednesday",
-                    "Thursday",
-                    "Friday",
-                  ],
+                  dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
                   opens: "08:00",
                   closes: "17:30",
                 },
@@ -111,14 +89,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-full flex flex-col">
-        <Providers>
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <WhatsAppFloat />
-        </Providers>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

@@ -67,7 +67,7 @@ export default function AutopartesPage() {
         <div className="ind-marquee">
           <div className="ind-track">
             {[...BRANDS, ...BRANDS].map((b, i) => (
-              <div className="ind-bcell" key={b + i}><img src={`/brands/${b}.png`} alt={BRAND_NAMES[b]} /></div>
+              <div className="ind-bcell" key={b + i}><img src={`/brands/${b}.png`} alt={BRAND_NAMES[b]} loading="lazy" decoding="async" /></div>
             ))}
           </div>
         </div>

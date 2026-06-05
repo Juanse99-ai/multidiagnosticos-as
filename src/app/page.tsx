@@ -129,7 +129,7 @@ export default function Home() {
         <div className="ind-parts">
           {PARTS.map((p) => (
             <a className="ind-part" href="/autopartes" key={p.n}>
-              <div className="ph"><img src={p.img} alt={p.n} /></div>
+              <div className="ph"><img src={p.img} alt={p.n} loading="lazy" decoding="async" /></div>
               <div className="nm">{p.n}</div>
             </a>
           ))}
@@ -142,7 +142,7 @@ export default function Home() {
         <div className="ind-marquee">
           <div className="ind-track">
             {[...BRANDS, ...BRANDS].map((b, i) => (
-              <div className="ind-bcell" key={b + i}><img src={`/brands/${b}.png`} alt={BRAND_NAMES[b]} /></div>
+              <div className="ind-bcell" key={b + i}><img src={`/brands/${b}.png`} alt={BRAND_NAMES[b]} loading="lazy" decoding="async" /></div>
             ))}
           </div>
         </div>
@@ -154,11 +154,11 @@ export default function Home() {
           <p>Reserva tu diagnóstico o mantenimiento. Te confirmamos por WhatsApp en minutos.</p>
         </div>
         <form className="ind-form" action="/agendar">
-          <div className="f full"><label>Servicio</label><select defaultValue=""><option value="" disabled>Selecciona…</option><option>Diagnóstico</option><option>Cambio de aceite</option><option>Frenos</option></select></div>
-          <div className="f"><label>Fecha</label><input type="date" /></div>
-          <div className="f"><label>Placa</label><input placeholder="ABC123" /></div>
-          <div className="f"><label>Nombre</label><input placeholder="Tu nombre" /></div>
-          <div className="f"><label>Teléfono</label><input placeholder="300 000 0000" /></div>
+          <div className="f full"><label htmlFor="hf-servicio">Servicio</label><select id="hf-servicio" defaultValue=""><option value="" disabled>Selecciona…</option><option>Diagnóstico</option><option>Cambio de aceite</option><option>Frenos</option></select></div>
+          <div className="f"><label htmlFor="hf-fecha">Fecha</label><input id="hf-fecha" type="date" /></div>
+          <div className="f"><label htmlFor="hf-placa">Placa</label><input id="hf-placa" placeholder="ABC123" /></div>
+          <div className="f"><label htmlFor="hf-nombre">Nombre</label><input id="hf-nombre" placeholder="Tu nombre" /></div>
+          <div className="f"><label htmlFor="hf-telefono">Teléfono</label><input id="hf-telefono" placeholder="300 000 0000" /></div>
           <a className="submit" href={WA_AGENDA} target="_blank" rel="noopener"><MessageCircle size={16} /> Confirmar por WhatsApp</a>
         </form>
       </div></section>

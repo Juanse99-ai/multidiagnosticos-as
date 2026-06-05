@@ -50,7 +50,7 @@ export function IndCatalog() {
             return (
               <div className="ind-pcard" key={p.sku}>
                 <div className="ph">
-                  {p.image ? <img src={p.image} alt={p.name} /> : <Ic size={54} color="#2D5BFF" strokeWidth={1.6} aria-hidden />}
+                  {p.image ? <img src={p.image} alt={p.name} loading="lazy" decoding="async" /> : <Ic size={54} color="#2D5BFF" strokeWidth={1.6} aria-hidden />}
                 </div>
                 <div className="bd">
                   <span className="cat mono">{p.category}</span>
