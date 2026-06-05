@@ -151,6 +151,7 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind a { text-decoration: none; color: inherit; }
 .ind a:focus-visible, .ind button:focus-visible, .ind summary:focus-visible, .ind input:focus-visible, .ind select:focus-visible { outline: 3px solid var(--acc); outline-offset: 2px; border-radius: 4px; }
 .ind .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+html { scroll-padding-top: 80px; } /* los anclajes (#servicios, #contacto) no quedan tapados por el header fijo */
 .ind .mono { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
 .ind-sec { padding: 60px 0; }
 .ind-kick2 { font-family: ui-monospace, monospace; font-size: 12px; letter-spacing: 0.1em; color: var(--acc); text-transform: uppercase; display:inline-flex; align-items:center; gap:8px; }
@@ -271,6 +272,9 @@ header, footer, a[class*="fixed"] { display: none !important; }
 }
 @media (max-width: 860px) {
   .ind-hero { min-height: 70vh; } .ind-hero .hero-content { padding: 84px 0 60px; } .ind-hero .scrim { background: linear-gradient(180deg, rgba(14,14,17,0.72) 0%, rgba(14,14,17,0.80) 100%); }
+  .ind-header .bar { padding: 11px 20px; }
+  .ind-h1 { font-size: clamp(2rem, 8vw, 2.7rem); }
+  .ind-h2 { font-size: clamp(1.5rem, 6vw, 2rem); line-height: 1; }
   .ind-nav { display: none; }
   .ind-header .bar > .ind-cta { display: none; }
   .ind-burger { display: inline-flex; }
