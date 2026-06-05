@@ -42,7 +42,7 @@ export default function TallerPage() {
       <IndMotion />
 
       <section className="ind-hero">
-        <div className="bg"><img src="/hero/taller.jpg" alt="Taller Multidiagnósticos AS: camioneta en el elevador LAUNCH" style={{ objectPosition: "center 38%" }} /></div>
+        <div className="bg"><img src="/hero/taller.jpg" alt="Taller Multidiagnósticos AS: camioneta en el elevador LAUNCH" style={{ objectPosition: "center 40%", filter: "contrast(1.07) saturate(1.1) brightness(1.03)" }} /></div>
         <div className="scrim" />
         <div className="hero-content"><div className="wrap" data-hero-content>
           <h1 className="ind-h1">Diagnóstico y reparación que <span className="blue">sí encuentra la falla.</span></h1>
