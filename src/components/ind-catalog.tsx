@@ -1,18 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Droplets, Filter, Zap, CircuitBoard, BatteryFull, Disc3, Package, type LucideIcon } from "lucide-react";
 
 interface Product { sku: string; name: string; ref: string; price: number; category: string; image?: string }
-const CATS = ["Baterías", "Aceites", "Filtros", "Bujías", "Bobinas"];
 
-function imgFor(p: Product) {
-  if (p.image) return p.image;
-  const n = p.name.toLowerCase();
-  if (n.includes("tudor")) return "/tudor.png";
-  if (n.includes("bosch")) return "/bosch.png";
-  return "/generic.png";
-}
+const CATS = ["Baterías", "Aceites", "Filtros", "Bujías", "Bobinas", "Frenos"];
+
+const CAT_ICON: Record<string, LucideIcon> = {
+  "Aceites": Droplets,
+  "Filtros": Filter,
+  "Bujías": Zap,
+  "Bobinas": CircuitBoard,
+  "Baterías": BatteryFull,
+  "Frenos": Disc3,
+};
 
 export function IndCatalog() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -43,16 +45,22 @@ export function IndCatalog() {
         <p className="ind-empty">{products.length ? "No encontramos repuestos con ese filtro." : "Cargando catálogo…"}</p>
       ) : (
         <div className="ind-cgrid">
-          {filtered.map((p) => (
-            <div className="ind-pcard" key={p.sku}>
-              <div className="ph"><img src={imgFor(p)} alt={p.name} /></div>
-              <div className="bd">
-                <span className="nm">{p.name}</span>
-                {p.ref && <span className="rf">{p.ref}</span>}
-                <a className="cot" href={`https://wa.me/573003651525?text=${encodeURIComponent("Hola, quiero cotizar: " + p.name)}`} target="_blank" rel="noopener"><MessageCircle size={14} /> Cotizar</a>
+          {filtered.map((p) => {
+            const Ic = CAT_ICON[p.category] ?? Package;
+            return (
+              <div className="ind-pcard" key={p.sku}>
+                <div className="ph">
+                  {p.image ? <img src={p.image} alt={p.name} /> : <Ic size={54} color="#2D5BFF" strokeWidth={1.6} aria-hidden />}
+                </div>
+                <div className="bd">
+                  <span className="cat mono">{p.category}</span>
+                  <span className="nm">{p.name}</span>
+                  {p.ref && <span className="rf">{p.ref}</span>}
+                  <a className="cot" href={`https://wa.me/573003651525?text=${encodeURIComponent("Hola, quiero cotizar: " + p.name + " (Ref " + p.ref + ")")}`} target="_blank" rel="noopener"><MessageCircle size={14} /> Cotizar</a>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </>
