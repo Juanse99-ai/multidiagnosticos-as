@@ -307,6 +307,38 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind-empty { margin-top: 26px; color: var(--mut); font-size: 15px; }
 @media (max-width: 860px) { .ind-cgrid { grid-template-columns: repeat(2, 1fr); } }
 
+/* Blog */
+.ind-blog { padding: 56px 0 64px; }
+.ind-blog .head { max-width: 760px; }
+.ind-blog .head h1 { font-weight: 900; font-size: clamp(2rem, 5vw, 3.4rem); line-height: 0.96; letter-spacing: -0.02em; text-transform: uppercase; margin: 0; }
+.ind-blog .head h1 .blue { color: var(--acc); }
+.ind-blog .head p { color: var(--mut); font-size: 1.08rem; line-height: 1.5; margin: 16px 0 0; max-width: 60ch; }
+.ind-bloglist { margin-top: 36px; border-top: 2px solid var(--ink); }
+.ind-bloglist .item { display: block; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.ind-bloglist .item .meta { font-size: 12px; letter-spacing: 0.05em; color: var(--mut); text-transform: uppercase; }
+.ind-bloglist .item .t { font-weight: 800; font-size: clamp(1.2rem, 2.6vw, 1.7rem); line-height: 1.06; text-transform: uppercase; letter-spacing: -0.01em; margin: 9px 0 7px; transition: color 0.15s; }
+.ind-bloglist .item:hover .t { color: var(--acc); }
+.ind-bloglist .item .d { color: var(--mut); line-height: 1.55; max-width: 72ch; }
+.ind-bloglist .item .more { display: inline-flex; align-items: center; gap: 6px; color: var(--acc); font-weight: 700; font-size: 13px; text-transform: uppercase; margin-top: 13px; }
+
+.ind-article { padding: 44px 0 64px; }
+.ind-article .col { max-width: 720px; }
+.ind-article .back { display: inline-flex; align-items: center; gap: 7px; color: var(--mut); font-weight: 700; font-size: 13px; text-transform: uppercase; }
+.ind-article .back:hover { color: var(--ink); }
+.ind-article .meta { font-size: 12px; letter-spacing: 0.05em; color: var(--mut); text-transform: uppercase; margin-top: 20px; }
+.ind-article h1 { font-weight: 900; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 0.99; letter-spacing: -0.02em; text-transform: uppercase; margin: 12px 0 0; }
+.ind-article .lede { color: var(--mut); font-size: 1.18rem; line-height: 1.6; margin: 18px 0 0; }
+.ind-article .body { margin-top: 30px; }
+.ind-article .body h2 { font-weight: 800; font-size: 1.32rem; text-transform: uppercase; letter-spacing: -0.01em; margin: 32px 0 10px; }
+.ind-article .body p { color: #2A2A28; font-size: 1.06rem; line-height: 1.72; margin: 0 0 16px; }
+.ind-article .body ul { margin: 0 0 16px; padding-left: 22px; }
+.ind-article .body li { color: #2A2A28; font-size: 1.06rem; line-height: 1.6; margin-bottom: 8px; }
+.ind-article .body li::marker { color: var(--acc); }
+.ind-article .acta { margin-top: 36px; border-top: 2px solid var(--ink); padding-top: 24px; }
+.ind-article .acta h2 { font-weight: 800; font-size: 1.3rem; text-transform: uppercase; letter-spacing: -0.01em; margin: 0; }
+.ind-article .acta p { color: var(--mut); line-height: 1.55; margin: 10px 0 18px; max-width: 56ch; }
+.ind-article .acta .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+
 /* Botón flotante de WhatsApp (no usa la clase "fixed" para no caer en la regla que oculta el chrome viejo) */
 .ind-wa { position: fixed; right: 18px; bottom: 18px; z-index: 30; width: 56px; height: 56px; border-radius: 50%; background: #25D366; display: grid; place-items: center; box-shadow: 0 10px 26px rgba(0,0,0,0.22); transition: transform 0.18s ease, box-shadow 0.18s ease; }
 .ind-wa:hover { transform: scale(1.07); box-shadow: 0 14px 30px rgba(0,0,0,0.28); }

@@ -10,6 +10,7 @@ gsap.registerPlugin(MorphSVGPlugin);
 const LINKS = [
   { href: "/taller", label: "Taller" },
   { href: "/autopartes", label: "Autopartes" },
+  { href: "/blog", label: "Blog" },
   { href: "/agendar", label: "Agendar" },
   { href: "/#contacto", label: "Contacto" },
 ];
