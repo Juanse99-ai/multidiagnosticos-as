@@ -169,13 +169,13 @@ header, footer, a[class*="fixed"] { display: none !important; }
 .ind-burger { display: none; margin-left: auto; background: none; border: 0; padding: 9px; color: var(--ink); cursor: pointer; align-items: center; justify-content: center; }
 .ind-mobnav { display: none; }
 
-/* Header integrado con el banner: transparente sobre el hero, sólido al bajar */
-.ind-header.at-hero-top { background: transparent; backdrop-filter: none; border-bottom-color: transparent; }
-.ind-header.at-hero-top::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 170%; background: linear-gradient(to bottom, rgba(10,10,12,0.55), rgba(10,10,12,0)); z-index: -1; pointer-events: none; }
-.ind-header.at-hero-top .ind-nav a { color: rgba(255,255,255,0.88); }
+/* Header integrado con el banner: transparente sobre el hero, sólido al bajar.
+   El logo conserva sus colores reales (su texto ya es blanco sobre banner azul,
+   así que se lee solo). El menú va blanco con sombra suave para leerse sobre la foto. */
+.ind-header.at-hero-top { background: transparent; backdrop-filter: none; border-bottom-color: transparent; box-shadow: none; }
+.ind-header.at-hero-top .ind-nav a { color: #fff; text-shadow: 0 1px 10px rgba(0,0,0,0.6); }
 .ind-header.at-hero-top .ind-nav a:hover { color: #fff; }
-.ind-header.at-hero-top .ind-burger { color: #fff; }
-.ind-header.at-hero-top .ind-logo { filter: brightness(0) invert(1); }
+.ind-header.at-hero-top .ind-burger { color: #fff; filter: drop-shadow(0 1px 6px rgba(0,0,0,0.6)); }
 
 /* Hero a todo el ancho: foto de fondo + texto encima */
 .ind-hero { position: relative; min-height: 82vh; display: flex; align-items: center; overflow: hidden; background: #121214; border-bottom: 2px solid var(--ink); }
