@@ -21,7 +21,7 @@ export function IndFooter() {
         </div>
         <div>
           <h4>Contacto</h4>
-          <div className="row"><MapPin size={15} color="#6E8BFF" /> Cra. 27 #13-05, Sabanalarga</div>
+          <div className="row"><MapPin size={15} color="#6E8BFF" /> Cra. 27 #13-05, Sabanalarga, Atlántico</div>
           <div className="row"><Phone size={15} color="#6E8BFF" /> (+57) 300 365 1525</div>
           <div className="row"><Mail size={15} color="#6E8BFF" /> contacto@multidiagnosticosas.com</div>
         </div>
