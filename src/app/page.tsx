@@ -1,6 +1,7 @@
 import { IndHeader } from "@/components/ind-header";
 import { IndFooter } from "@/components/ind-footer";
 import { IndMotion } from "@/components/ind-motion";
+import { getPromoImages } from "@/lib/promos";
 import {
   ArrowUpRight, ArrowRight, MessageCircle,
   Gauge, ScanSearch, Cpu, CarFront, Disc3, Droplets, Cog, Wrench,
@@ -45,6 +46,7 @@ function SecHead({ a, b }: { k?: string; a: string; b: string }) {
 }
 
 export default function Home() {
+  const promoImgs = getPromoImages();
   return (
     <div className="ind">
       <IndHeader />
@@ -83,14 +85,25 @@ export default function Home() {
 
       <section className="ind-sec" style={{ paddingTop: 0 }}><div className="wrap">
         <SecHead k="Ofertas" a="Promociones" b="del mes." />
-        <div className="ind-promos">
-          {PROMOS.map((p) => (
-            <div className="ind-promo" key={p.t}>
-              <span className="pk">Oferta</span><h3>{p.t}</h3><p>{p.d}</p>
-              <a href={WA} target="_blank" rel="noopener">Consultar <ArrowUpRight size={14} /></a>
-            </div>
-          ))}
-        </div>
+        {promoImgs.length > 0 ? (
+          <div className="ind-promoimgs">
+            {promoImgs.map((pi) => (
+              <a className="ind-promoimg" href={WA} target="_blank" rel="noopener" key={pi.index}>
+                <div className="ph"><img src={pi.src} alt="Promoción de Multidiagnósticos AS" /></div>
+                <span className="cta"><MessageCircle size={15} /> Consultar por WhatsApp</span>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div className="ind-promos">
+            {PROMOS.map((p) => (
+              <div className="ind-promo" key={p.t}>
+                <span className="pk">Oferta</span><h3>{p.t}</h3><p>{p.d}</p>
+                <a href={WA} target="_blank" rel="noopener">Consultar <ArrowUpRight size={14} /></a>
+              </div>
+            ))}
+          </div>
+        )}
       </div></section>
 
       <section className="ind-sec" id="servicios" style={{ paddingTop: 0 }}><div className="wrap">
