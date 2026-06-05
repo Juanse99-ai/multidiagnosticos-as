@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { CalendarCheck, Menu, X } from "lucide-react";
+import { CalendarCheck } from "lucide-react";
+import gsap from "gsap";
+import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
+
+gsap.registerPlugin(MorphSVGPlugin);
 
 const LINKS = [
   { href: "/taller", label: "Taller" },
@@ -10,9 +14,15 @@ const LINKS = [
   { href: "/#contacto", label: "Contacto" },
 ];
 
+// Tres barras (hamburguesa) y dos diagonales + punto central (X). Mismo número de
+// subtrazos (3) en ambos para que el morph sea limpio: la barra del medio colapsa al centro.
+const BURGER_D = "M4 7L20 7M4 12L20 12M4 17L20 17";
+const CLOSE_D = "M6 6L18 18M12 12L12 12M6 18L18 6";
+
 export function IndHeader() {
   const [open, setOpen] = useState(false);
   const headerRef = useRef<HTMLDivElement>(null);
+  const burgerRef = useRef<SVGPathElement>(null);
 
   // El header es transparente mientras estás sobre el banner (hero) y se vuelve
   // sólido al bajar o al abrir el menú. Si la página no tiene hero, queda sólido.
@@ -31,6 +41,17 @@ export function IndHeader() {
       window.removeEventListener("scroll", update);
       window.removeEventListener("resize", update);
     };
+  }, [open]);
+
+  // Morph hamburguesa <-> X al abrir/cerrar el menú.
+  useEffect(() => {
+    if (!burgerRef.current) return;
+    gsap.to(burgerRef.current, {
+      duration: 0.4,
+      ease: "power2.inOut",
+      morphSVG: open ? CLOSE_D : BURGER_D,
+      overwrite: true,
+    });
   }, [open]);
 
   return (
@@ -52,7 +73,9 @@ export function IndHeader() {
           aria-controls="ind-mobnav"
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <path ref={burgerRef} d={BURGER_D} />
+          </svg>
         </button>
       </div>
 
