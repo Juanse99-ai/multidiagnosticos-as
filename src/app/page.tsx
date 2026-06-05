@@ -54,8 +54,8 @@ export default function Home() {
 
       <section className="ind-hero">
         <div className="bg">
-          <div className="ind-slide"><img src="/hero/taller.jpg" alt="Taller Multidiagnósticos AS: camioneta en el elevador LAUNCH" style={{ objectPosition: "center 40%", filter: "contrast(1.07) saturate(1.1) brightness(1.03)" }} /></div>
-          <div className="ind-slide"><img src="/services/cambio-aceite.jpg" alt="Cambio de aceite" /></div>
+          <div className="ind-slide"><img src="/hero/taller.jpg" alt="Taller Multidiagnósticos AS: paredes ACDelco, LIQUI MOLY y DENSO, camioneta en el elevador LAUNCH" style={{ objectPosition: "center 50%" }} /></div>
+          <div className="ind-slide"><img src="/hero/taller-ranger.jpg" alt="Camioneta en el elevador LAUNCH del taller" style={{ objectPosition: "center 40%", filter: "contrast(1.07) saturate(1.1) brightness(1.03)" }} /></div>
           <div className="ind-slide"><img src="/cats/baterias-bg.jpg" alt="Mantenimiento y reparación" /></div>
           <div className="ind-slide"><img src="/services/suspension.jpg" alt="Suspensión" /></div>
         </div>
