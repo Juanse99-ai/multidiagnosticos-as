@@ -6,7 +6,7 @@ import { MorphSVGPlugin } from "gsap/MorphSVGPlugin";
 
 gsap.registerPlugin(MorphSVGPlugin);
 
-const WA = "https://wa.me/573003651525?text=Hola,%20quisiera%20informaci%C3%B3n";
+const WA = "https://wa.me/573023191749?text=Hola,%20quisiera%20informaci%C3%B3n";
 
 // Marca oficial de WhatsApp (estado en reposo).
 const WA_D =
