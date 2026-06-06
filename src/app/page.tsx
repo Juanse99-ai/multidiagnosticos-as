@@ -5,11 +5,11 @@ import { getPromoImages } from "@/lib/promos";
 import {
   ArrowUpRight, ArrowRight, MessageCircle,
   Gauge, ScanSearch, Cpu, CarFront, Disc3, Droplets, Cog, Wrench,
-  Filter, Battery, Zap, CircuitBoard, MapPin, Phone, Clock,
+  Filter, Battery, Zap, CircuitBoard, MapPin, Phone, Clock, Instagram,
 } from "lucide-react";
 
 const WA = "https://wa.me/573003651525?text=Hola,%20quisiera%20informaci%C3%B3n";
-const WA_AGENDA = "https://wa.me/573003651525?text=Hola,%20quiero%20agendar%20un%20servicio";
+const WA_AGENDA = "https://wa.me/573023191749?text=Hola,%20quiero%20agendar%20un%20servicio";
 
 const CATS = [
   { t: "Filtros", Icon: Filter }, { t: "Baterías", Icon: Battery }, { t: "Lubricantes", Icon: Droplets },
@@ -168,7 +168,8 @@ export default function Home() {
         <div className="ind-contact">
           <a className="ind-ccard" href="https://www.google.com/maps/search/?api=1&query=Multidiagnosticos+AS+Sabanalarga" target="_blank" rel="noopener"><MapPin className="ic" size={22} /><h4>Visítanos</h4><div className="v">Cra. 27 #13-05</div><div style={{ color: "#5C5C5A" }}>Sabanalarga · Atlántico</div></a>
           <div className="ind-ccard"><Clock className="ic" size={22} /><h4>Horario</h4><div className="v">Lun–Vie 08:00–17:30</div><div className="v">Sábado 08:30–16:00</div></div>
-          <a className="ind-ccard" href={WA} target="_blank" rel="noopener"><Phone className="ic" size={22} /><h4>Llámanos / WhatsApp</h4><div className="v">(+57) 300 365 1525</div><div style={{ color: "#5C5C5A" }}>contacto@multidiagnosticosas.com</div></a>
+          <a className="ind-ccard" href={WA} target="_blank" rel="noopener"><Phone className="ic" size={22} /><h4>Llámanos / WhatsApp</h4><div className="v">(+57) 300 365 1525</div><div className="v">(+57) 302 319 1749</div><div style={{ color: "#5C5C5A" }}>contacto@multidiagnosticosas.com</div></a>
+          <a className="ind-ccard" href="https://www.instagram.com/multidiagnosticosas" target="_blank" rel="noopener"><Instagram className="ic" size={22} /><h4>Síguenos</h4><div className="v">@multidiagnosticosas</div><div style={{ color: "#5C5C5A" }}>Instagram</div></a>
         </div>
       </div></section>
 

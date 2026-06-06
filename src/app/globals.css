@@ -258,7 +258,7 @@ html { scroll-padding-top: 80px; } /* los anclajes (#servicios, #contacto) no qu
 .ind-form input:focus, .ind-form select:focus { outline: none; border-color: var(--acc); box-shadow: 0 0 0 3px rgba(45,91,255,0.22); }
 .ind-form .submit { grid-column: 1 / -1; display: inline-flex; align-items: center; justify-content: center; gap: 9px; background: var(--acc); color: #fff !important; padding: 14px; border-radius: 6px; font-weight: 800; text-transform: uppercase; }
 
-.ind-contact { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+.ind-contact { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 30px; }
 .ind-ccard { border: 2px solid var(--ink); border-radius: 6px; padding: 22px; background: #fff; }
 .ind-ccard .ic { color: var(--acc); }
 .ind-ccard h4 { text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; color: var(--mut); margin: 12px 0 6px; }
@@ -299,11 +299,12 @@ html { scroll-padding-top: 80px; } /* los anclajes (#servicios, #contacto) no qu
   .ind-promos, .ind-promoimgs { grid-template-columns: 1fr; }
   .ind-grid .ind-cells { grid-template-columns: repeat(2, 1fr); } .ind-parts { grid-template-columns: repeat(2, 1fr); }
   .ind-trust .grid2 { grid-template-columns: repeat(2, 1fr); }
-  .ind-book .in { grid-template-columns: 1fr; } .ind-contact { grid-template-columns: 1fr; } .ind-footer .ftop { grid-template-columns: 1fr; }
+  .ind-book .in { grid-template-columns: 1fr; } .ind-contact { grid-template-columns: repeat(2, 1fr); } .ind-footer .ftop { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .ind-cats .ind-cells { grid-template-columns: repeat(2, 1fr); }
   .ind-form { grid-template-columns: 1fr; }
+  .ind-contact { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) { .ind-track { animation: none; } .ind-slide { animation: none; } }
 

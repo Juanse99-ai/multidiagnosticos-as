@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     "Agenda tu cita en Multidiagnósticos AS, Sabanalarga. Diagnóstico, cambio de aceite, frenos, suspensión y más. Confirmación por WhatsApp.",
 };
 
-const WA_AGENDA = "https://wa.me/573003651525?text=Hola,%20quiero%20agendar%20un%20servicio";
+const WA_AGENDA = "https://wa.me/573023191749?text=Hola,%20quiero%20agendar%20un%20servicio";
 
 const STEPS = [
   { n: "01", t: "Llena el formulario", d: "Elige el servicio, la fecha y los datos de tu vehículo." },

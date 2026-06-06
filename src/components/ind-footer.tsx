@@ -1,4 +1,4 @@
-import { MessageCircle, MapPin, Phone, Mail } from "lucide-react";
+import { MessageCircle, MapPin, Phone, Mail, Instagram } from "lucide-react";
 import { IndWhatsApp } from "./ind-whatsapp";
 
 const WA = "https://wa.me/573003651525?text=Hola,%20quisiera%20informaci%C3%B3n";
@@ -23,7 +23,9 @@ export function IndFooter() {
           <h4>Contacto</h4>
           <div className="row"><MapPin size={15} color="#6E8BFF" /> Cra. 27 #13-05, Sabanalarga, Atlántico</div>
           <div className="row"><Phone size={15} color="#6E8BFF" /> (+57) 300 365 1525</div>
+          <div className="row"><Phone size={15} color="#6E8BFF" /> (+57) 302 319 1749</div>
           <div className="row"><Mail size={15} color="#6E8BFF" /> contacto@multidiagnosticosas.com</div>
+          <a className="row" href="https://www.instagram.com/multidiagnosticosas" target="_blank" rel="noopener"><Instagram size={15} color="#6E8BFF" /> @multidiagnosticosas</a>
         </div>
       </div>
       <div className="fbot">
