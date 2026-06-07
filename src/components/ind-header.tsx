@@ -46,7 +46,6 @@ export function IndHeader() {
             <a key={l.href} href={l.href}>{l.label}</a>
           ))}
         </nav>
-        <a className="ind-cta" href="/agendar"><CalendarCheck size={16} /> Agendar</a>
         <button
           className="ind-burger"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
@@ -59,6 +58,7 @@ export function IndHeader() {
           </svg>
         </button>
       </div>
+      <a className="ind-cta ind-cta-pill" href="/agendar"><CalendarCheck size={16} /> Agendar</a>
 
       <nav id="ind-mobnav" className={`ind-mobnav${open ? " open" : ""}`}>
         <div className="ind-mobnav-in">
