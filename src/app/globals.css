@@ -198,7 +198,7 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 .ind-hero .ind-btn-ghost { color: #fff; background: rgba(0,0,0,0.28); border-color: rgba(255,255,255,0.55); }
 
 .ind-cats { margin-top: 30px; border: 2px solid var(--ink); border-radius: 8px; overflow: hidden; }
-.ind-cats .ind-cells { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; background: var(--ink); }
+.ind-cats .ind-cells { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 2px; background: var(--ink); }
 .ind-cat { padding: 22px 16px; display: flex; flex-direction: column; gap: 10px; background: var(--bg); transition: background 0.15s; }
 .ind-cat:hover { background: #fff; }
 .ind-cat .nm { font-weight: 800; text-transform: uppercase; font-size: 0.95rem; }
@@ -220,7 +220,7 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 .ind-promoimg:hover .cta { background: var(--acc-d); }
 
 .ind-grid { margin-top: 30px; border: 2px solid var(--ink); border-radius: 8px; overflow: hidden; }
-.ind-grid .ind-cells { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; background: var(--ink); }
+.ind-grid .ind-cells { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; background: var(--ink); }
 .ind-cell { padding: 22px; min-height: 168px; display: flex; flex-direction: column; background: var(--bg); transition: background 0.15s; }
 .ind-cell:hover { background: #fff; }
 .ind-cell .top { display: flex; align-items: center; justify-content: space-between; }
@@ -283,7 +283,7 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 .ind-footer .fbot .veta b { color: #6E8BFF; }
 
 @media (max-width: 980px) {
-  .ind-cats .ind-cells { grid-template-columns: repeat(3, 1fr); }
+  .ind-cats .ind-cells { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 860px) {
   .ind-hero { min-height: 70vh; } .ind-hero .hero-content { padding: 84px 0 60px; } .ind-hero .scrim { background: linear-gradient(180deg, rgba(14,14,17,0.72) 0%, rgba(14,14,17,0.80) 100%); }
@@ -301,12 +301,12 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
   .ind-mobnav a:first-child { border-top: 0; }
   .ind-mobnav .ind-cta { margin: 12px 18px 16px; padding: 13px; border-top: 0; }
   .ind-promos, .ind-promoimgs { grid-template-columns: 1fr; }
-  .ind-grid .ind-cells { grid-template-columns: repeat(2, 1fr); } .ind-parts { grid-template-columns: repeat(2, 1fr); }
+  .ind-grid .ind-cells { grid-template-columns: repeat(2, minmax(0, 1fr)); } .ind-parts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ind-trust .grid2 { grid-template-columns: repeat(2, 1fr); }
   .ind-book .in { grid-template-columns: 1fr; } .ind-contact { grid-template-columns: repeat(2, 1fr); } .ind-footer .ftop { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
-  .ind-cats .ind-cells { grid-template-columns: repeat(2, 1fr); }
+  .ind-cats .ind-cells { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .ind-form { grid-template-columns: 1fr; }
   .ind-contact { grid-template-columns: 1fr; }
 }
