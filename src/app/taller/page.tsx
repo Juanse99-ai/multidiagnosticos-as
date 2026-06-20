@@ -42,7 +42,19 @@ const HOURS = [
   { d: "Domingos y festivos", h: "Cerrado", off: true },
 ];
 
-const BRANDS = ["ACDelco", "LIQUI MOLY", "DENSO", "Bosch", "Castrol", "Mobil", "Valvoline", "Mazda", "Launch X-431"];
+// Marcas de vehículos que atiende el taller (logos monocromáticos vía simple-icons CDN).
+const CAR_BRANDS = [
+  { slug: "mazda", name: "Mazda" },
+  { slug: "renault", name: "Renault" },
+  { slug: "chevrolet", name: "Chevrolet" },
+  { slug: "ford", name: "Ford" },
+  { slug: "kia", name: "Kia" },
+  { slug: "hyundai", name: "Hyundai" },
+  { slug: "toyota", name: "Toyota" },
+  { slug: "volkswagen", name: "Volkswagen" },
+  { slug: "nissan", name: "Nissan" },
+  { slug: "mitsubishi", name: "Mitsubishi" },
+];
 
 // Reseñas reales del perfil de Google de Multidiagnósticos AS (verbatim del cliente).
 const REVIEWS: { stars: number; text: string; name: string; role: string }[] = [
@@ -72,7 +84,7 @@ export default function TallerPage() {
         <div className="bg"><img src="/hero/banner.jpg" alt="Taller Multidiagnósticos AS: paredes ACDelco, LIQUI MOLY y DENSO, camioneta en el elevador LAUNCH" style={{ objectPosition: "center 50%" }} /></div>
         <div className="scrim" />
         <div className="hero-content"><div className="wrap" data-hero-content>
-          <div className="ind-kick"><span className="sq" /> Taller especializado · Sabanalarga</div>
+          <div className="ind-kick">Taller especializado · Sabanalarga</div>
           <h1 className="ind-h1">Diagnóstico y reparación que <span className="blue">sí encuentra la falla.</span></h1>
           <p className="ind-sub">Escáner, motor, frenos, suspensión y programación de llaves. Desde 2021 y más de 2.000 órdenes de servicio. Repuestos originales garantizados.</p>
           <div className="ind-actions">
@@ -85,7 +97,6 @@ export default function TallerPage() {
       <section className="ind-sec" id="servicios" style={{ paddingTop: 40 }}><div className="wrap">
         <div className="ind-svchead">
           <div>
-            <span className="ind-kick2"><span className="sq" /> Nuestros servicios</span>
             <h2 className="ind-h2">Soluciones de <span className="blue">precisión.</span></h2>
           </div>
           <div className="est mono">EST. 2021 / ATLÁNTICO</div>
@@ -113,7 +124,6 @@ export default function TallerPage() {
       <section className="ind-sec" id="contacto" style={{ paddingTop: 60 }}><div className="wrap">
         <div className="ind-sched">
           <div className="hrs">
-            <span className="ind-kick2"><span className="sq" /> Horario</span>
             <h2 className="ind-h2sm">Horarios de atención</h2>
             <div className="rows">
               {HOURS.map((r) => (
@@ -125,7 +135,6 @@ export default function TallerPage() {
             </div>
           </div>
           <div className="contact">
-            <span className="ind-kick2 light"><span className="sq" /> Soporte directo</span>
             <h2 className="ind-h2sm">Información de contacto</h2>
             <div className="clist">
               <a className="citem" href={`tel:${TEL}`}>
@@ -148,7 +157,6 @@ export default function TallerPage() {
       <section className="ind-sec" style={{ paddingTop: 0 }}><div className="wrap">
         <div className="ind-lochead">
           <div>
-            <span className="ind-kick2"><span className="sq" /> Visítanos</span>
             <h2 className="ind-h2">Nuestra <span className="blue">ubicación.</span></h2>
             <p className="addr">Cra. 27 #13-05, Sabanalarga · Atlántico</p>
           </div>
@@ -166,7 +174,6 @@ export default function TallerPage() {
       {REVIEWS.length > 0 && (
         <section className="ind-sec ind-revs" style={{ paddingTop: 0 }}><div className="wrap">
           <div className="rhead">
-            <span className="ind-kick2"><span className="sq" /> Garantía de confianza</span>
             <h2 className="ind-h2">Lo que dicen <span className="blue">nuestros clientes.</span></h2>
           </div>
           <div className="rgrid">
@@ -206,7 +213,6 @@ export default function TallerPage() {
       </div></section>
 
       <section className="ind-ctaband"><div className="wrap">
-        <span className="ind-kick2 light"><span className="sq" /> ¿Listo para empezar?</span>
         <h2>No esperes más,<br /><span className="blue">agenda tu cita hoy.</span></h2>
         <div className="acts">
           <a className="ind-btn" href="/agendar">Agendar ahora <ArrowUpRight size={18} /></a>
@@ -215,9 +221,11 @@ export default function TallerPage() {
         <p className="note mono">Respuesta inmediata por WhatsApp · Sin filas · Calidad garantizada</p>
       </div></section>
 
-      <div className="ind-marquee" aria-hidden="true">
+      <div className="ind-marquee" aria-label="Marcas de vehículos que atendemos">
         <div className="track">
-          {[...BRANDS, ...BRANDS].map((b, i) => (<span key={i}>{b}</span>))}
+          {[...CAR_BRANDS, ...CAR_BRANDS].map((b, i) => (
+            <img key={i} src={`https://cdn.simpleicons.org/${b.slug}/141414`} alt={b.name} title={b.name} loading="lazy" />
+          ))}
         </div>
       </div>
 

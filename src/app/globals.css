@@ -451,8 +451,9 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 
 /* Cinta de marcas */
 .ind-marquee { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); overflow: hidden; background: #fff; padding: 22px 0; white-space: nowrap; }
-.ind-marquee .track { display: inline-flex; gap: 80px; align-items: center; animation: indMarquee 28s linear infinite; }
-.ind-marquee span { font-weight: 800; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.02em; color: rgba(20,20,20,0.22); }
+.ind-marquee .track { display: inline-flex; gap: 56px; align-items: center; animation: indMarquee 32s linear infinite; }
+.ind-marquee img { height: 30px; width: auto; flex-shrink: 0; opacity: 0.5; transition: opacity 0.2s; }
+.ind-marquee:hover img { opacity: 0.72; }
 @keyframes indMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .ind-marquee .track { animation: none; } }
 
