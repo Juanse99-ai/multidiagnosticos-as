@@ -25,7 +25,7 @@ export function IndMotion() {
       let heroSplit: SplitType | null = null;
       if (heroTitle) {
         try {
-          heroSplit = new SplitType(heroTitle, { types: "words, chars" });
+          heroSplit = new SplitType(heroTitle, { types: "words,chars" });
           gsap.fromTo(
             heroSplit.chars,
             { clipPath: "inset(0 100% 0 0)" },
