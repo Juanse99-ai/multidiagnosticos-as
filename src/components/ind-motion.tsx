@@ -3,6 +3,7 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import SplitType from "split-type";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,8 +20,21 @@ export function IndMotion() {
     const mm = gsap.matchMedia();
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      // Hero: entrada escalonada del texto
-      gsap.from("[data-hero-content] > *", {
+      // Hero: el titular entra palabra por palabra (SplitType); el resto entra como bloque.
+      const heroTitle = document.querySelector<HTMLElement>(".ind-hero .ind-h1");
+      let heroSplit: SplitType | null = null;
+      if (heroTitle) {
+        heroSplit = new SplitType(heroTitle, { types: "words" });
+        gsap.from(heroSplit.words, {
+          y: 28,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power3.out",
+          stagger: 0.05,
+          delay: 0.2,
+        });
+      }
+      gsap.from("[data-hero-content] > *:not(.ind-h1)", {
         y: 30,
         opacity: 0,
         duration: 0.9,
@@ -100,6 +114,8 @@ export function IndMotion() {
 
       // Recalcular posiciones cuando fuentes/imágenes ya cargaron
       ScrollTrigger.refresh();
+
+      return () => heroSplit?.revert();
     });
 
     return () => mm.revert();
