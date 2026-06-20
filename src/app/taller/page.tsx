@@ -42,19 +42,6 @@ const HOURS = [
   { d: "Domingos y festivos", h: "Cerrado", off: true },
 ];
 
-// Marcas de vehículos que atiende el taller (logos monocromáticos vía simple-icons CDN).
-const CAR_BRANDS = [
-  { slug: "mazda", name: "Mazda" },
-  { slug: "renault", name: "Renault" },
-  { slug: "chevrolet", name: "Chevrolet" },
-  { slug: "ford", name: "Ford" },
-  { slug: "kia", name: "Kia" },
-  { slug: "hyundai", name: "Hyundai" },
-  { slug: "toyota", name: "Toyota" },
-  { slug: "volkswagen", name: "Volkswagen" },
-  { slug: "nissan", name: "Nissan" },
-  { slug: "mitsubishi", name: "Mitsubishi" },
-];
 
 // Reseñas reales del perfil de Google de Multidiagnósticos AS (verbatim del cliente).
 const REVIEWS: { stars: number; text: string; name: string; role: string }[] = [
@@ -84,7 +71,6 @@ export default function TallerPage() {
         <div className="bg"><img src="/hero/banner.jpg" alt="Taller Multidiagnósticos AS: paredes ACDelco, LIQUI MOLY y DENSO, camioneta en el elevador LAUNCH" style={{ objectPosition: "center 50%" }} /></div>
         <div className="scrim" />
         <div className="hero-content"><div className="wrap" data-hero-content>
-          <div className="ind-kick">Taller especializado · Sabanalarga</div>
           <h1 className="ind-h1">Diagnóstico y reparación que <span className="blue">sí encuentra la falla.</span></h1>
           <p className="ind-sub">Escáner, motor, frenos, suspensión y programación de llaves. Desde 2021 y más de 2.000 órdenes de servicio. Repuestos originales garantizados.</p>
           <div className="ind-actions">
@@ -99,7 +85,6 @@ export default function TallerPage() {
           <div>
             <h2 className="ind-h2">Soluciones de <span className="blue">precisión.</span></h2>
           </div>
-          <div className="est mono">EST. 2021 / ATLÁNTICO</div>
         </div>
         <div className="ind-grid"><div className="ind-cells">
           {SERVICES.map((s) => (
@@ -219,14 +204,6 @@ export default function TallerPage() {
         </div>
         <p className="note mono">Respuesta inmediata por WhatsApp · Sin filas · Calidad garantizada</p>
       </div></section>
-
-      <div className="ind-marquee" aria-label="Marcas de vehículos que atendemos">
-        <div className="track">
-          {[...CAR_BRANDS, ...CAR_BRANDS].map((b, i) => (
-            <span className="brand" key={i}><img src={`https://cdn.simpleicons.org/${b.slug}/141414`} alt={b.name} title={b.name} loading="lazy" /></span>
-          ))}
-        </div>
-      </div>
 
       <IndFooter />
     </div>

@@ -161,8 +161,9 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 
 /* Header flotante tipo isla/píldora: barra crema separada de los bordes, con sombra */
 .ind-header { position: sticky; top: 0; z-index: 40; padding: 14px 16px; background: transparent; max-width: 1080px; margin: 0 auto; display: flex; align-items: stretch; gap: 10px; }
-.ind-header .bar { flex: 1; display: flex; align-items: center; gap: 20px; padding: 11px 18px 11px 24px; background: var(--bg); border: 2px solid var(--ink); border-radius: 999px; box-shadow: 0 6px 16px rgba(20,20,20,0.10); }
+.ind-header .bar { flex: 1; display: flex; align-items: center; gap: 20px; padding: 11px 18px 11px 24px; background: var(--bg); border: 2px solid var(--ink); border-radius: 18px; box-shadow: 0 6px 16px rgba(20,20,20,0.10); }
 .ind-cta-pill { align-self: stretch; border: 2px solid var(--ink); box-shadow: 0 6px 16px rgba(20,20,20,0.10); }
+.ind-header .ind-cta-pill { border-radius: 18px; }
 .ind-logo { height: 42px; width: auto; display: block; }
 .ind-nav { display: flex; gap: 22px; margin-left: auto; }
 .ind-nav a { font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--mut); transition: color 0.15s ease; }
@@ -243,7 +244,9 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 .ind-marquee { margin-top: 30px; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); overflow: hidden; }
 .ind-track { display: flex; width: max-content; animation: marquee 36s linear infinite; }
 .ind-bcell { flex: none; width: 200px; height: 112px; display: grid; place-items: center; border-right: 2px solid var(--ink); background: #fff; padding: 18px; }
-.ind-bcell img { max-height: 46px; max-width: 78%; object-fit: contain; }
+.ind-bcell img { max-height: 46px; max-width: 78%; object-fit: contain; filter: grayscale(1) brightness(0.7); transition: filter 0.25s ease; }
+.ind-bcell:hover img { filter: none; }
+.ind-marquee:hover .ind-track { animation-play-state: paused; }
 @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 .ind-book { background: var(--ink); color: #EDEDEA; }
