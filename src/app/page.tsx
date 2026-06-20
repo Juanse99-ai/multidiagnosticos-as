@@ -65,7 +65,6 @@ export default function Home() {
           <p className="ind-sub">Diagnóstico computarizado, mantenimiento y autopartes. Con los mejores equipos y más de 2.000 órdenes de servicio.</p>
           <div className="ind-actions">
             <a className="ind-btn" href="/agendar">Agendar diagnóstico <ArrowUpRight size={18} /></a>
-            <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
           </div>
         </div></div>
       </section>

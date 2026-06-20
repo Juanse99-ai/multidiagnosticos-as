@@ -14,7 +14,6 @@ export const metadata: Metadata = {
     "Taller automotriz en Sabanalarga: escáner, sincronización, reparación de computadoras, frenos, suspensión, inyectores y motores. Desde 2021, +2.000 órdenes de servicio.",
 };
 
-const WA = "https://wa.me/573003651525?text=Hola,%20quisiera%20informaci%C3%B3n%20sobre%20los%20servicios%20del%20taller";
 const WA_AGENDA = "https://wa.me/573023191749?text=Hola,%20quiero%20agendar%20un%20servicio";
 const TEL = "+573003651525";
 const WA_NUM = "https://wa.me/573023191749?text=Hola,%20quiero%20agendar%20un%20servicio";
@@ -89,7 +88,6 @@ export default function TallerPage() {
           <p className="ind-sub">Escáner, motor, frenos, suspensión y programación de llaves. Desde 2021 y más de 2.000 órdenes de servicio. Repuestos originales garantizados.</p>
           <div className="ind-actions">
             <a className="ind-btn" href="/agendar">Agendar servicio <ArrowUpRight size={18} /></a>
-            <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
           </div>
         </div></div>
       </section>
