@@ -26,12 +26,12 @@ export function IndMotion() {
       if (heroTitle) {
         heroSplit = new SplitType(heroTitle, { types: "words" });
         gsap.from(heroSplit.words, {
-          y: 28,
+          y: 44,
           opacity: 0,
-          duration: 0.7,
-          ease: "power3.out",
-          stagger: 0.05,
-          delay: 0.2,
+          duration: 1,
+          ease: "power4.out",
+          stagger: 0.12,
+          delay: 0.35,
         });
       }
       gsap.from("[data-hero-content] > *:not(.ind-h1)", {
