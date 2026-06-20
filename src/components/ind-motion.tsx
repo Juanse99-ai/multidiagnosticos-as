@@ -3,10 +3,9 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import { SplitText } from "gsap/SplitText";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+import SplitType from "split-type";
 
-gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Movimiento tipo Apple para el sistema industrial.
@@ -23,16 +22,16 @@ export function IndMotion() {
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       // Hero: el titular se revela letra por letra desde una máscara (GSAP SplitText)
       const heroTitle = document.querySelector<HTMLElement>(".ind-hero .ind-h1");
-      let heroSplit: SplitText | null = null;
+      let heroSplit: SplitType | null = null;
       if (heroTitle) {
         try {
-          heroSplit = new SplitText(heroTitle, { type: "lines,words,chars", mask: "lines" });
+          heroSplit = new SplitType(heroTitle, { types: "chars" });
           gsap.from(heroSplit.chars, {
-            yPercent: 100,
             opacity: 0,
-            duration: 0.5,
-            ease: "power3.out",
-            stagger: 0.05,
+            y: 24,
+            duration: 0.4,
+            ease: "power2.out",
+            stagger: 0.06,
             delay: 0.3,
           });
         } catch {
