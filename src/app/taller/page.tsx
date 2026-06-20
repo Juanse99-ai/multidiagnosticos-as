@@ -223,7 +223,7 @@ export default function TallerPage() {
       <div className="ind-marquee" aria-label="Marcas de vehículos que atendemos">
         <div className="track">
           {[...CAR_BRANDS, ...CAR_BRANDS].map((b, i) => (
-            <img key={i} src={`https://cdn.simpleicons.org/${b.slug}/141414`} alt={b.name} title={b.name} loading="lazy" />
+            <span className="brand" key={i}><img src={`https://cdn.simpleicons.org/${b.slug}/141414`} alt={b.name} title={b.name} loading="lazy" /></span>
           ))}
         </div>
       </div>

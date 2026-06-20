@@ -449,10 +449,11 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 .ind-ctaband .note { margin: 34px 0 0; color: rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
 
 /* Cinta de marcas */
-.ind-marquee { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); overflow: hidden; background: #fff; padding: 22px 0; white-space: nowrap; }
-.ind-marquee .track { display: inline-flex; gap: 56px; align-items: center; animation: indMarquee 32s linear infinite; }
-.ind-marquee img { height: 30px; width: auto; flex-shrink: 0; opacity: 0.5; transition: opacity 0.2s; }
-.ind-marquee:hover img { opacity: 0.72; }
+.ind-marquee { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); overflow: hidden; background: #fff; white-space: nowrap; }
+.ind-marquee .track { display: inline-flex; align-items: stretch; animation: indMarquee 18s linear infinite; }
+.ind-marquee .brand { display: flex; align-items: center; padding: 26px 54px; border-right: 1px solid var(--line); flex-shrink: 0; }
+.ind-marquee img { height: 46px; width: auto; opacity: 0.55; transition: opacity 0.2s; }
+.ind-marquee:hover img { opacity: 0.8; }
 @keyframes indMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .ind-marquee .track { animation: none; } }
 
