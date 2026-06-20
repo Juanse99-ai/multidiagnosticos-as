@@ -39,7 +39,7 @@ export function IndHeader() {
     <div className="ind-header">
       <div className="bar">
         <a href="/" aria-label="Multidiagnósticos AS — inicio">
-          <img src="/logo-as.png" alt="Multidiagnósticos AS" className="ind-logo" />
+          <img src="/logo-as2.png" alt="Multidiagnósticos AS" className="ind-logo" />
         </a>
         <nav className="ind-nav">
           {LINKS.map((l) => (

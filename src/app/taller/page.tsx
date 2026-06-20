@@ -61,6 +61,20 @@ function initials(name: string) {
   return name.split(" ").filter((w) => w && !w.includes(".")).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
 }
 
+// Marcas de vehículos que atiende el taller (logos monocromáticos vía simple-icons CDN).
+const CAR_BRANDS = [
+  { slug: "mazda", name: "Mazda" },
+  { slug: "renault", name: "Renault" },
+  { slug: "chevrolet", name: "Chevrolet" },
+  { slug: "ford", name: "Ford" },
+  { slug: "kia", name: "Kia" },
+  { slug: "hyundai", name: "Hyundai" },
+  { slug: "toyota", name: "Toyota" },
+  { slug: "volkswagen", name: "Volkswagen" },
+  { slug: "nissan", name: "Nissan" },
+  { slug: "mitsubishi", name: "Mitsubishi" },
+];
+
 export default function TallerPage() {
   return (
     <div className="ind">
@@ -204,6 +218,14 @@ export default function TallerPage() {
         </div>
         <p className="note mono">Respuesta inmediata por WhatsApp · Sin filas · Calidad garantizada</p>
       </div></section>
+
+      <div className="ind-marquee" aria-label="Marcas de vehículos que atendemos">
+        <div className="track">
+          {[...CAR_BRANDS, ...CAR_BRANDS].map((b, i) => (
+            <span className="brand" key={i}><img src={`https://cdn.simpleicons.org/${b.slug}/141414`} alt={b.name} title={b.name} loading="lazy" /></span>
+          ))}
+        </div>
+      </div>
 
       <IndFooter />
     </div>
