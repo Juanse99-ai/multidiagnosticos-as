@@ -423,14 +423,15 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 /* Reseñas (solo se renderiza si hay datos reales) */
 .ind-revs .rhead { text-align: center; margin-bottom: 40px; }
 .ind-revs .rgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
-.ind-revs .rcard { position: relative; border: 2px solid var(--ink); border-radius: 8px; background: #fff; padding: 30px; overflow: hidden; }
+.ind-revs .rcard { position: relative; border: 2px solid var(--ink); border-radius: 8px; background: #fff; padding: 30px; overflow: hidden; display: flex; flex-direction: column; }
 .ind-revs .rcard .qt { position: absolute; top: 14px; right: 14px; color: var(--acc); opacity: 0.1; }
 .ind-revs .rcard .stars { display: flex; gap: 3px; margin-bottom: 16px; position: relative; }
-.ind-revs .rcard .qtext { font-style: italic; line-height: 1.6; margin: 0 0 22px; }
-.ind-revs .rcard .who { display: flex; align-items: center; gap: 13px; }
+.ind-revs .rcard .qtext { font-style: italic; line-height: 1.6; margin: 0 0 22px; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; overflow: hidden; }
+.ind-revs .rcard .who { display: flex; align-items: center; gap: 13px; margin-top: auto; }
 .ind-revs .rcard .av { width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%; background: var(--line); display: grid; place-items: center; font-weight: 800; font-size: 14px; }
 .ind-revs .rcard .nm { display: block; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; }
 .ind-revs .rcard .rl { display: block; font-size: 11px; letter-spacing: 0.06em; color: var(--mut); text-transform: uppercase; margin-top: 2px; }
+.ind-revs .rmore { display: flex; justify-content: center; margin-top: 34px; }
 
 /* Banda CTA final (oscura) */
 .ind-ctaband { background: var(--ink); color: #fff; border-top: 8px solid var(--acc); padding: 80px 0; text-align: center; }

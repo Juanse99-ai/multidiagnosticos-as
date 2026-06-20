@@ -44,9 +44,12 @@ const HOURS = [
 
 const BRANDS = ["ACDelco", "LIQUI MOLY", "DENSO", "Bosch", "Castrol", "Mobil", "Valvoline", "Mazda", "Launch X-431"];
 
-// Reseñas reales del perfil de Google. Vacío = la sección no se muestra (no publicamos nada falso).
-// Cuando el dueño pase las reseñas, llenar este arreglo: { stars, text, name, role }.
-const REVIEWS: { stars: number; text: string; name: string; role: string }[] = [];
+// Reseñas reales del perfil de Google de Multidiagnósticos AS (verbatim del cliente).
+const REVIEWS: { stars: number; text: string; name: string; role: string }[] = [
+  { stars: 5, text: "Un buen lugar para realizar la sincronización del carro en Sabanalarga, recomendado.", name: "Ing. Jose Bermudez", role: "Local Guide · Google" },
+  { stars: 5, text: "Excelente servicio en Multidiagnósticos. Muy responsables, honestos y con precios justos. Súper recomendados para repuestos y mantenimiento de carros.", name: "Carolina CP", role: "Cliente · Google" },
+  { stars: 5, text: "Excelente servicio. Desde el primer momento la atención fue muy profesional. Me explicaron claramente cuál era el problema de mi vehículo y las opciones de reparación, sin costos ocultos ni sorpresas. El trabajo fue rápido, eficiente y de muy buena calidad. Se nota la experiencia y el compromiso con el cliente. Además, entregaron el carro en el tiempo acordado y en perfectas condiciones. Sin duda volveré y lo recomiendo totalmente a quienes busquen un taller confiable y responsable.", name: "Luis Daniel Prieto", role: "Cliente · Google" },
+];
 
 const FAQS = [
   { q: "¿Cuánto tarda un diagnóstico computarizado?", a: "Entre 20 y 45 minutos según el sistema. Te entregamos los códigos de falla y la recomendación de reparación." },
@@ -56,7 +59,7 @@ const FAQS = [
 ];
 
 function initials(name: string) {
-  return name.split(" ").filter(Boolean).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
+  return name.split(" ").filter((w) => w && !w.includes(".")).slice(0, 2).map((w) => w[0]).join("").toUpperCase();
 }
 
 export default function TallerPage() {
@@ -179,6 +182,12 @@ export default function TallerPage() {
               </div>
             ))}
           </div>
+          <div className="rmore"><a className="ind-btn-dark" href={MAPS} target="_blank" rel="noopener"><Star size={16} fill="#fff" color="#fff" /> Ver todas las reseñas en Google</a></div>
+          <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+            "@context": "https://schema.org", "@type": "AutoRepair", name: "Multidiagnósticos AS",
+            image: "https://www.multidiagnosticosas.com/hero/banner.jpg", url: "https://www.multidiagnosticosas.com/taller",
+            review: REVIEWS.map((r) => ({ "@type": "Review", author: { "@type": "Person", name: r.name }, reviewRating: { "@type": "Rating", ratingValue: r.stars, bestRating: 5 }, reviewBody: r.text })),
+          }) }} />
         </div></section>
       )}
 
