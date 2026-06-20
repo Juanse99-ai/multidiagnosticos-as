@@ -3,9 +3,10 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import SplitType from "split-type";
+import { SplitText } from "gsap/SplitText";
+import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText, DrawSVGPlugin);
 
 /**
  * Movimiento tipo Apple para el sistema industrial.
@@ -20,21 +21,30 @@ export function IndMotion() {
     const mm = gsap.matchMedia();
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      // Hero: el titular entra palabra por palabra (SplitType); el resto entra como bloque.
+      // Hero: el titular se revela letra por letra desde una máscara (GSAP SplitText)
       const heroTitle = document.querySelector<HTMLElement>(".ind-hero .ind-h1");
-      let heroSplit: SplitType | null = null;
+      let heroSplit: SplitText | null = null;
       if (heroTitle) {
-        heroSplit = new SplitType(heroTitle, { types: "words" });
-        gsap.from(heroSplit.words, {
-          y: 44,
-          opacity: 0,
-          duration: 1,
-          ease: "power4.out",
-          stagger: 0.12,
-          delay: 0.35,
-        });
+        try {
+          heroSplit = new SplitText(heroTitle, { type: "lines,words,chars", mask: "lines" });
+          gsap.from(heroSplit.chars, {
+            yPercent: 100,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power4.out",
+            stagger: 0.018,
+            delay: 0.3,
+          });
+        } catch {
+          gsap.from(heroTitle, { y: 30, opacity: 0, duration: 0.9, ease: "power3.out", delay: 0.2 });
+        }
       }
-      gsap.from("[data-hero-content] > *:not(.ind-h1)", {
+      // Subrayado cobalto que se "dibuja" solo bajo el titular (GSAP DrawSVG)
+      const heroUnderline = document.querySelector(".ind-hero .ind-underline path");
+      if (heroUnderline) {
+        gsap.from(heroUnderline, { drawSVG: "0%", duration: 1.1, delay: 1.05, ease: "power2.inOut" });
+      }
+      gsap.from("[data-hero-content] > *:not(.ind-h1):not(.ind-underline)", {
         y: 30,
         opacity: 0,
         duration: 0.9,

@@ -85,6 +85,7 @@ export default function TallerPage() {
         <div className="scrim" />
         <div className="hero-content"><div className="wrap" data-hero-content>
           <h1 className="ind-h1">Diagnóstico y reparación que <span className="blue">sí encuentra la falla.</span></h1>
+          <svg className="ind-underline" viewBox="0 0 300 14" fill="none" aria-hidden="true"><path d="M4 9 C 60 4, 130 4, 200 8 C 250 10, 282 7, 296 6" stroke="#6E8BFF" strokeWidth="4" strokeLinecap="round" /></svg>
           <p className="ind-sub">Escáner, motor, frenos, suspensión y programación de llaves. Desde 2021 y más de 2.000 órdenes de servicio. Repuestos originales garantizados.</p>
           <div className="ind-actions">
             <a className="ind-btn" href="/agendar">Agendar servicio <ArrowUpRight size={18} /></a>
