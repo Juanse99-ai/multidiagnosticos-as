@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IndHeader } from "@/components/ind-header";
 import { IndFooter } from "@/components/ind-footer";
 import { IndMotion } from "@/components/ind-motion";
+import { IndMap } from "@/components/ind-map";
 import {
   ArrowUpRight, MessageCircle, ChevronDown, Phone, Mail, Navigation, Star, Quote,
   Gauge, ScanSearch, Cpu, CarFront, Disc3, Droplets, Cog, Wrench, Snowflake, Key, Wind, Activity,
@@ -19,7 +20,6 @@ const TEL = "+573003651525";
 const WA_NUM = "https://wa.me/573023191749?text=Hola,%20quiero%20agendar%20un%20servicio";
 const EMAIL = "contacto@multidiagnosticosas.com";
 const MAPS = "https://www.google.com/maps/search/?api=1&query=Multidiagnosticos+AS+Sabanalarga";
-const MAPS_EMBED = "https://maps.google.com/maps?q=Multidiagnosticos%20AS%20Sabanalarga%20Atlantico&t=&z=15&ie=UTF8&iwloc=&output=embed";
 
 const SERVICES = [
   { Icon: Gauge, t: "Sincronización de motor", d: "Puesta a punto para potencia y consumo correctos.", ref: "SYN-001" },
@@ -155,7 +155,7 @@ export default function TallerPage() {
           <a className="ind-btn-dark" href={MAPS} target="_blank" rel="noopener"><Navigation size={18} /> Cómo llegar</a>
         </div>
         <div className="ind-map">
-          <iframe src={MAPS_EMBED} title="Ubicación de Multidiagnósticos AS en Sabanalarga" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+          <IndMap />
           <div className="pin-card">
             <h4>Central Sabanalarga</h4>
             <p>Fácil acceso desde la vía principal. Zona de parqueo y recepción.</p>
