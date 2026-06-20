@@ -2,10 +2,9 @@
 
 import { useEffect, useRef } from "react";
 
-// Ubicación aproximada sobre la Carrera 27, Sabanalarga (Atlántico).
-// El botón "Cómo llegar" usa Google con la ubicación exacta registrada del negocio.
-const LAT = 10.6356;
-const LNG = -74.9102;
+// Ubicación exacta del local, tomada de la ficha de Google de Multidiagnósticos AS.
+const LAT = 10.635932;
+const LNG = -74.914833;
 
 // Token PÚBLICO de Mapbox (pk.*). Es público por diseño: Mapbox lo expone en el navegador.
 // IMPORTANTE: restringir este token al dominio multidiagnosticosas.com en la cuenta de Mapbox.
@@ -60,7 +59,7 @@ export function IndMap() {
           container: ref.current,
           style: "mapbox://styles/mapbox/dark-v11",
           center: [LNG, LAT],
-          zoom: reduce ? 15.5 : 12.5,
+          zoom: reduce ? 16 : 13,
           scrollZoom: false,
           attributionControl: true,
         });
@@ -73,7 +72,7 @@ export function IndMap() {
 
         if (!reduce) {
           map.on("load", () => {
-            map.flyTo({ center: [LNG, LAT], zoom: 15.5, duration: 2600, essential: true });
+            map.flyTo({ center: [LNG, LAT], zoom: 16, duration: 2600, essential: true });
           });
         }
       })

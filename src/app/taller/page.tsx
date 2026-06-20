@@ -109,7 +109,6 @@ export default function TallerPage() {
                 <h3>{s.t}</h3>
                 <p>{s.d}</p>
               </div>
-              <span className="ref mono">REF. {s.ref}</span>
             </div>
           ))}
         </div></div>
