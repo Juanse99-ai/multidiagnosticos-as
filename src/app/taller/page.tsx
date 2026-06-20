@@ -84,7 +84,7 @@ export default function TallerPage() {
         <div className="bg"><img src="/hero/banner.jpg" alt="Taller Multidiagnósticos AS: paredes ACDelco, LIQUI MOLY y DENSO, camioneta en el elevador LAUNCH" style={{ objectPosition: "center 50%" }} /></div>
         <div className="scrim" />
         <div className="hero-content"><div className="wrap" data-hero-content>
-          <h1 className="ind-h1" data-anim="scramble"><span>Diagnóstico y reparación que </span><span className="blue">sí encuentra la falla.</span></h1>
+          <h1 className="ind-h1">Diagnóstico y reparación que <span className="blue">sí encuentra la falla.</span></h1>
           <p className="ind-sub">Escáner, motor, frenos, suspensión y programación de llaves. Desde 2021 y más de 2.000 órdenes de servicio. Repuestos originales garantizados.</p>
           <div className="ind-actions">
             <a className="ind-btn" href="/agendar">Agendar servicio <ArrowUpRight size={18} /></a>
