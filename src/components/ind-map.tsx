@@ -2,9 +2,9 @@
 
 import { useEffect, useRef } from "react";
 
-// Ubicación exacta del local, tomada de la ficha de Google de Multidiagnósticos AS.
-const LAT = 10.635932;
-const LNG = -74.914833;
+// Ubicación exacta del local (marcador de la ficha de Google de Multidiagnósticos AS).
+const LAT = 10.63582;
+const LNG = -74.9145827;
 
 // Token PÚBLICO de Mapbox (pk.*). Es público por diseño: Mapbox lo expone en el navegador.
 // IMPORTANTE: restringir este token al dominio multidiagnosticosas.com en la cuenta de Mapbox.
