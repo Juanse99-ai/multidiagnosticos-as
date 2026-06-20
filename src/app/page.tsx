@@ -62,7 +62,6 @@ export default function Home() {
         <div className="scrim" />
         <div className="hero-content"><div className="wrap" data-hero-content>
           <h1 className="ind-h1">Encontramos la falla que <span className="blue">otros no.</span></h1>
-          <svg className="ind-underline" viewBox="0 0 300 14" fill="none" aria-hidden="true"><path d="M4 9 C 60 4, 130 4, 200 8 C 250 10, 282 7, 296 6" stroke="#6E8BFF" strokeWidth="4" strokeLinecap="round" /></svg>
           <p className="ind-sub">Diagnóstico computarizado, mantenimiento y autopartes. Con los mejores equipos y más de 2.000 órdenes de servicio.</p>
           <div className="ind-actions">
             <a className="ind-btn" href="/agendar">Agendar diagnóstico <ArrowUpRight size={18} /></a>

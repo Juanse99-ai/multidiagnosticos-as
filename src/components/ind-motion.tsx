@@ -30,21 +30,16 @@ export function IndMotion() {
           gsap.from(heroSplit.chars, {
             yPercent: 100,
             opacity: 0,
-            duration: 0.8,
-            ease: "power4.out",
-            stagger: 0.018,
+            duration: 0.5,
+            ease: "power3.out",
+            stagger: 0.05,
             delay: 0.3,
           });
         } catch {
           gsap.from(heroTitle, { y: 30, opacity: 0, duration: 0.9, ease: "power3.out", delay: 0.2 });
         }
       }
-      // Subrayado cobalto que se "dibuja" solo bajo el titular (GSAP DrawSVG)
-      const heroUnderline = document.querySelector(".ind-hero .ind-underline path");
-      if (heroUnderline) {
-        gsap.from(heroUnderline, { drawSVG: "0%", duration: 1.1, delay: 1.05, ease: "power2.inOut" });
-      }
-      gsap.from("[data-hero-content] > *:not(.ind-h1):not(.ind-underline)", {
+      gsap.from("[data-hero-content] > *:not(.ind-h1)", {
         y: 30,
         opacity: 0,
         duration: 0.9,
