@@ -369,3 +369,93 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 .ind-wa:hover { transform: scale(1.07); box-shadow: 0 14px 30px rgba(0,0,0,0.28); }
 .ind-wa svg { width: 30px; height: 30px; display: block; }
 @media (max-width: 560px) { .ind-wa { width: 54px; height: 54px; right: 14px; bottom: 14px; } }
+
+/* === Taller: secciones del rediseño (misma paleta del sitio) === */
+/* Encabezado de servicios: eyebrow + título + "EST." a la derecha, con línea inferior */
+.ind-svchead { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; border-bottom: 2px solid var(--ink); padding-bottom: 18px; }
+.ind-svchead .est { color: var(--mut); font-size: 12px; letter-spacing: 0.1em; }
+
+/* Tarjetas de servicio (variante del grid; NO toca .ind-cell de la home) */
+.ind-svc { background: var(--bg); padding: 24px; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; transition: background 0.15s; }
+.ind-svc:hover { background: #fff; }
+.ind-svc .ic { margin-bottom: 16px; }
+.ind-svc h3 { font-weight: 800; font-size: 1.02rem; text-transform: uppercase; line-height: 1.1; margin: 0 0 7px; overflow-wrap: break-word; -webkit-hyphens: auto; hyphens: auto; }
+.ind-svc p { color: var(--mut); font-size: 13px; line-height: 1.45; margin: 0; }
+.ind-svc .ref { font-size: 11px; letter-spacing: 0.08em; color: rgba(20,20,20,0.32); margin-top: 18px; }
+
+/* Título mediano para bloques (horario / contacto) */
+.ind-h2sm { font-weight: 900; font-size: clamp(1.5rem, 3.2vw, 2rem); line-height: 1; letter-spacing: -0.02em; text-transform: uppercase; margin: 12px 0 24px; }
+
+/* Eyebrow variante clara (sobre fondo azul/oscuro) */
+.ind-kick2.light { color: rgba(255,255,255,0.8); }
+.ind-kick2.light .sq { background: #fff; }
+
+/* Horario + contacto: dos columnas conectadas (gap + fondo tinta) */
+.ind-sched { border: 2px solid var(--ink); border-radius: 8px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--ink); }
+.ind-sched > div { padding: 34px; }
+.ind-sched .hrs { background: var(--bg); }
+.ind-sched .rows { display: flex; flex-direction: column; }
+.ind-sched .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+.ind-sched .row:last-child { border-bottom: 0; }
+.ind-sched .row .d { font-weight: 800; text-transform: uppercase; font-size: 0.95rem; }
+.ind-sched .row .badge { font-size: 12px; background: var(--ink); color: #fff; padding: 6px 11px; white-space: nowrap; }
+.ind-sched .row.off .d { color: var(--mut); }
+.ind-sched .row.off .badge { background: transparent; color: var(--ink); border: 2px solid var(--ink); padding: 4px 11px; }
+.ind-sched .contact { background: var(--acc); color: #fff; }
+.ind-sched .clist { display: flex; flex-direction: column; gap: 22px; }
+.ind-sched .citem { display: flex; align-items: center; gap: 16px; color: #fff; }
+.ind-sched .citem .ico { width: 46px; height: 46px; flex-shrink: 0; background: rgba(255,255,255,0.14); display: grid; place-items: center; border-radius: 9px; }
+.ind-sched .citem .lb { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.72); margin-bottom: 2px; }
+.ind-sched .citem .vv { display: block; font-weight: 800; font-size: 1.02rem; overflow-wrap: break-word; }
+.ind-sched .citem:hover .vv { text-decoration: underline; }
+
+/* Ubicación + mapa */
+.ind-lochead { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 24px; }
+.ind-lochead .addr { color: var(--mut); font-size: 1.05rem; margin: 12px 0 0; }
+.ind-btn-dark { display: inline-flex; align-items: center; gap: 9px; background: var(--ink); color: #fff !important; padding: 14px 22px; border-radius: 6px; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; }
+.ind-btn-dark:hover { background: var(--acc); }
+.ind-map { position: relative; border: 2px solid var(--ink); border-radius: 8px; overflow: hidden; height: 420px; background: #E5E2E1; }
+.ind-map iframe { width: 100%; height: 100%; border: 0; display: block; filter: grayscale(0.55) contrast(1.04); }
+.ind-map .pin-card { position: absolute; bottom: 18px; left: 18px; max-width: 280px; background: #fff; border: 2px solid var(--ink); padding: 16px 18px; }
+.ind-map .pin-card h4 { font-weight: 800; text-transform: uppercase; font-size: 0.98rem; margin: 0 0 5px; }
+.ind-map .pin-card p { color: var(--mut); font-size: 12.5px; line-height: 1.45; margin: 0; }
+
+/* Reseñas (solo se renderiza si hay datos reales) */
+.ind-revs .rhead { text-align: center; margin-bottom: 40px; }
+.ind-revs .rgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.ind-revs .rcard { position: relative; border: 2px solid var(--ink); border-radius: 8px; background: #fff; padding: 30px; overflow: hidden; }
+.ind-revs .rcard .qt { position: absolute; top: 14px; right: 14px; color: var(--acc); opacity: 0.1; }
+.ind-revs .rcard .stars { display: flex; gap: 3px; margin-bottom: 16px; position: relative; }
+.ind-revs .rcard .qtext { font-style: italic; line-height: 1.6; margin: 0 0 22px; }
+.ind-revs .rcard .who { display: flex; align-items: center; gap: 13px; }
+.ind-revs .rcard .av { width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%; background: var(--line); display: grid; place-items: center; font-weight: 800; font-size: 14px; }
+.ind-revs .rcard .nm { display: block; font-weight: 800; text-transform: uppercase; font-size: 0.9rem; }
+.ind-revs .rcard .rl { display: block; font-size: 11px; letter-spacing: 0.06em; color: var(--mut); text-transform: uppercase; margin-top: 2px; }
+
+/* Banda CTA final (oscura) */
+.ind-ctaband { background: var(--ink); color: #fff; border-top: 8px solid var(--acc); padding: 80px 0; text-align: center; }
+.ind-ctaband h2 { font-weight: 900; font-size: clamp(2.2rem, 5vw, 4rem); line-height: 0.95; letter-spacing: -0.02em; text-transform: uppercase; margin: 16px 0 0; }
+.ind-ctaband h2 .blue { color: #6E8BFF; }
+.ind-ctaband .acts { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+.ind-ctaband .ind-btn-ghost { color: #fff; border-color: rgba(255,255,255,0.55); background: rgba(255,255,255,0.04); }
+.ind-ctaband .ind-btn-ghost:hover { background: #fff; color: var(--ink); }
+.ind-ctaband .note { margin: 34px 0 0; color: rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+/* Cinta de marcas */
+.ind-marquee { border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); overflow: hidden; background: #fff; padding: 22px 0; white-space: nowrap; }
+.ind-marquee .track { display: inline-flex; gap: 80px; align-items: center; animation: indMarquee 28s linear infinite; }
+.ind-marquee span { font-weight: 800; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.02em; color: rgba(20,20,20,0.22); }
+@keyframes indMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .ind-marquee .track { animation: none; } }
+
+@media (max-width: 860px) {
+  .ind-sched { grid-template-columns: 1fr; }
+  .ind-sched > div { padding: 26px; }
+  .ind-revs .rgrid { grid-template-columns: 1fr; }
+  .ind-lochead { flex-direction: column; align-items: flex-start; }
+  .ind-svchead { flex-wrap: wrap; }
+  .ind-svchead .est { display: none; }
+  .ind-map { height: 340px; }
+  .ind-map .pin-card { right: 18px; max-width: none; }
+  .ind-ctaband { padding: 56px 0; }
+}
