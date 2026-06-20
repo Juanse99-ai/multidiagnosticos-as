@@ -25,15 +25,12 @@ export function IndMotion() {
       let heroSplit: SplitType | null = null;
       if (heroTitle) {
         try {
-          heroSplit = new SplitType(heroTitle, { types: "chars" });
-          gsap.from(heroSplit.chars, {
-            opacity: 0,
-            y: 24,
-            duration: 0.4,
-            ease: "power2.out",
-            stagger: 0.06,
-            delay: 0.3,
-          });
+          heroSplit = new SplitType(heroTitle, { types: "words, chars" });
+          gsap.fromTo(
+            heroSplit.chars,
+            { clipPath: "inset(0 100% 0 0)" },
+            { clipPath: "inset(0 0% 0 0)", duration: 0.4, ease: "power2.out", stagger: 0.045, delay: 0.3 }
+          );
         } catch {
           gsap.from(heroTitle, { y: 30, opacity: 0, duration: 0.9, ease: "power3.out", delay: 0.2 });
         }
