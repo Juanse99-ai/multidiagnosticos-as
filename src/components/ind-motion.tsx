@@ -134,6 +134,38 @@ export function IndMotion() {
         });
       }
 
+      // Números que cuentan hacia arriba al entrar en pantalla (ScrollTrigger)
+      gsap.utils.toArray<HTMLElement>(".ind-trust .grid2 .n").forEach((el) => {
+        const raw = (el.textContent ?? "").trim();
+        const m = raw.match(/^(\D*)([\d.]+)(\D*)$/);
+        if (!m) return;
+        const prefix = m[1];
+        const grouped = m[2].includes(".");
+        const target = parseInt(m[2].replace(/\./g, ""), 10);
+        const suffix = m[3];
+        if (!Number.isFinite(target)) return;
+        const counter = { v: 0 };
+        gsap.to(counter, {
+          v: target,
+          duration: 1.4,
+          ease: "power2.out",
+          scrollTrigger: { trigger: el, start: "top 88%", once: true },
+          onUpdate: () => {
+            const n = Math.round(counter.v);
+            el.textContent = prefix + (grouped ? n.toLocaleString("es-CO") : String(n)) + suffix;
+          },
+        });
+      });
+
+      // Parallax sutil de las fotos de producto: profundidad atada al scroll (scrub)
+      gsap.utils.toArray<HTMLElement>(".ind-part .ph img").forEach((img) => {
+        gsap.fromTo(
+          img,
+          { yPercent: -8 },
+          { yPercent: 8, ease: "none", scrollTrigger: { trigger: img, start: "top bottom", end: "bottom top", scrub: 0.5 } }
+        );
+      });
+
       // Recalcular posiciones cuando fuentes/imágenes ya cargaron
       ScrollTrigger.refresh();
 
