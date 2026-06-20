@@ -4,8 +4,9 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
+import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
 
 /**
  * Movimiento tipo Apple para el sistema industrial.
@@ -25,12 +26,32 @@ export function IndMotion() {
       let heroSplit: SplitType | null = null;
       if (heroTitle) {
         try {
-          heroSplit = new SplitType(heroTitle, { types: "words,chars" });
-          gsap.fromTo(
-            heroSplit.chars,
-            { clipPath: "inset(0 100% 0 0)" },
-            { clipPath: "inset(0 0% 0 0)", duration: 0.4, ease: "power2.out", stagger: 0.045, delay: 0.3 }
-          );
+          if (heroTitle.dataset.anim === "scramble") {
+            // Scramble / "descifrado": cada parte (blanco + azul) se descifra a su texto real
+            heroTitle.querySelectorAll<HTMLElement>(":scope > span").forEach((part, i) => {
+              const finalText = part.textContent ?? "";
+              gsap.to(part, {
+                duration: 1.4,
+                ease: "none",
+                delay: 0.2 + i * 0.18,
+                scrambleText: { text: finalText, chars: "upperCase", speed: 0.5, revealDelay: 0.2 },
+              });
+            });
+          } else {
+            // Assemble / "fly-in" sobrio: cada letra llega desde un punto/giro al azar y se acomoda
+            heroSplit = new SplitType(heroTitle, { types: "words,chars" });
+            heroSplit.chars?.forEach((c) => {
+              gsap.from(c, {
+                opacity: 0,
+                x: gsap.utils.random(-36, 36),
+                y: gsap.utils.random(-28, 28),
+                rotation: gsap.utils.random(-12, 12),
+                duration: 0.7,
+                ease: "power3.out",
+                delay: 0.3 + gsap.utils.random(0, 0.5),
+              });
+            });
+          }
         } catch {
           gsap.from(heroTitle, { y: 30, opacity: 0, duration: 0.9, ease: "power3.out", delay: 0.2 });
         }
