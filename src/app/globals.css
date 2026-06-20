@@ -396,7 +396,7 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 
 /* Horario + contacto: dos columnas conectadas (gap + fondo tinta) */
 .ind-sched { border: 2px solid var(--ink); border-radius: 8px; overflow: hidden; display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--ink); }
-.ind-sched > div { padding: 34px; }
+.ind-sched > div { padding: 34px; min-width: 0; }
 .ind-sched .hrs { background: var(--bg); }
 .ind-sched .rows { display: flex; flex-direction: column; }
 .ind-sched .row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 15px 0; border-bottom: 1px solid var(--line); }
@@ -407,10 +407,11 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 .ind-sched .row.off .badge { background: transparent; color: var(--ink); border: 2px solid var(--ink); padding: 4px 11px; }
 .ind-sched .contact { background: var(--acc); color: #fff; }
 .ind-sched .clist { display: flex; flex-direction: column; gap: 22px; }
-.ind-sched .citem { display: flex; align-items: center; gap: 16px; color: #fff; }
+.ind-sched .citem { display: flex; align-items: center; gap: 16px; color: #fff; min-width: 0; }
+.ind-sched .citem > span { min-width: 0; }
 .ind-sched .citem .ico { width: 46px; height: 46px; flex-shrink: 0; background: rgba(255,255,255,0.14); display: grid; place-items: center; border-radius: 9px; }
 .ind-sched .citem .lb { display: block; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.72); margin-bottom: 2px; }
-.ind-sched .citem .vv { display: block; font-weight: 800; font-size: 1.02rem; overflow-wrap: break-word; }
+.ind-sched .citem .vv { display: block; font-weight: 800; font-size: 1.02rem; overflow-wrap: anywhere; }
 .ind-sched .citem:hover .vv { text-decoration: underline; }
 
 /* Ubicación + mapa */
@@ -462,7 +463,7 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 @media (prefers-reduced-motion: reduce) { .ind-marquee .track { animation: none; } }
 
 @media (max-width: 860px) {
-  .ind-sched { grid-template-columns: 1fr; }
+  .ind-sched { grid-template-columns: minmax(0, 1fr); }
   .ind-sched > div { padding: 26px; }
   .ind-revs .rgrid { grid-template-columns: 1fr; }
   .ind-lochead { flex-direction: column; align-items: flex-start; }
