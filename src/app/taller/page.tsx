@@ -111,7 +111,7 @@ export default function TallerPage() {
         </div></div>
       </div></section>
 
-      <section className="ind-trust"><div className="grid2">
+      <section className="ind-trust"><p className="ind-trust-lead">Tratamos tu carro como si fuera el nuestro.</p><div className="grid2">
         {[["2021", "Desde el año"], ["+2.000", "Órdenes de servicio"], ["+100", "Marcas compatibles"], ["100%", "Garantía"]].map(([n, l]) => (
           <div key={l}><div className="n">{n}</div><div className="l">{l}</div></div>
         ))}
