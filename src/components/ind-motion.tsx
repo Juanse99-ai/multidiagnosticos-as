@@ -5,8 +5,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import SplitType from "split-type";
 import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
+import { TextPlugin } from "gsap/TextPlugin";
 
-gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrambleTextPlugin, TextPlugin);
 
 /**
  * Movimiento tipo Apple para el sistema industrial.
@@ -131,6 +132,27 @@ export function IndMotion() {
           stagger: 0.1,
           ease: "power3.out",
           scrollTrigger: { trigger: ".ind-book", start: "top 80%", once: true },
+        });
+      }
+
+      // Línea rotativa tipo "typewriter" bajo el titular: escribe y borra servicios (GSAP TextPlugin)
+      const tw = document.querySelector<HTMLElement>(".ind-hero .ind-typeline .tw");
+      if (tw) {
+        const phrases = [
+          "Escáner automotriz",
+          "Reparación de computadoras",
+          "Frenos y suspensión",
+          "Programación de llaves",
+          "Limpieza de inyectores",
+          "Cambio de aceite",
+        ];
+        tw.textContent = "";
+        const twl = gsap.timeline({ repeat: -1, delay: 0.7 });
+        phrases.forEach((p) => {
+          twl
+            .to(tw, { text: p, duration: Math.max(0.45, p.length * 0.045), ease: "none" })
+            .to({}, { duration: 1.5 })
+            .to(tw, { text: "", duration: 0.35, ease: "none" });
         });
       }
 

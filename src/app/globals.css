@@ -192,6 +192,10 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 .ind-h1 { font-weight: 900; font-size: clamp(2.4rem, 5.6vw, 4.6rem); line-height: 0.93; letter-spacing: -0.02em; text-transform: uppercase; margin: 16px 0 0; color: #fff; max-width: 17ch; }
 .ind-h1 .blue { color: #4575FF; }
 .ind-sub { color: rgba(255,255,255,0.78); font-size: 1.12rem; line-height: 1.5; max-width: 480px; margin: 20px 0 0; }
+.ind-typeline { display: flex; align-items: center; min-height: 1.5em; margin: 14px 0 0; font-weight: 800; font-size: clamp(1rem, 2.4vw, 1.35rem); color: #6E8BFF; text-transform: uppercase; letter-spacing: 0.01em; }
+.ind-typeline .cr { display: inline-block; width: 3px; height: 1.05em; background: #6E8BFF; margin-left: 5px; animation: indCaret 0.9s steps(1) infinite; }
+@keyframes indCaret { 0%, 50% { opacity: 1; } 50.01%, 100% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .ind-typeline .cr { animation: none; } }
 .ind-actions { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 30px; }
 .ind-btn { display: inline-flex; align-items: center; gap: 9px; background: var(--acc); color: #fff !important; padding: 14px 24px; border-radius: 6px; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 0.02em; }
 .ind-btn:hover { background: var(--acc-d); }
