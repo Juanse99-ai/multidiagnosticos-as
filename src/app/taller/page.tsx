@@ -86,7 +86,6 @@ export default function TallerPage() {
         <div className="hero-content"><div className="wrap" data-hero-content>
           <h1 className="ind-h1">Diagnóstico y reparación que <span className="blue">sí encuentra la falla.</span></h1>
           <p className="ind-typeline" aria-hidden="true"><span className="tw">Escáner automotriz</span><span className="cr" /></p>
-          <p className="ind-sub">Escáner, motor, frenos, suspensión y programación de llaves. Desde 2021 y más de 2.000 órdenes de servicio. Repuestos originales garantizados.</p>
           <div className="ind-actions">
             <a className="ind-btn" href="/agendar">Agendar servicio <ArrowUpRight size={18} /></a>
           </div>
