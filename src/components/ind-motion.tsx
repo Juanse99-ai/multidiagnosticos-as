@@ -199,7 +199,7 @@ export function IndMotion() {
           start: "top 80%",
           once: true,
           onEnter: () => {
-            gsap.to(lead, { text: phrase, duration: Math.max(0.9, phrase.length * 0.04), ease: "none" });
+            gsap.to(lead, { text: phrase, duration: Math.max(1.6, phrase.length * 0.075), ease: "none" });
           },
         });
       }
