@@ -235,7 +235,8 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
 .ind-cell p { color: var(--mut); font-size: 13px; line-height: 1.45; margin: 0; }
 
 .ind-trust { background: var(--acc); color: #fff; }
-.ind-trust-lead { max-width: 1080px; margin: 0 auto; padding: 48px 24px 4px; text-align: center; font-weight: 800; font-size: clamp(1.4rem, 3.6vw, 2.2rem); line-height: 1.1; letter-spacing: -0.01em; text-transform: uppercase; }
+.ind-trust-lead { max-width: 1080px; margin: 0 auto; padding: 48px 24px 4px; text-align: center; font-weight: 800; font-size: clamp(1.4rem, 3.6vw, 2.2rem); line-height: 1.1; letter-spacing: -0.01em; text-transform: uppercase; min-height: 1.2em; }
+.ind-trust-lead.tw-on::after { content: ""; display: inline-block; width: 3px; height: 0.85em; background: currentColor; margin-left: 6px; vertical-align: -0.04em; animation: indCaret 0.9s steps(1) infinite; }
 .ind-trust .grid2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; padding: 40px 24px; max-width: 1080px; margin: 0 auto; }
 .ind-trust .n { font-weight: 900; font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1; }
 .ind-trust .l { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.95; margin-top: 6px; }

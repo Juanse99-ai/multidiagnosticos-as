@@ -188,6 +188,22 @@ export function IndMotion() {
         );
       });
 
+      // Frase de confianza: efecto "escritura" (typewriter) al entrar la franja en pantalla
+      const lead = document.querySelector<HTMLElement>(".ind-trust-lead");
+      if (lead) {
+        const phrase = (lead.textContent ?? "").trim();
+        lead.classList.add("tw-on");
+        lead.textContent = "";
+        ScrollTrigger.create({
+          trigger: ".ind-trust",
+          start: "top 80%",
+          once: true,
+          onEnter: () => {
+            gsap.to(lead, { text: phrase, duration: Math.max(0.9, phrase.length * 0.04), ease: "none" });
+          },
+        });
+      }
+
       // Recalcular posiciones cuando fuentes/imágenes ya cargaron
       ScrollTrigger.refresh();
 
