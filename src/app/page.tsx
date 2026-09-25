@@ -31,11 +31,11 @@ const SERVICES = [
   { n: "08", Icon: Wrench, t: "Cambio de aceite", d: "Aceite, filtro y revisión multipunto." },
 ];
 const PARTS = [
-  { n: "Batería Bosch S4", img: "/bosch.png" }, { n: "Batería Tudor", img: "/tudor.png" },
+  { n: "Batería Tudor", img: "/tudor.png" }, { n: "Aceite Mazda 0W-20", img: "/products/mazda-0w20.png" },
   { n: "Aceite sintético", img: "/products/valvoline-rp.webp" }, { n: "Filtro de aceite", img: "/products/denso-filtro.webp" },
 ];
-const BRANDS = ["bosch", "castrol", "mobil", "varta", "denso", "valvoline", "acdelco", "shell", "mahle", "wd40", "gates"];
-const BRAND_NAMES: Record<string, string> = { bosch: "Bosch", castrol: "Castrol", mobil: "Mobil", varta: "Varta", denso: "Denso", valvoline: "Valvoline", acdelco: "ACDelco", shell: "Shell", mahle: "MAHLE", wd40: "WD-40", gates: "Gates" };
+const BRANDS = ["bosch", "castrol", "mobil", "denso", "valvoline", "acdelco", "shell", "mahle", "wd40", "gates"];
+const BRAND_NAMES: Record<string, string> = { bosch: "Bosch", castrol: "Castrol", mobil: "Mobil", denso: "Denso", valvoline: "Valvoline", acdelco: "ACDelco", shell: "Shell", mahle: "MAHLE", wd40: "WD-40", gates: "Gates" };
 
 function SecHead({ a, b }: { k?: string; a: string; b: string }) {
   return (

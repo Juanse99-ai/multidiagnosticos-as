@@ -95,7 +95,7 @@ export const POSTS: Post[] = [
         "Revisa el alternador: si no carga, ninguna batería dura.",
       ] },
       { type: "h2", text: "Cámbiala antes de quedar tirado" },
-      { type: "p", text: "Tenemos baterías Bosch y Tudor, y te hacemos la prueba de carga para confirmar si es la batería o el alternador. Sin adivinar." },
+      { type: "p", text: "Tenemos baterías Tudor y te hacemos la prueba de carga para confirmar si es la batería o el alternador. Sin adivinar." },
     ],
   },
   {

@@ -10,6 +10,6 @@
   {"sku":"E9901+","name":"Bujía Iridium Captiva / Mazda 3-5-6","ref":"E9901+","price":60000,"category":"Bujías"},
   {"sku":"HK8139","name":"Bobina de encendido Mazda CX-7 / Mazda 3 2.0","ref":"HK8139","price":195000,"category":"Bobinas"},
   {"sku":"4W5G-12A-366+","name":"Bobina de encendido Mazda 3 / Mazda 6 2.0 (2 pines)","ref":"4W5G-12A-366+","price":100000,"category":"Bobinas"},
-  {"sku":"S4 62E-42-B-BSH","name":"Batería Bosch S4 (Aveo, Captiva, Mazda 3)","ref":"S4 62E-42-B-BSH","price":430000,"category":"Baterías"},
+  {"sku":"6543542313534","name":"Batería Tudor 35800T","ref":"35800T","price":450000,"category":"Baterías","image":"/tudor.png"},
   {"sku":"8952FF","name":"Pastillas de freno Mazda 3 (2014 en adelante)","ref":"8952FF","price":220000,"category":"Frenos"}
 ]

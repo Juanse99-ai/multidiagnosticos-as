@@ -16,8 +16,8 @@ const CATS = [
   { t: "Filtros", Icon: Filter }, { t: "Baterías", Icon: Battery }, { t: "Lubricantes", Icon: Droplets },
   { t: "Bujías", Icon: Zap }, { t: "Bobinas", Icon: CircuitBoard }, { t: "Frenos", Icon: Disc3 },
 ];
-const BRANDS = ["bosch", "castrol", "mobil", "varta", "denso", "valvoline", "acdelco", "shell", "mahle", "wd40", "gates"];
-const BRAND_NAMES: Record<string, string> = { bosch: "Bosch", castrol: "Castrol", mobil: "Mobil", varta: "Varta", denso: "Denso", valvoline: "Valvoline", acdelco: "ACDelco", shell: "Shell", mahle: "MAHLE", wd40: "WD-40", gates: "Gates" };
+const BRANDS = ["bosch", "castrol", "mobil", "denso", "valvoline", "acdelco", "shell", "mahle", "wd40", "gates"];
+const BRAND_NAMES: Record<string, string> = { bosch: "Bosch", castrol: "Castrol", mobil: "Mobil", denso: "Denso", valvoline: "Valvoline", acdelco: "ACDelco", shell: "Shell", mahle: "MAHLE", wd40: "WD-40", gates: "Gates" };
 
 export default function AutopartesPage() {
   return (
