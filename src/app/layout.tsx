@@ -66,6 +66,8 @@ export default function RootLayout({
                 addressRegion: "Atlántico",
                 addressCountry: "CO",
               },
+              geo: { "@type": "GeoCoordinates", latitude: 10.63582, longitude: -74.9145827 },
+              hasMap: "https://www.google.com/maps/search/?api=1&query=Multidiagnosticos+AS+Sabanalarga",
               openingHoursSpecification: [
                 {
                   "@type": "OpeningHoursSpecification",
