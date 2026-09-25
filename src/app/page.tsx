@@ -73,7 +73,7 @@ export default function Home() {
         <SecHead k="Autopartes" a="Categorías de" b="repuestos." />
         <div className="ind-cats"><div className="ind-cells">
           {CATS.map((c) => (
-            <a className="ind-cat" href="/autopartes" key={c.t}>
+            <a className="ind-cat" href={c.t === "Baterías" ? "/baterias" : "/autopartes"} key={c.t}>
               <c.Icon size={24} color="#2D5BFF" strokeWidth={2} />
               <span className="nm">{c.t}</span>
               <span className="go">Ver <ArrowRight size={13} /></span>

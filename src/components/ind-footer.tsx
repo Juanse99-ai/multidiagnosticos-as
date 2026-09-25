@@ -17,7 +17,8 @@ export function IndFooter() {
           <div className="row">Sincronización · Escáner</div>
           <div className="row">Frenos · Suspensión</div>
           <div className="row">Motores · Inyectores</div>
-          <div className="row">Autopartes</div>
+          <a className="row" href="/baterias">Baterías Tudor</a>
+          <a className="row" href="/autopartes">Autopartes</a>
         </div>
         <div>
           <h4>Contacto</h4>

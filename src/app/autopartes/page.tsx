@@ -44,7 +44,7 @@ export default function AutopartesPage() {
         </div>
         <div className="ind-cats"><div className="ind-cells">
           {CATS.map((c) => (
-            <a className="ind-cat" href="#catalogo" key={c.t}>
+            <a className="ind-cat" href={c.t === "Baterías" ? "/baterias" : "#catalogo"} key={c.t}>
               <c.Icon size={24} color="#2D5BFF" strokeWidth={2} />
               <span className="nm">{c.t}</span>
               <span className="go">Ver</span>

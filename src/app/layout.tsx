@@ -53,7 +53,11 @@ export default function RootLayout({
               name: "Multidiagnósticos AS",
               image: "https://www.multidiagnosticosas.com/hero/banner.jpg",
               url: "https://www.multidiagnosticosas.com/",
-              telephone: "+57 300 365 1525",
+              telephone: "+57 302 319 1749",
+              contactPoint: [
+                { "@type": "ContactPoint", telephone: "+57 302 319 1749", contactType: "reservations", areaServed: "CO", availableLanguage: "es" },
+                { "@type": "ContactPoint", telephone: "+57 300 365 1525", contactType: "customer service", areaServed: "CO", availableLanguage: "es" },
+              ],
               email: "contacto@multidiagnosticosas.com",
               priceRange: "$$",
               currenciesAccepted: "COP",
