@@ -3,7 +3,7 @@ import { IndHeader } from "@/components/ind-header";
 import { IndFooter } from "@/components/ind-footer";
 import { IndMotion } from "@/components/ind-motion";
 import {
-  ArrowUpRight, MessageCircle, ChevronDown, Navigation, BatteryFull, Activity, ShieldCheck, Truck,
+  ArrowUpRight, MessageCircle, ChevronDown, BatteryFull, Activity, ShieldCheck, Truck,
   Gauge, Lightbulb, TriangleAlert, CalendarClock,
 } from "lucide-react";
 
@@ -24,7 +24,6 @@ export const metadata: Metadata = {
 };
 
 const WA = "https://wa.me/573003651525?text=Hola,%20quiero%20cotizar%20una%20bater%C3%ADa%20para%20mi%20carro";
-const MAPS = "https://www.google.com/maps/search/?api=1&query=Multidiagnosticos+AS+Sabanalarga";
 
 const WHY = [
   { Icon: BatteryFull, t: "Tudor en stock", d: "Baterías Tudor disponibles en el taller. Dinos marca, modelo y año de tu carro y te confirmamos la referencia." },
@@ -61,7 +60,6 @@ export default function BateriasPage() {
           <h1 className="ind-h1">Baterías para carro en <span className="blue">Sabanalarga.</span></h1>
           <div className="ind-actions">
             <a className="ind-btn" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> Cotizar batería</a>
-            <a className="ind-btn-ghost" href={MAPS} target="_blank" rel="noopener"><Navigation size={18} /> Cómo llegar</a>
           </div>
         </div></div>
       </section>
