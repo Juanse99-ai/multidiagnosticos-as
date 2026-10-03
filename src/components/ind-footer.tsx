@@ -14,7 +14,7 @@ export function IndFooter() {
         <div className="fbrand">
           <div className="big">¿Tu carro<br />falla? <span className="blue">Hablemos.</span></div>
           <div className="fbtns">
-            <a className="fcta" href={WA} target="_blank" rel="noopener"><MessageCircle size={16} /> WhatsApp</a>
+            <a className="fcta" href={WA} target="_blank" rel="noopener"><MessageCircle size={16} /> Escríbenos</a>
             <a className="fpqrs" href="/pqrs"><MessageSquareWarning size={16} /> Radicar PQRS</a>
           </div>
         </div>

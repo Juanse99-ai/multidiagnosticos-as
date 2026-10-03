@@ -70,7 +70,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <p>Agenda una revisión en Sabanalarga o escríbenos. Te respondemos por WhatsApp en minutos.</p>
           <div className="row">
             <a className="ind-btn" href="/agendar">Agendar servicio <ArrowUpRight size={18} /></a>
-            <a className="ind-btn-ghost" style={{ color: "var(--ink)" }} href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
+            <a className="ind-btn-ghost" style={{ color: "var(--ink)" }} href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> Escríbenos</a>
           </div>
         </div>
       </div></div></article>

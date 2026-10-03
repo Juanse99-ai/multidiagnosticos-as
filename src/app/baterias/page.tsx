@@ -91,7 +91,7 @@ export default function BateriasPage() {
           ))}
         </div></div>
         <div style={{ marginTop: 22 }}>
-          <a className="ind-btn" href="/blog/cuando-cambiar-la-bateria-del-carro">Cuándo cambiar la batería <ArrowUpRight size={16} /></a>
+          <a className="ind-btn" href="/blog/cuando-cambiar-la-bateria-del-carro">Cuándo cambiarla <ArrowUpRight size={16} /></a>
         </div>
       </div></section>
 

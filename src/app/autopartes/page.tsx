@@ -33,7 +33,7 @@ export default function AutopartesPage() {
           <p className="ind-sub">Baterías, aceites, filtros, bujías y bobinas de las mejores marcas. Cotiza por WhatsApp y recoge en el taller o te lo enviamos.</p>
           <div className="ind-actions">
             <a className="ind-btn" href="#catalogo">Ver catálogo <ArrowUpRight size={18} /></a>
-            <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> WhatsApp</a>
+            <a className="ind-btn-ghost" href={WA} target="_blank" rel="noopener"><MessageCircle size={18} /> Cotizar repuesto</a>
           </div>
         </div></div>
       </section>
