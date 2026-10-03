@@ -12,6 +12,8 @@ export type LegalBlock =
 export type LegalDoc = {
   slug: string;
   title: string;
+  /** Nombre corto para el footer. */
+  short: string;
   description: string;
   updated: string;
   body: LegalBlock[];
@@ -55,6 +57,7 @@ const DERECHOS: LegalBlock = {
 export const LEGAL_DOCS: LegalDoc[] = [
   {
     slug: "tratamiento-de-datos",
+    short: "Tratamiento de datos",
     title: "Política de Tratamiento de Datos Personales",
     description:
       "Cómo recogemos, usamos, guardamos y protegemos tus datos personales, y cómo ejercer tus derechos como titular, según la Ley 1581 de 2012.",
@@ -106,6 +109,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
   },
   {
     slug: "aviso-de-privacidad",
+    short: "Aviso de privacidad",
     title: "Aviso de Privacidad",
     description:
       "Resumen de quién trata tus datos, para qué los usamos, qué derechos tienes y dónde consultar la política completa.",
@@ -125,6 +129,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
   },
   {
     slug: "autorizacion-de-datos",
+    short: "Autorización de datos",
     title: "Autorización para el Tratamiento de Datos Personales",
     description:
       "El texto de la autorización que nos das para tratar tus datos personales cuando nos contactas, agendas o dejas tu vehículo en el taller.",
@@ -140,6 +145,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
   },
   {
     slug: "cookies",
+    short: "Política de cookies",
     title: "Política de Cookies",
     description:
       "Qué cookies usa este sitio, para qué sirven y cómo cambiar tu elección en cualquier momento.",
@@ -163,6 +169,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
   },
   {
     slug: "terminos-y-condiciones",
+    short: "Términos y condiciones",
     title: "Términos y Condiciones de Venta y Servicio",
     description:
       "Condiciones para cotizar, comprar repuestos y usar los servicios del taller: precios, garantías, derecho de retracto y PQRS.",
@@ -204,6 +211,7 @@ export const LEGAL_DOCS: LegalDoc[] = [
   },
   {
     slug: "envios-y-entregas",
+    short: "Envíos y entregas",
     title: "Política de Envíos y Entregas",
     description:
       "Cómo recoger tu repuesto en el taller o recibirlo por envío, y qué hacer si llega dañado o no corresponde.",

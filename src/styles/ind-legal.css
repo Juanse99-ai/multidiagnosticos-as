@@ -36,14 +36,6 @@
 }
 @media (prefers-reduced-motion: reduce) { .ind-cookies { animation: none; } .ind-cookies .ck-cat i, .ind-cookies .ck-cat i::after { transition: none; } }
 
-/* Footer: información legal y atención al cliente */
-.ind-footer .flegal { display: grid; grid-template-columns: 1.4fr 1fr; gap: 30px; max-width: 1080px; margin: 0 auto; padding: 30px 24px 34px; border-top: 1px solid #2A2A28; }
-.ind-footer a.row:hover, .ind-footer .flink:hover { color: #fff; }
-.ind-footer .flink { background: none; border: 0; padding: 0; font: inherit; font-size: 14px; text-align: left; cursor: pointer; }
-.ind-footer .fpqrs { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 16px; background: #F1F1EC; color: var(--ink) !important; padding: 13px 20px; border-radius: 6px; font-weight: 800; font-size: 14px; text-transform: uppercase; }
-.ind-footer .fpqrs:hover { background: #fff; }
-@media (max-width: 860px) { .ind-footer .flegal { grid-template-columns: 1fr; } }
-
 /* Documentos legales */
 .ind-legal .body a, .ind-legal-ext { color: var(--acc); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .ind-legal-ext { display: inline-flex; align-items: center; gap: 4px; }
