@@ -1,5 +1,8 @@
-import { MessageCircle, MapPin, Phone, Mail, Instagram } from "lucide-react";
+import { MessageCircle, MapPin, Phone, Mail, Instagram, MessageSquareWarning, ExternalLink } from "lucide-react";
 import { IndWhatsApp } from "./ind-whatsapp";
+import { IndCookies, CookieSettingsLink } from "./ind-cookies";
+import { LEGAL_DOCS } from "@/lib/legal";
+import "@/styles/ind-legal.css";
 
 const WA = "https://wa.me/573003651525?text=Hola,%20quisiera%20informaci%C3%B3n";
 
@@ -29,6 +32,20 @@ export function IndFooter() {
           <a className="row" href="https://www.instagram.com/multidiagnosticosas" target="_blank" rel="noopener"><Instagram size={15} color="#6E8BFF" /> @multidiagnosticosas</a>
         </div>
       </div>
+      <div className="flegal">
+        <div>
+          <h4>Información legal</h4>
+          {LEGAL_DOCS.map((d) => (
+            <a className="row" href={`/legal/${d.slug}`} key={d.slug}>{d.title}</a>
+          ))}
+          <CookieSettingsLink className="row flink" />
+        </div>
+        <div>
+          <h4>Atención al cliente</h4>
+          <a className="fpqrs" href="/pqrs"><MessageSquareWarning size={18} /> Radicar PQRS</a>
+          <a className="row" href="https://www.sic.gov.co" target="_blank" rel="noopener">Superintendencia de Industria y Comercio — www.sic.gov.co <ExternalLink size={14} /></a>
+        </div>
+      </div>
       <div className="fbot">
         <span>© 2026 Multidiagnósticos AS. Todos los derechos reservados.</span>
         <span className="veta">Diseño y desarrollo · <b>Veta Studio</b></span>
@@ -36,6 +53,7 @@ export function IndFooter() {
     </div>
 
     <IndWhatsApp />
+    <IndCookies />
     </>
   );
 }
