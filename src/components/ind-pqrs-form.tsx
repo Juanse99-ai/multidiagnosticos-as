@@ -99,7 +99,7 @@ export function IndPqrsForm() {
 
       {error && <p className="err" role="alert">{error}</p>}
 
-      <button type="submit" className="ind-btn send"><Send size={18} /> Radicar y enviar por WhatsApp</button>
+      <button type="submit" className="ind-btn send"><Send size={18} /> Enviar por WhatsApp</button>
     </form>
   );
 }
