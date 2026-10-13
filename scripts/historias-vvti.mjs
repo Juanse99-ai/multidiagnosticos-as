@@ -168,7 +168,12 @@ try {
   console.error("Error:", error.message);
   process.exitCode = 1;
 } finally {
+  // Esperar a que Chrome cierre antes de borrar su carpeta temporal; si no se puede, no es grave.
+  const closed = new Promise((ok) => chrome.once("exit", ok));
   chrome.kill();
-  await sleep(300);
-  rmSync(profile, { recursive: true, force: true });
+  await Promise.race([closed, sleep(4000)]);
+  try {
+    rmSync(profile, { recursive: true, force: true, maxRetries: 5, retryDelay: 300 });
+  } catch {}
+  console.log(`listo: ${KMS.length} imágenes en ${OUT}`);
 }
