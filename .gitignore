@@ -43,3 +43,8 @@ next-env.d.ts
 
 # artefactos locales de impeccable
 .impeccable/
+
+# figura VVT-i: capturas de prueba y páginas generadas
+figures/vvti/shots/
+figures/vvti/out/
+historias/

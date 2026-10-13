@@ -510,3 +510,6 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
   .ind-map .pin-card { top: 14px; bottom: auto; left: 14px; right: 14px; max-width: none; }
   .ind-ctaband { padding: 56px 0; }
 }
+
+/* Figura interactiva dentro de un artículo del blog */
+.ind-article .figure { margin: 26px 0 6px; }

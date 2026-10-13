@@ -12,9 +12,48 @@ export type Post = {
   category: string;
   readMins: number;
   body: Block[];
+  /** Figura interactiva que va arriba del artículo. */
+  figure?: "vvti";
 };
 
 export const POSTS: Post[] = [
+  {
+    slug: "aceite-vencido-vvti-2tr-fe",
+    title: "¿Por qué el aceite vencido afecta el VVT-i del 2TR-FE?",
+    description:
+      "En el motor 2.7 de la Hilux y la Fortuner el aceite no solo lubrica: también mueve el VVT-i. Mira en la figura qué pasa cuando se pasa de kilómetros.",
+    date: "13 de octubre de 2026",
+    dateISO: "2026-10-13",
+    category: "Mantenimiento",
+    readMins: 4,
+    figure: "vvti",
+    body: [
+      { type: "p", text: "El 2TR-FE es el motor de gasolina 2.7 de cuatro cilindros que traen muchas Hilux, Fortuner y Prado. En este motor el aceite hace dos trabajos: lubrica, y además es el que mueve el VVT-i, el sistema que adelanta o atrasa los árboles de levas para que el motor rinda mejor en cada momento." },
+      { type: "h2", text: "Cómo llega el aceite al VVT-i" },
+      { type: "ul", items: [
+        "La bomba de aceite lo saca del cárter.",
+        "Pasa por el filtro de aceite.",
+        "Sube por las galerías hasta la culata.",
+        "La OCV (válvula de control de aceite), comandada por la computadora, lo manda a la cámara de avance o a la de retraso de cada actuador. Antes de la OCV hay una malla fina que la protege de la mugre.",
+        "Las paletas del actuador giran el árbol de levas respecto al piñón de la cadena, y así cambia el tiempo de las válvulas. Las versiones con VVT-i doble (desde 2015, por verificar en tu versión) tienen un actuador en la admisión y otro en el escape.",
+      ] },
+      { type: "h2", text: "Qué cambia cuando el aceite está vencido" },
+      { type: "p", text: "Con los kilómetros el aceite se oxida, junta hollín y se espesa. Esa mugre también va tapando la malla de la OCV. Llega menos aceite a las cámaras y el actuador tarda más en llegar a donde la computadora lo manda. En la figura de arriba lo ves: mueve el carro de kilómetros y el rotor de admisión empieza a llegar tarde a la marca." },
+      { type: "ul", items: [
+        "Ralentí inestable o el motor que se siente sin fuerza.",
+        "Más consumo de gasolina.",
+        "Check engine con códigos del VVT-i, por ejemplo P0011 o P0012 (admisión) y P0014 (escape).",
+      ] },
+      { type: "h2", text: "Lo que recomendamos en el taller" },
+      { type: "ul", items: [
+        "Cambio de aceite y filtro cada 5.000 km con 5W-30. Confirma la viscosidad y el intervalo en el manual de tu vehículo.",
+        "Si ya salió un código del VVT-i, revisamos con escáner y limpiamos las mallas de las OCV antes de cambiar piezas.",
+        "No esperes al check engine: el lodo que se forma con aceite vencido es más difícil de sacar que de evitar.",
+      ] },
+      { type: "h2", text: "Sobre la figura" },
+      { type: "p", text: "Los datos del motor salen del manual de reparación de Toyota: 4 cilindros en línea, 16 válvulas, diámetro y carrera de 95,0 × 95,0 mm, 2.694 cm³. El orden de encendido 1-3-4-2, que marcan los lóbulos de las levas, y el VVT-i doble desde 2015 están por verificar contra el manual de tu versión. El porcentaje de retraso es un modelo ilustrativo para explicar el efecto, no una medición de Toyota." },
+    ],
+  },
   {
     slug: "por-que-se-enciende-el-check-engine",
     title: "¿Por qué se enciende la luz del check engine?",

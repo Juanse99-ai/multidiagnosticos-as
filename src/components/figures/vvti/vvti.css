@@ -1,0 +1,35 @@
+/* Figura "Aceite y VVT-i · 2TR-FE". Tokens propios bajo .vvti, nunca en :root. */
+.vvti.iso[data-theme="light"] {
+  --anatomy-card: #FAFAF7;
+  --anatomy-paper: #FAFAF7;
+  --anatomy-page: #FAFAF7;
+  --vvti-oil: rgba(217, 184, 92, 0.6);
+  --vvti-glass: #eef0ee;
+  --vvti-metal: #e4e4e0;
+  --vvti-metal-edge: #8a8a8f;
+}
+.vvti .iso-plate { background: var(--anatomy-card); }
+.vvti .vv-stage { touch-action: pan-y; cursor: ew-resize; -webkit-user-select: none; user-select: none; }
+.vvti .vv-stage:focus-visible { outline: 1px solid var(--anatomy-muted); outline-offset: 6px; }
+
+/* contenido de las ventanas (dibujado en el plano de cada cara) */
+.vvti .vv-oil { fill: var(--vvti-oil); stroke: none; mix-blend-mode: multiply; }
+.vvti .vv-film { fill: #ffffff; opacity: .35; stroke: none; }
+.vvti .vv-glass { fill: var(--vvti-glass); stroke: none; }
+.vvti .vv-glint { fill: #ffffff; opacity: .55; stroke: none; }
+.vvti .vv-metal { fill: var(--vvti-metal); stroke: var(--vvti-metal-edge); stroke-width: .6; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.vvti .vv-rotor-lit { fill: #ffffff; stroke: var(--anatomy-lit); stroke-width: .8; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.vvti .vv-bore { fill: var(--anatomy-shade-0); stroke: var(--vvti-metal-edge); stroke-width: .5; vector-effect: non-scaling-stroke; }
+
+/* el dibujo crece un poco en celular para que se lean las ventanas */
+@media (max-width: 480px) {
+  .vvti .vv-stage { margin: 0 -6%; }
+}
+
+.vvti .vv-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) {
+  .vvti .vv-stage { cursor: default; }
+}
+
+/* los aros de las ventanas tienen hueco: el contenido se ve a través */
+.vvti .vv-bezel path { fill-rule: evenodd; }

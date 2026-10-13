@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { IndHeader } from "@/components/ind-header";
 import { IndFooter } from "@/components/ind-footer";
 import { POSTS, getPost } from "@/lib/posts";
+import { VvtiFigure } from "@/components/figures/vvti/VvtiFigure";
 import { ArrowLeft, ArrowUpRight, MessageCircle } from "lucide-react";
 
 const BASE = "https://www.multidiagnosticosas.com";
@@ -56,6 +57,8 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         <div className="meta mono">{post.category} · {post.date} · {post.readMins} min de lectura</div>
         <h1>{post.title}</h1>
         <p className="lede">{post.description}</p>
+
+        {post.figure === "vvti" && <div className="figure"><VvtiFigure /></div>}
 
         <div className="body">
           {post.body.map((b, i) => {
