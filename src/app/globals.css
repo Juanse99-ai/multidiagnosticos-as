@@ -552,3 +552,4 @@ html { scroll-padding-top: 104px; } /* los anclajes (#servicios, #contacto) no q
   .ind-volt .vt-rows .tp { grid-column: 2 / -1; font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) { .ind-volt .vt-v { transition: none; } }
+.ind-volt .vt-ticks span:last-child { transform: translateX(-100%); }
