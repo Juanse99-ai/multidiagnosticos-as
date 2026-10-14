@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { IndHeader } from "@/components/ind-header";
 import { IndFooter } from "@/components/ind-footer";
 import { IndMotion } from "@/components/ind-motion";
+import { IndVolt } from "@/components/ind-volt";
 import {
   ArrowUpRight, MessageCircle, ChevronDown, BatteryFull, Activity, ShieldCheck, Truck,
   Gauge, Lightbulb, TriangleAlert, CalendarClock,
@@ -42,6 +43,7 @@ const SIGNS = [
 const FAQS = [
   { q: "¿Qué baterías tienen?", a: "Tenemos baterías Tudor en stock. Escríbenos por WhatsApp con la marca, el modelo y el año de tu carro y te confirmamos la referencia que le sirve." },
   { q: "¿Cómo sé si es la batería o el alternador?", a: "Te hacemos la prueba de carga en el taller. Si el alternador no carga, una batería nueva también se descarga, así que primero confirmamos dónde está la falla." },
+  { q: "¿Qué voltaje debe tener la batería del carro?", a: "Con el motor apagado y la batería en reposo, una batería de 12 V cargada marca 12,6 V o más. Con 12,4 V está al 75 %, con 12,2 V al 50 % y con 12,0 V o menos hay que cargarla ya. Con el motor encendido, el alternador debe dar entre 13,7 y 14,7 V. Son valores de referencia; en el taller te la medimos." },
   { q: "¿Cuánto dura una batería de carro?", a: "Por lo general entre 2 y 4 años, según el uso. En tierra caliente como Sabanalarga el calor la desgasta más rápido." },
   { q: "¿Las baterías tienen garantía?", a: "Sí, llevan la garantía del fabricante." },
   { q: "¿Dónde están ubicados?", a: "En la Cra. 27 #13-05, Sabanalarga, Atlántico. Atendemos de lunes a viernes de 8:00 a 17:30 y los sábados de 8:30 a 16:00." },
@@ -93,6 +95,13 @@ export default function BateriasPage() {
         <div style={{ marginTop: 22 }}>
           <a className="ind-btn" href="/blog/cuando-cambiar-la-bateria-del-carro">Cuándo cambiarla <ArrowUpRight size={16} /></a>
         </div>
+      </div></section>
+
+      <section className="ind-sec" style={{ paddingTop: 0 }}><div className="wrap">
+        <div style={{ marginBottom: 4 }}>
+          <h2 className="ind-h2">¿Cuánto debe marcar <span className="blue">tu batería?</span></h2>
+        </div>
+        <IndVolt />
       </div></section>
 
       <section className="ind-sec" style={{ paddingTop: 0 }}><div className="wrap">
